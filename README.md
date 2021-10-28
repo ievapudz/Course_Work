@@ -19,7 +19,7 @@ The protein embedding software `bio_embeddings` (Dallago et al. 2021) was chosen
 
 ## References
 
-1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. (2021). Learned embeddings from deep learning to visualize and predict protein sets. Current Protocols, 1, e113. doi: 10.1002/cpz1.113
+1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. (2021). Learned embeddings from deep learning to visualize and predict protein sets. Current Protocols, 1, e113. doi: 10.1002/cpz1.113. https://currentprotocols.onlinelibrary.wiley.com/doi/10.1002/cpz1.113
 
 2. Jang, J., Hur, H. G., Sadowsky, M. J., Byappanahalli, M. N., Yan, T., & Ishii, S. (2017). Environmental Escherichia coli: ecology and public health implications—a review. Journal of applied microbiology, 123(3), 570-581. https://sfamjournals.onlinelibrary.wiley.com/doi/full/10.1111/jam.13468
 
