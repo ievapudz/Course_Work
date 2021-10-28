@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 
 temperature_labels_full = [37, 80]
 
+# Initialisation of the dataset container
 data = {
     'train': {
         'X' : [],
