@@ -16,9 +16,9 @@ The protein embedding software `bio_embeddings` (Dallago et al. 2021) was chosen
 
 ### Tasks to do
 
-- [ ] Extract UniProt accession numbers from initial FASTA files.
-- [ ] Create one FASTA file `training_sequences.fasta` that contains only UniProt accession numbers in the header.
-- [ ] Create `temperature_annotations.csv` that contains identifier and temperature labels.
+- [x] Extract UniProt accession numbers from initial FASTA files.
+- [x] Create FASTA files `*_sequences.fasta` which records contain only UniProt accession numbers in the header.
+- [x] Create `*_temperature_annotations.csv` files that contain identifier and temperature labels.
 - [ ] Set up `config.yml` file to use the embedding.
 
 ## References
