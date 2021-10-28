@@ -4,12 +4,23 @@ from sklearn.model_selection import train_test_split
 
 temperature_labels_full = [37, 80]
 
-X_train_full = []
-Y_train_full = []
-X_validate_full = []
-Y_validate_full = []
-X_test_full = []
-Y_test_full = []
+data = {
+    'train': {
+        'X' : [],
+        'Y' : [],
+        'prefix': 'training_'
+    },
+    'validate': {
+        'X' : [],
+        'Y' : [],
+        'prefix': 'validation_'
+    },
+    'test': {
+        'X' : [],
+        'Y' : [],
+        'prefix': 'testing_'
+    }
+}
 
 for i in range(len(temperature_labels_full)):
     records = [] 
@@ -26,15 +37,13 @@ for i in range(len(temperature_labels_full)):
     # Splitting 30% from the initial set in half for calidation and testing
     X_validate, X_test, Y_validate, Y_test = train_test_split(X_try, Y_try, test_size=0.5, shuffle=True, random_state=1)
 
-    X_train_full = X_train_full + (X_train)
-    Y_train_full = Y_train_full + (Y_train)
-    X_validate_full = X_validate_full + (X_validate)
-    Y_validate_full = Y_validate_full + (Y_validate)
-    X_test_full = X_test_full + (X_test)
-    Y_test_full = Y_test_full + (Y_test)
+    data['train']['X'] = data['train']['X'] + X_train
+    data['train']['Y'] = data['train']['Y'] + Y_train
+    data['validate']['X'] = data['validate']['X'] + X_validate
+    data['validate']['Y'] = data['validate']['Y'] + Y_validate
+    data['test']['X'] = data['test']['X'] + X_test
+    data['test']['Y'] = data['test']['Y'] + Y_test
 
-print(len(X_train_full))
-print(len(X_validate_full))
-print(len(X_test_full))
-
-
+print(len(data['train']['X']))
+print(len(data['validate']['X']))
+print(len(data['test']['X']))
