@@ -1,0 +1,19 @@
+global:
+  sequences_file: data/FASTA/training_sequences.fasta
+  prefix: temperature_sampled
+protbert_embeddings:
+  type: embed
+  protocol: prottrans_bert_bfd
+  reduce: true
+  discard_per_amino_acid_embeddings: true
+umap_projections:
+  type: project
+  protocol: umap
+  depends_on: protbert_embeddings
+  n_components: 2
+plotly_visualization:
+  type: visualize
+  protocol: plotly
+  annotation_file: data/CSV/training_temperature_annotations.csv
+  display_unknown: false
+  depends_on: umap_projections
