@@ -10,7 +10,7 @@ Firstly, proteomes of *Escherichia coli* (https://www.uniprot.org/proteomes/UP00
 
 ## Usage of protein embedding
 
-Embedding is a technique to mapping from words to vectors, which allow to do a more convenient analysis in the model.
+Embedding is a technique to mapping from words to vectors, which allow to do a more convenient analysis in the model. Neural networks use embeddings to reduce the number of dimensions of categorical variables and meaningfully represent categories in the transformed space.
 
 The protein embedding software `bio_embeddings` (Dallago et al. 2021) was chosen to accomplish this task for our case of protein sequences. The initial dataset of proteomes of two bacteria was prepocessed according to Basic Protocol 1: `config.yml` and `temperature_annotations.csv` files were created.
 
@@ -24,6 +24,12 @@ Initially generated sequences files were not taken as input to the embedding too
 - [x] Create FASTA files `*_sequences.fasta` which records contain only UniProt accession numbers in the header.
 - [x] Create `*_temperature_annotations.csv` files that contain identifier and temperature labels.
 - [x] Set up `config.yml` file to use the embedding.
+- [x] Try evolutionary scale modeling (generation of embeddings).
+- [ ] Visualise generated embeddings.
+
+## Usage of evolutionary scale modeling
+
+Transformer protein language models from Facebook AI Research (Rives et al., 2019).
 
 ## References
 
@@ -31,5 +37,7 @@ Initially generated sequences files were not taken as input to the embedding too
 
 2. Jang, J., Hur, H. G., Sadowsky, M. J., Byappanahalli, M. N., Yan, T., & Ishii, S. (2017). Environmental Escherichia coli: ecology and public health implications—a review. Journal of applied microbiology, 123(3), 570-581. https://sfamjournals.onlinelibrary.wiley.com/doi/full/10.1111/jam.13468
 
-3. Zaparty, M., Esser, D., Gertig, S., Haferkamp, P., Kouril, T., Manica, A., ... & Siebers, B. (2010). “Hot standards” for the thermoacidophilic archaeon Sulfolobus solfataricus. Extremophiles, 14(1), 119-142. https://link.springer.com/article/10.1007/s00792-009-0280-0
+3. Rives, A., Meier, J., Sercu, T., Goyal, S., Lin, Z., Liu, J., ... & Fergus, R. (2021). Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences. Proceedings of the National Academy of Sciences, 118(15).
+
+4. Zaparty, M., Esser, D., Gertig, S., Haferkamp, P., Kouril, T., Manica, A., ... & Siebers, B. (2010). “Hot standards” for the thermoacidophilic archaeon Sulfolobus solfataricus. Extremophiles, 14(1), 119-142. https://link.springer.com/article/10.1007/s00792-009-0280-0
 
