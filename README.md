@@ -33,6 +33,24 @@ Initially generated sequences files were not taken as input to the embedding too
 
 The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with matplotlib.pyplot package and PyMDE.
 
+Due to the limitations of storage, it was decided to make a visualization of a sample taken from the training dataset. The size of the sample was set to be one quarter of the training dataset. 
+
+The command that was run to get the number of all embeddings: 
+
+`ls -1 | wc -l`
+
+The output of the command was 5056 (at Mon Nov 15 15:26:47 CET 2021).
+
+The command that was run to get the random sample of the training sequence list:
+
+`ls -1 | shuf -n 1264 > /Users/ieva/Documents/ML_Protein_Classification/data/EMB_ESM1b/training_embeddings_sample.lst`
+
+The embedding files that were required for visualisation were picked with with command:
+
+`cat ~/ML_Protein_Classification/data/EMB_ESM1b/training_embeddings_sample.lst | xargs -I % cp % ~/Desktop/data/EMB_ESM1b/training_embeddings_sample/%`
+
+Those files were uploaded to Google Drive to access from Google Colab notebook.
+
 ## Usage of evolutionary scale modeling
 
 Transformer protein language models from Facebook AI Research (Rives et al., 2019).
