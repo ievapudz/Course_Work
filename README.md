@@ -25,7 +25,13 @@ Initially generated sequences files were not taken as input to the embedding too
 - [x] Create `*_temperature_annotations.csv` files that contain identifier and temperature labels.
 - [x] Set up `config.yml` file to use the embedding.
 - [x] Try evolutionary scale modeling (generation of embeddings).
-- [ ] Visualise generated embeddings.
+- [ ] Visualise generated embeddings for a random sample of training dataset.
+- [x] Visualise generated embeddings for validation dataset.
+- [x] Visualise generated embeddings for testing dataset.
+
+## Visualisation of the dataset
+
+The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with matplotlib.pyplot package and PyMDE.
 
 ## Usage of evolutionary scale modeling
 
