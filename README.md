@@ -43,11 +43,11 @@ The output of the command was 5056 (at Mon Nov 15 15:26:47 CET 2021).
 
 The command that was run to get the random sample of the training sequence list:
 
-`ls -1 | shuf -n 1264 > /Users/ieva/Documents/ML_Protein_Classification/data/EMB_ESM1b/training_embeddings_sample.lst`
+`ls -1 | shuf -n 1264 > training_embeddings_sample.lst`
 
 The embedding files that were required for visualisation were picked with with command:
 
-`cat ~/ML_Protein_Classification/data/EMB_ESM1b/training_embeddings_sample.lst | xargs -I % cp % ~/Desktop/data/EMB_ESM1b/training_embeddings_sample/%`
+`cat training_embeddings_sample.lst | xargs -I % cp % training_embeddings_sample/%`
 
 Those files were uploaded to Google Drive to access from Google Colab notebook.
 
