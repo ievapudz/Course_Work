@@ -12,7 +12,7 @@ Firstly, proteomes of *Escherichia coli* (https://www.uniprot.org/proteomes/UP00
 
 Embedding is a technique to mapping from words to vectors, which allow to do a more convenient analysis in the model. Neural networks use embeddings to reduce the number of dimensions of categorical variables and meaningfully represent categories in the transformed space.
 
-The protein embedding software `bio_embeddings` (Dallago et al. 2021) was chosen to accomplish this task for our case of protein sequences. The initial dataset of proteomes of two bacteria was prepocessed according to Basic Protocol 1: `config.yml` and `temperature_annotations.csv` files were created.
+A couple of software tools to make embeddings were checked: `bio_embeddings` (Dallago et al. 2021) and a script to extract embeddings from Evolutionary Scale Modeling (Rives et al. 2021).  The latter one was chosen to accomplish this task for our case of protein sequences. 
 
 ## Removal of duplicated sequences
 
@@ -28,6 +28,9 @@ Initially generated sequences files were not taken as input to the embedding too
 - [x] Visualise generated embeddings for a random sample of training dataset.
 - [x] Visualise generated embeddings for validation dataset.
 - [x] Visualise generated embeddings for testing dataset.
+- [ ] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
+- [ ] Construct a simple neural network (a single layer perceptron).
+- [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
 
 ## Visualisation of the dataset
 
