@@ -14,9 +14,65 @@ Embedding is a technique to mapping from words to vectors, which allow to do a m
 
 A couple of software tools to make embeddings were checked: `bio_embeddings` (Dallago et al. 2021) and a script to extract embeddings from Evolutionary Scale Modeling (Rives et al. 2021).  The latter one was chosen to accomplish this task for our case of protein sequences. 
 
+The following command was run to generate embeddings for the training dataset. The analogical commands were run for validation and testing datasets.
+
+```
+python3 extract.py esm1b_t33_650M_UR50S data/FASTA/training_sequences.fasta data/EMB_ESM1b/training_sequences/ --repr_layers 0 32 33 --include mean per_tok
+```
+
+Since embeddings took up a lot of storage space (~23 GB for training dataset and 5 GB for each validation and testing sets), they were moved from the local storage to OneDrive.
+
 ## Removal of duplicated sequences
 
 Initially generated sequences files were not taken as input to the embedding tool, since FASTA file that was run to try embedding included several sequences that had duplicates by the sequence. Therefore, the data parsing part was edited by removing encountered duplicates. There were 42 sequences removed from the initial dataset changing the overall number of sequences to 7288.
+
+## Filtering sequences by length
+
+The script to generate embeddings for our protein sequences did not process sequences that were longer than 1024 aminoacids. The visualisation package PyMDE required the embeddings to have the respective representation of each sequence in FASTA, therefore filtered FASTA files were generated.
+
+1. The list of embeddings (PT format files named by the FASTA sequence ID) were listed down with command:
+
+```
+ls -1 > training_embeddings.lst
+ls -1 > validation_embeddings.lst
+ls -1 > testing_embeddings.lst
+
+```
+
+2. Picking the FASTA sequences that had the generated embeddings and putting these sequences into the filtered FASTA files.
+
+
+## Visualisation of the dataset
+
+The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with matplotlib.pyplot package and PyMDE.
+
+Due to the limitations of storage, it was decided to make a visualization of a sample taken from the training dataset. The size of the sample was set to be one quarter of the training dataset. 
+
+The command that was run to get the number of all embeddings: 
+
+```
+ls -1 | wc -l
+```
+
+The output of the command was 5056 (at Mon Nov 15 15:26:47 CET 2021).
+
+The command that was run to get the random sample of the training sequence list:
+
+```
+ls -1 | shuf -n 1264 > training_embeddings_sample.lst
+```
+
+The embedding files that were required for visualisation were picked with with command:
+
+```
+cat training_embeddings_sample.lst | xargs -I % cp % training_embeddings_sample/%
+```
+
+Those files were uploaded to Google Drive to access from Google Colab notebook.
+
+## Usage of evolutionary scale modeling
+
+Transformer protein language models from Facebook AI Research (Rives et al., 2019).
 
 ### Tasks to do
 
@@ -31,32 +87,6 @@ Initially generated sequences files were not taken as input to the embedding too
 - [ ] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
 - [ ] Construct a simple neural network (a single layer perceptron).
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
-
-## Visualisation of the dataset
-
-The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with matplotlib.pyplot package and PyMDE.
-
-Due to the limitations of storage, it was decided to make a visualization of a sample taken from the training dataset. The size of the sample was set to be one quarter of the training dataset. 
-
-The command that was run to get the number of all embeddings: 
-
-`ls -1 | wc -l`
-
-The output of the command was 5056 (at Mon Nov 15 15:26:47 CET 2021).
-
-The command that was run to get the random sample of the training sequence list:
-
-`ls -1 | shuf -n 1264 > training_embeddings_sample.lst`
-
-The embedding files that were required for visualisation were picked with with command:
-
-`cat training_embeddings_sample.lst | xargs -I % cp % training_embeddings_sample/%`
-
-Those files were uploaded to Google Drive to access from Google Colab notebook.
-
-## Usage of evolutionary scale modeling
-
-Transformer protein language models from Facebook AI Research (Rives et al., 2019).
 
 ## References
 
