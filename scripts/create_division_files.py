@@ -3,7 +3,7 @@ import sys
 """
 This module contains functions that are devoted to create FASTA and CSV files out
 of information in data dictionary, which is created by data_division function in 
-`data_division.py`.
+`data_division.py` module.
 """
 
 def create_division_FASTA(data):
