@@ -3,6 +3,8 @@
 ## Prerequisites
 
 - Python3 (tested on Python 3.7.4)
+- [ESM](https://github.com/facebookresearch/esm)
+- [PyMDE](https://github.com/cvxgrp/pymde)
 
 ## Primary dataset for training
 
@@ -12,7 +14,7 @@ Firstly, proteomes of *Escherichia coli* (https://www.uniprot.org/proteomes/UP00
 
 Embedding is a technique to mapping from words to vectors, which allow to do a more convenient analysis in the model. Neural networks use embeddings to reduce the number of dimensions of categorical variables and meaningfully represent categories in the transformed space.
 
-A couple of software tools to make embeddings were checked: `bio_embeddings` (Dallago et al. 2021) and a script to extract embeddings from Evolutionary Scale Modeling (Rives et al. 2021).  The latter one was chosen to accomplish this task for our case of protein sequences. 
+A couple of software tools to make embeddings were checked: `bio_embeddings` (Dallago et al. 2021) and a script to extract embeddings from Evolutionary Scale Modeling (ESM) (Rives et al. 2021).  The latter one was chosen to accomplish this task for our case of protein sequences. 
 
 The following command was run to generate embeddings for the training dataset. The analogical commands were run for validation and testing datasets.
 
@@ -20,7 +22,7 @@ The following command was run to generate embeddings for the training dataset. T
 python3 extract.py esm1b_t33_650M_UR50S data/FASTA/training_sequences.fasta data/EMB_ESM1b/training_sequences/ --repr_layers 0 32 33 --include mean per_tok
 ```
 
-Since embeddings took up a lot of storage space (~23 GB for training dataset and 5 GB for each validation and testing sets), they were moved from the local storage to OneDrive.
+Since embeddings took up a lot of storage space (~23 GB for training dataset and ~5 GB for each validation and testing sets), they were moved from the local storage to OneDrive.
 
 ## Removal of duplicated sequences
 
