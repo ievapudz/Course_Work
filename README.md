@@ -35,20 +35,14 @@ The script to generate embeddings for our protein sequences did not process sequ
 1. The list of embeddings (PT format files named by the FASTA sequence ID) were listed down with command:
 
 ```
-ls -1 > training_embeddings.lst
-ls -1 > validation_embeddings.lst
-ls -1 > testing_embeddings.lst
-
+ls -1 > data/EMB_ESM1b/training_embeddings.lst
+ls -1 > data/EMB_ESM1b/validation_embeddings.lst
+ls -1 > data/EMB_ESM1b/testing_embeddings.lst
 ```
 
-2. Picking the FASTA sequences that had the generated embeddings and putting these sequences into the filtered FASTA files.
+2. For the training dataset, due to the limitations of storage, only the sample of the set was taken. 
 
-
-## Visualisation of the dataset
-
-The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with matplotlib.pyplot package and PyMDE.
-
-Due to the limitations of storage, it was decided to make a visualization of a sample taken from the training dataset. The size of the sample was set to be one quarter of the training dataset. 
+The size of the sample was set to be one quarter of the training dataset. 
 
 The command that was run to get the number of all embeddings: 
 
@@ -70,7 +64,21 @@ The embedding files that were required for visualisation were picked with with c
 cat training_embeddings_sample.lst | xargs -I % cp % training_embeddings_sample/%
 ```
 
-Those files were uploaded to Google Drive to access from Google Colab notebook.
+Those embeddings files were uploaded to Google Drive to access from Google Colab notebook.
+
+3. Picking the FASTA sequences that had the generated embeddings and putting these sequences into the filtered FASTA files. The creation of filtered FASTA files was done in the `classificator.ipynb`.
+
+## Visualisation of the dataset
+
+The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with `matplotlib.pyplot` package and PyMDE.
+
+![training_sample_PCA_matplotlib](./data/visualisation/training_embeddings_sample_visualisation_matplotlib.png) 
+
+**Fig. 1.** PCA plot made with matplotlib of the training dataset sample embeddings
+
+![training_sample_PyMDE](./data/visualisation/training_embeddings_sample_visualisation_PyMDE.png) 
+
+**Fig. 2.** Minimum-distortion embedding plot of the training dataset sample embeddings
 
 ## Usage of evolutionary scale modeling
 
@@ -86,6 +94,7 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 - [x] Visualise generated embeddings for a random sample of training dataset.
 - [x] Visualise generated embeddings for validation dataset.
 - [x] Visualise generated embeddings for testing dataset.
+- [ ] Remove variant effect scale from the PCA visualisation.
 - [ ] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
 - [ ] Construct a simple neural network (a single layer perceptron).
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
