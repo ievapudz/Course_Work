@@ -10,10 +10,10 @@ def create_division_FASTA(data):
     for element in data.keys():
         file_name = data[element]['FASTA_prefix']+'sequences.fasta'
         file_handle = open(file_name, 'w')
-        for record in data[element]['X']:
-            file_handle.write('>'+record.name.split('|')[1])
+        for i in range(len(data[element]['X'])):
+            file_handle.write('>'+data[element]['X'][i].name.split('|')[1]+'|'+str(data[element]['Y'][i]))
             file_handle.write("\n")
-            file_handle.write(str(record.seq))
+            file_handle.write(str(data[element]['X'][i].seq))
             file_handle.write("\n")
         file_handle.close()
 
