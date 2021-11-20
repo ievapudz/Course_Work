@@ -6,8 +6,10 @@ import numpy
 import pymde
 from sklearn.decomposition import PCA
 from matplotlib import colors
+from matplotlib.colors import ListedColormap
 
 EMB_LAYER = 33
+custom_cmap = ListedColormap(["navy", "pink"])
 
 def visualise_PCA(data, keys, plotpath):
     # data - dictionary that was created by filter_sequences function.
@@ -33,7 +35,7 @@ def visualise_PCA(data, keys, plotpath):
 
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
-    sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.')
+    sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.', cmap=custom_cmap)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
     plt.colorbar(sc, label='Variant Effect', ticks=numpy.linspace(37, 80, 2))
@@ -61,4 +63,4 @@ def visualise_MDE(data, keys, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath)
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap)
