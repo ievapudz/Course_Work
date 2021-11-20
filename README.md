@@ -95,7 +95,7 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 - [x] Visualise generated embeddings for validation dataset.
 - [x] Visualise generated embeddings for testing dataset.
 - [ ] Remove variant effect scale from the PCA visualisation.
-- [ ] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
+- [x] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
 - [ ] Construct a simple neural network (a single layer perceptron).
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
 
