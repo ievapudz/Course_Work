@@ -43,3 +43,5 @@ def filter_sequences_with_embeddings(data):
             if(data[element]['X'][i].id.split('|')[1] in emb_set):
                 data_filtered[element]['X'].append(data[element]['X'][i])
                 data_filtered[element]['Y'].append(data[element]['Y'][i])
+
+    return data_filtered
