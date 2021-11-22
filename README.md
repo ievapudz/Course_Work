@@ -3,8 +3,8 @@
 ## Prerequisites
 
 - Python3 (tested on Python 3.7.4)
-- [ESM](https://github.com/facebookresearch/esm)
-- [PyMDE](https://github.com/cvxgrp/pymde)
+- [ESM](https://github.com/facebookresearch/esm) (v0.4.0)
+- [PyMDE](https://github.com/cvxgrp/pymde) (v0.1.13)
 
 ## Primary dataset for training
 
