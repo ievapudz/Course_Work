@@ -80,6 +80,16 @@ The visualisation of the initial dataset was performed for a random sample of tr
 
 **Fig. 2.** Minimum-distortion embedding plot of the training dataset sample embeddings
 
+The visualisation (Fig. 1. and Fig. 2.) of the dataset showed a significant distinction between the thermophilic and mesophilic prokaryote proteins. However, since the chosen prokaryotes were different not only in the living conditions, yet also they differed in their domains: *E. coli* belongs to bacteria domain, meanwhile *S. solfataricus* is an archaeon species. Therefore it was decided to make additional visualisations for mesophilic archaea and thermophilic bacteria proteomes.
+
+Mesophilic archaea:
+- *Methanobrevibacter oralis* [UP000077428](https://www.uniprot.org/proteomes/UP000077428)
+- *Nitrosopumilus maritimus* (strain SCM1) [UP000000792](https://www.uniprot.org/proteomes/UP000000792)
+
+Thermophilic bacteria:
+- *Aquifex aeolicus* (strain VF5) [UP000000798](https://www.uniprot.org/proteomes/UP000000798)
+- *Thermotoga maritima* (strain ATCC 43589 / DSM 3109 / JCM 10099 / NBRC 100826 / MSB8) [UP000008183](https://www.uniprot.org/proteomes/UP000008183)
+
 ## Usage of evolutionary scale modeling
 
 Transformer protein language models from Facebook AI Research (Rives et al., 2019).
