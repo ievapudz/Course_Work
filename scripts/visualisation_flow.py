@@ -67,6 +67,7 @@ def get_equal_proportions(data, key, overall_number, classes):
     data[key]['Y_equally_proportioned'] = Y_equal_proportions
 
 def generate_embeddings(path_to_esm_extract, path_to_FASTA, path_to_embeddings):
+    # Required PyTorch
     command = "python3 esm/extract.py "+path_to_esm_extract+" esm1b_t33_650M_UR50S "+path_to_FASTA+" "+path_to_embeddings+" --repr_layers 0 32 33 --include mean per_tok"
     os.system(command)
         
