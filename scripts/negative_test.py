@@ -3,6 +3,7 @@
 import os
 from Bio import SeqIO
 from sklearn.utils import shuffle
+from file_actions import write_to_file
 from dataset_processing import filter_sequences
 from visualise_embeddings import visualise_PCA_species
 from visualise_embeddings import visualise_MDE_species
@@ -36,6 +37,8 @@ keys = ['003', '004']
 for key in keys:
     parse_proteomes(proteome_files_dir, data, key)
     data[key]['X'], data[key]['Y'] = shuffle(data[key]['X'], data[key]['Y'], random_state=1)
+
+    write_to_file(data, key, 'X', 'Y', 1000, data[key]['FASTA'], False)
 
     filter_sequences(data, key, data[key]['embeddings'])
 
