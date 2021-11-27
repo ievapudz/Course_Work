@@ -82,6 +82,8 @@ The visualisation of the initial dataset was performed for a random sample of tr
 
 The visualisation (Fig. 1. and Fig. 2.) of the dataset showed a significant distinction between the thermophilic and mesophilic prokaryote proteins. However, since the chosen prokaryotes were different not only in the living conditions, yet also they differed in their domains: *E. coli* belongs to bacteria domain, meanwhile *S. solfataricus* is an archaeon species. Therefore it was decided to make additional visualisations for mesophilic archaea and thermophilic bacteria proteomes.
 
+## Analysis of the data clusters
+
 Mesophilic archaea:
 - *Methanobrevibacter oralis* [UP000077428](https://www.uniprot.org/proteomes/UP000077428)
 - *Nitrosopumilus maritimus* (strain SCM1) [UP000000792](https://www.uniprot.org/proteomes/UP000000792)
@@ -89,6 +91,26 @@ Mesophilic archaea:
 Thermophilic bacteria:
 - *Aquifex aeolicus* (strain VF5) [UP000000798](https://www.uniprot.org/proteomes/UP000000798)
 - *Thermotoga maritima* (strain ATCC 43589 / DSM 3109 / JCM 10099 / NBRC 100826 / MSB8) [UP000008183](https://www.uniprot.org/proteomes/UP000008183)
+
+In order to check whether the clusterization in the primary dataset occurred due to the domain of the organism or the thermophilic properties of each protein, four cases of tests were performed: two to expect the positive result (clusterization effect into two groups resembling the initial plot) and other two with an expectation to observe the negative result - no distinctive classes.
+
+Samples for positive tests:
+- [x] 001. Sample containing mesophilic (UP000000625) and thermophilic bacteria (UP000000798, UP000008183).
+- [x] 002. Sample containing mesophilic (UP000077428, UP000000792) and thermophilic (UP000001974) archaea.
+
+Samples for negative tests:
+- [x] 003. Sample containing thermophilic bacteria (UP000000798, UP000008183) and archaea (UP000001974).
+- [ ] 004. Sample containing mesophilic bacteria (UP000000625) and archaea (UP000077428, UP000000792).
+
+```
+python3 scripts/visualisation_flow.py
+```
+
+In (py37) conda environment:
+```
+python3 esm/extract.py esm1b_t33_650M_UR50S data/cluster_tests/004/FASTA/004.fasta data/cluster_tests/004/EMB_ESM1b/ --repr_layers 0 32 33 --include mean per_tok
+```
+
 
 ## Usage of evolutionary scale modeling
 
@@ -106,8 +128,12 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 - [x] Visualise generated embeddings for testing dataset.
 - [x] Remove variant effect scale from the PCA visualisation.
 - [x] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
-- [ ] Construct a simple neural network (a single layer perceptron).
+- [x] Construct a simple neural network (a single layer perceptron).
+- [ ] Create mesophilic archaea and thermophilic bacteria embeddings.
+- [ ] Visualise mesophilic archaea and thermophilic bacteria embeddings.
+- [ ] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
+- [ ] How to determine the order of the species that are taken into PyMDE for visualisation?
 
 ## References
 
