@@ -31,7 +31,7 @@ data = {
 proteome_files_dir = 'data/proteomes/'
 visualisation_file_path = "data/visualisation/"
 
-keys = ['003']
+keys = ['003', '004']
 
 for key in keys:
     parse_proteomes(proteome_files_dir, data, key)
@@ -39,5 +39,9 @@ for key in keys:
 
     filter_sequences(data, key, data[key]['embeddings'])
 
-    visualise_PCA_species(data, key, visualisation_file_path+key+"_PCA.png", ['AQUAE', 'SACS2', 'THEMA'])
-    visualise_MDE_species(data, key, visualisation_file_path+key+"_MDE.png")
+# Species were set 'empirically'
+visualise_PCA_species(data, keys[0], visualisation_file_path+key+"_PCA.png", ['AQUAE', 'SACS2', 'THEMA'])
+visualise_MDE_species(data, keys[0], visualisation_file_path+key+"_MDE.png")
+
+visualise_PCA_species(data, keys[1], visualisation_file_path+key+"_PCA.png", ['9EURY', 'ECOLI', 'NITMS'])
+visualise_MDE_species(data, keys[1], visualisation_file_path+key+"_MDE.png")
