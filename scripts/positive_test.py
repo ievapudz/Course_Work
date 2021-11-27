@@ -27,22 +27,6 @@ data = {
         'temperature_labels': [37, 37, 80],
         'FASTA': 'data/cluster_tests/002/FASTA/002.fasta',
         'embeddings': 'data/cluster_tests/002/EMB_ESM1b/'
-    },
-    '003': {
-        'X': [],
-        'Y': [],
-        'proteomes': ['UP000000798', 'UP000008183', 'UP000001974_273057'],
-        'temperature_labels': [80, 80, 80],
-        'FASTA': 'data/cluster_tests/003/FASTA/003.fasta',
-        'embeddings': 'data/cluster_tests/003/EMB_ESM1b/'
-    },
-    '004': {
-        'X': [],
-        'Y': [],
-        'proteomes': ['UP000000625_83333', 'UP000077428', 'UP000000792'],
-        'temperature_labels': [37, 37, 37],
-        'FASTA': 'data/cluster_tests/004/FASTA/004.fasta',
-        'embeddings': 'data/cluster_tests/004/EMB_ESM1b/'
     }
 }
 
