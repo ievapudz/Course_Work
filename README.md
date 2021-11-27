@@ -100,17 +100,17 @@ Samples for positive tests:
 
 Samples for negative tests:
 - [x] 003. Sample containing thermophilic bacteria (UP000000798, UP000008183) and archaea (UP000001974).
-- [ ] 004. Sample containing mesophilic bacteria (UP000000625) and archaea (UP000077428, UP000000792).
-
-```
-python3 scripts/visualisation_flow.py
-```
+- [x] 004. Sample containing mesophilic bacteria (UP000000625) and archaea (UP000077428, UP000000792).
 
 In (py37) conda environment:
 ```
 python3 esm/extract.py esm1b_t33_650M_UR50S data/cluster_tests/004/FASTA/004.fasta data/cluster_tests/004/EMB_ESM1b/ --repr_layers 0 32 33 --include mean per_tok
 ```
 
+```
+python3 scripts/positive_test.py
+python3 scripts/negative_test.py
+```
 
 ## Usage of evolutionary scale modeling
 
@@ -129,11 +129,12 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 - [x] Remove variant effect scale from the PCA visualisation.
 - [x] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
 - [x] Construct a simple neural network (a single layer perceptron).
-- [ ] Create mesophilic archaea and thermophilic bacteria embeddings.
-- [ ] Visualise mesophilic archaea and thermophilic bacteria embeddings.
+- [x] Create mesophilic archaea and thermophilic bacteria embeddings.
+- [x] Visualise mesophilic archaea and thermophilic bacteria embeddings.
+- [ ] Determine the species that are taken into PyMDE for visualisation automatically.
+- [ ] Determine the order of species that are taken into PyMDE for visualisation.
 - [ ] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
-- [ ] How to determine the order of the species that are taken into PyMDE for visualisation?
 
 ## References
 
