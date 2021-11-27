@@ -11,22 +11,22 @@ from matplotlib.colors import ListedColormap
 EMB_LAYER = 33
 custom_cmap = ListedColormap(["navy", "red"])
 
-def visualise_PCA(data, keys, plotpath):
+def visualise_PCA(data, key, plotpath):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
     # plotpath - path to the output plot.
     Ys = []
     Xs = []
 
-    for key in keys:
-        print('Visualising:', key)
-        EMB_PATH = data[key]['embeddings']
-        for i in range(len(data[key]['Y_filtered'])):
-            Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
-            fn = f'{EMB_PATH}/{file_name}.pt'
-            embs = torch.load(fn)
-            Xs.append(embs['mean_representations'][EMB_LAYER])
+    #for key in keys:
+    print('Visualising:', key)
+    EMB_PATH = data[key]['embeddings']
+    for i in range(len(data[key]['Y_filtered'])):
+        Ys.append(data[key]['Y_filtered'][i])
+        file_name = data[key]['X_filtered'][i].id.split('|')[1]
+        fn = f'{EMB_PATH}/{file_name}.pt'
+        embs = torch.load(fn)
+        Xs.append(embs['mean_representations'][EMB_LAYER])
 
     Xs = torch.stack(Xs, dim=0).numpy()
     pca = PCA(60)
@@ -41,22 +41,22 @@ def visualise_PCA(data, keys, plotpath):
     plt.savefig(plotpath)
     
 
-def visualise_MDE(data, keys, plotpath):
+def visualise_MDE(data, key, plotpath):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
     # plotpath - path to the output plot.
     Ys = []
     Xs = []
 
-    for key in keys:
-        FASTA_PATH = data[key]['FASTA_prefix']+'_filtered.fasta'
-        EMB_PATH = data[key]['embeddings']
-        for i in range(len(data[key]['Y_filtered'])):
-            Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
-            fn = f'{EMB_PATH}/{file_name}.pt'
-            embs = torch.load(fn)
-            Xs.append(embs['mean_representations'][EMB_LAYER])
+    #for key in keys:
+    FASTA_PATH = data[key]['FASTA_prefix']+'_filtered.fasta'
+    EMB_PATH = data[key]['embeddings']
+    for i in range(len(data[key]['Y_filtered'])):
+        Ys.append(data[key]['Y_filtered'][i])
+        file_name = data[key]['X_filtered'][i].id.split('|')[1]
+        fn = f'{EMB_PATH}/{file_name}.pt'
+        embs = torch.load(fn)
+        Xs.append(embs['mean_representations'][EMB_LAYER])
 
     Xs = torch.stack(Xs, dim=0).numpy()
     Xs_torch = None
