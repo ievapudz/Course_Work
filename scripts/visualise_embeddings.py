@@ -48,8 +48,6 @@ def visualise_MDE(data, key, plotpath):
     Ys = []
     Xs = []
 
-    #for key in keys:
-    FASTA_PATH = data[key]['FASTA_prefix']+'_filtered.fasta'
     EMB_PATH = data[key]['embeddings']
     for i in range(len(data[key]['Y_filtered'])):
         Ys.append(data[key]['Y_filtered'][i])
