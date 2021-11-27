@@ -5,14 +5,9 @@ from Bio import SeqIO
 from sklearn.utils import shuffle
 import visualise_embeddings
 from visualise_embeddings import visualise_PCA
+from visualise_embeddings import visualise_MDE
 
 proteome_files_dir = 'data/proteomes/'
-
-"""
-'FASTA_prefix': 'data/FASTA/filtered_training_',
-        'embedding_list': './data/EMB_ESM1b/training_embeddings_sample.lst',
-        'embeddings': '/content/drive/MyDrive/training_embeddings_sample'
-"""
 
 data = {
     '001': {
@@ -133,5 +128,6 @@ filter_sequences(data, keys[0], "data/cluster_tests/001/EMB_ESM1b", "data/cluste
 data['001']['FASTA_prefix'] = 'data/cluster_tests/001/FASTA/001'
 
 visualise_PCA(data, keys, "data/visualisation/001_PCA.png")
+visualise_MDE(data, keys, "data/visualisation/001_MDE.png")
 
 
