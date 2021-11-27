@@ -9,7 +9,7 @@ from matplotlib import colors
 from matplotlib.colors import ListedColormap
 
 EMB_LAYER = 33
-custom_cmap = ListedColormap(["navy", "pink"])
+custom_cmap = ListedColormap(["navy", "red"])
 
 def visualise_PCA(data, keys, plotpath):
     # data - dictionary that was created by filter_sequences function.
@@ -19,12 +19,11 @@ def visualise_PCA(data, keys, plotpath):
     Xs = []
 
     for key in keys:
-        FASTA_PATH = data[key]['FASTA_prefix']+'sequences.fasta'
+        print('Visualising:', key)
         EMB_PATH = data[key]['embeddings']
-        for header, _seq in esm.data.read_fasta(FASTA_PATH):
-            temperature_label = header.split('|')[-1]
-            Ys.append(int(temperature_label))
-            file_name = header.split('|')[0][1:]
+        for i in range(len(data[key]['Y_filtered'])):
+            Ys.append(data[key]['Y_filtered'][i])
+            file_name = data[key]['X_filtered'][i].id.split('|')[1]
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
             Xs.append(embs['mean_representations'][EMB_LAYER])
@@ -40,6 +39,7 @@ def visualise_PCA(data, keys, plotpath):
     ax.set_ylabel('PCA second principal component')
     plt.colorbar(sc, label='Variant Effect', ticks=numpy.linspace(37, 80, 2))
     plt.savefig(plotpath)
+    
 
 def visualise_MDE(data, keys, plotpath):
     # data - dictionary that was created by filter_sequences function.
@@ -49,12 +49,11 @@ def visualise_MDE(data, keys, plotpath):
     Xs = []
 
     for key in keys:
-        FASTA_PATH = data[key]['FASTA_prefix']+'sequences.fasta'
+        FASTA_PATH = data[key]['FASTA_prefix']+'_filtered.fasta'
         EMB_PATH = data[key]['embeddings']
-        for header, _seq in esm.data.read_fasta(FASTA_PATH):
-            temperature_label = header.split('|')[-1]
-            Ys.append(int(temperature_label))
-            file_name = header.split('|')[0][1:]
+        for i in range(len(data[key]['Y_filtered'])):
+            Ys.append(data[key]['Y_filtered'][i])
+            file_name = data[key]['X_filtered'][i].id.split('|')[1]
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
             Xs.append(embs['mean_representations'][EMB_LAYER])
@@ -63,4 +62,4 @@ def visualise_MDE(data, keys, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap)
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap, figsize_inches=(8.8, 8.0))
