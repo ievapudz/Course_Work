@@ -5,8 +5,6 @@ embeddings or not.
 """
 
 def filter_sequences(data, key, path_to_embeddings):
-    # The function that replaces the filter_sequences_with_embeddings.
-    # The functionality stays the same, however new dictionary 'data' is not created.
     embeddings_list = "embeddings_files.tmp"
     command = "ls -1 "+path_to_embeddings+" > "+embeddings_list
     os.system(command)
