@@ -93,7 +93,7 @@ def visualise_MDE(data, key, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap, figsize_inches=(8.8, 8.0))
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap, figsize_inches=(9.0, 8.0), marker_size=20.0)
 
 def visualise_MDE_species(data, key, plotpath):
     # data - dictionary that was created by filter_sequences function.
@@ -115,5 +115,5 @@ def visualise_MDE_species(data, key, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap_three, figsize_inches=(8.8, 8.0))
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap_three, figsize_inches=(9.0, 8.0), marker_size=20.0)
 
