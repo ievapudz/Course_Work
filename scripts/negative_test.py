@@ -17,7 +17,7 @@ data = {
         'proteomes': ['UP000000798', 'UP000008183', 'UP000001974_273057'],
         'temperature_labels': [80, 80, 80],
         'FASTA': 'data/cluster_tests/003/FASTA/003.fasta',
-        'embeddings': 'data/cluster_tests/003/EMB_ESM1b/'
+        'embeddings': 'data/cluster_tests/003/EMB_ESM1b'
     },
     '004': {
         'X': [],
@@ -33,6 +33,7 @@ proteome_files_dir = 'data/proteomes/'
 visualisation_file_path = "data/visualisation/"
 
 keys = ['003', '004']
+
 # Species were set 'empirically'
 species = [['AQUAE', 'SACS2', 'THEMA'], ['9EURY', 'ECOLI', 'NITMS']]
 
@@ -45,5 +46,5 @@ for i in range(len(keys)):
 
     filter_sequences(data, keys[i], data[keys[i]]['embeddings'])
 
-    visualise_PCA_species(data, keys[0], visualisation_file_path+keys[i]+"_PCA.png", species[i])
-    visualise_MDE_species(data, keys[0], visualisation_file_path+keys[i]+"_MDE.png")
+    visualise_PCA_species(data, keys[i], visualisation_file_path+keys[i]+"_PCA.png", species[i])
+    visualise_MDE_species(data, keys[i], visualisation_file_path+keys[i]+"_MDE.png")
