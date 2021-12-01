@@ -33,18 +33,17 @@ proteome_files_dir = 'data/proteomes/'
 visualisation_file_path = "data/visualisation/"
 
 keys = ['003', '004']
-
-for key in keys:
-    parse_proteomes(proteome_files_dir, data, key)
-    data[key]['X'], data[key]['Y'] = shuffle(data[key]['X'], data[key]['Y'], random_state=1)
-
-    write_to_file(data, key, 'X', 'Y', 1000, data[key]['FASTA'], False)
-
-    filter_sequences(data, key, data[key]['embeddings'])
-
 # Species were set 'empirically'
-visualise_PCA_species(data, keys[0], visualisation_file_path+key+"_PCA.png", ['AQUAE', 'SACS2', 'THEMA'])
-visualise_MDE_species(data, keys[0], visualisation_file_path+key+"_MDE.png")
+species = [['AQUAE', 'SACS2', 'THEMA'], ['9EURY', 'ECOLI', 'NITMS']]
 
-visualise_PCA_species(data, keys[1], visualisation_file_path+key+"_PCA.png", ['9EURY', 'ECOLI', 'NITMS'])
-visualise_MDE_species(data, keys[1], visualisation_file_path+key+"_MDE.png")
+#for key in keys:
+for i in range(len(keys)):
+    parse_proteomes(proteome_files_dir, data, keys[i])
+    data[keys[i]]['X'], data[keys[i]]['Y'] = shuffle(data[keys[i]]['X'], data[keys[i]]['Y'], random_state=1)
+
+    write_to_file(data, keys[i], 'X', 'Y', 1000, data[keys[i]]['FASTA'], False)
+
+    filter_sequences(data, keys[i], data[keys[i]]['embeddings'])
+
+    visualise_PCA_species(data, keys[0], visualisation_file_path+keys[i]+"_PCA.png", species[i])
+    visualise_MDE_species(data, keys[0], visualisation_file_path+keys[i]+"_MDE.png")
