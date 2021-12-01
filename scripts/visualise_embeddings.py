@@ -38,8 +38,8 @@ def visualise_PCA(data, key, plotpath):
     sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.', cmap=custom_cmap)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
-    plt.colorbar(sc, label='Variant Effect', ticks=numpy.linspace(37, 80, 2))
-    plt.savefig(plotpath)
+    plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
+    plt.savefig(plotpath, dpi=300)
 
 def visualise_PCA_species(data, key, plotpath, classes):
     # data - dictionary that was created by filter_sequences function.
@@ -70,8 +70,10 @@ def visualise_PCA_species(data, key, plotpath, classes):
     sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.', cmap=custom_cmap_three)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
-    plt.colorbar(sc, label='Variant Effect', ticks=numpy.linspace(0, 2, 3))
-    plt.savefig(plotpath)
+    
+    cb = plt.colorbar(sc, label='Species', ticks=numpy.linspace(0, 2, 3))
+    cb.ax.set_yticklabels(classes)
+    plt.savefig(plotpath, dpi=300)
     
 
 def visualise_MDE(data, key, plotpath):
@@ -93,7 +95,7 @@ def visualise_MDE(data, key, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap, figsize_inches=(9.0, 8.0), marker_size=20.0)
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap, figsize_inches=(11, 10), marker_size=20.0)
 
 def visualise_MDE_species(data, key, plotpath):
     # data - dictionary that was created by filter_sequences function.
@@ -115,5 +117,5 @@ def visualise_MDE_species(data, key, plotpath):
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch).embed(verbose=True)
-    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap_three, figsize_inches=(9.0, 8.0), marker_size=20.0)
+    pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=custom_cmap_three, figsize_inches=(11, 10), marker_size=20.0)
 
