@@ -5,8 +5,6 @@ from Bio import SeqIO
 from sklearn.utils import shuffle
 from dataset_processing import filter_sequences
 from dataset_processing import get_equal_proportions
-from visualise_embeddings import visualise_PCA
-from visualise_embeddings import visualise_MDE
 from visualise_embeddings import visualise_multiple_PCA
 from visualise_embeddings import visualise_multiple_MDE
 from file_actions import write_to_file

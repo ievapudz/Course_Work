@@ -5,8 +5,6 @@ from Bio import SeqIO
 from sklearn.utils import shuffle
 from file_actions import write_to_file
 from dataset_processing import filter_sequences
-from visualise_embeddings import visualise_PCA_species
-from visualise_embeddings import visualise_MDE_species
 from visualise_embeddings import visualise_multiple_MDE_species, visualise_multiple_PCA_species
 from file_actions import parse_proteomes
 from file_actions import generate_embeddings
@@ -41,7 +39,6 @@ keys = ['003', '004']
 # Species were set 'empirically'
 species = [['AQUAE', 'SACS2', 'THEMA'], ['9EURY', 'ECOLI', 'NITMS']]
 
-#for key in keys:
 for i in range(len(keys)):
     parse_proteomes(proteome_files_dir, data, keys[i])
     data[keys[i]]['X'], data[keys[i]]['Y'] = shuffle(data[keys[i]]['X'], data[keys[i]]['Y'], random_state=1)
@@ -51,5 +48,5 @@ for i in range(len(keys)):
     filter_sequences(data, keys[i], data[keys[i]]['embeddings'])
 
     visualise_multiple_PCA_species(data, [keys[i]], visualisation_file_path+keys[i]+"_PCA.png", species[i], three_color_cmap)
-    visualise_multiple_MDE_species(data, [keys[i]], visualisation_file_path+keys[i]+"_MDE_mult.png", three_color_cmap)
+    visualise_multiple_MDE_species(data, [keys[i]], visualisation_file_path+keys[i]+"_MDE.png", three_color_cmap)
 
