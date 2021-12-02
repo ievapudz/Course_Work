@@ -7,9 +7,14 @@ from dataset_processing import filter_sequences
 from dataset_processing import get_equal_proportions
 from visualise_embeddings import visualise_PCA
 from visualise_embeddings import visualise_MDE
+from visualise_embeddings import visualise_multiple_PCA
+from visualise_embeddings import visualise_multiple_MDE
 from file_actions import write_to_file
 from file_actions import parse_proteomes
 from file_actions import generate_embeddings
+from matplotlib.colors import ListedColormap
+
+two_color_cmap = ListedColormap(["navy", "red"])
 
 data = {
     '001': {
@@ -49,6 +54,6 @@ for key in keys:
     write_to_file(data, key, 'X_equally_proportioned', 'Y_equally_proportioned', 1000, data[key]['FASTA'], False)
 
     filter_sequences(data, key, data[key]['embeddings'])
-
-    visualise_PCA(data, key, visualisation_file_path+key+"_PCA.png")
-    visualise_MDE(data, key, visualisation_file_path+key+"_MDE.png")
+    
+    visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA.png", two_color_cmap)
+    visualise_multiple_MDE(data, [key], visualisation_file_path+key+"_MDE.png", two_color_cmap)
