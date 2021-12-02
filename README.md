@@ -8,7 +8,7 @@
 
 ## Primary dataset for training
 
-Firstly, proteomes of *Escherichia coli* (https://www.uniprot.org/proteomes/UP000000625) and *Sulfolobus solfataricus* (https://www.uniprot.org/proteomes/UP000001974) were taken to train the model. Due to the growth conditions of each organism, *E. coli* was taken as a representative of mesophiles, assuming that the optimal conditions for its protein functionality is around 37 degrees Celsius (Jang et al. 2017). Meanwhile, *S. solfataricus* - a thermophile - has a proteome consisting of proteins, which have optimal conditions of 80 degrees Celsius (Zaparty et al. 2010).  The datasets consisted of 4392 and 2938 proteins for *E. coli* and *S. solfataricus* respectively. 
+Firstly, proteomes of *Escherichia coli* (ECOLI) (https://www.uniprot.org/proteomes/UP000000625) and *Sulfolobus solfataricus* (SACS2) (https://www.uniprot.org/proteomes/UP000001974) were taken to train the model. Due to the growth conditions of each organism, *E. coli* was taken as a representative of mesophiles, assuming that the optimal conditions for its protein functionality is around 37 degrees Celsius (Jang et al. 2017). Meanwhile, *S. solfataricus* - a thermophile - has a proteome consisting of proteins, which have optimal conditions of 80 degrees Celsius (Zaparty et al. 2010).  The datasets consisted of 4392 and 2938 proteins for *E. coli* and *S. solfataricus* respectively. 
 
 ## Usage of protein embedding
 
@@ -85,12 +85,12 @@ The visualisation (Fig. 1. and Fig. 2.) of the dataset showed a significant dist
 ## Analysis of the data clusters
 
 Mesophilic archaea:
-- *Methanobrevibacter oralis* [UP000077428](https://www.uniprot.org/proteomes/UP000077428)
-- *Nitrosopumilus maritimus* (strain SCM1) [UP000000792](https://www.uniprot.org/proteomes/UP000000792)
+- *Methanobrevibacter oralis* (9EURY) [UP000077428](https://www.uniprot.org/proteomes/UP000077428)
+- *Nitrosopumilus maritimus* (strain SCM1) (NITMS) [UP000000792](https://www.uniprot.org/proteomes/UP000000792)
 
 Thermophilic bacteria:
-- *Aquifex aeolicus* (strain VF5) [UP000000798](https://www.uniprot.org/proteomes/UP000000798)
-- *Thermotoga maritima* (strain ATCC 43589 / DSM 3109 / JCM 10099 / NBRC 100826 / MSB8) [UP000008183](https://www.uniprot.org/proteomes/UP000008183)
+- *Aquifex aeolicus* (strain VF5) (AQUAE) [UP000000798](https://www.uniprot.org/proteomes/UP000000798)
+- *Thermotoga maritima* (strain ATCC 43589 / DSM 3109 / JCM 10099 / NBRC 100826 / MSB8) (THEMA) [UP000008183](https://www.uniprot.org/proteomes/UP000008183)
 
 In order to check whether the clusterization in the primary dataset occurred due to the domain of the organism or the thermophilic properties of each protein, four cases of tests were performed: two to expect the positive result (clusterization effect into two groups resembling the initial plot) and other two with an expectation to observe the negative result - no distinctive classes.
 
