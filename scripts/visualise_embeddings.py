@@ -94,7 +94,7 @@ def visualise_multiple_MDE(data, keys, plotpath, colormap):
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch, constraint=pymde.Standardized()).embed(verbose=True)
     pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=colormap, figsize_inches=(11, 10), marker_size=20.0)
-
+    
 def visualise_multiple_MDE_species(data, keys, plotpath, colormap):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
