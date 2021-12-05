@@ -1,6 +1,7 @@
 import os
 import numpy
 import pymde
+import torch
 from Bio import SeqIO
 from dataset_processing import get_ESM_embeddings_as_list_with_ids
 from dataset_processing import get_tensor_from_list
@@ -60,3 +61,10 @@ def save_MDE_as_TSV(data, keys, output_file_path):
         out_line = ids[i]+"\t"+str(Ys[i])+"\t"+str(embedding[i][0].item())+"\t"+str(embedding[i][1].item())+"\t"+"\n"
         f.write(out_line)
     f.close()
+
+def load_tensor_data_from_NPZ(NPZ_file_name, data_subset_keyword):
+    # This function loads Tensor data from the specified NPZ file
+    with numpy.load(NPZ_file_name) as data_loaded:
+        data_subset = data_loaded[data_subset_keyword]
+    data_subset_tensor = torch.from_numpy(data_subset)
+    return data_subset_tensor
