@@ -1,5 +1,7 @@
 import os
 import sys
+import torch
+import numpy
 from Bio import SeqIO
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
@@ -116,3 +118,62 @@ def filter_sequences(data, key, path_to_embeddings):
 
     command = "rm *.tmp"
     os.system(command)
+
+def get_ESM_embeddings_as_list(data, keys):
+    # This function gathers ESM embeddings to list representation
+
+    # data - dictionary that was created by filter_sequences function.
+    # keys - array of the sets that need to be visualised in one plot.
+    # output_file_path - path to the output file.
+    EMB_LAYER = 33
+    Ys = []
+    Xs = []
+
+    for key in keys:
+        EMB_PATH = data[key]['embeddings']
+        for i in range(len(data[key]['Y_filtered'])):
+            Ys.append(data[key]['Y_filtered'][i])
+            file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            fn = f'{EMB_PATH}/{file_name}.pt'
+            embs = torch.load(fn)
+            Xs.append(embs['mean_representations'][EMB_LAYER])
+    
+    return [Xs, Ys]
+
+def get_ESM_embeddings_as_list_with_ids(data, keys):
+    # This function gathers ESM embeddings to list representation along with sequence ids
+
+    # data - dictionary that was created by filter_sequences function.
+    # keys - array of the sets that need to be visualised in one plot.
+    # output_file_path - path to the output file.
+    EMB_LAYER = 33
+    Ys = []
+    Xs = []
+    ids = []
+
+    for key in keys:
+        EMB_PATH = data[key]['embeddings']
+        for i in range(len(data[key]['Y_filtered'])):
+            ids.append(data[key]['X_filtered'][i].id)
+            Ys.append(data[key]['Y_filtered'][i])
+            file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            fn = f'{EMB_PATH}/{file_name}.pt'
+            embs = torch.load(fn)
+            Xs.append(embs['mean_representations'][EMB_LAYER])
+    
+    return [Xs, Ys, ids]
+
+def get_tensor_from_list(Xs, Ys):
+    Xs = torch.stack(Xs, dim=0).numpy()
+    Xs_tensor = None
+    Xs_tensor = torch.from_numpy(Xs)
+
+    Ys_array = numpy.asarray(Ys)
+    Ys_tensor = torch.from_numpy(Ys_array)
+
+    return [Xs_tensor, Ys_tensor]
+
+def get_ESM_embeddings_as_tensor(data, keys):
+    [Xs, Ys] = get_ESM_embeddings_as_list(data, keys)
+    [Xs_tensor, Ys_tensor] = get_tensor_from_list(Xs, Ys)
+    return [Xs_tensor, Ys_tensor]

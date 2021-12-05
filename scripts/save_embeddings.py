@@ -1,52 +1,12 @@
-import esm
-import torch
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy
-import pymde
-from matplotlib import colors
-from matplotlib.colors import ListedColormap
+#!/bin/usr/python3
 
 from file_actions import parse_proteomes
 from file_actions import write_to_file
+from file_actions import save_MDE_as_TSV
 from dataset_processing import get_equal_proportions
 from dataset_processing import filter_sequences
 
 from sklearn.utils import shuffle
-
-EMB_LAYER = 33
-
-def save_MDE_embedding(data, keys, output_file_path):
-    # data - dictionary that was created by filter_sequences function.
-    # keys - array of the sets that need to be visualised in one plot.
-    # output_file_path - path to the output file.
-    Ys = []
-    Xs = []
-
-    ids = []
-
-    for key in keys:
-        EMB_PATH = data[key]['embeddings']
-        for i in range(len(data[key]['Y_filtered'])):
-            ids.append(data[key]['X_filtered'][i].id)
-            Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
-            fn = f'{EMB_PATH}/{file_name}.pt'
-            embs = torch.load(fn)
-            Xs.append(embs['mean_representations'][EMB_LAYER])
-
-    Xs = torch.stack(Xs, dim=0).numpy()
-    Xs_torch = None
-    Xs_torch = torch.from_numpy(Xs)
-    embedding = pymde.preserve_neighbors(Xs_torch, constraint=pymde.Standardized()).embed(verbose=True)
-    
-    f = open(output_file_path, "w")
-    for i in range(len(embedding)):
-        out_line = ids[i]+"\t"+str(Ys[i])+"\t"+str(embedding[i][0].item())+"\t"+str(embedding[i][1].item())+"\t"+"\n"
-        f.write(out_line)
-    f.close()
-
-############################################################################################################
 
 data = {
     '001': {
@@ -93,7 +53,7 @@ for key in keys:
     get_equal_proportions(data, key, 1000, [37, 80])
     write_to_file(data, key, 'X_equally_proportioned', 'Y_equally_proportioned', 1000, data[key]['FASTA'], False)
     filter_sequences(data, key, data[key]['embeddings'])
-    save_MDE_embedding(data, [key], "data/cluster_tests/"+key+"/"+key+"_coordinates.tsv")
+    save_MDE_as_TSV(data, [key], "data/cluster_tests/"+key+"/"+key+"_coordinates.tsv")
 
 keys = ['003', '004']
 for i in range(len(keys)):
@@ -102,4 +62,4 @@ for i in range(len(keys)):
     write_to_file(data, keys[i], 'X', 'Y', 1000, data[keys[i]]['FASTA'], False)
     filter_sequences(data, keys[i], data[keys[i]]['embeddings'])
 
-save_MDE_embedding(data, ['003', '004'], "data/cluster_tests/005/005_coordinates.tsv")
+save_MDE_as_TSV(data, ['003', '004'], "data/cluster_tests/005/005_coordinates.tsv")

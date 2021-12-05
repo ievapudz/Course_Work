@@ -1,5 +1,9 @@
 import os
+import numpy
+import pymde
 from Bio import SeqIO
+from dataset_processing import get_ESM_embeddings_as_list_with_ids
+from dataset_processing import get_tensor_from_list
 
 "The module that contains elements of workflow with files."
 
@@ -36,3 +40,23 @@ def generate_embeddings(path_to_esm_extract, path_to_FASTA, path_to_embeddings):
     # Required PyTorch
     command = "python3 esm/extract.py "+path_to_esm_extract+" esm1b_t33_650M_UR50S "+path_to_FASTA+" "+path_to_embeddings+" --repr_layers 0 32 33 --include mean per_tok"
     os.system(command)
+
+def save_tensors_as_NPZ(data_tensors, names_array, output_file_path):
+    # data_tensors - an array that contains tensor arrays to save to `output_file_path`
+    # names_array - an array that contains keywords for corresponding tensors
+    numpy.savez(output_file_path, **{name:value for name,value in zip(names_array,data_tensors)})
+
+def save_MDE_as_TSV(data, keys, output_file_path):
+    # data - dictionary that was created by filter_sequences function.
+    # keys - array of the sets that need to be visualised in one plot.
+    # output_file_path - path to the output file.
+    [Xs, Ys, ids] = get_ESM_embeddings_as_list_with_ids(data, keys)
+    [Xs_torch, Ys_torch] = get_tensor_from_list(Xs, Ys)
+
+    embedding = pymde.preserve_neighbors(Xs_torch, constraint=pymde.Standardized()).embed(verbose=True)
+    
+    f = open(output_file_path, "w")
+    for i in range(len(embedding)):
+        out_line = ids[i]+"\t"+str(Ys[i])+"\t"+str(embedding[i][0].item())+"\t"+str(embedding[i][1].item())+"\t"+"\n"
+        f.write(out_line)
+    f.close()
