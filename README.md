@@ -116,7 +116,17 @@ python3 scripts/negative_test.py
 
 Transformer protein language models from Facebook AI Research (Rives et al., 2019).
 
-### Tasks to do
+## Construction of the model
+
+### Single-layer perceptron
+
+The simplest model was composed of one linear layer that takes up all 1280 values from embeddings vector. The activation function was chosen to be sigmoid, since it is compatible with binary cross entropy loss function. 
+
+There were two alternatives applied: 
+- Sigmoid activation and BCE loss functions were called separately
+- BCEWithLogitsLoss function that wraps Softmax and BCE loss functions together. According to ... this alternative is more stable than the previous one.
+
+## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
 - [x] Create FASTA files `*_sequences.fasta` which records contain only UniProt accession numbers in the header.
@@ -132,9 +142,10 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 - [x] Create mesophilic archaea and thermophilic bacteria embeddings.
 - [x] Visualise mesophilic archaea and thermophilic bacteria embeddings.
 - [ ] Determine the species that are taken into PyMDE for visualisation automatically.
-- [ ] Determine the order of species that are taken into PyMDE for visualisation.
-- [ ] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
+- [x] Determine the order of species that are taken into PyMDE for visualisation (answer: alphabetical order).
+- [x] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
+- [ ] Automate model training process and separate modules to make the process adaptive to different architectures.
 
 ## References
 
