@@ -118,6 +118,18 @@ Transformer protein language models from Facebook AI Research (Rives et al., 201
 
 ## Construction of the model
 
+General logic of the workflow:
+
+- Define the model in the separate module (loss function currently is defined separately - right before the beginning of the training).
+- Load training and validation datasets (pregenerated embeddings).
+- Define BATCH_SIZE and NUM_OF_EPOCHS (according to number of data elements).
+- If needed, trim the dataset so that it would be the size of BATCH_SIZE multiple (function for that can be found in `scripts/model_dataset_processing.py`).
+- Convert labels to binary (function for that can be found in `scripts/model_dataset_processing.py`).
+- Pass processed datasets to `DataLoader`.
+- Initialize the defined model.
+- Set loss function and optimizer.
+- Run epochs with training and validation functions (found in `scripts/model_flow.py`).
+
 ### Single-layer perceptron
 
 The simplest model was composed of one linear layer that takes up all 1280 values from embeddings vector. The activation function was chosen to be sigmoid, since it is compatible with binary cross entropy loss function. 
@@ -125,6 +137,9 @@ The simplest model was composed of one linear layer that takes up all 1280 value
 There were two alternatives applied: 
 - Sigmoid activation and BCE loss functions were called separately
 - BCEWithLogitsLoss function that wraps Softmax and BCE loss functions together. According to ... this alternative is more stable than the previous one.
+
+The whole workflow will be in `scripts/classificator.py`.
+Data processing functions are placed in `scripts/model_dataset_processing.py`.
 
 ## Tasks to do
 
@@ -145,7 +160,8 @@ There were two alternatives applied:
 - [x] Determine the order of species that are taken into PyMDE for visualisation (answer: alphabetical order).
 - [x] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
-- [ ] Automate model training process and separate modules to make the process adaptive to different architectures.
+- [x] Automate model training process and separate modules to make the process adaptive to different architectures.
+- [ ] Include loss functions in the definition of the model.
 
 ## References
 

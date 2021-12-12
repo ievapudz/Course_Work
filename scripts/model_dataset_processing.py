@@ -20,9 +20,9 @@ def load_tensor_from_NPZ(NPZ_file, keywords):
     return dataset
 
 # A function that trims the dataset so that its length would divide from the number of batches
-def trim_dataset(dataset, keywords, number_of_batches):
+def trim_dataset(dataset, keywords, batch_size):
     for i in range(len(keywords)):
-        residual = len(dataset[keywords[i]]) % number_of_batches
+        residual = len(dataset[keywords[i]]) % batch_size
         if(residual != 0):
             dataset[keywords[i]] = dataset[keywords[i]][0:len(dataset[keywords[i]])-residual]
 
