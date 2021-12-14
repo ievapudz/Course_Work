@@ -13,6 +13,7 @@ from model_flow import train_epoch
 from model_flow import validation_epoch
 
 BATCH_SIZE = 16
+EPOCH_BATCH_SIZE = 64
 NUM_OF_EPOCHS = 79
 
 dataset = load_tensor_from_NPZ('data/NPZ/training_and_validation_embeddings.npz', ['x_train', 'y_train', 'x_validate', 'y_validate'])
@@ -39,7 +40,7 @@ for epoch in range(0, NUM_OF_EPOCHS):
     # Print epoch
     print(f'Starting epoch {epoch+1}')
     
-    train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE)
-    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE)
+    train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
+    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
   
 print('Training and validation process has finished.')

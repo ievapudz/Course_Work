@@ -1,7 +1,11 @@
 import torch
 from torch import nn
+from sklearn import metrics
+import torch
+import matplotlib.pyplot as plt
+import numpy
 
-def train_epoch(model, trainloader, loss_function, optimizer, batch_size):
+def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
     # Set current loss value
     current_loss = 0.0
     
@@ -20,6 +24,7 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size):
         
         # Compute loss
         loss = loss_function(outputs, targets)
+        outputs = outputs.detach().numpy()
         
         # Perform backward pass
         loss.backward()
@@ -33,8 +38,10 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size):
             print('Loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
+        #if i == epoch_batch_size:
+        #    plot_ROC_curve(targets, outputs, './results/SLP/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
-def validation_epoch(model, validateloader, loss_function, batch_size):
+def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, epoch):
     current_loss = 0.0 
 
     # Iterate over the DataLoader for training data
@@ -49,9 +56,24 @@ def validation_epoch(model, validateloader, loss_function, batch_size):
         
         # Print statistics
         loss = loss_function(outputs, targets)
-        
+        outputs = outputs.detach().numpy()
+
         current_loss += loss.item()
         if i % batch_size == (batch_size-1):
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
+        if i == epoch_batch_size:
+            plot_ROC_curve(targets, outputs, './results/SLP/ROC/validation_'+str(epoch)+'_'+str(i)+'.png')
+
+def plot_ROC_curve(targets, outputs, fig_name):
+    # A function that plots ROC curve
+    fpr, tpr, _ = metrics.roc_curve(targets, outputs)
+    plt.plot(fpr,tpr)
+    plt.ylabel('True Positive Rate')
+    plt.xlabel('False Positive Rate')
+    plt.savefig(fig_name)
+    
+    
+    
+    
