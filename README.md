@@ -162,8 +162,10 @@ Data processing functions are placed in `scripts/model_dataset_processing.py`.
 - [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
 - [x] Automate model training process and separate modules to make the process adaptive to different architectures.
 - [ ] Include loss functions in the definition of the model.
-- [ ] Include ROC curve graphing.
+- [x] Include ROC curve graphing.
 - [ ] Include drawing of confusion matrices.
+- [ ] Generate a new training and validation set from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
+- [ ] Train and validate SLP with a new generated training and validation set.
 
 ## References
 
