@@ -141,6 +141,12 @@ There were two alternatives applied:
 The whole workflow will be in `scripts/classificator.py`.
 Data processing functions are placed in `scripts/model_dataset_processing.py`.
 
+#### Dataset for SLP testing
+
+The first results (ROC curves) of SLP trained with two proteomes [*Escherichia coli* (ECOLI)](https://www.uniprot.org/proteomes/UP000000625) and [*Sulfolobus solfataricus* (SACS2)](https://www.uniprot.org/proteomes/UP000001974) were showed high accuracy of prediction, therefore it was decided to test the model with a different set of organisms that would contain more diverse species regarding the temperature that is optimal for the organism.
+
+Due to computational resources, it was decided to take 1000 sequences to train the model and 215 sequences for validation and testing (this choice supports 70%:15%:15% proportions). The sequences were taken from the [database](https://zenodo.org/record/1175609#.YcCVhS8Rq4o) (Engqvist, Martin Karl Magnus, 2018) of growth temperatures of 21 498 organisms. It was decided to take 12 genomes with 200 randomly chosen sequences from each and generate embeddings for them with a precaution that some sequences might not be suitable for an embedder. 
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
@@ -176,4 +182,6 @@ Data processing functions are placed in `scripts/model_dataset_processing.py`.
 3. Rives, A., Meier, J., Sercu, T., Goyal, S., Lin, Z., Liu, J., ... & Fergus, R. (2021). Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences. Proceedings of the National Academy of Sciences, 118(15).
 
 4. Zaparty, M., Esser, D., Gertig, S., Haferkamp, P., Kouril, T., Manica, A., ... & Siebers, B. (2010). “Hot standards” for the thermoacidophilic archaeon Sulfolobus solfataricus. Extremophiles, 14(1), 119-142. https://link.springer.com/article/10.1007/s00792-009-0280-0
+
+5. Engqvist, Martin Karl Magnus. (2018). Growth temperatures for 21,498 microorganisms (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.1175609
 
