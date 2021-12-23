@@ -145,17 +145,45 @@ Data processing functions are placed in `scripts/model_dataset_processing.py`.
 
 The first results (ROC curves) of SLP trained with two proteomes [*Escherichia coli* (ECOLI)](https://www.uniprot.org/proteomes/UP000000625) and [*Sulfolobus solfataricus* (SACS2)](https://www.uniprot.org/proteomes/UP000001974) were showed high accuracy of prediction, therefore it was decided to test the model with a different set of organisms that would contain more diverse species regarding the temperature that is optimal for the organism.
 
-The sequences were taken from the [database](https://zenodo.org/record/1175609#.YcCVhS8Rq4o) (Engqvist, Martin Karl Magnus 2018) of growth temperatures of 21 498 organisms. It was decided to split the dataset to mesophiles and thermophiles and take 70%:15%:15% proportions for the datasets required to develop the model. Organisms that were considered as thermophiles
-were those that had growth temperature label equal or higher than 65 degrees Celsius.
+The sequences were taken from the [database](https://zenodo.org/record/1175609#.YcCVhS8Rq4o) (Engqvist, Martin Karl Magnus 2018) of growth temperatures of 21 498 organisms. It was decided to split the dataset to mesophiles and thermophiles and take 70%:15%:15% proportions for the datasets required to develop the model. Organisms that were divided into two groups: 
+with temperature labels equal to 65 or above, and the group of organisms with temperature labels below (psychrophiles and mesophiles). 
+
+The number of records in the dataset:
+```
+tail -n +2 data/proteomes/temperature_data.tsv | wc -l
+```
 
 Counting how many proteomes belong to thermophiles:
-
 ```
-$ > tail -n +2 data/proteomes/temperature_data.tsv | awk ' $3 >= 65 { print $3 }' | wc -l
+tail -n +2 data/proteomes/temperature_data.tsv | awk '$3 >= 65 { print $3 }' | wc -l
 283
 ```
 
+Sorting, shuffling and saving the separate datasets:
+```
+tail -n +2 data/proteomes/temperature_data.tsv | sort -k3 -n | head -n 21215 | gshuf > data/proteomes/below_65_temperature_data.tsv
+tail -n +2 data/proteomes/temperature_data.tsv | sort -k3 -n | tail -n 283 | gshuf > data/proteomes/above_65_temperature_data.tsv
+```
 
+Creating a training dataset:
+```
+cat data/proteomes/below_65_temperature_data.tsv | head -n 14850 >> data/proteomes/training_temperature_data.tsv
+cat data/proteomes/above_65_temperature_data.tsv | head -n 198 >> data/proteomes/training_temperature_data.tsv
+```
+
+Creating a validation dataset:
+```
+cat data/proteomes/below_65_temperature_data.tsv | tail -n +14851 | head -n 3182 >> data/proteomes/validation_temperature_data.tsv
+cat data/proteomes/above_65_temperature_data.tsv | tail -n +199 | head -n 42 >> data/proteomes/validation_temperature_data.tsv
+```
+
+Creating a testing dataset:
+```
+cat data/proteomes/below_65_temperature_data.tsv | tail -n +18033 >> data/proteomes/testing_temperature_data.tsv
+cat data/proteomes/above_65_temperature_data.tsv | tail -n +241 >> data/proteomes/testing_temperature_data.tsv
+```
+
+Each of the datasets require shuffling before usage in the model flow.
 
 ## Tasks to do
 
