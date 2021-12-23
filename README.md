@@ -6,7 +6,7 @@
 - [ESM](https://github.com/facebookresearch/esm) (v0.4.0)
 - [PyMDE](https://github.com/cvxgrp/pymde) (v0.1.13)
 
-## Primary dataset for training
+## Primary dataset (001) for training
 
 Firstly, proteomes of *Escherichia coli* (ECOLI) (https://www.uniprot.org/proteomes/UP000000625) and *Sulfolobus solfataricus* (SACS2) (https://www.uniprot.org/proteomes/UP000001974) were taken to train the model. Due to the growth conditions of each organism, *E. coli* was taken as a representative of mesophiles, assuming that the optimal conditions for its protein functionality is around 37 degrees Celsius (Jang et al. 2017). Meanwhile, *S. solfataricus* - a thermophile - has a proteome consisting of proteins, which have optimal conditions of 80 degrees Celsius (Zaparty et al. 2010).  The datasets consisted of 4392 and 2938 proteins for *E. coli* and *S. solfataricus* respectively. 
 
@@ -19,7 +19,7 @@ A couple of software tools to make embeddings were checked: `bio_embeddings` (Da
 The following command was run to generate embeddings for the training dataset. The analogical commands were run for validation and testing datasets.
 
 ```
-python3 extract.py esm1b_t33_650M_UR50S data/FASTA/training_sequences.fasta data/EMB_ESM1b/training_sequences/ --repr_layers 0 32 33 --include mean per_tok
+python3 extract.py esm1b_t33_650M_UR50S data/001/FASTA/training_sequences.fasta data/001/EMB_ESM1b/training_sequences/ --repr_layers 0 32 33 --include mean per_tok
 ```
 
 Since embeddings took up a lot of storage space (~23 GB for training dataset and ~5 GB for each validation and testing sets), they were moved from the local storage to OneDrive.
@@ -35,9 +35,9 @@ The script to generate embeddings for our protein sequences did not process sequ
 1. The list of embeddings (PT format files named by the FASTA sequence ID) were listed down with command:
 
 ```
-ls -1 > data/EMB_ESM1b/training_embeddings.lst
-ls -1 > data/EMB_ESM1b/validation_embeddings.lst
-ls -1 > data/EMB_ESM1b/testing_embeddings.lst
+ls -1 > data/001/EMB_ESM1b/training_embeddings.lst
+ls -1 > data/001/EMB_ESM1b/validation_embeddings.lst
+ls -1 > data/001/EMB_ESM1b/testing_embeddings.lst
 ```
 
 2. For the training dataset, due to the limitations of storage, only the sample of the set was taken. 
@@ -55,13 +55,13 @@ The output of the command was 5056 (at Mon Nov 15 15:26:47 CET 2021).
 The command that was run to get the random sample of the training sequence list:
 
 ```
-ls -1 | shuf -n 1264 > data/EMB_ESM1b/training_embeddings_sample.lst
+ls -1 | shuf -n 1264 > data/001/EMB_ESM1b/training_embeddings_sample.lst
 ```
 
 The embedding files that were required for visualisation were picked with with command:
 
 ```
-cat data/EMB_ESM1b/training_embeddings_sample.lst | xargs -I % cp % data/EMB_ESM1b/training_embeddings_sample/%
+cat data/001/EMB_ESM1b/training_embeddings_sample.lst | xargs -I % cp % data/EMB_ESM1b/training_embeddings_sample/%
 ```
 
 Those embeddings files were uploaded to Google Drive to access from Google Colab notebook.
@@ -72,11 +72,11 @@ Those embeddings files were uploaded to Google Drive to access from Google Colab
 
 The visualisation of the initial dataset was performed for a random sample of training dataset, and full sets of validation and testing. The visualisation was performed using two methods: PCA with `matplotlib.pyplot` package and PyMDE.
 
-![training_sample_PCA_matplotlib](./data/visualisation/training_embeddings_sample_visualisation_matplotlib.png) 
+![training_sample_PCA_matplotlib](./data/001/visualisation/training_embeddings_sample_visualisation_matplotlib.png) 
 
 **Fig. 1.** PCA plot made with matplotlib of the training dataset sample embeddings
 
-![training_sample_PyMDE](./data/visualisation/training_embeddings_sample_visualisation_PyMDE.png) 
+![training_sample_PyMDE](./data/001/visualisation/training_embeddings_sample_visualisation_PyMDE.png) 
 
 **Fig. 2.** Minimum-distortion embedding plot of the training dataset sample embeddings
 
@@ -112,6 +112,8 @@ python3 scripts/positive_test.py
 python3 scripts/negative_test.py
 ```
 
+The output (plots) for these cluster tests were put to `data/cluster_tests/visualisation` directory.
+
 ## Usage of evolutionary scale modeling
 
 Transformer protein language models from Facebook AI Research (Rives et al. 2019).
@@ -132,7 +134,7 @@ General logic of the workflow:
 
 ### Single-layer perceptron
 
-The simplest model was composed of one linear layer that takes up all 1280 values from embeddings vector. The activation function was chosen to be sigmoid, since it is compatible with binary cross entropy loss function. 
+The simplest model was composed of one linear layer that takes up all 1280 values from the embeddings vector. The activation function was chosen to be sigmoid, since it is compatible with binary cross entropy loss function. 
 
 There were two alternatives applied: 
 - Sigmoid activation and BCE loss functions were called separately
@@ -141,49 +143,60 @@ There were two alternatives applied:
 The whole workflow will be in `scripts/classificator.py`.
 Data processing functions are placed in `scripts/model_dataset_processing.py`.
 
-#### Dataset for SLP testing
+#### Dataset for SLP testing (002)
 
 The first results (ROC curves) of SLP trained with two proteomes [*Escherichia coli* (ECOLI)](https://www.uniprot.org/proteomes/UP000000625) and [*Sulfolobus solfataricus* (SACS2)](https://www.uniprot.org/proteomes/UP000001974) were showed high accuracy of prediction, therefore it was decided to test the model with a different set of organisms that would contain more diverse species regarding the temperature that is optimal for the organism.
+
+All files required for this dataset are placed in `data/002` directory. 
 
 The sequences were taken from the [database](https://zenodo.org/record/1175609#.YcCVhS8Rq4o) (Engqvist, Martin Karl Magnus 2018) of growth temperatures of 21 498 organisms. It was decided to split the dataset to mesophiles and thermophiles and take 70%:15%:15% proportions for the datasets required to develop the model. Organisms that were divided into two groups: 
 with temperature labels equal to 65 or above, and the group of organisms with temperature labels below (psychrophiles and mesophiles). 
 
 The number of records in the dataset:
 ```
-tail -n +2 data/proteomes/temperature_data.tsv | wc -l
+tail -n +2 data/002/TSV/temperature_data.tsv | wc -l
+21498
 ```
 
 Counting how many proteomes belong to thermophiles:
 ```
-tail -n +2 data/proteomes/temperature_data.tsv | awk '$3 >= 65 { print $3 }' | wc -l
+tail -n +2 data/002/TSV/temperature_data.tsv | awk '$3 >= 65 { print $3 }' | wc -l
 283
 ```
 
 Sorting, shuffling and saving the separate datasets:
 ```
-tail -n +2 data/proteomes/temperature_data.tsv | sort -k3 -n | head -n 21215 | gshuf > data/proteomes/below_65_temperature_data.tsv
-tail -n +2 data/proteomes/temperature_data.tsv | sort -k3 -n | tail -n 283 | gshuf > data/proteomes/above_65_temperature_data.tsv
+tail -n +2 data/002/TSV/temperature_data.tsv | sort -k3 -n | head -n 21215 | gshuf > data/002/TSV/below_65_temperature_data.tsv
+tail -n +2 data/002/TSV/temperature_data.tsv | sort -k3 -n | tail -n 283 | gshuf > data/002/TSV/above_65_temperature_data.tsv
 ```
 
 Creating a training dataset:
 ```
-cat data/proteomes/below_65_temperature_data.tsv | head -n 14850 >> data/proteomes/training_temperature_data.tsv
-cat data/proteomes/above_65_temperature_data.tsv | head -n 198 >> data/proteomes/training_temperature_data.tsv
+cat data/002/TSV/below_65_temperature_data.tsv | head -n 14850 > data/002/TSV/training_temperature_data.tsv
+cat data/002/TSV/above_65_temperature_data.tsv | head -n 198 >> data/002/TSV/training_temperature_data.tsv
 ```
 
 Creating a validation dataset:
 ```
-cat data/proteomes/below_65_temperature_data.tsv | tail -n +14851 | head -n 3182 >> data/proteomes/validation_temperature_data.tsv
-cat data/proteomes/above_65_temperature_data.tsv | tail -n +199 | head -n 42 >> data/proteomes/validation_temperature_data.tsv
+cat data/002/TSV/below_65_temperature_data.tsv | tail -n +14851 | head -n 3182 > data/002/TSV/validation_temperature_data.tsv
+cat data/002/TSV/above_65_temperature_data.tsv | tail -n +199 | head -n 42 >> data/002/TSV/validation_temperature_data.tsv
 ```
 
 Creating a testing dataset:
 ```
-cat data/proteomes/below_65_temperature_data.tsv | tail -n +18033 >> data/proteomes/testing_temperature_data.tsv
-cat data/proteomes/above_65_temperature_data.tsv | tail -n +241 >> data/proteomes/testing_temperature_data.tsv
+cat data/002/TSV/below_65_temperature_data.tsv | tail -n +18033 > data/002/TSV/testing_temperature_data.tsv
+cat data/002/TSV/above_65_temperature_data.tsv | tail -n +241 >> data/002/TSV/testing_temperature_data.tsv
 ```
 
 Each of the datasets require shuffling before usage in the model flow.
+
+Since computational resources were limited, only 10 percent of proteomes could be downloaded. That was (expected):
+- 1505 protein sequences from each organism in `data/002/TSV/training_temperature_data.tsv`
+- 324 protein sequences from each organism in  `data/002/TSV/validation_temperature_data.tsv`
+- 325 protein sequences from each organism in  `data/002/TSV/testing_temperature_data.tsv`
+
+There was only 1 sequence taken from each organism (it was expected to get at least one sequence for an organism, since not all organisms had records in NCBI `protein` database). Since our model's predictions should not be biased by an organism,
+thus it was assumed that this sample size should not be unsuitable for the task that is solved. 
 
 ## Tasks to do
 
@@ -208,7 +221,7 @@ Each of the datasets require shuffling before usage in the model flow.
 - [ ] Include loss functions in the definition of the model.
 - [x] Include ROC curve graphing.
 - [ ] Include drawing of confusion matrices.
-- [ ] Generate a new training and validation set from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
+- [ ] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
 - [ ] Train and validate SLP with a new generated training and validation set.
 
 ## References
