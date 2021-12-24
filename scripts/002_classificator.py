@@ -11,27 +11,22 @@ from torch.utils.data import TensorDataset
 from torch import nn
 from model_flow import train_epoch
 from model_flow import validation_epoch
-from file_actions import save_tensors_as_NPZ
 
-BATCH_SIZE = 16
-EPOCH_BATCH_SIZE = 64
-NUM_OF_EPOCHS = 79
-
-names = ['x_train', 'y_train', 'x_validate', 'y_validate']
-#data = [Xs_torch_train, Ys_torch_train, Xs_torch_validate, Ys_torch_validate]
-
-# Branching out from the flow: saving embeddings in case the process quits
-save_tensors_as_NPZ('data/002/NPZ/training_and_validation_embeddings.npz')
+BATCH_SIZE = 8
+EPOCH_BATCH_SIZE = 24
+NUM_OF_EPOCHS = 51
 
 dataset = load_tensor_from_NPZ('data/002/NPZ/training_and_validation_embeddings.npz', ['x_train', 'y_train', 'x_validate', 'y_validate'])
+
+trim_dataset(dataset, ['x_train', 'y_train'], BATCH_SIZE)
 trim_dataset(dataset, ['x_validate', 'y_validate'], BATCH_SIZE)
-convert_labels_to_binary(dataset, ['y_train', 'y_validate'], [37, 80])
+convert_labels_to_binary(dataset, ['y_train', 'y_validate'])
 
 train_dataset = TensorDataset(dataset['x_train'], dataset['y_train'])  
-trainloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+trainloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 validate_dataset = TensorDataset(dataset['x_validate'], dataset['y_validate'])  
-validateloader = DataLoader(validate_dataset, batch_size=16, shuffle=True)
+validateloader = DataLoader(validate_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 # Set fixed random number seed
 torch.manual_seed(42)
@@ -48,6 +43,6 @@ for epoch in range(0, NUM_OF_EPOCHS):
     print(f'Starting epoch {epoch+1}')
     
     train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
-    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
+    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch, './results/SLP/002/ROC/')
   
 print('Training and validation process has finished.')

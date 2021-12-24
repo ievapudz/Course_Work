@@ -8,7 +8,7 @@
 
 ## Primary dataset (001) for training
 
-Firstly, proteomes of *Escherichia coli* (ECOLI) (https://www.uniprot.org/proteomes/UP000000625) and *Sulfolobus solfataricus* (SACS2) (https://www.uniprot.org/proteomes/UP000001974) were taken to train the model. Due to the growth conditions of each organism, *E. coli* was taken as a representative of mesophiles, assuming that the optimal conditions for its protein functionality is around 37 degrees Celsius (Jang et al. 2017). Meanwhile, *S. solfataricus* - a thermophile - has a proteome consisting of proteins, which have optimal conditions of 80 degrees Celsius (Zaparty et al. 2010).  The datasets consisted of 4392 and 2938 proteins for *E. coli* and *S. solfataricus* respectively. 
+Firstly, proteomes of *Escherichia coli* (ECOLI, [UP000000625](https://www.uniprot.org/proteomes/UP000000625)) and *Sulfolobus solfataricus* (SACS2, [UP000001974](https://www.uniprot.org/proteomes/UP000001974)) were taken to train the model. Due to the growth conditions of each organism, *E. coli* was taken as a representative of mesophiles, assuming that the optimal conditions for its protein functionality is around 37 degrees Celsius (Jang et al. 2017). Meanwhile, *S. solfataricus* - a thermophile - has a proteome consisting of proteins, which have optimal conditions of 80 degrees Celsius (Zaparty et al. 2010).  The datasets consisted of 4392 and 2938 proteins for *E. coli* and *S. solfataricus* respectively. 
 
 ## Usage of protein embedding
 
@@ -190,25 +190,82 @@ cat data/002/TSV/above_65_temperature_data.tsv | tail -n +241 >> data/002/TSV/te
 
 Each of the datasets require shuffling before usage in the model flow.
 
-Since computational resources were limited, only 10 percent of proteomes could be downloaded. That was (expected):
-- 1505 protein sequences from each organism in `data/002/TSV/training_temperature_data.tsv`
-- 324 protein sequences from each organism in  `data/002/TSV/validation_temperature_data.tsv`
-- 325 protein sequences from each organism in  `data/002/TSV/testing_temperature_data.tsv`
+Since computational resources were limited, around 10 percent of proteomes could be downloaded. That was (expected):
+- 1500 protein sequences from each organism in `data/002/TSV/training_temperature_data.tsv`
+- 330 protein sequences from each organism in `data/002/TSV/validation_temperature_data.tsv`
+- 330 protein sequences from each organism in `data/002/TSV/testing_temperature_data.tsv`
 
 There was only 1 sequence taken from each organism (it was expected to get at least one sequence for an organism, since not all organisms had records in NCBI `protein` database). Since our model's predictions should not be biased by an organism,
 thus it was assumed that this sample size should not be unsuitable for the task that is solved. 
 
 Protein sequences were downloaded using the script `scripts/data_download/download_proteins_by_TaxID.sh` that uses `efetch 14.6`. The script requires improvement so that it would take `DATASET_FILE` and `INPUT_DIR` as command line arguments.
 
+In order to use the flow described below, the initial dataset should be defined in the TSV file with required fields:
+- $1 - name of organism species
+- $2 - domain of an organism (not mandatory to be specified precisely)
+- $3 - temperature label
+- $4 - taxonomy ID of an organism
+
+Alternatively, the dataset can be presented as a multiple FASTA file with headers in the format:
+```
+>organism_tax_id|protein_ID|temperature_label
+```
+
+If datasets are placed in separate training, validation and testing FASTA files, the flow can be started from the 4th point (embeddings generation). 
+
+The steps for testing with 002 dataset:
+
+1. Download training, validation, testing sets with:
+```
+./scripts/data_download/download_proteins_by_TaxID.sh data/002/TSV/training_temperature_data.tsv data/002/FASTA/training/ 1500
+./scripts/data_download/download_proteins_by_TaxID.sh data/002/TSV/validation_temperature_data.tsv data/002/FASTA/validation/ 330
+./scripts/data_download/download_proteins_by_TaxID.sh data/002/TSV/training_temperature_data.tsv data/002/FASTA/testing/ 330
+```
+
+2. All downloaded sequences for a dataset should be concatenated into one file: 
+```
+cat data/002/FASTA/training/*.fasta > data/002/FASTA/training/training.fasta
+cat data/002/FASTA/validation/*.fasta > data/002/FASTA/validation/validation.fasta
+cat data/002/FASTA/testing/*.fasta > data/002/FASTA/testing/testing.fasta
+```
+
+3. Generate embeddings:
+
+Usage of the functions below does not give the intended flow, since the process stops after each set due to certain sequence lengths (the sequences of length above 1024 aminoacids are not processed by ESM):
+```
+generate_embeddings('esm/extract.py', data['train']['FASTA'], data['train']['embeddings'])
+generate_embeddings('esm/extract.py', data['validate']['FASTA'], data['validate']['embeddings'])
+generate_embeddings('esm/extract.py', data['test']['FASTA'], data['test']['embeddings'])
+```
+
+Recommended to generate embeddings using the following separate commands:
+```
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/training/training.fasta data/002/FASTA/training/ --repr_layers 0 32 33 --include mean per_tok
+
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validation.fasta data/002/FASTA/validation/ --repr_layers 0 32 33 --include mean per_tok
+
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/testing/testing.fasta data/002/FASTA/testing/ --repr_layers 0 32 33 --include mean per_tok
+```
+
+4. Save embeddings into NPZ files:
+```
+python3.7 scripts/002_embeddings.py
+```
+
+5. Run classificator model's training and validation with:
+```
+python3.7 scripts/002_classificator.py
+```
+
 Numbers of downloaded sequences:
-- `data/002/FASTA/training/training.fasta`: 1281 headers were counted out of 1510 files attempted to download.
-- `data/002/FASTA/validation/validation.fasta`: 287 headers were counted out of 330 files attempted to download.
+- `data/002/FASTA/training/training.fasta`: 1263 headers were counted out of 1500 files attempted to download.
+- `data/002/FASTA/validation/validation.fasta`: 281 headers were counted out of 330 files attempted to download.
 - `data/002/FASTA/testing/testing.fasta`: 285 headers were counted out of 330 files attempted to download.
 
-Embedding generation:
-```
-python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validation.fasta data/002/EMB_ESM1b/validation/ --repr_layers 0 32 33 --include mean per_tok
-```
+Generated embeddings:
+- `data/002/ESM_EMB1b/training/`: 
+- `data/002/ESM_EMB1b/validation/`: 
+- `data/002/ESM_EMB1b/testing/`: 
 
 ## Tasks to do
 
@@ -233,7 +290,7 @@ python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validati
 - [ ] Include loss functions in the definition of the model.
 - [x] Include ROC curve graphing.
 - [ ] Include drawing of confusion matrices.
-- [ ] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
+- [x] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
 - [ ] Train and validate SLP with a new generated training and validation set.
 - [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
 

@@ -26,7 +26,16 @@ def trim_dataset(dataset, keywords, batch_size):
         if(residual != 0):
             dataset[keywords[i]] = dataset[keywords[i]][0:len(dataset[keywords[i]])-residual]
 
-# A function that converts non-binary labels to binary
+# A function that converts non-binary labels to binary ()
+def convert_labels_to_binary(dataset, keywords):
+    for keyword in keywords:
+        for i in range(len(dataset[keyword])):
+            if(dataset[keyword][i].item() >= 65):
+                dataset[keyword][i] = 1
+            elif(dataset[keyword][i].item() < 65):
+                dataset[keyword][i] = 0
+
+# A DEPRECATED function that converts non-binary labels to binary
 def convert_labels_to_binary(dataset, keywords, original_labels):
     for keyword in keywords:
         for i in range(len(dataset[keyword])):
@@ -34,5 +43,3 @@ def convert_labels_to_binary(dataset, keywords, original_labels):
                 dataset[keyword][i] = 1
             elif(dataset[keyword][i] == original_labels[0]):
                 dataset[keyword][i] = 0
-
-

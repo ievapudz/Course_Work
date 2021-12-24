@@ -7,9 +7,12 @@ set -ue
 DATASET_FILE=$1
 OUT_DIR=$2
 SAMPLE_SIZE=$3
+HALF_SAMPLE=$(expr $SAMPLE_SIZE / 2)
 
-ORGANISM_IDS=($(cat ${DATASET_FILE} | awk '{ print $4 }'))
-TEMPERATURES=($(cat ${DATASET_FILE} | awk '{ print $3 }'))
+ORGANISM_IDS=($(cat ${DATASET_FILE} | awk '{ print $4 }' | head -n ${HALF_SAMPLE}))
+ORGANISM_IDS+=($(cat ${DATASET_FILE} | awk '{ print $4 }' | tail -n ${HALF_SAMPLE}))
+TEMPERATURES=($(cat ${DATASET_FILE} | awk '{ print $3 }'| head -n ${HALF_SAMPLE}))
+TEMPERATURES+=($(cat ${DATASET_FILE} | awk '{ print $3 }'| tail -n ${HALF_SAMPLE}))
 
 DB='protein'
 BASE='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'

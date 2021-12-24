@@ -146,7 +146,10 @@ def filter_sequences(data, key, path_to_embeddings):
     data[key]['X_filtered'] = []
     data[key]['Y_filtered'] = []    
     for i in range(len(data[key]['X'])):
+        
+        # 001 used:
         #if(data[key]['X'][i].id.split('|')[1] in emb_set):
+
         if(data[key]['X'][i].id in emb_set):
             data[key]['X_filtered'].append(data[key]['X'][i])
             data[key]['Y_filtered'].append(data[key]['Y'][i])
@@ -168,7 +171,11 @@ def get_ESM_embeddings_as_list(data, keys):
         EMB_PATH = data[key]['embeddings']
         for i in range(len(data[key]['Y_filtered'])):
             Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
+
+            # 001 dataset used:
+            #file_name = data[key]['X_filtered'][i].id.split('|')[1]
+
+            file_name = data[key]['X_filtered'][i].id
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
             Xs.append(embs['mean_representations'][EMB_LAYER])
@@ -204,6 +211,7 @@ def get_tensor_from_list(Xs, Ys):
     Xs_tensor = torch.from_numpy(Xs)
 
     Ys_array = numpy.asarray(Ys)
+    Ys_array = Ys_array.astype('int32')
     Ys_tensor = torch.from_numpy(Ys_array)
 
     return [Xs_tensor, Ys_tensor]
