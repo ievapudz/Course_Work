@@ -31,8 +31,8 @@ data = {
     }
 }
 
-proteome_files_dir = 'data/proteomes/'
-visualisation_file_path = "data/visualisation/"
+proteome_files_dir = 'data/001/proteomes/'
+visualisation_file_path = 'data/cluster_tests/visualisation/'
 
 keys = ['003', '004']
 

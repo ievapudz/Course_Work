@@ -81,6 +81,41 @@ def data_division():
 
     return data
 
+def create_data(dataset_dir_prefix):
+    # dataset_dir_prefix - notes where the information about dataset is placed
+    data = {
+        'train': {
+            'X' : [],
+            'Y' : [],
+            'FASTA': dataset_dir_prefix+'FASTA/training/training.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/training/',
+        },
+        'validate': {
+            'X' : [],
+            'Y' : [],
+            'FASTA': dataset_dir_prefix+'FASTA/validation/validation.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/validation/',
+        },
+        'test': {
+            'X' : [],
+            'Y' : [],
+            'FASTA': dataset_dir_prefix+'FASTA/testing/testing.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/testing/',
+        }
+    }
+
+    for key in data.keys():
+        # Parsing sequences (X dataset) from one dataset 
+        for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
+            data[key]['X'].append(record)
+            data[key]['Y'].append(record.name.split('|')[2])
+
+    # Shuffling the datasets
+    for element in data.keys():
+        data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+
+    return data
+
 def get_equal_proportions(data, key, overall_number, classes):
     expected_number = [int(overall_number/len(classes))] * len(classes)
     X_equal_proportions = []
@@ -95,7 +130,6 @@ def get_equal_proportions(data, key, overall_number, classes):
     
     data[key]['X_equally_proportioned'] = X_equal_proportions
     data[key]['Y_equally_proportioned'] = Y_equal_proportions
-
 
 def filter_sequences(data, key, path_to_embeddings):
     embeddings_list = "embeddings_files.tmp"
@@ -112,7 +146,8 @@ def filter_sequences(data, key, path_to_embeddings):
     data[key]['X_filtered'] = []
     data[key]['Y_filtered'] = []    
     for i in range(len(data[key]['X'])):
-        if(data[key]['X'][i].id.split('|')[1] in emb_set):
+        #if(data[key]['X'][i].id.split('|')[1] in emb_set):
+        if(data[key]['X'][i].id in emb_set):
             data[key]['X_filtered'].append(data[key]['X'][i])
             data[key]['Y_filtered'].append(data[key]['Y'][i])
 

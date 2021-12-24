@@ -198,6 +198,18 @@ Since computational resources were limited, only 10 percent of proteomes could b
 There was only 1 sequence taken from each organism (it was expected to get at least one sequence for an organism, since not all organisms had records in NCBI `protein` database). Since our model's predictions should not be biased by an organism,
 thus it was assumed that this sample size should not be unsuitable for the task that is solved. 
 
+Protein sequences were downloaded using the script `scripts/data_download/download_proteins_by_TaxID.sh` that uses `efetch 14.6`. The script requires improvement so that it would take `DATASET_FILE` and `INPUT_DIR` as command line arguments.
+
+Numbers of downloaded sequences:
+- `data/002/FASTA/training/training.fasta`: 1281 headers were counted out of 1510 files attempted to download.
+- `data/002/FASTA/validation/validation.fasta`: 287 headers were counted out of 330 files attempted to download.
+- `data/002/FASTA/testing/testing.fasta`: 285 headers were counted out of 330 files attempted to download.
+
+Embedding generation:
+```
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validation.fasta data/002/EMB_ESM1b/validation/ --repr_layers 0 32 33 --include mean per_tok
+```
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
@@ -223,6 +235,7 @@ thus it was assumed that this sample size should not be unsuitable for the task 
 - [ ] Include drawing of confusion matrices.
 - [ ] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
 - [ ] Train and validate SLP with a new generated training and validation set.
+- [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
 
 ## References
 

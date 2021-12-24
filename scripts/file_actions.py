@@ -39,7 +39,7 @@ def parse_proteomes(proteome_files_dir, data, key):
 
 def generate_embeddings(path_to_esm_extract, path_to_FASTA, path_to_embeddings):
     # Required PyTorch
-    command = "python3 esm/extract.py "+path_to_esm_extract+" esm1b_t33_650M_UR50S "+path_to_FASTA+" "+path_to_embeddings+" --repr_layers 0 32 33 --include mean per_tok"
+    command = "python3.7 "+path_to_esm_extract+" esm1b_t33_650M_UR50S "+path_to_FASTA+" "+path_to_embeddings+" --repr_layers 0 32 33 --include mean per_tok"
     os.system(command)
 
 def save_tensors_as_NPZ(data_tensors, names_array, output_file_path):
