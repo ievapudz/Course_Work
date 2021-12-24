@@ -10,12 +10,6 @@ from dataset_processing import get_ESM_embeddings_as_tensor
 
 data = create_data('data/002/')
 
-"""
-generate_embeddings('esm/extract.py', data['train']['FASTA'], data['train']['embeddings'])
-generate_embeddings('esm/extract.py', data['validate']['FASTA'], data['validate']['embeddings'])
-generate_embeddings('esm/extract.py', data['test']['FASTA'], data['test']['embeddings'])
-"""
-
 filter_sequences(data, 'train', data['train']['embeddings'])
 filter_sequences(data, 'validate', data['validate']['embeddings'])
 filter_sequences(data, 'test', data['test']['embeddings'])
