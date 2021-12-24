@@ -240,11 +240,11 @@ generate_embeddings('esm/extract.py', data['test']['FASTA'], data['test']['embed
 
 Recommended to generate embeddings using the following separate commands:
 ```
-python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/training/training.fasta data/002/FASTA/training/ --repr_layers 0 32 33 --include mean per_tok
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/training/training.fasta data/002/EMB_ESM1b/training/ --repr_layers 0 32 33 --include mean per_tok
 
-python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validation.fasta data/002/FASTA/validation/ --repr_layers 0 32 33 --include mean per_tok
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/validation/validation.fasta data/002/EMB_ESM1b/validation/ --repr_layers 0 32 33 --include mean per_tok
 
-python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/testing/testing.fasta data/002/FASTA/testing/ --repr_layers 0 32 33 --include mean per_tok
+python3.7 esm/extract.py esm1b_t33_650M_UR50S data/002/FASTA/testing/testing.fasta data/002/EMB_ESM1b/testing/ --repr_layers 0 32 33 --include mean per_tok
 ```
 
 4. Save embeddings into NPZ files:
@@ -263,9 +263,9 @@ Numbers of downloaded sequences:
 - `data/002/FASTA/testing/testing.fasta`: 285 headers were counted out of 330 files attempted to download.
 
 Generated embeddings:
-- `data/002/ESM_EMB1b/training/`: 
-- `data/002/ESM_EMB1b/validation/`: 
-- `data/002/ESM_EMB1b/testing/`: 
+- `data/002/ESM_EMB1b/training/`: 1214 out of 1263
+- `data/002/ESM_EMB1b/validation/`: 268 out of 281
+- `data/002/ESM_EMB1b/testing/`: 277 out of 285
 
 ## Tasks to do
 
