@@ -34,12 +34,3 @@ def convert_labels_to_binary(dataset, keywords):
                 dataset[keyword][i] = 1
             elif(dataset[keyword][i].item() < 65):
                 dataset[keyword][i] = 0
-
-# A DEPRECATED function that converts non-binary labels to binary
-def convert_labels_to_binary(dataset, keywords, original_labels):
-    for keyword in keywords:
-        for i in range(len(dataset[keyword])):
-            if(dataset[keyword][i] == original_labels[1]):
-                dataset[keyword][i] = 1
-            elif(dataset[keyword][i] == original_labels[0]):
-                dataset[keyword][i] = 0

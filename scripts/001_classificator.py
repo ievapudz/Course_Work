@@ -18,7 +18,7 @@ NUM_OF_EPOCHS = 79
 
 dataset = load_tensor_from_NPZ('data/001/NPZ/training_and_validation_embeddings.npz', ['x_train', 'y_train', 'x_validate', 'y_validate'])
 trim_dataset(dataset, ['x_validate', 'y_validate'], BATCH_SIZE)
-convert_labels_to_binary(dataset, ['y_train', 'y_validate'], [37, 80])
+convert_labels_to_binary(dataset, ['y_train', 'y_validate'])
 
 train_dataset = TensorDataset(dataset['x_train'], dataset['y_train'])  
 trainloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
