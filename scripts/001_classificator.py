@@ -41,6 +41,6 @@ for epoch in range(0, NUM_OF_EPOCHS):
     print(f'Starting epoch {epoch+1}')
     
     train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
-    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch)
+    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, EPOCH_BATCH_SIZE, epoch, './results/SLP/001/ROC/')
   
 print('Training and validation process has finished.')
