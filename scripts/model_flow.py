@@ -44,6 +44,8 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
 def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, epoch, ROC_curve_plot_file_dir='./results/'):
     current_loss = 0.0 
 
+    tensor_list = []
+    epoch_outputs = []
     # Iterate over the DataLoader for training data
     for i, data in enumerate(validateloader, 0):
         # Get inputs
@@ -58,13 +60,18 @@ def validation_epoch(model, validateloader, loss_function, batch_size, epoch_bat
         loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
 
+        epoch_outputs.append(outputs)
+        tensor_list.append(targets)
+
         current_loss += loss.item()
         if i % batch_size == (batch_size-1):
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
         if i == epoch_batch_size:
-            plot_ROC_curve(targets, outputs, ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
+            epoch_targets = torch.cat(tensor_list, dim = 0)
+            plot_ROC_curve(epoch_targets, numpy.array(epoch_outputs).flatten(), ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
+            
 
 def plot_ROC_curve(targets, outputs, fig_name):
     # A function that plots ROC curve
