@@ -289,7 +289,7 @@ Generated embeddings:
 - [x] Automate model training process and separate modules to make the process adaptive to different architectures.
 - [ ] Include loss functions in the definition of the model.
 - [x] Include ROC curve graphing.
-- [ ] Include drawing of confusion matrices.
+- [x] Include printing of confusion matrices.
 - [x] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
 - [x] Train and validate SLP with a new generated training and validation set.
 - [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
