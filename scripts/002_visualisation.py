@@ -21,12 +21,24 @@ data = {
         'Y': [],
         'FASTA': 'data/002/FASTA/training/training.fasta',
         'embeddings': 'data/002/EMB_ESM1b/training'
+    },
+    '002_validate': {
+        'X': [],
+        'Y': [],
+        'FASTA': 'data/002/FASTA/validation/validation.fasta',
+        'embeddings': 'data/002/EMB_ESM1b/validation'
+    },
+    '002_test': {
+        'X': [],
+        'Y': [],
+        'FASTA': 'data/002/FASTA/testing/testing.fasta',
+        'embeddings': 'data/002/EMB_ESM1b/testing'
     }
 }
 
 visualisation_file_path = 'data/002/visualisation/'
 
-keys = ['002_train']
+keys = ['002_train', '002_validate', '002_test']
 for key in keys:
     parse_dataset(data, key, 2)
     filter_sequences(data, key, data[key]['embeddings'])
