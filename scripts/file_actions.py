@@ -37,6 +37,18 @@ def parse_proteomes(proteome_files_dir, data, key):
             data[key]['X'].append(record)
             data[key]['Y'].append(data[key]['temperature_labels'][i])
 
+# A function that parses FASTA records from dataset
+def parse_dataset(data, key, temp_label_index):
+    # data - dictionary with 'FASTA' key with file, where FASTA records are placed
+    #        those FASTA records should have the temperature label in their headers.
+    for record in SeqIO.parse(data[key]['FASTA'], 'fasta'):
+        temp_label = record.name.split('|')[temp_label_index]
+        if int(temp_label) >= 65:
+            data[key]['Y'].append(1)
+        else:
+            data[key]['Y'].append(0)
+        data[key]['X'].append(record)
+        
 def generate_embeddings(path_to_esm_extract, path_to_FASTA, path_to_embeddings):
     # Required PyTorch
     command = "python3.7 "+path_to_esm_extract+" esm1b_t33_650M_UR50S "+path_to_FASTA+" "+path_to_embeddings+" --repr_layers 0 32 33 --include mean per_tok"
