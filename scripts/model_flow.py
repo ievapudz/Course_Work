@@ -41,7 +41,8 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
         #if i == epoch_batch_size:
         #    plot_ROC_curve(targets, outputs, './results/SLP/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
-def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, epoch, ROC_curve_plot_file_dir='./results/'):
+def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, 
+                    epoch, ROC_curve_plot_file_dir='./results/', confusion_matrix_file_dir=''):
     current_loss = 0.0 
 
     tensor_list = []
@@ -71,7 +72,11 @@ def validation_epoch(model, validateloader, loss_function, batch_size, epoch_bat
         if i == epoch_batch_size:
             epoch_targets = torch.cat(tensor_list, dim = 0)
             plot_ROC_curve(epoch_targets, numpy.array(epoch_outputs).flatten(), ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
-            
+            if confusion_matrix_file_dir != '':
+                create_confusion_matrix(epoch_targets, epoch_outputs, confusion_matrix_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.txt')
+            else:
+                create_confusion_matrix(epoch_targets, epoch_outputs)
+
 
 def plot_ROC_curve(targets, outputs, fig_name):
     # A function that plots ROC curve
@@ -81,6 +86,36 @@ def plot_ROC_curve(targets, outputs, fig_name):
     plt.xlabel('False Positive Rate')
     plt.savefig(fig_name)
     
+def create_confusion_matrix(targets, outputs, file_path=''):
+    # targets - 1D tensor
+    # outputs - list of model predictions (probabilities).
+
+    #Predicted  0    1
+    #Actual         
+    #0          TN  FP
+    #1          FN  TP
+
+    predicted_labels = []
+    for output in numpy.array(outputs).flatten():
+        if output >= 0.5:
+            predicted_labels.append(1)
+        else:
+            predicted_labels.append(0)
+
+    confusion_matrix = metrics.confusion_matrix(targets.tolist(), predicted_labels)
+    result = "\t0\t1\n0\t{0}\t{1}\n1\t{2}\t{3}\n".format(confusion_matrix[0][0], 
+                                                        confusion_matrix[0][1], 
+                                                        confusion_matrix[1][0], 
+                                                        confusion_matrix[1][1])
+    scores = "Accuracy:\t{0}\nPrecision:\t{1}\nRecall:\t{2}".format(metrics.accuracy_score(targets.tolist(), predicted_labels),
+                                                                    metrics.precision_score(targets.tolist(), predicted_labels),
+                                                                    metrics.recall_score(targets.tolist(), predicted_labels))
     
+    if file_path == '':
+        print(result, scores)
+    else:
+        with open(file_path, 'w') as file_handle:
+            file_handle.write(result)
+            file_handle.write(scores)
     
     
