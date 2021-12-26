@@ -10,7 +10,7 @@ from matplotlib.colors import ListedColormap
 
 EMB_LAYER = 33
 
-def visualise_multiple_PCA(data, keys, plotpath, colormap):
+def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=True):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
     # plotpath - path to the output plot.
@@ -22,7 +22,10 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap):
         EMB_PATH = data[key]['embeddings']
         for i in range(len(data[key]['Y_filtered'])):
             Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            if is_read_file_name_id:
+                file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            else:
+                file_name = data[key]['X_filtered'][i].id
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
             Xs.append(embs['mean_representations'][EMB_LAYER])
@@ -73,7 +76,7 @@ def visualise_multiple_PCA_species(data, keys, plotpath, classes, colormap):
     cb.ax.set_yticklabels(classes)
     plt.savefig(plotpath, dpi=300)
 
-def visualise_multiple_MDE(data, keys, plotpath, colormap):
+def visualise_multiple_MDE(data, keys, plotpath, colormap, is_read_file_name_id=True):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
     # plotpath - path to the output plot.
@@ -84,7 +87,10 @@ def visualise_multiple_MDE(data, keys, plotpath, colormap):
         EMB_PATH = data[key]['embeddings']
         for i in range(len(data[key]['Y_filtered'])):
             Ys.append(data[key]['Y_filtered'][i])
-            file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            if is_read_file_name_id:
+                file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            else:
+                file_name = data[key]['X_filtered'][i].id
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
             Xs.append(embs['mean_representations'][EMB_LAYER])
