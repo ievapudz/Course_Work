@@ -143,7 +143,7 @@ There were two alternatives applied:
 The whole workflow will be in `scripts/classificator.py`.
 Data processing functions are placed in `scripts/model_dataset_processing.py`.
 
-#### Dataset for SLP testing (002)
+### Dataset for SLP testing (002)
 
 The first results (ROC curves) of SLP trained with two proteomes [*Escherichia coli* (ECOLI)](https://www.uniprot.org/proteomes/UP000000625) and [*Sulfolobus solfataricus* (SACS2)](https://www.uniprot.org/proteomes/UP000001974) were showed high accuracy of prediction, therefore it was decided to test the model with a different set of organisms that would contain more diverse species regarding the temperature that is optimal for the organism.
 
@@ -267,6 +267,25 @@ Generated embeddings:
 - `data/002/ESM_EMB1b/validation/`: 268 out of 281
 - `data/002/ESM_EMB1b/testing/`: 277 out of 285
 
+### Dataset for SLP testing (003)
+
+Using `curl` 18534 HTML UniProt search results in Proteomes database were downloaded. The results were filtered
+using `ggrep` command to find UniParc identifiers to download proteomes using ftp of UniProt.
+
+After the search results based on TaxIDs were downloaded to HTML files using `get_UniProt_results_HTML.sh`, they were 
+parsed to extract UniParc IDs to the separate file for download using FTP. 
+
+```
+./scripts/data_download/get_UniProt_results_HTML.sh data/002/TSV/temperature_data.tsv
+```
+
+At first, it was attempted to parse IDs using command:
+```
+cat data/003/HTML/*.html | ggrep -oP '/proteomes/UP.........' > data/003/HTML/proteome_UniParc_IDs.txt
+```
+
+Although, `wc -l` command showed that there were 23098 identifiers saved, thus it is needed to keep the information about TaxID and which UniParc identifiers are connected to the organism.
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
@@ -294,6 +313,9 @@ Generated embeddings:
 - [x] Train and validate SLP with a new generated training and validation set.
 - [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
 - [x] Visualise 002 dataset embeddings.
+- [ ] Download HTML format results with reference genome UniParc identifiers.
+- [ ] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
+- [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 
 ## References
 
