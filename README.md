@@ -279,12 +279,18 @@ parsed to extract UniParc IDs to the separate file for download using FTP.
 ./scripts/data_download/get_UniProt_results_HTML.sh data/002/TSV/temperature_data.tsv
 ```
 
-At first, it was attempted to parse IDs using command:
+The command that was used to get UniParc IDs for each organism:
 ```
-cat data/003/HTML/*.html | ggrep -oP '/proteomes/UP.........' > data/003/HTML/proteome_UniParc_IDs.txt
+ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniParc_IDs.txt
 ```
 
-Although, `wc -l` command showed that there were 23098 identifiers saved, thus it is needed to keep the information about TaxID and which UniParc identifiers are connected to the organism.
+23098 identifiers were saved, thus it was needed to remove the redundant proteomes. Also, the temperature labels had to
+be saved.
+
+Firstly the list of UniParc identifiers and their respective taxonomy identifiers were saved into a TSV list:
+```
+cat data/003/proteome_UniParc_IDs.txt | tr ':' '\t' | sed 's/\/proteomes\///g' | sed 's/data\/003\/HTML\///g' | sed 's/\.html//g' > data/003/proteome_TaxIDs_UniParc_IDs.tsv
+```
 
 ## Tasks to do
 
@@ -313,8 +319,10 @@ Although, `wc -l` command showed that there were 23098 identifiers saved, thus i
 - [x] Train and validate SLP with a new generated training and validation set.
 - [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
 - [x] Visualise 002 dataset embeddings.
-- [ ] Download HTML format results with reference genome UniParc identifiers.
-- [ ] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
+- [x] Download HTML format results with reference genome UniParc identifiers.
+- [x] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
+- [x] Save only TaxID and UniParc ID in the list of 003 proteome IDs.
+- [ ] Grep temperature labels and save them in the list with Tax IDs and UniParc IDs.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 
 ## References
