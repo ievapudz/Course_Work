@@ -322,6 +322,7 @@ cat data/003/proteome_UniParc_IDs.txt | tr ':' '\t' | sed 's/\/proteomes\///g' |
 - [x] Download HTML format results with reference genome UniParc identifiers.
 - [x] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
 - [x] Save only TaxID and UniParc ID in the list of 003 proteome IDs.
+- [ ] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
 - [ ] Grep temperature labels and save them in the list with Tax IDs and UniParc IDs.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 
