@@ -292,6 +292,21 @@ Firstly the list of UniParc identifiers and their respective taxonomy identifier
 cat data/003/proteome_UniParc_IDs.txt | tr ':' '\t' | sed 's/\/proteomes\///g' | sed 's/data\/003\/HTML\///g' | sed 's/\.html//g' > data/003/proteome_TaxIDs_UniParc_IDs.tsv
 ```
 
+Based on the way UniParc IDs are processed in UniProt database, at least two types of queries will be required to 
+send in order to retrieve proteomes in FASTA format. The cases were analyzed with an example of 993070 (*Pseudarthrobacter enclensis*). There were two proteomes found: one redundant (UP000183532) and one non-redundant (UP000053199). 
+
+- Query to download the redundant proteome:
+```
+https://www.uniprot.org/proteomes/UP000183532.fasta
+```
+
+- Query to download the non-redundant proteome:
+```
+https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta
+``` 
+
+HTML files with proteome UniParc IDs were redownloaded with edited script `scripts/data_download/get_UniProt_results_HTML.sh` - HTML files were named in the format: `[TaxID]_[Domain]_[Temperature_label].html`. There were 19774 HTML files downloaded.
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
@@ -322,9 +337,11 @@ cat data/003/proteome_UniParc_IDs.txt | tr ':' '\t' | sed 's/\/proteomes\///g' |
 - [x] Download HTML format results with reference genome UniParc identifiers.
 - [x] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
 - [x] Save only TaxID and UniParc ID in the list of 003 proteome IDs.
-- [ ] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
-- [ ] Grep temperature labels and save them in the list with Tax IDs and UniParc IDs.
+- [x] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
+- [x] Save temperature labels in the list with Tax IDs and UniParc IDs.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
+
+# https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta&compress=yes
 
 ## References
 
