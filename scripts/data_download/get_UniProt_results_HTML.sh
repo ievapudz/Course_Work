@@ -13,7 +13,7 @@ TAX_IDS=($(tail -n +2 ${DATASET_FILE} | awk '{ print $4 }'))
 for((i = 0 ; i < "${#TAX_IDS[@]}" ; i++));
 do
     echo "$i/${#TAX_IDS[@]}: fetching ${TAX_IDS[$i]}"
-    PROTEOME_URL="https://www.uniprot.org/proteomes/?query=organism:"${TAX_IDS[$i]}"+redundant:no"
+    PROTEOME_URL="https://www.uniprot.org/proteomes/?query=organism:"${TAX_IDS[$i]}"+redundant:no+excluded:no"
     RESULT_HTML="data/003/HTML/"${TAX_IDS[$i]}_${DOMAINS[$i]}_${TEMPERATURES[$i]}".html"
     curl -s ${PROTEOME_URL} > ${RESULT_HTML} 
 done

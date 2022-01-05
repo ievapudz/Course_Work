@@ -269,17 +269,17 @@ Generated embeddings:
 
 ### Dataset for SLP testing (003)
 
-Using `curl` 18534 HTML UniProt search results in Proteomes database were downloaded. The results were filtered
-using `ggrep` command to find UniParc identifiers to download proteomes using ftp of UniProt.
+### Attempt #1 to fetch UniParc IDs
 
-After the search results based on TaxIDs were downloaded to HTML files using `get_UniProt_results_HTML.sh`, they were 
-parsed to extract UniParc IDs to the separate file for download using FTP. 
+Using `curl` 18534 HTML UniProt search results in Proteomes database were downloaded. 
 
 ```
 ./scripts/data_download/get_UniProt_results_HTML.sh data/002/TSV/temperature_data.tsv
 ```
 
-The command that was used to get UniParc IDs for each organism:
+After the search results based on TaxIDs were downloaded to HTML files using `get_UniProt_results_HTML.sh`, they were 
+parsed to extract UniParc IDs. The results were filtered using `ggrep` command to find UniParc 
+identifiers for each organism:
 ```
 ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniParc_IDs.txt
 ```
@@ -287,25 +287,67 @@ ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniP
 23098 identifiers were saved, thus it was needed to remove the redundant proteomes. Also, the temperature labels had to
 be saved.
 
-Firstly the list of UniParc identifiers and their respective taxonomy identifiers were saved into a TSV list:
+The list of UniParc identifiers and their respective taxonomy identifiers were saved into a TSV list:
 ```
 cat data/003/proteome_UniParc_IDs.txt | tr ':' '\t' | sed 's/\/proteomes\///g' | sed 's/data\/003\/HTML\///g' | sed 's/\.html//g' > data/003/proteome_TaxIDs_UniParc_IDs.tsv
 ```
 
-Based on the way UniParc IDs are processed in UniProt database, at least two types of queries will be required to 
-send in order to retrieve proteomes in FASTA format. The cases were analyzed with an example of 993070 (*Pseudarthrobacter enclensis*). There were two proteomes found: one redundant (UP000183532) and one non-redundant (UP000053199). 
-
-- Query to download the redundant proteome:
-```
-https://www.uniprot.org/proteomes/UP000183532.fasta
-```
-
-- Query to download the non-redundant proteome:
-```
-https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta
-``` 
+### Attempt #2 to fetch UniParc IDs
 
 HTML files with proteome UniParc IDs were redownloaded with edited script `scripts/data_download/get_UniProt_results_HTML.sh` - HTML files were named in the format: `[TaxID]_[Domain]_[Temperature_label].html`. There were 19774 HTML files downloaded.
+
+Extracting UniParc IDs for each organism's proteome:
+```
+ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniParc_IDs_non_redundant.txt
+```
+
+15223 UniParc IDs were saved. Observations from the generated list:
+- not all organisms have got a proteome in UniProt database (result contained no UP identifier)
+- not all organisms have got a reference proteome
+- there are excluded proteomes shown in the results page (these proteomes should be filtered out)
+- there are proteomes that belong different bacteria strains
+
+### Attempt #3 to fetch UniParc IDs
+
+This time the filter to reject excluded proteomes from the list was added.
+
+The example URL:
+```
+https://www.uniprot.org/proteomes/?query=organism:50741+redundant:no+excluded:no
+```
+
+Extracting UniParc IDs for each organism's proteome:
+```
+ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniParc_IDs_non_redundant_no_excluded.txt
+```
+
+14537 UniParc IDs were saved.
+
+The list of UniParc identifiers was saved to a TSV file:
+```
+cat data/003/proteome_UniParc_IDs_non_redundant_no_excluded.txt | tr ':' '\t' | sed 's/\/proteomes\///g' | sed 's/data\/003\/HTML\///g' | sed 's/\.html//g' > data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv
+```
+
+There were 6411 unique `[TaxID]_[Domain]_[Temperature_label]` names in the list. The list contained several TaxIDs that referred to 
+different species. For example, the taxonomy identifier 996 was assigned to *Flavobacterium columnare* (temperature 23 degrees Celsius),
+*Flexibacter columnaris* (temperature 23 degrees Celsius), and *Cytophaga columnaris* (temperature 21 degrees Celsius).
+
+After deciding what needs to be done with organisms that share the same taxonomy identifier, the 
+file (or processed version of it) `data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv` will be used to download proteomes.
+
+### Downloading proteomes
+
+An example query to download a non-redundant proteome:
+```
+curl "https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta"
+``` 
+
+The proteome download script is `scripts/data_download/get_UniProt_proteomes.sh`.
+
+Example usage:
+```
+./scripts/data_download/get_UniProt_proteomes.sh data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv
+```
 
 ## Tasks to do
 
@@ -340,6 +382,7 @@ HTML files with proteome UniParc IDs were redownloaded with edited script `scrip
 - [x] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
 - [x] Save temperature labels in the list with Tax IDs and UniParc IDs.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
+- [ ] Download proteomes to HPC.
 
 # https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta&compress=yes
 
