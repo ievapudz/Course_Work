@@ -384,8 +384,6 @@ Example usage:
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 - [ ] Download proteomes to HPC.
 
-# https://www.uniprot.org/uniprot/?query=proteome:UP000053199&format=fasta&compress=yes
-
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
