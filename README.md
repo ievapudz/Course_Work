@@ -332,8 +332,10 @@ There were 6411 unique `[TaxID]_[Domain]_[Temperature_label]` names in the list.
 different species. For example, the taxonomy identifier 996 was assigned to *Flavobacterium columnare* (temperature 23 degrees Celsius),
 *Flexibacter columnaris* (temperature 23 degrees Celsius), and *Cytophaga columnaris* (temperature 21 degrees Celsius).
 
-After deciding what needs to be done with organisms that share the same taxonomy identifier, the 
-file (or processed version of it) `data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv` will be used to download proteomes.
+It was decided to keep a single proteome for one taxonomy identifier. There were 5787 proteomes left in the final list:
+```
+awk -F"\t" '!_[$1]++' data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv | awk -F"\t" '!_[$2]++' > data/003/003.tsv
+```
 
 ### Downloading proteomes
 
