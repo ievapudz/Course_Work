@@ -337,6 +337,14 @@ It was decided to keep a single proteome for one taxonomy identifier. There were
 awk -F"\t" '!_[$1]++' data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv | awk -F"\t" '!_[$2]++' > data/003/003.tsv
 ```
 
+Sorting based on temperature:
+```
+cat data/003/003.tsv | tr '_' '\t' | sort -n -k3 | awk '{print $3"_"$1"_"$2"\t"$4}' > data/003/003_sorted.tsv
+cp data/003/003_sorted.tsv data/003/003.tsv
+diff data/003/003_sorted.tsv data/003/003.tsv
+rm data/003/003_sorted.tsv
+```
+
 ### Downloading proteomes
 
 An example query to download a non-redundant proteome:
