@@ -392,7 +392,8 @@ Example usage:
 - [x] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
 - [x] Save temperature labels in the list with Tax IDs and UniParc IDs.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
-- [ ] Download proteomes to HPC.
+- [x] Download proteomes to HPC.
+- [x] Make rainbow-coloured ROC curves.
 
 ## References
 
