@@ -3,6 +3,8 @@ from torch import nn
 from sklearn import metrics
 import torch
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+from cycler import cycler
 import numpy
 
 def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
@@ -41,7 +43,7 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
         #if i == epoch_batch_size:
         #    plot_ROC_curve(targets, outputs, './results/SLP/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
-def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, 
+def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, num_of_epochs,
                     epoch, ROC_curve_plot_file_dir='./results/', confusion_matrix_file_dir=''):
     current_loss = 0.0 
 
@@ -71,16 +73,18 @@ def validation_epoch(model, validateloader, loss_function, batch_size, epoch_bat
             current_loss = 0.0
         if i == epoch_batch_size:
             epoch_targets = torch.cat(tensor_list, dim = 0)
-            plot_ROC_curve(epoch_targets, numpy.array(epoch_outputs).flatten(), ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
+            plot_ROC_curve(epoch_targets, num_of_epochs, numpy.array(epoch_outputs).flatten(), ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
             if confusion_matrix_file_dir != '':
                 create_confusion_matrix(epoch_targets, epoch_outputs, confusion_matrix_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.txt')
             else:
                 create_confusion_matrix(epoch_targets, epoch_outputs)
 
 
-def plot_ROC_curve(targets, outputs, fig_name):
+def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
     # A function that plots ROC curve
     fpr, tpr, _ = metrics.roc_curve(targets, outputs)
+    iterated_colors = [plt.get_cmap('jet')(1. * i/num_of_epochs) for i in range(num_of_epochs)]
+    mpl.rcParams['axes.prop_cycle'] = cycler('color', iterated_colors)
     plt.plot(fpr,tpr)
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
