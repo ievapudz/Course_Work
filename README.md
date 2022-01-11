@@ -356,7 +356,44 @@ The proteome download script is `scripts/data_download/get_UniProt_proteomes.sh`
 
 Example usage:
 ```
-./scripts/data_download/get_UniProt_proteomes.sh data/003/proteome_UniParc_IDs_non_redundant_no_excluded.tsv
+./scripts/data_download/get_UniProt_proteomes.sh data/003/003.tsv
+```
+
+### Processing the dataset
+
+Since the numbers of proteomes of each class are not equal - there were 5676 proteomes of the class 0 and 111 proteomes of the class 1 - it was decided to combine all proteins from the same class into one FASTA file, from which the proportions required for training, validation and testing would be divided. 
+
+The collection of proteins was done with:
+
+class 0:
+```
+ls -n1 data/003/FASTA/ | tr '_' '\t' | sort -nk9 | tail -n +2 | head -n 5676 | awk '{file="data/003/FASTA/"$9"_"$10"_"$11; while((getline<file)>0){print}}' > data/003/class_0.fasta 
+```
+
+The number of proteins belonging to class 1 - 24723317:
+```
+time grep '>' data/003/class_0.fasta | wc -l
+24723317
+
+real    0m38.364s
+user    0m34.664s
+sys     0m9.126s
+```
+
+class 1:
+```
+ls -n1 data/003/FASTA/ | tr '_' '\t' | sort -nk9 | tail -n 111 | \ 
+awk '{file="data/003/FASTA/"$9"_"$10"_"$11; while((getline<file)>0){print}}' > data/003/class_1.fasta 
+```
+
+The number of proteins belonging to class 1 - 212729:
+```
+grep '>' data/003/class_1.fasta | wc -l
+```
+
+Testing if the collection of proteomes was done correctly (if the number of unique TaxIDs is equal to 111):
+```
+grep '>' data/003/class_1.fasta | grep -oP 'OX=([0-9]+)' | tr 'OX=' ' ' | sort -u | wc -l
 ```
 
 ## Tasks to do
