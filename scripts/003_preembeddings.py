@@ -44,9 +44,9 @@ FASTA_files_prefix = 'data/'
 
 file_list = read_file_list(sys.argv[1])
 [class_0, class_1] = classify_records(file_list, sys.argv[2])
-write_FASTA(sys.argv[1]+'/training.fasta', class_0, class_1, 0.7, 0)
-write_FASTA(sys.argv[1]+'/validation.fasta', class_0, class_1, 0.15, math.floor(len(class_0)*0.7), math.floor(len(class_1)*0.7))
-write_FASTA(sys.argv[1]+'/testing.fasta', class_0, class_1, 0.15, math.floor(len(class_0)*0.85), math.floor(len(class_1)*0.85))
+write_FASTA(sys.argv[2]+'/training.fasta', class_0, class_1, 0.7, 0, 0)
+write_FASTA(sys.argv[2]+'/validation.fasta', class_0, class_1, 0.15, math.floor(len(class_0)*0.7), math.floor(len(class_1)*0.7))
+write_FASTA(sys.argv[2]+'/testing.fasta', class_0, class_1, 0.15, math.floor(len(class_0)*0.85), math.floor(len(class_1)*0.85))
 
 
 
