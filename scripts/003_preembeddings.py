@@ -3,7 +3,7 @@
 import sys
 from Bio import SeqIO
 import math
-from sklearn.utils import shuffle
+import random
 
 # The function that reads a list of files
 def read_file_list(list_file):
@@ -25,8 +25,8 @@ def classify_records(file_list, file_prefix, partition=65):
                 class_1.append(record)
             else:
                 class_0.append(record)
-    class_0 = shuffle(class_0, random_state=1)
-    class_1 = shuffle(class_1, random_state=1)
+    class_0 = random.shuffle(class_0)
+    class_1 = random.shuffle(class_1)
     return [class_0, class_1]
     
 # The function that writes the needed fraction of an array to the subset file
