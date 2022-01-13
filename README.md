@@ -373,6 +373,26 @@ Scripts that were used to generated training, validation and testing file sets:
 ./scripts/003_preembeddings.py data/003/FASTA
 ```
 
+### Generating embeddings
+
+It is required to make sure that directories for embeddings are created.
+
+In order to test the slurm submission script (for the first 1000 FASTA sequences in validation set), 
+the sample FASTA file was created using:
+```
+cat data/003/FASTA/validation.fasta | perl -e '{ $num = 1000; $/ = "\n>"; }{ while(<>){ if($num==0){ exit; } /^>?([^\n]*)\n([^>]*)/; my( $header, $sequence ) = ( $1, $2 ); print ">", $1, "\n", $2, "\n"; $num--; } }' > data/003/FASTA/validation_0_999.fasta
+```
+
+Embeddings for a set in `data/003/FASTA/validation_0_999.fasta` were generated on a computing cluster. It was the first sample
+for testing `slurm` compatability with `conda` virtual environment.
+
+A command that was used to run the program on a cluster:
+```
+sbatch scripts/003_embeddings.sh
+```
+
+For the first set 975/1000 sequence embeddings were generated.
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
