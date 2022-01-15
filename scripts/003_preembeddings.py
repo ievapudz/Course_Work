@@ -12,7 +12,7 @@ def read_FASTA(file_name):
     FASTA_records = []
     for record in SeqIO.parse(file_name, 'fasta'):
         FASTA_records.append(record)
-    random.shuffle(FASTA_records)
+    #random.shuffle(FASTA_records)
     return FASTA_records
     
 # The function that writes the needed fraction of an array to the subset file
@@ -31,7 +31,9 @@ def write_FASTA(file_name, records_0, records_1, fraction, offset_0, offset_1):
 
 FASTA_files_prefix = sys.argv[1]
 
+print("Reading class 0 file")
 class_0 = read_FASTA(FASTA_files_prefix+'/class_0.fasta')
+print("Reading class 1 file")
 class_1 = read_FASTA(FASTA_files_prefix+'/class_1.fasta')
 
 print("Writing training set")
