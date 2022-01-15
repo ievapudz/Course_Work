@@ -361,6 +361,8 @@ Example usage:
 
 ### Processing the dataset
 
+#### v1 of 003 dataset 
+
 Since the numbers of proteomes of each class are not equal - there were 5676 proteomes of the class 0 and 111 proteomes of the class 1 - it was decided to combine all proteins from the same class into one FASTA file, from which the proportions required for training, validation and testing would be divided. 
 
 The number of proteins belonging to class 1 - 24723317.
@@ -371,6 +373,46 @@ Scripts that were used to generated training, validation and testing file sets:
 ```
 ./scripts/003_preembeddings.sh data/003/FASTA
 ./scripts/003_preembeddings.py data/003/FASTA
+```
+
+This approach divided all proteins into training, validation and testing sets without considering the TaxID of an organism 
+that protein belongs to.
+
+#### v2 of 003 dataset
+
+This approach divides proteomes into training, validation and testing set. The sets are approximately balanced. 
+
+Picking 111 proteomes from each class and shuffling the list of proteomes:
+```
+ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | awk '$1>=65{ print $1"_"$2"_"$3}' | shuf | \ 
+tail -n 111 > data/003/class_1_111_proteomes.lst
+
+ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | awk '$1<65{ print $1"_"$2"_"$3}' | shuf | \ 
+tail -n 111 > data/003/class_0_111_proteomes.lst
+```
+
+The script `scripts/003_preembeddings_v2.sh` takes in a list of proteomes of a certain class, the intial index,
+the number of files to take from the list, and the prefix of FASTA files (the directory, from which the proteomes will be taken).
+```
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/ | grep '>' > data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ | grep '>' > data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ | grep '>' > data/003/FASTA/testing_v2.fasta 
+
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ | grep '>' >> data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ | grep '>' >> data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ | grep '>' >> data/003/FASTA/testing_v2.fasta 
+```
+
+| Set         | # of proteomes (overall, class_0, class_1) | # of proteins (overall, class_0, class_1) | 
+|-------------|--------------------------------------------|-------------------------------------------|
+| training    | 109, 32, 77                                | 288996, 145128, 143868                    |
+| validation  | 25, 8, 17                                  | 65820, 33204, 32616                       |
+| testing     | 28, 11, 17                                 | 74508, 38263, 36245                       |
+
+
+FASTA-splitter program was used to divide each of the sets into portions:
+```
+../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/  data/003/FASTA/training_v2.fasta
 ```
 
 ### Generating embeddings
