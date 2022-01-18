@@ -81,26 +81,27 @@ def data_division():
 
     return data
 
-def create_data(dataset_dir_prefix):
+def create_data(dataset_dir_prefix, dataset_names=['training', 'validation', 'testing']):
     # dataset_dir_prefix - notes where the information about dataset is placed
+    # dataset_names - names of the dataset partitions
     data = {
         'train': {
             'X' : [],
             'Y' : [],
-            'FASTA': dataset_dir_prefix+'FASTA/training/training.fasta',
-            'embeddings': dataset_dir_prefix+'EMB_ESM1b/training/',
+            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_names[0]+'/'+dataset_names[0]+'.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/'+dataset_names[0]+'/',
         },
         'validate': {
             'X' : [],
             'Y' : [],
-            'FASTA': dataset_dir_prefix+'FASTA/validation/validation.fasta',
-            'embeddings': dataset_dir_prefix+'EMB_ESM1b/validation/',
+            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_names[1]+'/'+dataset_names[1]+'.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/'+dataset_names[1]+'/',
         },
         'test': {
             'X' : [],
             'Y' : [],
-            'FASTA': dataset_dir_prefix+'FASTA/testing/testing.fasta',
-            'embeddings': dataset_dir_prefix+'EMB_ESM1b/testing/',
+            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_names[2]+'/'+dataset_names[2]+'.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/'+dataset_names[2]+'/',
         }
     }
 
