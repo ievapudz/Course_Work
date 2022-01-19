@@ -394,13 +394,13 @@ tail -n 111 > data/003/class_0_111_proteomes.lst
 The script `scripts/003_preembeddings_v2.sh` takes in a list of proteomes of a certain class, the intial index,
 the number of files to take from the list, and the prefix of FASTA files (the directory, from which the proteomes will be taken).
 ```
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/ | grep '>' > data/003/FASTA/training_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ | grep '>' > data/003/FASTA/validation_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ | grep '>' > data/003/FASTA/testing_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/  > data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ > data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ > data/003/FASTA/testing_v2.fasta 
 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ | grep '>' >> data/003/FASTA/training_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ | grep '>' >> data/003/FASTA/validation_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ | grep '>' >> data/003/FASTA/testing_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ >> data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ >> data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ >> data/003/FASTA/testing_v2.fasta 
 ```
 
 | Set         | # of proteomes (overall, class_0, class_1) | # of proteins (overall, class_0, class_1) | 
@@ -412,10 +412,15 @@ the number of files to take from the list, and the prefix of FASTA files (the di
 
 FASTA-splitter program was used to divide each of the sets into portions:
 ```
-../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/  data/003/FASTA/training_v2.fasta
+../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/ \ 
+    --nopad data/003/FASTA/training_v2/training_v2.fasta
+../programs/fasta-splitter.pl --n-parts 7 --out-dir data/003/FASTA/validation_v2/ \
+    --nopad data/003/FASTA/validation_v2/validation_v2.fasta
+../programs/fasta-splitter.pl --n-parts 8 --out-dir data/003/FASTA/testing_v2/ \ 
+    --nopad data/003/FASTA/testing_v2/testing_v2.fasta
 ```
 
-### Generating embeddings
+### Generating embeddings (testing slurm)
 
 It is required to make sure that directories for embeddings are created.
 
@@ -434,6 +439,16 @@ sbatch scripts/003_embeddings.sh
 ```
 
 For the first set 975/1000 sequence embeddings were generated.
+
+### Generating embeddings (003 v2)
+
+```
+sbatch --array=1-30 --output=training_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_training_v2.sh
+
+sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_validation_v2.sh
+
+sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_testing_v2.sh
+```
 
 ## Tasks to do
 
@@ -470,6 +485,9 @@ For the first set 975/1000 sequence embeddings were generated.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 - [x] Download proteomes to HPC.
 - [x] Make rainbow-coloured ROC curves.
+- [ ] Generate 003 embeddings (mean) for 10-30 proportions of the training set (remaining, currently running 10-16).
+- [ ] Generate 003 embeddings (mean) for 3-7 proportions of the validation set (remaining, currently running 3-4).
+- [ ] Generate 003 embeddings (mean) for 1-8 proportions of the testing set.
 
 ## References
 
