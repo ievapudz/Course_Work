@@ -361,40 +361,79 @@ Example usage:
 
 ### Processing the dataset
 
+#### v1 of 003 dataset 
+
 Since the numbers of proteomes of each class are not equal - there were 5676 proteomes of the class 0 and 111 proteomes of the class 1 - it was decided to combine all proteins from the same class into one FASTA file, from which the proportions required for training, validation and testing would be divided. 
 
-The collection of proteins was done with:
+The number of proteins belonging to class 1 - 24723317.
 
-class 0:
-```
-ls -n1 data/003/FASTA/ | tr '_' '\t' | sort -nk9 | tail -n +2 | head -n 5676 | awk '{file="data/003/FASTA/"$9"_"$10"_"$11; while((getline<file)>0){print}}' > data/003/class_0.fasta 
-```
+The number of proteins belonging to class 1 - 212729.
 
-The number of proteins belonging to class 1 - 24723317:
+Scripts that were used to generated training, validation and testing file sets:
 ```
-time grep '>' data/003/class_0.fasta | wc -l
-24723317
-
-real    0m38.364s
-user    0m34.664s
-sys     0m9.126s
+./scripts/003_preembeddings.sh data/003/FASTA
+./scripts/003_preembeddings.py data/003/FASTA
 ```
 
-class 1:
+This approach divided all proteins into training, validation and testing sets without considering the TaxID of an organism 
+that protein belongs to.
+
+#### v2 of 003 dataset
+
+This approach divides proteomes into training, validation and testing set. The sets are approximately balanced. 
+
+Picking 111 proteomes from each class and shuffling the list of proteomes:
 ```
-ls -n1 data/003/FASTA/ | tr '_' '\t' | sort -nk9 | tail -n 111 | \ 
-awk '{file="data/003/FASTA/"$9"_"$10"_"$11; while((getline<file)>0){print}}' > data/003/class_1.fasta 
+ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | awk '$1>=65{ print $1"_"$2"_"$3}' | shuf | \ 
+tail -n 111 > data/003/class_1_111_proteomes.lst
+
+ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | awk '$1<65{ print $1"_"$2"_"$3}' | shuf | \ 
+tail -n 111 > data/003/class_0_111_proteomes.lst
 ```
 
-The number of proteins belonging to class 1 - 212729:
+The script `scripts/003_preembeddings_v2.sh` takes in a list of proteomes of a certain class, the intial index,
+the number of files to take from the list, and the prefix of FASTA files (the directory, from which the proteomes will be taken).
 ```
-grep '>' data/003/class_1.fasta | wc -l
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/ | grep '>' > data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ | grep '>' > data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ | grep '>' > data/003/FASTA/testing_v2.fasta 
+
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ | grep '>' >> data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ | grep '>' >> data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ | grep '>' >> data/003/FASTA/testing_v2.fasta 
 ```
 
-Testing if the collection of proteomes was done correctly (if the number of unique TaxIDs is equal to 111):
+| Set         | # of proteomes (overall, class_0, class_1) | # of proteins (overall, class_0, class_1) | 
+|-------------|--------------------------------------------|-------------------------------------------|
+| training    | 109, 32, 77                                | 288996, 145128, 143868                    |
+| validation  | 25, 8, 17                                  | 65820, 33204, 32616                       |
+| testing     | 28, 11, 17                                 | 74508, 38263, 36245                       |
+
+
+FASTA-splitter program was used to divide each of the sets into portions:
 ```
-grep '>' data/003/class_1.fasta | grep -oP 'OX=([0-9]+)' | tr 'OX=' ' ' | sort -u | wc -l
+../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/  data/003/FASTA/training_v2.fasta
 ```
+
+### Generating embeddings
+
+It is required to make sure that directories for embeddings are created.
+
+In order to test the slurm submission script (for the first 1000 FASTA sequences in validation set), 
+the sample FASTA file was created using:
+```
+cat data/003/FASTA/validation.fasta | perl -e '{ $num = 1000; $/ = "\n>"; }{ while(<>){ if($num==0){ exit; } /^>?([^\n]*)\n([^>]*)/; my( $header, $sequence ) = ( $1, $2 ); print ">", $1, "\n", $2, "\n"; $num--; } }' > data/003/FASTA/validation_0_999.fasta
+```
+
+Embeddings for a set in `data/003/FASTA/validation_0_999.fasta` were generated on a computing cluster. It was the first sample
+for testing `slurm` compatability with `conda` virtual environment.
+
+A command that was used to run the program on a cluster:
+```
+sbatch scripts/003_embeddings.sh
+```
+
+For the first set 975/1000 sequence embeddings were generated.
 
 ## Tasks to do
 
