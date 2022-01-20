@@ -443,11 +443,11 @@ For the first set 975/1000 sequence embeddings were generated.
 ### Generating embeddings (003 v2)
 
 ```
-sbatch --array=1-30 --output=training_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_training_v2.sh
+sbatch --array=1-30 --output=training_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_training_v2.sh
 
-sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_validation_v2.sh
+sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_validation_v2.sh
 
-sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003_embeddings_testing_v2.sh
+sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_testing_v2.sh
 ```
 
 ## Tasks to do
