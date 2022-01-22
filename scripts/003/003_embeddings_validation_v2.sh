@@ -5,15 +5,15 @@
 
 set -ue
 
-#SBATCH --job-name=003_training_v2
-#SBATCH --output=data/003/slurm/training.out
+#SBATCH --job-name=003_validation_v2
+#SBATCH --output=data/003/slurm/validation.out
 
-#SBATCH --nodes=7
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=2
 #SBATCH --mem-per-cpu=8000
+#SBATCH --array=1-2
 
 DATA_DIR=data/003/
-JOB_NAME=training_v2
+JOB_NAME=validation_v2
 FASTA_PREFIX=${DATA_DIR}FASTA/${JOB_NAME}/${JOB_NAME}.part-
 
 echo "Job started at $(date)"
