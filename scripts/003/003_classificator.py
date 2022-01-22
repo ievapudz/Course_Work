@@ -55,7 +55,8 @@ for epoch in range(0, NUM_OF_EPOCHS):
     train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, epoch)
     validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, 
-                EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, './results/SLP/003/ROC/')
+                EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, './results/SLP/003/ROC/',
+                './results/SLP/003/confusion_matrices/')
   
 print('Training and validation process has finished.')
 
