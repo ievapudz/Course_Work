@@ -5,10 +5,13 @@ import pandas as pd
 import sys
 
 df = pd.read_csv(sys.argv[1], sep="\t")
-df.plot(
-    xlabel='x',
-    ylabel='y',
-    title='True temperature VS predicted temperature'
-)
 
+x = df['temperature']
+y = df['prediction']
+
+plt.scatter(x, y)
+plt.title('A plot to show the correlation between temperature and prediction')
+plt.xlabel('Normalised temperature')
+plt.ylabel('Prediction value')
+plt.plot()
 plt.savefig(sys.argv[2])
