@@ -43,6 +43,41 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
         #if i == epoch_batch_size:
         #    plot_ROC_curve(targets, number_of_epochs, outputs, './results/SLP/003/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
+def train_epoch_print_predictions(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
+    # Set current loss value
+    current_loss = 0.0
+
+    # Iterate over the DataLoader for training data
+    for i, data in enumerate(trainloader, 0):
+        # Get inputs
+        inputs, targets = data
+        targets = targets.reshape(batch_size, 1)
+        targets = targets.to(torch.float32)
+
+        # Zero the gradients
+        optimizer.zero_grad()
+
+        # Perform forward pass
+        outputs = model(inputs)
+
+        # Compute loss
+        loss = loss_function(outputs, targets)
+        outputs = outputs.detach().numpy()
+        for output in outputs:
+            print(output)
+
+        # Perform backward pass
+        loss.backward()
+
+        # Perform optimization
+        optimizer.step()
+
+        # Print statistics
+        current_loss += loss.item()
+        if i % batch_size == (batch_size-1):
+            current_loss = 0.0
+
+
 def validation_epoch(model, validateloader, loss_function, batch_size, 
 		     epoch_batch_size, num_of_epochs, epoch, 
                      ROC_curve_plot_file_dir='./results/', 
