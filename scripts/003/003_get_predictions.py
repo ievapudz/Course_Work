@@ -38,7 +38,7 @@ def get_tensor_elements_as_list(dataset, keys):
 
 BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
-NUM_OF_EPOCHS = 5
+NUM_OF_EPOCHS = 1
 
 dataset = load_tensor_from_NPZ(
     'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
