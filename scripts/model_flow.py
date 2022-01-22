@@ -81,7 +81,7 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
 			   ROC_curve_plot_file_dir+'validation_'+
 			   str(epoch)+'_'+str(i)+'.png')
           
-        if confusion_matrix_file_dir != '':
+            if confusion_matrix_file_dir != '':
                 create_confusion_matrix(epoch_targets, epoch_outputs, 
                                         confusion_matrix_file_dir+
                                         'validation_'+str(epoch)+'_'+
