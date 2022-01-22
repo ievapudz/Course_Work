@@ -7,7 +7,8 @@ import matplotlib as mpl
 from cycler import cycler
 import numpy
 
-def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
+def train_epoch(model, trainloader, loss_function, optimizer, batch_size, 
+                epoch_batch_size, epoch, print_predictions=False):
     # Set current loss value
     current_loss = 0.0
     
@@ -28,6 +29,11 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
         loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
         
+        # Printing prediction values
+        if(print_predictions):
+            for output in outputs:
+                print(output)
+        
         # Perform backward pass
         loss.backward()
         
@@ -42,41 +48,6 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
             current_loss = 0.0
         #if i == epoch_batch_size:
         #    plot_ROC_curve(targets, number_of_epochs, outputs, './results/SLP/003/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
-
-def train_epoch_print_predictions(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
-    # Set current loss value
-    current_loss = 0.0
-
-    # Iterate over the DataLoader for training data
-    for i, data in enumerate(trainloader, 0):
-        # Get inputs
-        inputs, targets = data
-        targets = targets.reshape(batch_size, 1)
-        targets = targets.to(torch.float32)
-
-        # Zero the gradients
-        optimizer.zero_grad()
-
-        # Perform forward pass
-        outputs = model(inputs)
-
-        # Compute loss
-        loss = loss_function(outputs, targets)
-        outputs = outputs.detach().numpy()
-        for output in outputs:
-            print(output)
-
-        # Perform backward pass
-        loss.backward()
-
-        # Perform optimization
-        optimizer.step()
-
-        # Print statistics
-        current_loss += loss.item()
-        if i % batch_size == (batch_size-1):
-            current_loss = 0.0
-
 
 def validation_epoch(model, validateloader, loss_function, batch_size, 
 		     epoch_batch_size, num_of_epochs, epoch, 
@@ -164,4 +135,40 @@ def create_confusion_matrix(targets, outputs, file_path=''):
             file_handle.write(result)
             file_handle.write(scores)
     
-    
+def test_epoch(model, test_loader, loss_function, optimizer, batch_size, 
+               epoch_batch_size, print_predictions=False):
+    # Set current loss value
+    current_loss = 0.0
+
+    # Iterate over the DataLoader for testing data
+    for i, data in enumerate(test_loader, 0):
+        # Get inputs
+        inputs, targets = data
+        targets = targets.reshape(batch_size, 1)
+        targets = targets.to(torch.float32)
+
+        # Zero the gradients
+        optimizer.zero_grad()
+
+        # Perform forward pass
+        outputs = model(inputs)
+
+        # Compute loss
+        loss = loss_function(outputs, targets)
+        outputs = outputs.detach().numpy()
+
+        # Printing prediction values
+        if(print_predictions):
+            for output in outputs:
+                print(output)
+
+        # Perform backward pass
+        loss.backward()
+
+        # Perform optimization
+        optimizer.step()
+
+        # Summing up loss
+        current_loss += loss.item()
+        if i % batch_size == (batch_size-1):
+            current_loss = 0.0 
