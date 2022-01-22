@@ -21,10 +21,10 @@ from model_flow import validation_epoch
 
 BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
-NUM_OF_EPOCHS = 10
+NUM_OF_EPOCHS = 5
 
 dataset = load_tensor_from_NPZ(
-    'data/003/NPZ/training_and_validation_embeddings_sample.npz', 
+    'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
     ['x_train', 'y_train', 'x_validate', 'y_validate'])
 
 trim_dataset(dataset, ['x_train', 'y_train'], BATCH_SIZE)

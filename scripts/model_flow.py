@@ -41,10 +41,12 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
         #if i == epoch_batch_size:
-        #    plot_ROC_curve(targets, outputs, './results/SLP/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
+        #    plot_ROC_curve(targets, number_of_epochs, outputs, './results/SLP/003/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
-def validation_epoch(model, validateloader, loss_function, batch_size, epoch_batch_size, num_of_epochs,
-                    epoch, ROC_curve_plot_file_dir='./results/', confusion_matrix_file_dir=''):
+def validation_epoch(model, validateloader, loss_function, batch_size, 
+		     epoch_batch_size, num_of_epochs, epoch, 
+                     ROC_curve_plot_file_dir='./results/', 
+                     confusion_matrix_file_dir=''):
     current_loss = 0.0 
 
     tensor_list = []
@@ -67,18 +69,23 @@ def validation_epoch(model, validateloader, loss_function, batch_size, epoch_bat
         tensor_list.append(targets)
 
         current_loss += loss.item()
+        #print(i, epoch_batch_size)
         if i % batch_size == (batch_size-1):
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
         if i == epoch_batch_size:
             epoch_targets = torch.cat(tensor_list, dim = 0)
-            plot_ROC_curve(epoch_targets, num_of_epochs, numpy.array(epoch_outputs).flatten(), ROC_curve_plot_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.png')
-            if confusion_matrix_file_dir != '':
-                create_confusion_matrix(epoch_targets, epoch_outputs, confusion_matrix_file_dir+'validation_'+str(epoch)+'_'+str(i)+'.txt')
-            else:
-                create_confusion_matrix(epoch_targets, epoch_outputs)
-
+            plot_ROC_curve(epoch_targets, num_of_epochs, 
+			   numpy.array(epoch_outputs).flatten(), 
+			   ROC_curve_plot_file_dir+'validation_'+
+			   str(epoch)+'_'+str(i)+'.png')
+          
+        if confusion_matrix_file_dir != '':
+                create_confusion_matrix(epoch_targets, epoch_outputs, 
+                                        confusion_matrix_file_dir+
+                                        'validation_'+str(epoch)+'_'+
+                                        str(i)+'.txt')
 
 def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
     # A function that plots ROC curve
