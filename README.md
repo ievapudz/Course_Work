@@ -450,6 +450,12 @@ sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003/00
 sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_testing_v2.sh
 ```
 
+| Set         | # of embeddings (of all proteins) | # of embeddings (class_0) | # of embeddings (class_1) |
+|-------------|-----------------------------------|---------------------------|---------------------------|
+| training    |  284309 (288996)                  | 141602 (145128)           | 142707 (143868)           |
+| validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
+| testing     |  TBU (74508)                      | TBU                       | TBU                       |
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
