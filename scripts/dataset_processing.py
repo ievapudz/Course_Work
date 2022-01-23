@@ -1,4 +1,5 @@
 import os
+from os.path import exists
 import sys
 import torch
 import numpy
@@ -106,10 +107,36 @@ def create_data(dataset_dir_prefix, dataset_names=['training', 'validation', 'te
     }
 
     for key in data.keys():
-        # Parsing sequences (X dataset) from one dataset 
-        for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
-            data[key]['X'].append(record)
-            data[key]['Y'].append(record.name.split('|')[2])
+        if(exists(data[key]['FASTA'])):
+            # Parsing sequences (X dataset) from one dataset 
+            for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
+                data[key]['X'].append(record)
+                data[key]['Y'].append(record.name.split('|')[2])
+
+    # Shuffling the datasets
+    for element in data.keys():
+        data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+
+    return data
+
+def create_testing_data(dataset_dir_prefix, dataset_names=['testing']):
+    # dataset_dir_prefix - notes where the information about dataset is placed
+    # dataset_names - names of the dataset partitions
+    data = {
+        'test': {
+            'X' : [],
+            'Y' : [],
+            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_names[0]+'/'+dataset_names[0]+'.fasta',
+            'embeddings': dataset_dir_prefix+'EMB_ESM1b/'+dataset_names[0]+'/',
+        }
+    }
+
+    for key in data.keys():
+        if(exists(data[key]['FASTA'])):
+            # Parsing sequences (X dataset) from one dataset 
+            for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
+                data[key]['X'].append(record)
+                data[key]['Y'].append(record.name.split('|')[2])
 
     # Shuffling the datasets
     for element in data.keys():

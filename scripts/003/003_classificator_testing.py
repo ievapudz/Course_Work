@@ -18,6 +18,7 @@ from torch.utils.data import TensorDataset
 from torch import nn
 from model_flow import train_epoch
 from model_flow import validation_epoch
+from model_flow import test_epoch
 from file_actions import print_tensor_elements
 
 BATCH_SIZE = 24
@@ -70,16 +71,19 @@ dataset_test_initial = load_tensor_from_NPZ(
 trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
 
 # Save the current dataset values to file
-print_tensor_elements(dataset_test_initial, ['y_test'], 'data/003/temperature_predictions_correlation.lst')
+print_tensor_elements(dataset_test_initial, ['y_test'], 'data/003/temperature_predictions_correlation_x.lst')
 
-convert_labels_to_binary(dataset_test_intial, ['y_test'])
+convert_labels_to_binary(dataset_test_initial, ['y_test'])
   
 test_dataset = TensorDataset(dataset_test_initial['x_test'], 
                              dataset_test_initial['y_test'])
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
 test_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE,
-           EPOCH_BATCH_SIZE, epoch, print_predictions=True)
+           EPOCH_BATCH_SIZE, 
+           ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
+           confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/', 
+           file_for_predictions='data/003/temperature_predictions_correlation_y.lst')
 
 print('Testing process has finished.')
 
