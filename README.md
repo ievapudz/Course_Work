@@ -454,7 +454,7 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_e
 |-------------|-----------------------------------|---------------------------|---------------------------|
 | training    |  284309 (288996)                  | 141602 (145128)           | 142707 (143868)           |
 | validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
-| testing     |  TBU (74508)                      | TBU                       | TBU                       |
+| testing     |  73663 (74508)                    | 37749 (38263)             | 35913 (36245)             |
 
 ## Correlation between training set true temperature labels and 003 predictions
 
@@ -476,12 +476,22 @@ conda activate py37_pandas
 
 This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program.
 
+The FASTA file with all embedded sequences (423127) from 003 dataset (`data/004/FASTA/004.fasta`) was composed:
+```
+./scripts/004/004_filtered_FASTA.py > data/004/FASTA/004.fasta
+```
+
 ```
 conda activate cd-hit
 
-cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i RuvCreferenceDB.fa -o RuvCreferenceDB.fa1
-cd-hit -d 0 -c 1 -T 0 -M 15000 -i RuvCreferenceDB.fa -o RuvCreferenceDB.fa1
+cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_90.fasta
+cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_100.fasta
 ```
+
+| File                            | # of clusters | 
+|---------------------------------|---------------|
+| data/004/FASTA/004_c_90.fasta   |      391795   |
+| data/004/FASTA/004_c_100.fasta  |      418958   |
 
 ## Tasks to do
 
