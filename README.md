@@ -456,6 +456,33 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_e
 | validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
 | testing     |  TBU (74508)                      | TBU                       | TBU                       |
 
+## Correlation between training set true temperature labels and 003 predictions
+
+After running the testing phase:
+```
+./scripts/003/003_classificator_testing.py
+```
+
+Two temporary files will be generated: `data/003/temperature_predictions_correlation_x.lst` and `data/003/temperature_predictions_correlation_y.lst`. These files will be used in `./scripts/003/003_correlation.sh` script, which
+can be run the following way:
+
+`conda` environment with `pandas` package installed is required for the script
+```
+conda activate py37_pandas
+./scripts/003/003_correlation.sh results/SLP/003/temperature_predictions_correlation.png 
+```
+
+### Dataset for SLP testing (004)
+
+This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program.
+
+```
+conda activate cd-hit
+
+cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i RuvCreferenceDB.fa -o RuvCreferenceDB.fa1
+cd-hit -d 0 -c 1 -T 0 -M 15000 -i RuvCreferenceDB.fa -o RuvCreferenceDB.fa1
+```
+
 ## Tasks to do
 
 - [x] Extract UniProt accession numbers from initial FASTA files.
@@ -491,9 +518,9 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_e
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 - [x] Download proteomes to HPC.
 - [x] Make rainbow-coloured ROC curves.
-- [ ] Generate 003 embeddings (mean) for 10-30 proportions of the training set (remaining, currently running 10-16).
-- [ ] Generate 003 embeddings (mean) for 3-7 proportions of the validation set (remaining, currently running 3-4).
-- [ ] Generate 003 embeddings (mean) for 1-8 proportions of the testing set.
+- [x] Generate 003 embeddings (mean) for 10-30 proportions of the training set (remaining, currently running 10-16).
+- [x] Generate 003 embeddings (mean) for 3-7 proportions of the validation set (remaining, currently running 3-4).
+- [x] Generate 003 embeddings (mean) for 1-8 proportions of the testing set.
 
 ## References
 
