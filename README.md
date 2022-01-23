@@ -474,12 +474,22 @@ conda activate py37_pandas
 
 ### Dataset for SLP testing (004)
 
-This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program.
+This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
+(version 4.8.1).
 
 The FASTA file with all embedded sequences (423127) from 003 dataset (`data/004/FASTA/004.fasta`) was composed:
 ```
 ./scripts/004/004_filtered_FASTA.py > data/004/FASTA/004.fasta
 ```
+
+The clusters were made using `cd-hit` program. 
+Option meanings :
+- -d - length of description in CLSTR file
+- -c - sequence identity threshold
+- -T - number of threads used
+- -M - maximum available memory (Mbyte)
+- -i - the name of an input file
+- -o - the name of an output file
 
 ```
 conda activate cd-hit
@@ -545,4 +555,6 @@ cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004
 5. Engqvist, Martin Karl Magnus. 2018. "Growth temperatures for 21,498 microorganisms (1.0.0)" [Data set]. Zenodo. https://doi.org/10.5281/zenodo.1175609
 
 6. Engqvist, M. K. 2018. "Correlating enzyme annotations with a large set of microbial growth temperatures reveals metabolic adaptations to growth at diverse temperatures." *BMC microbiology*, 18(1), 1-14. https://doi.org/10.1186/s12866-018-1320-7.
+
+7. Fu, L., Niu, B., Zhu, Z., Wu, S., & Li, W. (2012). CD-HIT: accelerated for clustering the next-generation sequencing data. Bioinformatics, 28(23), 3150-3152. https://academic.oup.com/bioinformatics/article/28/23/3150/192160?login=true
 
