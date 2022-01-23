@@ -12,10 +12,13 @@ Y_VALUES_LIST=data/003/temperature_predictions_correlation_y.lst
 OUT_PNG_FILE=$1
 OUT_TSV_FILE=./data/003/$(basename ${OUT_PNG_FILE} .png).tsv
 
+cat ${Y_VALUES_LIST} | tr '[]' ' ' > ${Y_VALUES_LIST}1
+mv ${Y_VALUES_LIST}1 ${Y_VALUES_LIST}
+
 touch ${OUT_TSV_FILE}
 echo -e "temperature\tprediction" > ${OUT_TSV_FILE}
 paste ${X_VALUES_LIST} ${Y_VALUES_LIST} | awk '{print $1/100"\t"$2}' >> ${OUT_TSV_FILE}
 
-rm ${X_VALUES_LIST} ${Y_VALUES_LIST}
+#rm ${X_VALUES_LIST} ${Y_VALUES_LIST}
 
 python3.7 ./scripts/003/003_plot_correlation.py ${OUT_TSV_FILE} ${OUT_PNG_FILE} 

@@ -145,15 +145,16 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     tensor_list = []
     epoch_outputs = []
+
+    if(file_for_predictions != ''):
+        file_handle = open(file_for_predictions, 'w')
+    
     # Iterate over the DataLoader for testing data
     for i, data in enumerate(test_loader, 0):
         # Get inputs
         inputs, targets = data
         targets = targets.reshape(batch_size, 1)
         targets = targets.to(torch.float32)
-
-        # Zero the gradients
-        optimizer.zero_grad()
 
         # Perform forward pass
         outputs = model(inputs)
@@ -166,17 +167,8 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
         tensor_list.append(targets)
 
         # Printing prediction values
-        if(file_for_predictions != ''):
-            file_handle = open(file_for_predictions, 'w')
-            for output in outputs:
-                file_handle.write(str(output))
-            file_handle.close()
-
-        # Perform backward pass
-        loss.backward()
-
-        # Perform optimization
-        optimizer.step()
+        for output in outputs:
+            file_handle.write(str(output)+"\n")
 
         # Summing up loss
         current_loss += loss.item()
@@ -194,4 +186,8 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
                 create_confusion_matrix(epoch_targets, epoch_outputs,
                                         confusion_matrix_file_dir+
                                         'testing_0_'+
-                                        str(i)+'.txt') 
+                                        str(i)+'.txt')
+
+    file_handle.close()
+
+ 
