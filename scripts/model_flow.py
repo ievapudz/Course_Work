@@ -7,7 +7,8 @@ import matplotlib as mpl
 from cycler import cycler
 import numpy
 
-def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_batch_size, epoch):
+def train_epoch(model, trainloader, loss_function, optimizer, batch_size, 
+                epoch_batch_size, epoch, print_predictions=False):
     # Set current loss value
     current_loss = 0.0
     
@@ -27,6 +28,11 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size, epoch_
         # Compute loss
         loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
+        
+        # Printing prediction values
+        if(print_predictions):
+            for output in outputs:
+                print(output)
         
         # Perform backward pass
         loss.backward()
@@ -69,7 +75,6 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
         tensor_list.append(targets)
 
         current_loss += loss.item()
-        #print(i, epoch_batch_size)
         if i % batch_size == (batch_size-1):
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
@@ -129,4 +134,63 @@ def create_confusion_matrix(targets, outputs, file_path=''):
             file_handle.write(result)
             file_handle.write(scores)
     
-    
+def test_epoch(model, test_loader, loss_function, optimizer, batch_size, 
+               epoch_batch_size,
+               ROC_curve_plot_file_dir='./results/',
+               confusion_matrix_file_dir='', 
+               file_for_predictions=''):
+    # Set current loss value
+    current_loss = 0.0
+
+    tensor_list = []
+    epoch_outputs = []
+    # Iterate over the DataLoader for testing data
+    for i, data in enumerate(test_loader, 0):
+        # Get inputs
+        inputs, targets = data
+        targets = targets.reshape(batch_size, 1)
+        targets = targets.to(torch.float32)
+
+        # Zero the gradients
+        optimizer.zero_grad()
+
+        # Perform forward pass
+        outputs = model(inputs)
+
+        # Compute loss
+        loss = loss_function(outputs, targets)
+        outputs = outputs.detach().numpy()
+
+        epoch_outputs.append(outputs)
+        tensor_list.append(targets)
+
+        # Printing prediction values
+        if(file_for_predictions != ''):
+            file_handle = open(file_for_predictions, 'w')
+            for output in outputs:
+                file_handle.write(str(output))
+            file_handle.close()
+
+        # Perform backward pass
+        loss.backward()
+
+        # Perform optimization
+        optimizer.step()
+
+        # Summing up loss
+        current_loss += loss.item()
+        if i % batch_size == (batch_size-1):
+            current_loss = 0.0
+
+        if i == epoch_batch_size:
+            epoch_targets = torch.cat(tensor_list, dim = 0)
+            plot_ROC_curve(epoch_targets, 1,
+                           numpy.array(epoch_outputs).flatten(),
+                           ROC_curve_plot_file_dir+'testing_0_'+
+                           str(i)+'.png')
+
+            if confusion_matrix_file_dir != '':
+                create_confusion_matrix(epoch_targets, epoch_outputs,
+                                        confusion_matrix_file_dir+
+                                        'testing_0_'+
+                                        str(i)+'.txt') 

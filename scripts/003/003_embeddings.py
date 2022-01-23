@@ -1,6 +1,8 @@
 #!/usr/bin/env python3.7
 
-# A script that has to be run after embeddings were generated
+# A script that saves training and validation embeddings to
+# NPZ file.
+# It has to be run after embeddings were generated.
 
 import sys
 import os
@@ -25,7 +27,6 @@ filter_sequences(data, 'train', data['train']['embeddings'])
 
 print("Filtering validation data")
 filter_sequences(data, 'validate', data['validate']['embeddings'])
-#filter_sequences(data, 'test', data['test']['embeddings'])
 
 print("Converting ESM embeddings (training) to tensor")
 [Xs_train_tensor, Ys_train_tensor] = get_ESM_embeddings_as_tensor(data, 
@@ -33,8 +34,6 @@ print("Converting ESM embeddings (training) to tensor")
 print("Converting ESM embeddings (validation) to tensor")
 [Xs_validate_tensor, Ys_validate_tensor] = get_ESM_embeddings_as_tensor(data, 
                                                                   ['validate'])
-#[Xs_test_tensor, Ys_test_tensor] = get_ESM_embeddings_as_tensor(data, ['test'])
-
 print("Saving tensors to NPZ file")
 save_tensors_as_NPZ([Xs_train_tensor, Ys_train_tensor, 
                      Xs_validate_tensor, Ys_validate_tensor], 

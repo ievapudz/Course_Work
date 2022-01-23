@@ -74,9 +74,20 @@ def save_MDE_as_TSV(data, keys, output_file_path):
         f.write(out_line)
     f.close()
 
+# This function loads Tensor data from the specified NPZ file
 def load_tensor_data_from_NPZ(NPZ_file_name, data_subset_keyword):
-    # This function loads Tensor data from the specified NPZ file
     with numpy.load(NPZ_file_name) as data_loaded:
         data_subset = data_loaded[data_subset_keyword]
     data_subset_tensor = torch.from_numpy(data_subset)
     return data_subset_tensor
+
+# A function that prints a list of tensors to file
+def print_tensor_elements(dataset, keys, out_file):
+    # dataset - a list of lists with tensors
+    # key - a list identifier
+    # out_file - the name of output list file
+    file_handle = open(out_file, 'w')
+    for key in keys:
+        for el in dataset[key]:
+            file_handle.write(str(el.item())+"\n")
+    file_handle.close()
