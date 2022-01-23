@@ -81,10 +81,11 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
             current_loss = 0.0
         if i == epoch_batch_size:
             epoch_targets = torch.cat(tensor_list, dim = 0)
-            plot_ROC_curve(epoch_targets, num_of_epochs, 
-			   numpy.array(epoch_outputs).flatten(), 
-			   ROC_curve_plot_file_dir+'validation_'+
-			   str(epoch)+'_'+str(i)+'.png')
+            if ROC_curve_plot_file_dir != '':
+                plot_ROC_curve(epoch_targets, num_of_epochs, 
+			       numpy.array(epoch_outputs).flatten(), 
+			       ROC_curve_plot_file_dir+'validation_'+
+			       str(epoch)+'_'+str(i)+'.png')
           
             if confusion_matrix_file_dir != '':
                 create_confusion_matrix(epoch_targets, epoch_outputs, 
