@@ -76,6 +76,31 @@ def visualise_multiple_PCA_species(data, keys, plotpath, classes, colormap):
     cb.ax.set_yticklabels(classes)
     plt.savefig(plotpath, dpi=300)
 
+def visualise_multiple_MDE_PCA(data, keys, plotpath, colormap, is_read_file_name_id=True):
+    # data - dictionary that was created by filter_sequences function.
+    # keys - array of the sets that need to be visualised in one plot.
+    # plotpath - path to the output plot.
+    Ys = []
+    Xs = []
+
+    for key in keys:
+        EMB_PATH = data[key]['embeddings']
+        for i in range(len(data[key]['Y_filtered'])):
+            Ys.append(data[key]['Y_filtered'][i])
+            if is_read_file_name_id:
+                file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            else:
+                file_name = data[key]['X_filtered'][i].id
+            fn = f'{EMB_PATH}/{file_name}.pt'
+            embs = torch.load(fn)
+            Xs.append(embs['mean_representations'][EMB_LAYER])
+    
+    Xs = torch.stack(Xs, dim=0).numpy()
+    Xs_torch = None
+    Xs_torch = torch.from_numpy(Xs)
+    pca_embedding = pymde.pca(Xs_torch, 1280)
+    pymde.plot(pca_embedding, color_by=Ys, savepath=plotpath, color_map=colormap, figsize_inches=(11, 10), marker_size=20.0)
+
 def visualise_multiple_MDE(data, keys, plotpath, colormap, is_read_file_name_id=True):
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
