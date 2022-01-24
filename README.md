@@ -498,10 +498,11 @@ cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/0
 cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_100.fasta
 ```
 
-| File                            | # of clusters | 
-|---------------------------------|---------------|
-| data/004/FASTA/004_c_90.fasta   |      391795   |
-| data/004/FASTA/004_c_100.fasta  |      418958   |
+| File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
+|---------------------------------|---------------|------------------------|------------------------|
+| data/004/FASTA/004_c_90.fasta   |      391795   |                     51 |                    111 |
+| data/004/FASTA/004_c_100.fasta  |      418958   |                    TBU |                    TBU |
+
 
 ## Tasks to do
 
