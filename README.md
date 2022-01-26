@@ -394,13 +394,13 @@ tail -n 111 > data/003/class_0_111_proteomes.lst
 The script `scripts/003_preembeddings_v2.sh` takes in a list of proteomes of a certain class, the intial index,
 the number of files to take from the list, and the prefix of FASTA files (the directory, from which the proteomes will be taken).
 ```
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/ | grep '>' > data/003/FASTA/training_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ | grep '>' > data/003/FASTA/validation_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ | grep '>' > data/003/FASTA/testing_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 0 77 data/003/FASTA/  > data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 77 17 data/003/FASTA/ > data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_1_111_proteomes.lst 94 17 data/003/FASTA/ > data/003/FASTA/testing_v2.fasta 
 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ | grep '>' >> data/003/FASTA/training_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ | grep '>' >> data/003/FASTA/validation_v2.fasta 
-./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ | grep '>' >> data/003/FASTA/testing_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 0 32 data/003/FASTA/ >> data/003/FASTA/training_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 32 8 data/003/FASTA/ >> data/003/FASTA/validation_v2.fasta 
+./scripts/003_preembeddings_v2.sh data/003/class_0_111_proteomes.lst 40 11 data/003/FASTA/ >> data/003/FASTA/testing_v2.fasta 
 ```
 
 | Set         | # of proteomes (overall, class_0, class_1) | # of proteins (overall, class_0, class_1) | 
@@ -412,10 +412,15 @@ the number of files to take from the list, and the prefix of FASTA files (the di
 
 FASTA-splitter program was used to divide each of the sets into portions:
 ```
-../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/  data/003/FASTA/training_v2.fasta
+../programs/fasta-splitter.pl --n-parts 30 --out-dir data/003/FASTA/training_v2/ \ 
+    --nopad data/003/FASTA/training_v2/training_v2.fasta
+../programs/fasta-splitter.pl --n-parts 7 --out-dir data/003/FASTA/validation_v2/ \
+    --nopad data/003/FASTA/validation_v2/validation_v2.fasta
+../programs/fasta-splitter.pl --n-parts 8 --out-dir data/003/FASTA/testing_v2/ \ 
+    --nopad data/003/FASTA/testing_v2/testing_v2.fasta
 ```
 
-### Generating embeddings
+### Generating embeddings (testing slurm)
 
 It is required to make sure that directories for embeddings are created.
 
@@ -434,6 +439,70 @@ sbatch scripts/003_embeddings.sh
 ```
 
 For the first set 975/1000 sequence embeddings were generated.
+
+### Generating embeddings (003 v2)
+
+```
+sbatch --array=1-30 --output=training_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_training_v2.sh
+
+sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_validation_v2.sh
+
+sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_testing_v2.sh
+```
+
+| Set         | # of embeddings (of all proteins) | # of embeddings (class_0) | # of embeddings (class_1) |
+|-------------|-----------------------------------|---------------------------|---------------------------|
+| training    |  284309 (288996)                  | 141602 (145128)           | 142707 (143868)           |
+| validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
+| testing     |  73663 (74508)                    | 37749 (38263)             | 35913 (36245)             |
+
+## Correlation between training set true temperature labels and 003 predictions
+
+After running the testing phase:
+```
+./scripts/003/003_classificator_testing.py
+```
+
+Two temporary files will be generated: `data/003/temperature_predictions_correlation_x.lst` and `data/003/temperature_predictions_correlation_y.lst`. These files will be used in `./scripts/003/003_correlation.sh` script, which
+can be run the following way:
+
+`conda` environment with `pandas` package installed is required for the script
+```
+conda activate py37_pandas
+./scripts/003/003_correlation.sh results/SLP/003/temperature_predictions_correlation.png 
+```
+
+### Dataset for SLP testing (004)
+
+This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
+(version 4.8.1).
+
+The FASTA file with all embedded sequences (423127) from 003 dataset (`data/004/FASTA/004.fasta`) was composed:
+```
+./scripts/004/004_filtered_FASTA.py > data/004/FASTA/004.fasta
+```
+
+The clusters were made using `cd-hit` program. 
+Option meanings :
+- -d - length of description in CLSTR file
+- -c - sequence identity threshold
+- -T - number of threads used
+- -M - maximum available memory (Mbyte)
+- -i - the name of an input file
+- -o - the name of an output file
+
+```
+conda activate cd-hit
+
+cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_90.fasta
+cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_100.fasta
+```
+
+| File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
+|---------------------------------|---------------|------------------------|------------------------|
+| data/004/FASTA/004_c_90.fasta   |      391795   |                     51 |                    111 |
+| data/004/FASTA/004_c_100.fasta  |      418958   |                    TBU |                    TBU |
+
 
 ## Tasks to do
 
@@ -470,6 +539,9 @@ For the first set 975/1000 sequence embeddings were generated.
 - [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
 - [x] Download proteomes to HPC.
 - [x] Make rainbow-coloured ROC curves.
+- [x] Generate 003 embeddings (mean) for 10-30 proportions of the training set (remaining, currently running 10-16).
+- [x] Generate 003 embeddings (mean) for 3-7 proportions of the validation set (remaining, currently running 3-4).
+- [x] Generate 003 embeddings (mean) for 1-8 proportions of the testing set.
 
 ## References
 
@@ -484,4 +556,6 @@ For the first set 975/1000 sequence embeddings were generated.
 5. Engqvist, Martin Karl Magnus. 2018. "Growth temperatures for 21,498 microorganisms (1.0.0)" [Data set]. Zenodo. https://doi.org/10.5281/zenodo.1175609
 
 6. Engqvist, M. K. 2018. "Correlating enzyme annotations with a large set of microbial growth temperatures reveals metabolic adaptations to growth at diverse temperatures." *BMC microbiology*, 18(1), 1-14. https://doi.org/10.1186/s12866-018-1320-7.
+
+7. Fu, L., Niu, B., Zhu, Z., Wu, S., & Li, W. (2012). CD-HIT: accelerated for clustering the next-generation sequencing data. Bioinformatics, 28(23), 3150-3152. https://academic.oup.com/bioinformatics/article/28/23/3150/192160?login=true
 
