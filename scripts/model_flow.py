@@ -82,7 +82,13 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
             
     epoch_targets = torch.cat(tensor_list, dim = 0)
     if ROC_curve_plot_file_dir != '':
-        plot_ROC_curve(epoch_targets, num_of_epochs, 
+        if epoch == num_of_epochs-1:
+            plot_ROC_curve(epoch_targets, num_of_epochs,
+                               numpy.array(epoch_outputs).flatten(),
+                               ROC_curve_plot_file_dir+'validation_'+
+                               str(epoch)+'_'+str(i)+'.png', True)
+        else:
+            plot_ROC_curve(epoch_targets, num_of_epochs, 
 			       numpy.array(epoch_outputs).flatten(), 
 			       ROC_curve_plot_file_dir+'validation_'+
 			       str(epoch)+'_'+str(i)+'.png')
@@ -93,7 +99,7 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
                                 'validation_'+str(epoch)+'_'+
                                 str(i)+'.txt')
 
-def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
+def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name, clear_plot=False):
     # A function that plots ROC curve
     fpr, tpr, _ = metrics.roc_curve(targets, outputs)
     iterated_colors = [plt.get_cmap('jet')(1. * i/num_of_epochs) for i in range(num_of_epochs)]
@@ -102,6 +108,8 @@ def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
     plt.savefig(fig_name)
+    if clear_plot:
+        plt.clf()
     
 def create_confusion_matrix(targets, outputs, file_path=''):
     # targets - 1D tensor
@@ -179,8 +187,8 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
     plot_ROC_curve(epoch_targets, 1,
                    numpy.array(epoch_outputs).flatten(),
                    ROC_curve_plot_file_dir+'testing_0_'+
-                   str(i)+'.png')
-
+                   str(i)+'.png', True)
+    
     if confusion_matrix_file_dir != '':
         create_confusion_matrix(epoch_targets, epoch_outputs,
                                 confusion_matrix_file_dir+
