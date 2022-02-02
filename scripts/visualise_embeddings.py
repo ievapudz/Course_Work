@@ -124,6 +124,7 @@ def visualise_multiple_MDE(data, keys, plotpath, colormap, is_read_file_name_id=
     Xs_torch = None
     Xs_torch = torch.from_numpy(Xs)
     embedding = pymde.preserve_neighbors(Xs_torch, constraint=pymde.Standardized()).embed(verbose=True)
+    pymde.rotate(embedding, 90)
     pymde.plot(embedding, color_by=Ys, savepath=plotpath, color_map=colormap, figsize_inches=(11, 10), marker_size=20.0)
     
 def visualise_multiple_MDE_species(data, keys, plotpath, colormap):
