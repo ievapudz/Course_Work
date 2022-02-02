@@ -450,7 +450,7 @@ sbatch --array=1-7 --output=validation_v2.part-%a.slurm-%A_%a.out scripts/003/00
 sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_embeddings_testing_v2.sh
 ```
 
-| Set         | # of embeddings (of all proteins) | # of embeddings (class_0) | # of embeddings (class_1) |
+| Set         | # of all proteins embeddings      | # of class_0 embeddings   | # of class_1 embeddings   |
 |-------------|-----------------------------------|---------------------------|---------------------------|
 | training    |  284309 (288996)                  | 141602 (145128)           | 142707 (143868)           |
 | validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
