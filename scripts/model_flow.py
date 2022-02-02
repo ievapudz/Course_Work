@@ -79,19 +79,19 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
-        if i == epoch_batch_size:
-            epoch_targets = torch.cat(tensor_list, dim = 0)
-            if ROC_curve_plot_file_dir != '':
-                plot_ROC_curve(epoch_targets, num_of_epochs, 
+            
+    epoch_targets = torch.cat(tensor_list, dim = 0)
+    if ROC_curve_plot_file_dir != '':
+        plot_ROC_curve(epoch_targets, num_of_epochs, 
 			       numpy.array(epoch_outputs).flatten(), 
 			       ROC_curve_plot_file_dir+'validation_'+
 			       str(epoch)+'_'+str(i)+'.png')
           
-            if confusion_matrix_file_dir != '':
-                create_confusion_matrix(epoch_targets, epoch_outputs, 
-                                        confusion_matrix_file_dir+
-                                        'validation_'+str(epoch)+'_'+
-                                        str(i)+'.txt')
+    if confusion_matrix_file_dir != '':
+        create_confusion_matrix(epoch_targets, epoch_outputs, 
+                                confusion_matrix_file_dir+
+                                'validation_'+str(epoch)+'_'+
+                                str(i)+'.txt')
 
 def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
     # A function that plots ROC curve
@@ -175,18 +175,17 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
         if i % batch_size == (batch_size-1):
             current_loss = 0.0
 
-        if i == epoch_batch_size:
-            epoch_targets = torch.cat(tensor_list, dim = 0)
-            plot_ROC_curve(epoch_targets, 1,
-                           numpy.array(epoch_outputs).flatten(),
-                           ROC_curve_plot_file_dir+'testing_0_'+
-                           str(i)+'.png')
+    epoch_targets = torch.cat(tensor_list, dim = 0)
+    plot_ROC_curve(epoch_targets, 1,
+                   numpy.array(epoch_outputs).flatten(),
+                   ROC_curve_plot_file_dir+'testing_0_'+
+                   str(i)+'.png')
 
-            if confusion_matrix_file_dir != '':
-                create_confusion_matrix(epoch_targets, epoch_outputs,
-                                        confusion_matrix_file_dir+
-                                        'testing_0_'+
-                                        str(i)+'.txt')
+    if confusion_matrix_file_dir != '':
+        create_confusion_matrix(epoch_targets, epoch_outputs,
+                                confusion_matrix_file_dir+
+                                'testing_0_'+
+                                str(i)+'.txt')
 
     file_handle.close()
 

@@ -58,7 +58,7 @@ for epoch in range(0, NUM_OF_EPOCHS):
                 EPOCH_BATCH_SIZE, epoch)
     validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, 
-                ROC_curve_plot_file_dir='',
+                ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
                 confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/')
 
 print('Training and validation process has finished.')
