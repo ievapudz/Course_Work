@@ -93,13 +93,27 @@ def print_tensor_elements(dataset, keys, out_file):
     file_handle.close()
 
 # A function that prints embedding with its temperature label as CSV
-def print_tensor_as_CSV(data, keys):
+def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
     # keys - an array with a key pair: ['x_set', 'y_set']
-    for i in range(len(data[keys[0]])):
-        record = get_temperature_label_as_CSV(data, i, keys[1], False) + get_embeddings_tensor_as_CSV(data, i, keys[0], True)
+    for i in range(len(data_tensor[keys_tensor[0]])):
+        record = get_id_as_CSV(data, i, key_data, 0) + get_id_as_CSV(data, i, key_data, 1) + get_temperature_label_as_CSV(data_tensor, i, keys_tensor[1], False) + get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], True)
         print(record)
 
+def get_id_as_CSV(data, index, key, id_index, last_value=False):
+    # data - an object with sequences in FASTA format
+    # index - the index of record in data object
+    # key - the chosen key of an inside of data object
+    # id_index - index that determines which part of FASTA header is taken 
+    #        0 - taxonomy ID
+    #        1 - protein ID
+    #        2 - temperature label
+    identificator = data[key]['X'][index].name.split('|')[id_index]
+    if last_value:
+        return identificator
+    else:
+        return identificator + ', '
+        
 # A function that processes embeddings to be represented in CSV format
 def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, last_value=False):
     record = ''
@@ -108,11 +122,11 @@ def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, last_value=F
         record = record + embeddings_element
 
         if j == 1279 and not last_value:
-            record = record + ", "
+            record = record + ', '
         elif j == 1279 and last_value:
             record = record 
         else:
-            record = record + ", "
+            record = record + ', '
 
     return record
 
