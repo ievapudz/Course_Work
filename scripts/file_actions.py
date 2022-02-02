@@ -76,10 +76,10 @@ def save_MDE_as_TSV(data, keys, output_file_path):
 
 # This function loads Tensor data from the specified NPZ file
 def load_tensor_data_from_NPZ(NPZ_file_name, data_subset_keyword):
+    dataset = {}
     with numpy.load(NPZ_file_name) as data_loaded:
-        data_subset = data_loaded[data_subset_keyword]
-    data_subset_tensor = torch.from_numpy(data_subset)
-    return data_subset_tensor
+        dataset[data_subset_keyword] = torch.from_numpy(data_loaded[data_subset_keyword])
+    return dataset
 
 # A function that prints a list of tensors to file
 def print_tensor_elements(dataset, keys, out_file):
@@ -91,3 +91,35 @@ def print_tensor_elements(dataset, keys, out_file):
         for el in dataset[key]:
             file_handle.write(str(el.item())+"\n")
     file_handle.close()
+
+# A function that prints embedding with its temperature label as CSV
+def print_tensor_as_CSV(data, keys):
+    # data - a dictionary that contains keys for which values are embeddings and temperature label
+    # keys - an array with a key pair: ['x_set', 'y_set']
+    for i in range(len(data[keys[0]])):
+        record = get_temperature_label_as_CSV(data, i, keys[1], False) + get_embeddings_tensor_as_CSV(data, i, keys[0], True)
+        print(record)
+
+# A function that processes embeddings to be represented in CSV format
+def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, last_value=False):
+    record = ''
+    for j in range(1280):
+        embeddings_element = f"{data[key][embedding_tensor_index][j].item():{6}.{3}}"
+        record = record + embeddings_element
+
+        if j == 1279 and not last_value:
+            record = record + ", "
+        elif j == 1279 and last_value:
+            record = record 
+        else:
+            record = record + ", "
+
+    return record
+
+# A function that processes temperature labels to be represented in CSV format
+def get_temperature_label_as_CSV(data, embedding_tensor_index, key, last_value=True):
+    temperature_label = str(data[key][embedding_tensor_index].item())
+    if last_value:
+        return temperature_label
+    else:
+        return temperature_label + ', '
