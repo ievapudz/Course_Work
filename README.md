@@ -456,6 +456,23 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_e
 | validation  |  65156 (65820)                    | 32793 (33204)             | 32363 (32616)             |
 | testing     |  73663 (74508)                    | 37749 (38263)             | 35913 (36245)             |
 
+### Saving embeddings to CSV file (003 v2)
+
+In order to make embeddings data more universal for processing with various software tools, it was decided 
+to save embeddings in CSV files.
+
+```
+./scripts/003/003_convert_NPZ_to_CSV_training.py > data/003/CSV/training_v2.csv
+./scripts/003/003_convert_NPZ_to_CSV_validation.py > data/003/CSV/validation_v2.csv
+./scripts/003/003_convert_NPZ_to_CSV_testing.py > data/003/CSV/testing_v2.csv
+```
+
+| File (in `data/003/CSV`) | Size (GB)   |
+|--------------------------|-------------|
+| training_v2.csv          | 3.034       |
+| validation_v2.csv        | 0.696       |
+| testing_v2.csv           | 0.786       |
+
 ## Correlation between training set true temperature labels and 003 predictions
 
 After running the testing phase:
