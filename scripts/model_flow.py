@@ -156,6 +156,7 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     if(file_for_predictions != ''):
         file_handle = open(file_for_predictions, 'w')
+        file_handle_2 = open('data/003/temperature_correlation_x_binary.lst', 'w')
     
     # Iterate over the DataLoader for testing data
     for i, data in enumerate(test_loader, 0):
@@ -173,6 +174,9 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
         epoch_outputs.append(outputs)
         tensor_list.append(targets)
+
+        for target in targets:
+            file_handle_2.write(str(target)+"\n")
 
         # Printing prediction values
         for output in outputs:
