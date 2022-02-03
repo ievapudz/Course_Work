@@ -459,7 +459,12 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out scripts/003/003_e
 ### Saving embeddings to CSV file (003 v2)
 
 In order to make embeddings data more universal for processing with various software tools, it was decided 
-to save embeddings in CSV files.
+to save embeddings in CSV files. The files are headerless. The values are listed in order of:
+- #0 Taxonomy ID of the organism, to which the sequence belongs
+- #1 Accession ID of the sequence
+- #2 Length of the sequence
+- #3 Temperature label
+- #4 - #1283 Components of embeddings 
 
 ```
 ./scripts/003/003_convert_NPZ_to_CSV_training.py > data/003/CSV/training_v2.csv
@@ -473,7 +478,7 @@ to save embeddings in CSV files.
 | validation_v2.csv        | 0.696       |
 | testing_v2.csv           | 0.786       |
 
-## Correlation between training set true temperature labels and 003 predictions
+### Correlation between training set true temperature labels and 003 predictions
 
 After running the testing phase:
 ```
@@ -488,6 +493,29 @@ can be run the following way:
 conda activate py37_pandas
 ./scripts/003/003_correlation.sh results/SLP/003/temperature_predictions_correlation.png 
 ```
+
+Additionally, there was a table created with added lengths:
+
+```
+cat data/003/CSV/testing_v2.csv | tr ',' '\t' | awk '{print $3}' >> data/003/testing_lengths.lst
+
+paste data/003/temperature_predictions_correlation.tsv data/003/testing_lengths.lst | \
+head -n -6 > data/003/temperature_predictions_correlation_with_lengths.tsv
+```
+
+TSV files were later on moved to the directory `data/003/TSV`.
+
+### Matthew's correlation coefficient (MCC) for 003 v2 testing
+
+A function `calculate_MCC()` in `scripts/file_actions.py` was implemented to calculate MCC. The function 
+takes in a TSV file in which there are two columns: a column of true temperature labels (normalised by division of 100)
+and a column of predictions (values from 0 to 1). The function was called in script `scripts/003/003_calculate_MCC.py`.
+
+```
+./scripts/003/003_calculate_MCC.py data/003/TSV/temperature_predictions_correlation_with_lengths.tsv 
+```
+
+MCC for 003 v2 testing was: 0.8478.
 
 ### Dataset for SLP testing (004)
 
