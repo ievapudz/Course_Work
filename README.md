@@ -138,7 +138,7 @@ The simplest model was composed of one linear layer that takes up all 1280 value
 
 There were two alternatives applied: 
 - Sigmoid activation and BCE loss functions were called separately
-- BCEWithLogitsLoss function that wraps Softmax and BCE loss functions together. According to ... this alternative is more stable than the previous one.
+- BCEWithLogitsLoss function that wraps sigmoid and BCE loss functions together. According to [Runebook.dev](https://runebook.dev/en/docs/pytorch/generated/torch.nn.bcewithlogitsloss), this alternative is more stable than the previous one.
 
 The whole workflow will be in `scripts/classificator.py`.
 Data processing functions are placed in `scripts/model_dataset_processing.py`.
