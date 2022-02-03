@@ -24,5 +24,5 @@ filter_sequences(data, 'train', data['train']['embeddings'])
 [Xs_train_tensor, Ys_train_tensor] = get_ESM_embeddings_as_tensor(data, 
                                                                   ['train'])
 
-data_tensor = { 'x_training': Xs_train_tensor, 'y_train': Ys_train_tensor }
+data_tensor = { 'x_train': Xs_train_tensor, 'y_train': Ys_train_tensor }
 print_tensor_as_CSV(data, data_tensor, 'train', ['x_train', 'y_train'])

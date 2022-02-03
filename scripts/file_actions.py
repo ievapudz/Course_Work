@@ -2,6 +2,8 @@ import os
 import numpy
 import pymde
 import torch
+import csv
+import math
 from Bio import SeqIO
 from dataset_processing import get_ESM_embeddings_as_list_with_ids
 from dataset_processing import get_tensor_from_list
@@ -97,9 +99,21 @@ def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
     # keys - an array with a key pair: ['x_set', 'y_set']
     for i in range(len(data_tensor[keys_tensor[0]])):
-        record = get_id_as_CSV(data, i, key_data, 0) + get_id_as_CSV(data, i, key_data, 1) + get_temperature_label_as_CSV(data_tensor, i, keys_tensor[1], False) + get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], True)
+        record = get_id_as_CSV(data, i, key_data, 0) + get_id_as_CSV(data, i, key_data, 1) + get_sequence_length_as_CSV(data, i, key_data) + get_temperature_label_as_CSV(data_tensor, i, keys_tensor[1], False) + get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], True)
         print(record)
 
+# A function that returns the sequence length for CSV
+def get_sequence_length_as_CSV(data, index, key, last_value=False):
+    # data - an object with sequences in FASTA format
+    # index - the index of record in data object
+    # key - the chosen key of an inside of data object
+    sequence_length = str(len(data[key]['X'][index].seq))
+    if last_value:
+        return sequence_length
+    else:
+        return sequence_length + ', '
+
+# A function that returns the needed identificator (property) of the sequence from the header
 def get_id_as_CSV(data, index, key, id_index, last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
@@ -137,3 +151,27 @@ def get_temperature_label_as_CSV(data, embedding_tensor_index, key, last_value=T
         return temperature_label
     else:
         return temperature_label + ', '
+
+# A function that calculates Matthew's correlation coefficient
+def calculate_MCC(predictions_file_name, true_labels_index, prediction_index, separator="\t", has_header=True):
+    TP = 0
+    TN = 0
+    FP = 0
+    FN = 0
+    counter = 0
+    with open(predictions_file_name) as file:
+        predictions_file = csv.reader(file, delimiter=separator)
+        for line in predictions_file:
+            if counter > 0:
+                if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) >= 0.5:
+                    TP += 1
+                if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) < 0.5:
+                    TN += 1
+                if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) >= 0.5:
+                    FP += 1
+                if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) < 0.5:
+                    FN += 1 
+            counter = counter + 1
+    file.close()
+    MCC = (TP*TN-FP*FN)/(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
+    return MCC
