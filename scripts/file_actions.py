@@ -2,6 +2,8 @@ import os
 import numpy
 import pymde
 import torch
+import csv
+import math
 from Bio import SeqIO
 from dataset_processing import get_ESM_embeddings_as_list_with_ids
 from dataset_processing import get_tensor_from_list
@@ -149,3 +151,27 @@ def get_temperature_label_as_CSV(data, embedding_tensor_index, key, last_value=T
         return temperature_label
     else:
         return temperature_label + ', '
+
+# A function that calculates Matthew's correlation coefficient
+def calculate_MCC(predictions_file_name, true_labels_index, prediction_index, separator="\t", has_header=True):
+    TP = 0
+    TN = 0
+    FP = 0
+    FN = 0
+    counter = 0
+    with open(predictions_file_name) as file:
+        predictions_file = csv.reader(file, delimiter=separator)
+        for line in predictions_file:
+            if counter > 0:
+                if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) >= 0.5:
+                    TP += 1
+                if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) < 0.5:
+                    TN += 1
+                if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) >= 0.5:
+                    FP += 1
+                if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) < 0.5:
+                    FN += 1 
+            counter = counter + 1
+    file.close()
+    MCC = (TP*TN-FP*FN)/(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
+    return MCC
