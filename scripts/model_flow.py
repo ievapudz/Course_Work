@@ -201,4 +201,3 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     file_handle.close()
 
- 
