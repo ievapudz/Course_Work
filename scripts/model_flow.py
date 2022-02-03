@@ -79,21 +79,27 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
             print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
-        if i == epoch_batch_size:
-            epoch_targets = torch.cat(tensor_list, dim = 0)
-            if ROC_curve_plot_file_dir != '':
-                plot_ROC_curve(epoch_targets, num_of_epochs, 
+            
+    epoch_targets = torch.cat(tensor_list, dim = 0)
+    if ROC_curve_plot_file_dir != '':
+        if epoch == num_of_epochs-1:
+            plot_ROC_curve(epoch_targets, num_of_epochs,
+                               numpy.array(epoch_outputs).flatten(),
+                               ROC_curve_plot_file_dir+'validation_'+
+                               str(epoch)+'_'+str(i)+'.png', True)
+        else:
+            plot_ROC_curve(epoch_targets, num_of_epochs, 
 			       numpy.array(epoch_outputs).flatten(), 
 			       ROC_curve_plot_file_dir+'validation_'+
 			       str(epoch)+'_'+str(i)+'.png')
           
-            if confusion_matrix_file_dir != '':
-                create_confusion_matrix(epoch_targets, epoch_outputs, 
-                                        confusion_matrix_file_dir+
-                                        'validation_'+str(epoch)+'_'+
-                                        str(i)+'.txt')
+    if confusion_matrix_file_dir != '':
+        create_confusion_matrix(epoch_targets, epoch_outputs, 
+                                confusion_matrix_file_dir+
+                                'validation_'+str(epoch)+'_'+
+                                str(i)+'.txt')
 
-def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
+def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name, clear_plot=False):
     # A function that plots ROC curve
     fpr, tpr, _ = metrics.roc_curve(targets, outputs)
     iterated_colors = [plt.get_cmap('jet')(1. * i/num_of_epochs) for i in range(num_of_epochs)]
@@ -102,6 +108,8 @@ def plot_ROC_curve(targets, num_of_epochs, outputs, fig_name):
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
     plt.savefig(fig_name)
+    if clear_plot:
+        plt.clf()
     
 def create_confusion_matrix(targets, outputs, file_path=''):
     # targets - 1D tensor
@@ -148,6 +156,7 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     if(file_for_predictions != ''):
         file_handle = open(file_for_predictions, 'w')
+        file_handle_2 = open('data/003/temperature_correlation_x_binary.lst', 'w')
     
     # Iterate over the DataLoader for testing data
     for i, data in enumerate(test_loader, 0):
@@ -166,6 +175,9 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
         epoch_outputs.append(outputs)
         tensor_list.append(targets)
 
+        for target in targets:
+            file_handle_2.write(str(target)+"\n")
+
         # Printing prediction values
         for output in outputs:
             file_handle.write(str(output)+"\n")
@@ -175,19 +187,17 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
         if i % batch_size == (batch_size-1):
             current_loss = 0.0
 
-        if i == epoch_batch_size:
-            epoch_targets = torch.cat(tensor_list, dim = 0)
-            plot_ROC_curve(epoch_targets, 1,
-                           numpy.array(epoch_outputs).flatten(),
-                           ROC_curve_plot_file_dir+'testing_0_'+
-                           str(i)+'.png')
-
-            if confusion_matrix_file_dir != '':
-                create_confusion_matrix(epoch_targets, epoch_outputs,
-                                        confusion_matrix_file_dir+
-                                        'testing_0_'+
-                                        str(i)+'.txt')
+    epoch_targets = torch.cat(tensor_list, dim = 0)
+    plot_ROC_curve(epoch_targets, 1,
+                   numpy.array(epoch_outputs).flatten(),
+                   ROC_curve_plot_file_dir+'testing_0_'+
+                   str(i)+'.png', True)
+    
+    if confusion_matrix_file_dir != '':
+        create_confusion_matrix(epoch_targets, epoch_outputs,
+                                confusion_matrix_file_dir+
+                                'testing_0_'+
+                                str(i)+'.txt')
 
     file_handle.close()
 
- 
