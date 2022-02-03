@@ -1,0 +1,4 @@
+data/003/EMB_ESM1b/
+data/003/NPZ/*.npz
+data/003/FASTA/
+scripts/__pycache__/
