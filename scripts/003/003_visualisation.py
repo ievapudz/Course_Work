@@ -13,6 +13,7 @@ from Bio import SeqIO
 from dataset_processing import filter_sequences
 from visualise_embeddings import visualise_multiple_MDE_PCA
 from visualise_embeddings import visualise_multiple_MDE
+from visualise_embeddings import visualise_multiple_PCA
 from file_actions import parse_dataset
 from file_actions import generate_embeddings
 from matplotlib.colors import ListedColormap
@@ -43,12 +44,14 @@ data = {
 
 visualisation_file_path = 'data/003/visualisation_v2/'
 
-keys = ['003_train_v2', '003_test_v2']
+keys = ['003_train_v2', '003_validate_v2', '003_test_v2']
 for key in keys:
     print("Parsing dataset: "+key)
     parse_dataset(data, key, 2)
     print("Filtering sequences: "+key)
     filter_sequences(data, key, data[key]['embeddings'])
+    print("Visualising PCA: "+key)
+    visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA.png", two_color_cmap, False)
     print("Visualising MDE PCA: "+key)
     visualise_multiple_MDE_PCA(data, [key], visualisation_file_path+key+"_MDE_PCA.png", two_color_cmap, False)
     print("Visualising MDE: "+key)
