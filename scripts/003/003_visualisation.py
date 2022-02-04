@@ -44,7 +44,7 @@ data = {
 
 visualisation_file_path = 'data/003/visualisation_v2/'
 
-keys = ['003_test_v2']
+keys = ['003_train_v2', '003_validate_v2', '003_test_v2']
 for key in keys:
     print("Parsing dataset: "+key)
     parse_dataset(data, key, 2)
