@@ -107,7 +107,7 @@ def get_sequence_length_as_CSV(data, index, key, last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
-    sequence_length = str(len(data[key]['X'][index].seq))
+    sequence_length = str(len(data[key]['X_filtered'][index].seq))
     if last_value:
         return sequence_length
     else:
@@ -122,7 +122,8 @@ def get_id_as_CSV(data, index, key, id_index, last_value=False):
     #        0 - taxonomy ID
     #        1 - protein ID
     #        2 - temperature label
-    identificator = data[key]['X'][index].name.split('|')[id_index]
+    identificator = data[key]['X_filtered'][index].name.split('|')[id_index]
+    
     if last_value:
         return identificator
     else:
@@ -147,6 +148,7 @@ def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, last_value=F
 # A function that processes temperature labels to be represented in CSV format
 def get_temperature_label_as_CSV(data, embedding_tensor_index, key, last_value=True):
     temperature_label = str(data[key][embedding_tensor_index].item())
+    
     if last_value:
         return temperature_label
     else:
