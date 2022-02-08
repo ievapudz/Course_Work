@@ -28,4 +28,3 @@ print("Converting ESM embeddings (testing) to tensor")
 print("Saving tensors to NPZ file")
 save_tensors_as_NPZ([Xs_test_tensor, Ys_test_tensor], ['x_test', 'y_test'], 
                     'data/003/NPZ/testing_embeddings_v2.npz')
-
