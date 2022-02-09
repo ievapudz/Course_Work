@@ -46,8 +46,6 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size,
             print('Loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
-        #if i == epoch_batch_size:
-        #    plot_ROC_curve(targets, number_of_epochs, outputs, './results/SLP/003/ROC/training_'+str(epoch)+'_'+str(i)+'.png')
 
 def validation_epoch(model, validateloader, loss_function, batch_size, 
 		     epoch_batch_size, num_of_epochs, epoch, 
