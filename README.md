@@ -305,7 +305,7 @@ ggrep -oP '/proteomes/UP.........' data/003/HTML/*.html > data/003/proteome_UniP
 - not all organisms have got a proteome in UniProt database (result contained no UP identifier)
 - not all organisms have got a reference proteome
 - there are excluded proteomes shown in the results page (these proteomes should be filtered out)
-- there are proteomes that belong different bacteria strains
+- there are proteomes that belong to different bacteria strains
 
 ### Attempt #3 to fetch UniParc IDs
 
@@ -477,6 +477,15 @@ to save embeddings in CSV files. The files are headerless. The values are listed
 | training_v2.csv          | 3.034       |
 | validation_v2.csv        | 0.696       |
 | testing_v2.csv           | 0.786       |
+
+Checking of file validity was done using commands:
+```
+cat data/003/CSV/training_v2.csv | tr ',' '\t' | awk '{ print $1, $4 }' | sort -u | wc -l
+cat data/003/CSV/validation_v2.csv | tr ',' '\t' | awk '{ print $1, $4 }' | sort -u | wc -l
+cat data/003/CSV/testing_v2.csv | tr ',' '\t' | awk '{ print $1, $4 }' | sort -u | wc -l
+```
+
+The output matches the number of proteomes devoted for the portion of the model dataset.
 
 ### Correlation between training set true temperature labels and 003 predictions
 
