@@ -46,7 +46,7 @@ torch.manual_seed(42)
 regressor = Regressor()
 
 # Define the loss function (with activation function) and optimizer
-loss_function = nn.L1Loss()
+loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(regressor.parameters(), lr=1e-4)
 
 for epoch in range(0, NUM_OF_EPOCHS):

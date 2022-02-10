@@ -12,7 +12,6 @@ class Regressor(nn.Module):
         super().__init__()
         self.layers = nn.Sequential(
             nn.Linear(1280, 1),
-            nn.Sigmoid()
         )
 
     def forward(self, x):
