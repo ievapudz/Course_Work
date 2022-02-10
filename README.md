@@ -526,6 +526,15 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+### Regressor with 003 v2 data
+
+There was a single-layer regressor defined to predict the temperature of the given protein.
+
+- Activation function: linear (input of 1280 and output 1).
+- Loss function: mean quared error (MSELoss).
+
+After 5 epochs of training and validation, the final validation loss was 169.713.
+
 ### Dataset for SLP testing (004)
 
 This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
