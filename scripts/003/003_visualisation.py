@@ -52,7 +52,7 @@ for key in keys:
     print("Filtering sequences: "+key)
     filter_sequences(data, key, data[key]['embeddings'])
     print("Visualising PCA: "+key)
-    #visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA_Fortran.png", two_color_cmap, False)
+    visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA_Fortran.png", two_color_cmap, False)
     visualise_multiple_PCA_C(data, [key], visualisation_file_path+key+"_PCA_C.png", two_color_cmap, False)
     #print("Visualising MDE PCA: "+key)
     #visualise_multiple_MDE_PCA(data, [key], visualisation_file_path+key+"_MDE_PCA.png", two_color_cmap, False)

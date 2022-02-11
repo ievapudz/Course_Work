@@ -38,6 +38,7 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=
     
     print(Xs_pca[:,0])
     print(Xs_pca[:,1])
+    print(Xs_pca.flags['C_CONTIGUOUS'])
 
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
@@ -76,7 +77,8 @@ def visualise_multiple_PCA_C(data, keys, plotpath, colormap, is_read_file_name_i
 
     print(Xs_pca_c[:,0])
     print(Xs_pca_c[:,1])
-
+    print(Xs_pca_c.flags['C_CONTIGUOUS'])
+    
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
     sc = ax.scatter(Xs_pca_c[:,0], Xs_pca_c[:,1], c=Ys, marker='.', cmap=colormap)
