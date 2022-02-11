@@ -17,6 +17,8 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=
     Ys = []
     Xs = []
 
+    print("Running visualise_multiple_PCA\n")
+
     for key in keys:
         print('Visualising:', key)
         EMB_PATH = data[key]['embeddings']
@@ -32,11 +34,12 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=
 
     Xs = torch.stack(Xs, dim=0).numpy()
     pca = PCA(60)
-    Xs_train_pca = pca.fit_transform(Xs)
+    Xs_pca = pca.fit_transform(Xs)
 
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
-    sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.', cmap=colormap)
+    print(Xs_pca[:,0])
+    sc = ax.scatter(Xs_pca[:,1], Xs_pca[:,2], c=Ys, marker='.', cmap=colormap)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
     plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
