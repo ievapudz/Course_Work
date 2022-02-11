@@ -72,7 +72,7 @@ def visualise_multiple_PCA_C(data, keys, plotpath, colormap, is_read_file_name_i
     Xs = torch.stack(Xs, dim=0).numpy()
     pca = PCA(60)
     Xs_pca = pca.fit_transform(Xs)
-    numpy.ascontiguousarray(Xs_pca, dtype=np.float32)
+    numpy.ascontiguousarray(Xs_pca, dtype=numpy.float32)
 
     print(Xs_pca[:,0])
     print(Xs_pca[:,1])
