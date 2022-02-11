@@ -72,14 +72,14 @@ def visualise_multiple_PCA_C(data, keys, plotpath, colormap, is_read_file_name_i
     Xs = torch.stack(Xs, dim=0).numpy()
     pca = PCA(60)
     Xs_pca = pca.fit_transform(Xs)
-    numpy.ascontiguousarray(Xs_pca, dtype=numpy.float32)
+    Xs_pca_c = numpy.ascontiguousarray(Xs_pca, dtype=numpy.float32)
 
-    print(Xs_pca[:,0])
-    print(Xs_pca[:,1])
+    print(Xs_pca_c[:,0])
+    print(Xs_pca_c[:,1])
 
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
-    sc = ax.scatter(Xs_pca[:,0], Xs_pca[:,1], c=Ys, marker='.', cmap=colormap)
+    sc = ax.scatter(Xs_pca_c[:,0], Xs_pca_c[:,1], c=Ys, marker='.', cmap=colormap)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
     plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
