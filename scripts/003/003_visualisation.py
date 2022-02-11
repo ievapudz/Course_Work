@@ -14,6 +14,7 @@ from dataset_processing import filter_sequences
 from visualise_embeddings import visualise_multiple_MDE_PCA
 from visualise_embeddings import visualise_multiple_MDE
 from visualise_embeddings import visualise_multiple_PCA
+from visualise_embeddings import visualise_multiple_PCA_fit_transform_separate
 from file_actions import parse_dataset
 from file_actions import generate_embeddings
 from matplotlib.colors import ListedColormap
@@ -51,7 +52,8 @@ for key in keys:
     print("Filtering sequences: "+key)
     filter_sequences(data, key, data[key]['embeddings'])
     print("Visualising PCA: "+key)
-    visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA_Fortran.png", two_color_cmap, False)
+    #visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA.png", two_color_cmap, False)
+    visualise_multiple_PCA_fit_transform_separate(data, [key], visualisation_file_path+key+"_PCA_fit_transform.png", two_color_cmap, False)
     #print("Visualising MDE PCA: "+key)
     #visualise_multiple_MDE_PCA(data, [key], visualisation_file_path+key+"_MDE_PCA.png", two_color_cmap, False)
     #print("Visualising MDE: "+key)
