@@ -130,9 +130,10 @@ def create_confusion_matrix(targets, outputs, file_path=''):
                                                         confusion_matrix[0][1], 
                                                         confusion_matrix[1][0], 
                                                         confusion_matrix[1][1])
-    scores = "Accuracy:\t{0}\nPrecision:\t{1}\nRecall:\t{2}".format(metrics.accuracy_score(targets.tolist(), predicted_labels),
+    scores = "Accuracy:\t{0}\nPrecision:\t{1}\nRecall:\t{2}\nArea under the curve:\t{3}".format(metrics.accuracy_score(targets.tolist(), predicted_labels),
                                                                     metrics.precision_score(targets.tolist(), predicted_labels),
-                                                                    metrics.recall_score(targets.tolist(), predicted_labels))
+                                                                    metrics.recall_score(targets.tolist(), predicted_labels),
+								    metrics.roc_auc_score(targets.tolist(), predicted_labels))
     
     if file_path == '':
         print(result, scores)

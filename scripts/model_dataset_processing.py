@@ -26,7 +26,7 @@ def trim_dataset(dataset, keywords, batch_size):
         if(residual != 0):
             dataset[keywords[i]] = dataset[keywords[i]][0:len(dataset[keywords[i]])-residual]
 
-# A function that converts non-binary labels to binary ()
+# A function that converts non-binary labels to binary
 def convert_labels_to_binary(dataset, keywords):
     for keyword in keywords:
         for i in range(len(dataset[keyword])):
@@ -34,3 +34,11 @@ def convert_labels_to_binary(dataset, keywords):
                 dataset[keyword][i] = 1
             elif(dataset[keyword][i].item() < 65):
                 dataset[keyword][i] = 0
+
+# A function that normalises temperature labels
+def normalise_labels(dataset, keywords, denominator):
+    for keyword in keywords:
+        normalised_labels = []
+        for i in range(len(dataset[keyword])):
+            float_tensor_normalised = torch.tensor([float(dataset[keyword][i].item() / denominator)], dtype=torch.float32)
+            normalised_labels.append(float_tensor_normalised)

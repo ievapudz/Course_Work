@@ -39,4 +39,3 @@ save_tensors_as_NPZ([Xs_train_tensor, Ys_train_tensor,
                      Xs_validate_tensor, Ys_validate_tensor], 
                     ['x_train', 'y_train', 'x_validate', 'y_validate'], 
                     'data/003/NPZ/training_and_validation_embeddings_v2.npz')
-
