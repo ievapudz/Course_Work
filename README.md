@@ -533,7 +533,7 @@ There was a single-layer regressor defined to predict the temperature of the giv
 - Activation function: linear (input of 1280 and output 1).
 - Loss function: mean quared error (MSELoss).
 
-After 5 epochs of training and validation, the final validation loss was 169.713, which was the result of the gradual decline
+After 5 epochs of training and validation, the final validation loss was 169.713, which was the result of the strict decrease
 until the 4th epoch. The minimum of the loss function was apparent after 4 epochs.
 
 Validation loss values in epochs 1-5:
