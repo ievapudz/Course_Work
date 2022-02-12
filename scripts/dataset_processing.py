@@ -3,6 +3,7 @@ from os.path import exists
 import sys
 import torch
 import numpy
+import random
 from Bio import SeqIO
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
@@ -115,7 +116,9 @@ def create_data(dataset_dir_prefix, dataset_names=['training', 'validation', 'te
 
     # Shuffling the datasets
     for element in data.keys():
-        data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+        temp = list(zip(data[element]['X'], data[element]['Y']))
+        random.shuffle(temp)
+        data[element]['X'], data[element]['Y'] = zip(*temp)
 
     return data
 
@@ -175,9 +178,6 @@ def filter_sequences(data, key, path_to_embeddings):
     data[key]['Y_filtered'] = []    
     for i in range(len(data[key]['X'])):
         
-        # 001 used:
-        #if(data[key]['X'][i].id.split('|')[1] in emb_set):
-
         if(data[key]['X'][i].id in emb_set):
             data[key]['X_filtered'].append(data[key]['X'][i])
             data[key]['Y_filtered'].append(data[key]['Y'][i])
@@ -200,9 +200,6 @@ def get_ESM_embeddings_as_list(data, keys):
         for i in range(len(data[key]['Y_filtered'])):
             Ys.append(data[key]['Y_filtered'][i])
 
-            # 001 dataset used:
-            #file_name = data[key]['X_filtered'][i].id.split('|')[1]
-
             file_name = data[key]['X_filtered'][i].id
             fn = f'{EMB_PATH}/{file_name}.pt'
             embs = torch.load(fn)
@@ -215,7 +212,7 @@ def get_ESM_embeddings_as_list_with_ids(data, keys):
 
     # data - dictionary that was created by filter_sequences function.
     # keys - array of the sets that need to be visualised in one plot.
-    # output_file_path - path to the output file.
+    
     EMB_LAYER = 33
     Ys = []
     Xs = []
@@ -247,4 +244,5 @@ def get_tensor_from_list(Xs, Ys):
 def get_ESM_embeddings_as_tensor(data, keys):
     [Xs, Ys] = get_ESM_embeddings_as_list(data, keys)
     [Xs_tensor, Ys_tensor] = get_tensor_from_list(Xs, Ys)
+
     return [Xs_tensor, Ys_tensor]

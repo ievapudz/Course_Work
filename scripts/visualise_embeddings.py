@@ -32,11 +32,44 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=
 
     Xs = torch.stack(Xs, dim=0).numpy()
     pca = PCA(60)
-    Xs_train_pca = pca.fit_transform(Xs)
+    Xs_pca = pca.fit_transform(Xs)
+    Xs_pca_c = numpy.ascontiguousarray(Xs_pca, dtype=numpy.float32)    
+    
+    fig_dims = (7, 6)
+    fig, ax = plt.subplots(figsize=fig_dims)
+    sc = ax.scatter(Xs_pca_c[:,0], Xs_pca_c[:,1], c=Ys, marker='.', cmap=colormap)
+    ax.set_xlabel('PCA first principal component')
+    ax.set_ylabel('PCA second principal component')
+    plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
+    plt.savefig(plotpath, dpi=300)
+
+def visualise_multiple_PCA_fit_transform_separate(data, keys, plotpath, colormap, is_read_file_name_id=True):
+    # data - dictionary that was created by filter_sequences function.
+    # keys - array of the sets that need to be visualised in one plot.
+    # plotpath - path to the output plot.
+    Ys = []
+    Xs = []
+    
+    for key in keys:
+        print('Visualising:', key)
+        EMB_PATH = data[key]['embeddings']
+        for i in range(len(data[key]['Y_filtered'])):
+            Ys.append(data[key]['Y_filtered'][i])
+            if is_read_file_name_id:
+                file_name = data[key]['X_filtered'][i].id.split('|')[1]
+            else: 
+                file_name = data[key]['X_filtered'][i].id
+            fn = f'{EMB_PATH}/{file_name}.pt'
+            embs = torch.load(fn)
+            Xs.append(embs['mean_representations'][EMB_LAYER])
+
+    Xs = torch.stack(Xs, dim=0).numpy()
+    pca = PCA(60)
+    Xs_pca = pca.fit(Xs).transform(Xs)
 
     fig_dims = (7, 6)
     fig, ax = plt.subplots(figsize=fig_dims)
-    sc = ax.scatter(Xs_train_pca[:,0], Xs_train_pca[:,1], c=Ys, marker='.', cmap=colormap)
+    sc = ax.scatter(Xs_pca[:,0], Xs_pca[:,1], c=Ys, marker='.', cmap=colormap)
     ax.set_xlabel('PCA first principal component')
     ax.set_ylabel('PCA second principal component')
     plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
