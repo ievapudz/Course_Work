@@ -533,6 +533,12 @@ There was a single-layer regressor defined to predict the temperature of the giv
 - Activation function: linear (input of 1280 and output 1).
 - Loss function: mean quared error (MSELoss).
 
+#### Regressor with non-normalised values
+
+```
+./scripts/003/003_regressor.py > results/regressor/003/training_and_validation_epochs_10.txt
+```
+
 After 5 epochs of training and validation, the final validation loss was 169.713, which was the result of the strict decrease
 until the 4th epoch. The minimum of the loss function was apparent after 4 epochs.
 
@@ -552,6 +558,34 @@ Validation loss values in epochs 6-10:
 8. 182.869
 9. 169.621
 10. 159.747
+
+```
+./scripts/003/003_regressor.py > results/regressor/003/training_and_validation_4.txt
+```
+
+#### Regressor with normalised (division by max temperature 100 degrees) values
+
+```
+./scripts/003/003_regressor_normalised.py > results/regressor/003/training_and_validation_4_normalised.txt
+```
+
+Validation loss values in epochs 1-4:
+1. 0.017
+2. 0.017
+3. 0.018
+4. 0.014
+
+#### Regressor with normalised (as z-scores with respect to 65 degrees) values
+
+```
+./scripts/003/003_regressor_normalised_z_scores.py > results/regressor/003/training_and_validation_4_normalised_as_z_scores.txt
+```
+
+Validation loss values in epochs 1-4:
+1. 220.892
+2. 202.903
+3. 201.561
+4. 164.275
 
 ### Dataset for SLP testing (004)
 
