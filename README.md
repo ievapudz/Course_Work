@@ -526,6 +526,38 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+### Testing classificator with CRISPR protein sequences (C2EP)
+
+The testing set was placed to `data/CRISPR/` folder. 
+
+A command that was used to create a FASTA file:
+```
+tail -n +2 data/CRISPR/C2EP.csv | sed 's/^/>/'  | tr ';' '\n' > data/CRISPR/FASTA/C2EP.fasta
+grep -v '/' data/CRISPR/FASTA/C2EP.fasta > data/CRISPR/FASTA/C2EP_clean.fasta
+mv data/CRISPR/FASTA/C2EP_clean.fasta data/CRISPR/FASTA/C2EP.fasta
+```
+
+A command that was used to create embeddings:
+```
+sbatch --output=data/CRISPR/slurm/C2EP.out scripts/CRISPR/C2EP_embeddings.sh
+```
+
+A command that was used to save embeddings to NPZ and CSV files:
+```
+./scripts/CRISPR/C2EP_embeddings.py > data/CRISPR/C2EP_embeddings.csv
+```
+
+The CSV file contains unlabelled sequence data with columns:
+- #1 Sequence name
+- #2 Sequence 
+- #3 Sequence length
+- #4 - #1283 Components of embeddings
+
+The script `./scripts/CRISPR/C2EP_classificator` ran the SLP inference flow and printed the predictions to `results/SLP/CRISPR/C2EP_predictions.tsv` file.
+
+The CSV file was converted to TSV file and it was pasted with SLP classificator's predictions (inferences) - the result is in
+`results/SLP/CRISPR/C2EP_embeddings_and_predictions.tsv` file.
+
 ### Regressor with 003 v2 data
 
 There was a single-layer regressor defined to predict the temperature of the given protein.
