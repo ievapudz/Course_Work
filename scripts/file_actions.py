@@ -79,7 +79,7 @@ def save_MDE_as_TSV(data, keys, output_file_path):
 # This function loads Tensor data from the specified NPZ file
 def load_tensor_data_from_NPZ(NPZ_file_name, data_subset_keyword):
     dataset = {}
-    with numpy.load(NPZ_file_name) as data_loaded:
+    with numpy.load(NPZ_file_name, allow_pickle=True) as data_loaded:
         dataset[data_subset_keyword] = torch.from_numpy(data_loaded[data_subset_keyword])
     return dataset
 
@@ -95,11 +95,24 @@ def print_tensor_elements(dataset, keys, out_file):
     file_handle.close()
 
 # A function that prints embedding with its temperature label as CSV
-def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor):
+def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, labelled=True):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
     # keys - an array with a key pair: ['x_set', 'y_set']
     for i in range(len(data_tensor[keys_tensor[0]])):
-        record = get_id_as_CSV(data, i, key_data, 0) + get_id_as_CSV(data, i, key_data, 1) + get_sequence_length_as_CSV(data, i, key_data) + get_temperature_label_as_CSV(data_tensor, i, keys_tensor[1], False) + get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], True)
+        if(labelled):
+            record = get_id_as_CSV(data, i, key_data, 0) + \
+                     get_id_as_CSV(data, i, key_data, 1) + \
+                     get_sequence_length_as_CSV(data, i, key_data) + \
+                     get_temperature_label_as_CSV(data_tensor, i, 
+                                                  keys_tensor[1], False) + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, 
+                                                  keys_tensor[0], True)
+        else:
+            record = data[key_data]['X_filtered'][i].name + ', ' + \
+                     data[key_data]['X_filtered'][i].seq + ', ' + \
+                     get_sequence_length_as_CSV(data, i, key_data) + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
+                                                  True)
         print(record)
 
 # A function that returns the sequence length for CSV
