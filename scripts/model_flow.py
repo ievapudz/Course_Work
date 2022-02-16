@@ -200,3 +200,26 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     file_handle.close()
 
+# A function that makes inferences about unlabelled data
+def unlabelled_test_epoch(model, test_loader, threshold, file_for_predictions=''):
+    
+    epoch_outputs = []
+
+    if(file_for_predictions != ''):
+        file_handle = open(file_for_predictions, 'w')
+
+    # Iterate over the DataLoader for testing data
+    for i, data in enumerate(test_loader, 0):
+        inputs, targets = data
+        outputs = model(inputs)
+        outputs = outputs.detach().numpy()
+        epoch_outputs.append(outputs)
+        
+         # Printing prediction values
+        for output in outputs:
+            if(output[0] >= threshold):
+                file_handle.write("1\n")
+            else:
+                file_handle.write("0\n")
+
+    file_handle.close()

@@ -25,6 +25,8 @@ BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
 NUM_OF_EPOCHS = 5
 
+PATH = './results/SLP/003/model.pt'
+
 dataset = load_tensor_from_NPZ(
     'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
     ['x_train', 'y_train', 'x_validate', 'y_validate'])
@@ -88,3 +90,4 @@ test_epoch(slp, test_loader, loss_function, optimizer, BATCH_SIZE,
 
 print('Testing process has finished.')
 
+torch.save(slp.state_dict(), PATH)
