@@ -122,7 +122,7 @@ def create_data(dataset_dir_prefix, dataset_names=['training', 'validation', 'te
 
     return data
 
-def create_testing_data(dataset_dir_prefix, dataset_names=['testing']):
+def create_testing_data(dataset_dir_prefix, dataset_names=['testing'], labelled=True):
     # dataset_dir_prefix - notes where the information about dataset is placed
     # dataset_names - names of the dataset partitions
     data = {
@@ -139,11 +139,16 @@ def create_testing_data(dataset_dir_prefix, dataset_names=['testing']):
             # Parsing sequences (X dataset) from one dataset 
             for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
                 data[key]['X'].append(record)
-                data[key]['Y'].append(record.name.split('|')[2])
+                if(labelled):
+                    data[key]['Y'].append(record.name.split('|')[2])
+                data[key]['Y'].append(0)
 
     # Shuffling the datasets
     for element in data.keys():
-        data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+        if(labelled):
+            data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+        else:
+            data[element]['X'] = shuffle(data[element]['X'], random_state=1)
 
     return data
 
@@ -162,25 +167,29 @@ def get_equal_proportions(data, key, overall_number, classes):
     data[key]['X_equally_proportioned'] = X_equal_proportions
     data[key]['Y_equally_proportioned'] = Y_equal_proportions
 
-def filter_sequences(data, key, path_to_embeddings):
+def filter_sequences(data, key, path_to_embeddings, labelled=True):
     embeddings_list = "embeddings_files.tmp"
-    command = "ls -1 "+path_to_embeddings+" > "+embeddings_list
+    command = "ls -1 "+path_to_embeddings+" | sort > "+embeddings_list
     os.system(command)
 
     emb_list_handle = open(embeddings_list, 'r')
     emb_list = emb_list_handle.readlines()
     emb_list_handle.close()
-    emb_set = set()
+    emb_set = set()   
+ 
     for j in range(len(emb_list)):
-        emb_set.add(emb_list[j].split('.')[0])
+        emb_set.add(emb_list[j].split('.pt')[0])
 
     data[key]['X_filtered'] = []
-    data[key]['Y_filtered'] = []    
+    data[key]['Y_filtered'] = []
+    
     for i in range(len(data[key]['X'])):
-        
         if(data[key]['X'][i].id in emb_set):
             data[key]['X_filtered'].append(data[key]['X'][i])
-            data[key]['Y_filtered'].append(data[key]['Y'][i])
+            if(labelled):
+                data[key]['Y_filtered'].append(data[key]['Y'][i])
+            else:
+                data[key]['Y_filtered'].append(0)
 
     command = "rm *.tmp"
     os.system(command)
@@ -197,7 +206,7 @@ def get_ESM_embeddings_as_list(data, keys):
 
     for key in keys:
         EMB_PATH = data[key]['embeddings']
-        for i in range(len(data[key]['Y_filtered'])):
+        for i in range(len(data[key]['X_filtered'])):
             Ys.append(data[key]['Y_filtered'][i])
 
             file_name = data[key]['X_filtered'][i].id
@@ -235,14 +244,17 @@ def get_tensor_from_list(Xs, Ys):
     Xs_tensor = None
     Xs_tensor = torch.from_numpy(Xs)
 
-    Ys_array = numpy.asarray(Ys)
-    Ys_array = Ys_array.astype('int32')
-    Ys_tensor = torch.from_numpy(Ys_array)
-
-    return [Xs_tensor, Ys_tensor]
+    if(len(Ys)):
+        Ys_array = numpy.asarray(Ys)
+        Ys_array = Ys_array.astype('int32')
+        Ys_tensor = torch.from_numpy(Ys_array)
+        return [Xs_tensor, Ys_tensor]
+    else:
+        return [Xs_tensor, None]
 
 def get_ESM_embeddings_as_tensor(data, keys):
     [Xs, Ys] = get_ESM_embeddings_as_list(data, keys)
     [Xs_tensor, Ys_tensor] = get_tensor_from_list(Xs, Ys)
 
     return [Xs_tensor, Ys_tensor]
+
