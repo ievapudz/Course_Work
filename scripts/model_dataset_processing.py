@@ -14,7 +14,7 @@ def load_numpy_from_NPZ(NPZ_file, keywords):
 # Example keywords: ['x_train', 'y_train']
 def load_tensor_from_NPZ(NPZ_file, keywords):
     dataset = {}
-    with numpy.load(NPZ_file) as data_loaded:
+    with numpy.load(NPZ_file, allow_pickle=True) as data_loaded:
         for i in range(len(keywords)):
             dataset[keywords[i]] = torch.from_numpy(data_loaded[keywords[i]])
     return dataset
