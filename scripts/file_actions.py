@@ -95,28 +95,29 @@ def print_tensor_elements(dataset, keys, out_file):
     file_handle.close()
 
 # A function that prints embedding with its temperature label as CSV
-def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, labelled=True):
+def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', labelled=True):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
     # keys - an array with a key pair: ['x_set', 'y_set']
     for i in range(len(data_tensor[keys_tensor[0]])):
         if(labelled):
-            record = get_id_as_CSV(data, i, key_data, 0) + \
-                     get_id_as_CSV(data, i, key_data, 1) + \
-                     get_sequence_length_as_CSV(data, i, key_data) + \
+            record = get_id_as_CSV(data, i, key_data, 0, sep) + \
+                     get_id_as_CSV(data, i, key_data, 1, sep) + \
+                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
                      get_temperature_label_as_CSV(data_tensor, i, 
-                                                  keys_tensor[1], False) + \
+                                                  keys_tensor[1], sep,
+                                                  False) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, 
                                                   keys_tensor[0], True)
         else:
-            record = data[key_data]['X_filtered'][i].name + ', ' + \
-                     data[key_data]['X_filtered'][i].seq + ', ' + \
-                     get_sequence_length_as_CSV(data, i, key_data) + \
+            record = data[key_data]['X_filtered'][i].name + sep + \
+                     data[key_data]['X_filtered'][i].seq + sep + \
+                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
-                                                  True)
+                                                  sep, True)
         print(record)
 
 # A function that returns the sequence length for CSV
-def get_sequence_length_as_CSV(data, index, key, last_value=False):
+def get_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
@@ -124,10 +125,11 @@ def get_sequence_length_as_CSV(data, index, key, last_value=False):
     if last_value:
         return sequence_length
     else:
-        return sequence_length + ', '
+        return sequence_length + sep
 
-# A function that returns the needed identificator (property) of the sequence from the header
-def get_id_as_CSV(data, index, key, id_index, last_value=False):
+# A function that returns the needed identificator (property) of the sequence
+# from the header
+def get_id_as_CSV(data, index, key, id_index, sep, last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
@@ -140,35 +142,38 @@ def get_id_as_CSV(data, index, key, id_index, last_value=False):
     if last_value:
         return identificator
     else:
-        return identificator + ', '
+        return identificator + sep
         
 # A function that processes embeddings to be represented in CSV format
-def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, last_value=False):
+def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, sep=',', 
+                                 last_value=False):
     record = ''
     for j in range(1280):
         embeddings_element = f"{data[key][embedding_tensor_index][j].item():{6}.{3}}"
         record = record + embeddings_element
 
         if j == 1279 and not last_value:
-            record = record + ', '
+            record = record + sep
         elif j == 1279 and last_value:
             record = record 
         else:
-            record = record + ', '
+            record = record + sep
 
     return record
 
 # A function that processes temperature labels to be represented in CSV format
-def get_temperature_label_as_CSV(data, embedding_tensor_index, key, last_value=True):
+def get_temperature_label_as_CSV(data, embedding_tensor_index, key, 
+                             sep, last_value=True):
     temperature_label = str(data[key][embedding_tensor_index].item())
     
     if last_value:
         return temperature_label
     else:
-        return temperature_label + ', '
+        return temperature_label + sep
 
 # A function that calculates Matthew's correlation coefficient
-def calculate_MCC(predictions_file_name, true_labels_index, prediction_index, separator="\t", has_header=True):
+def calculate_MCC(predictions_file_name, true_labels_index, prediction_index, 
+                  separator="\t", has_header=True):
     TP = 0
     TN = 0
     FP = 0
