@@ -614,6 +614,14 @@ Prediction results were joined with sequences from embeddings creation stage. Th
 `results/SLP/CRISPR/Cas12b_sequence_and_predictions.tsv` and 
 `results/SLP/CRISPR/Cas12b_sequence_and_predictions.fasta`. 
 
+Comparison of prediction tendency separately and in joint case:
+```
+paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv
+````
+
+There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
+the joint prediction always matched the separately produced predictions if these were equal. 
+
 ### Regressor with 003 v2 data
 
 There was a single-layer regressor defined to predict the temperature of the given protein.
