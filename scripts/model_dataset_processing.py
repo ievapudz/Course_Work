@@ -53,7 +53,7 @@ def normalise_labels_as_z_scores(dataset, keywords, ref_point):
         normalised_labels = []
         std = standard_deviation(dataset[keyword], ref_point)
         for i in range(len(dataset[keyword])):
-            float_tensor_normalised = torch.tensor(float(dataset[keyword][i].item() - ref_point / std), dtype=torch.float32)
+            float_tensor_normalised = torch.tensor(float((dataset[keyword][i].item() - ref_point) / std), dtype=torch.float32)
             normalised_labels.append(float_tensor_normalised)
         dataset[keyword] = torch.FloatTensor(normalised_labels)
 
