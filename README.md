@@ -570,8 +570,8 @@ therefore to avoid any difficulties with processing of embeddings PT files and p
 (that will be produced after inference takes place), the headers were modified:
 
 ```
-cat cas12bNterm.mfa | grep '>' | tr ' ' '-' > Cas12b_N.fasta
-cat cas12bCterm.mfa | grep '>' | tr ' ' '-' > Cas12b_C.fasta
+cat data/CRISPR/FASTA/Cas12b/original/cas12bNterm.mfa | tr ' ' '-' > data/CRISPR/FASTA/Cas12b/Cas12b_N.fasta
+cat data/CRISPR/FASTA/Cas12b/original/cas12bCterm.mfa | tr ' ' '-' > data/CRISPR/FASTA/Cas12b/Cas12b_C.fasta
 ```
 
 There were 32 sequences in `Cas12b_N.fasta` and `Cas12b_C.fasta`.
@@ -581,6 +581,38 @@ The commands that were run to produce embeddings for sequences:
 sbatch --output=data/CRISPR/slurm/Cas12b_N.out scripts/CRISPR/Cas12b_N_embeddings.sh
 sbatch --output=data/CRISPR/slurm/Cas12b_C.out scripts/CRISPR/Cas12b_C_embeddings.sh
 ```
+
+Preparation of embeddings and printing them to NPZ and TSV files:
+```
+./scripts/CRISPR/Cas12b_N_embeddings.py > ./data/CRISPR/Cas12b_N_embeddings.tsv
+./scripts/CRISPR/Cas12b_C_embeddings.py > ./data/CRISPR/Cas12b_C_embeddings.tsv
+```
+
+Making inferences about divided protein sequences:
+```
+./scripts/CRISPR/Cas12b_N_classificator.py
+./scripts/CRISPR/Cas12b_C_classificator.py
+```
+
+Results were placed in `results/SLP/CRISPR/Cas12b_N_predictions.tsv` and `results/SLP/CRISPR/Cas12b_C_predictions.tsv`
+files.
+
+The command that showed inconsistencies between predictions:
+```
+paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv
+```
+
+Joining of embeddings was required to make more reliable inferences about thermostability of sequences.
+
+Joint flow:
+```
+./scripts/CRISPR/Cas12b_embeddings.py > ./data/CRISPR/Cas12b_embeddings.tsv
+./scripts/CRISPR/Cas12b_classificator.py
+```
+
+Prediction results were joined with sequences from embeddings creation stage. The result files are:
+`results/SLP/CRISPR/Cas12b_sequence_and_predictions.tsv` and 
+`results/SLP/CRISPR/Cas12b_sequence_and_predictions.fasta`. 
 
 ### Regressor with 003 v2 data
 
