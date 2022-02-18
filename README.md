@@ -607,6 +607,27 @@ Validation loss values in epochs 1-4:
 3. 0.018
 4. 0.014
 
+```
+./scripts/003/003_regressor_normalised.py > results/regressor/003/training_and_validation_10_normalised.txt
+```
+
+Validation loss values in epochs 5-10:
+5. 0.015
+6. 0.016
+7. 0.017
+8. 0.016
+9. 0.015
+10. 0.014
+
+Program's `time` output:
+```
+real    1m53.171s
+user    2m45.538s
+sys     0m6.538s
+```
+
+Four epochs were enough for training and validation.
+
 #### Regressor with normalised (as z-scores with respect to 65 degrees) values
 
 ```
@@ -614,10 +635,33 @@ Validation loss values in epochs 1-4:
 ```
 
 Validation loss values in epochs 1-4:
-1. 220.892
-2. 202.903
-3. 201.561
-4. 164.275
+1. 0.210
+2. 0.224
+3. 0.232
+4. 0.186
+
+It was decided to have more epochs to train and validate the regressors.
+
+```
+./scripts/003/003_regressor_normalised_z_scores.py > results/regressor/003/training_and_validation_10_normalised_as_z_scores.txt
+```
+
+Validation loss values in epochs 5-10:
+5. 0.196
+6. 0.210
+7. 0.214
+8. 0.206
+9. 0.191
+10. 0.183
+
+Four epochs were enough for training and validation.
+
+Program's `time` output:
+```
+real    1m51.964s
+user    2m45.062s
+sys     0m5.772s
+```
 
 ### Dataset for SLP testing (004)
 
