@@ -20,7 +20,7 @@ from model_flow import validation_epoch
 
 BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
-NUM_OF_EPOCHS = 4
+NUM_OF_EPOCHS = 10
 
 dataset = load_tensor_from_NPZ(
     'data/003/NPZ/training_and_validation_embeddings_v2.npz', 

@@ -1,2429 +1,2429 @@
 Starting epoch 1
-Loss after mini-batch    24: 3157.315
-Loss after mini-batch    48: 2916.431
-Loss after mini-batch    72: 2955.643
-Loss after mini-batch    96: 2994.775
-Loss after mini-batch   120: 3264.517
-Loss after mini-batch   144: 2905.932
-Loss after mini-batch   168: 2886.410
-Loss after mini-batch   192: 2882.229
-Loss after mini-batch   216: 2595.321
-Loss after mini-batch   240: 2763.304
-Loss after mini-batch   264: 2920.897
-Loss after mini-batch   288: 2744.097
-Loss after mini-batch   312: 2906.149
-Loss after mini-batch   336: 2870.802
-Loss after mini-batch   360: 2794.404
-Loss after mini-batch   384: 2489.681
-Loss after mini-batch   408: 2466.686
-Loss after mini-batch   432: 2684.243
-Loss after mini-batch   456: 2641.613
-Loss after mini-batch   480: 2491.094
-Loss after mini-batch   504: 2615.618
-Loss after mini-batch   528: 2589.998
-Loss after mini-batch   552: 2662.967
-Loss after mini-batch   576: 2673.172
-Loss after mini-batch   600: 2541.750
-Loss after mini-batch   624: 2333.795
-Loss after mini-batch   648: 2404.360
-Loss after mini-batch   672: 2426.427
-Loss after mini-batch   696: 2635.264
-Loss after mini-batch   720: 2256.780
-Loss after mini-batch   744: 2312.564
-Loss after mini-batch   768: 2314.885
-Loss after mini-batch   792: 2229.572
-Loss after mini-batch   816: 2224.553
-Loss after mini-batch   840: 2377.726
-Loss after mini-batch   864: 2249.320
-Loss after mini-batch   888: 2198.170
-Loss after mini-batch   912: 2279.256
-Loss after mini-batch   936: 2274.321
-Loss after mini-batch   960: 2356.729
-Loss after mini-batch   984: 2123.453
-Loss after mini-batch  1008: 2169.994
-Loss after mini-batch  1032: 2233.393
-Loss after mini-batch  1056: 2297.307
-Loss after mini-batch  1080: 2135.606
-Loss after mini-batch  1104: 2024.113
-Loss after mini-batch  1128: 2049.571
-Loss after mini-batch  1152: 2047.983
-Loss after mini-batch  1176: 1971.701
-Loss after mini-batch  1200: 2120.506
-Loss after mini-batch  1224: 2019.210
-Loss after mini-batch  1248: 1977.001
-Loss after mini-batch  1272: 1921.580
-Loss after mini-batch  1296: 1952.700
-Loss after mini-batch  1320: 1915.335
-Loss after mini-batch  1344: 1940.419
-Loss after mini-batch  1368: 1767.819
-Loss after mini-batch  1392: 1913.099
-Loss after mini-batch  1416: 1974.371
-Loss after mini-batch  1440: 1795.993
-Loss after mini-batch  1464: 1806.818
-Loss after mini-batch  1488: 1776.954
-Loss after mini-batch  1512: 1853.532
-Loss after mini-batch  1536: 1796.404
-Loss after mini-batch  1560: 1664.566
-Loss after mini-batch  1584: 1766.041
-Loss after mini-batch  1608: 1587.370
-Loss after mini-batch  1632: 1731.059
-Loss after mini-batch  1656: 1699.208
-Loss after mini-batch  1680: 1611.050
-Loss after mini-batch  1704: 1624.094
-Loss after mini-batch  1728: 1705.507
-Loss after mini-batch  1752: 1502.778
-Loss after mini-batch  1776: 1602.874
-Loss after mini-batch  1800: 1624.746
-Loss after mini-batch  1824: 1631.099
-Loss after mini-batch  1848: 1608.266
-Loss after mini-batch  1872: 1616.597
-Loss after mini-batch  1896: 1585.904
-Loss after mini-batch  1920: 1473.240
-Loss after mini-batch  1944: 1678.098
-Loss after mini-batch  1968: 1474.292
-Loss after mini-batch  1992: 1409.506
-Loss after mini-batch  2016: 1456.418
-Loss after mini-batch  2040: 1480.173
-Loss after mini-batch  2064: 1456.028
-Loss after mini-batch  2088: 1421.926
-Loss after mini-batch  2112: 1422.568
-Loss after mini-batch  2136: 1529.184
-Loss after mini-batch  2160: 1330.187
-Loss after mini-batch  2184: 1433.349
-Loss after mini-batch  2208: 1362.528
-Loss after mini-batch  2232: 1423.945
-Loss after mini-batch  2256: 1380.972
-Loss after mini-batch  2280: 1315.972
-Loss after mini-batch  2304: 1353.587
-Loss after mini-batch  2328: 1341.774
-Loss after mini-batch  2352: 1305.201
-Loss after mini-batch  2376: 1285.581
-Loss after mini-batch  2400: 1266.576
-Loss after mini-batch  2424: 1151.008
-Loss after mini-batch  2448: 1254.018
-Loss after mini-batch  2472: 1251.415
-Loss after mini-batch  2496: 1220.298
-Loss after mini-batch  2520: 1300.294
-Loss after mini-batch  2544: 1272.902
-Loss after mini-batch  2568: 1196.487
-Loss after mini-batch  2592: 1214.709
-Loss after mini-batch  2616: 1157.784
-Loss after mini-batch  2640: 1197.189
-Loss after mini-batch  2664: 1198.687
-Loss after mini-batch  2688: 1177.794
-Loss after mini-batch  2712: 1176.733
-Loss after mini-batch  2736: 1061.634
-Loss after mini-batch  2760: 1103.061
-Loss after mini-batch  2784: 1042.302
-Loss after mini-batch  2808: 1156.762
-Loss after mini-batch  2832: 1057.119
-Loss after mini-batch  2856: 1097.256
-Loss after mini-batch  2880: 1005.504
-Loss after mini-batch  2904: 1018.737
-Loss after mini-batch  2928: 974.015
-Loss after mini-batch  2952: 1025.473
-Loss after mini-batch  2976: 1024.569
-Loss after mini-batch  3000: 1063.447
-Loss after mini-batch  3024: 952.795
-Loss after mini-batch  3048: 981.136
-Loss after mini-batch  3072: 898.406
-Loss after mini-batch  3096: 1003.040
-Loss after mini-batch  3120: 966.505
-Loss after mini-batch  3144: 947.655
-Loss after mini-batch  3168: 916.185
-Loss after mini-batch  3192: 981.554
-Loss after mini-batch  3216: 933.577
-Loss after mini-batch  3240: 864.311
-Loss after mini-batch  3264: 925.567
-Loss after mini-batch  3288: 970.016
-Loss after mini-batch  3312: 940.182
-Loss after mini-batch  3336: 907.122
-Loss after mini-batch  3360: 822.882
-Loss after mini-batch  3384: 935.882
-Loss after mini-batch  3408: 814.164
-Loss after mini-batch  3432: 836.980
-Loss after mini-batch  3456: 801.403
-Loss after mini-batch  3480: 821.570
-Loss after mini-batch  3504: 808.157
-Loss after mini-batch  3528: 747.745
-Loss after mini-batch  3552: 829.164
-Loss after mini-batch  3576: 803.063
-Loss after mini-batch  3600: 797.250
-Loss after mini-batch  3624: 803.484
-Loss after mini-batch  3648: 794.179
-Loss after mini-batch  3672: 774.899
-Loss after mini-batch  3696: 822.300
-Loss after mini-batch  3720: 832.701
-Loss after mini-batch  3744: 717.387
-Loss after mini-batch  3768: 704.368
-Loss after mini-batch  3792: 783.570
-Loss after mini-batch  3816: 776.146
-Loss after mini-batch  3840: 839.201
-Loss after mini-batch  3864: 693.784
-Loss after mini-batch  3888: 685.938
-Loss after mini-batch  3912: 689.269
-Loss after mini-batch  3936: 773.627
-Loss after mini-batch  3960: 687.742
-Loss after mini-batch  3984: 727.495
-Loss after mini-batch  4008: 717.749
-Loss after mini-batch  4032: 698.460
-Loss after mini-batch  4056: 714.611
-Loss after mini-batch  4080: 653.433
-Loss after mini-batch  4104: 696.152
-Loss after mini-batch  4128: 661.812
-Loss after mini-batch  4152: 667.113
-Loss after mini-batch  4176: 660.635
-Loss after mini-batch  4200: 655.092
-Loss after mini-batch  4224: 624.067
-Loss after mini-batch  4248: 669.604
-Loss after mini-batch  4272: 628.150
-Loss after mini-batch  4296: 637.166
-Loss after mini-batch  4320: 601.140
-Loss after mini-batch  4344: 611.845
-Loss after mini-batch  4368: 592.612
-Loss after mini-batch  4392: 639.520
-Loss after mini-batch  4416: 573.214
-Loss after mini-batch  4440: 580.812
-Loss after mini-batch  4464: 668.890
-Loss after mini-batch  4488: 561.262
-Loss after mini-batch  4512: 589.966
-Loss after mini-batch  4536: 582.498
-Loss after mini-batch  4560: 540.180
-Loss after mini-batch  4584: 598.032
-Loss after mini-batch  4608: 590.697
-Loss after mini-batch  4632: 582.979
-Loss after mini-batch  4656: 527.585
-Loss after mini-batch  4680: 599.505
-Loss after mini-batch  4704: 519.347
-Loss after mini-batch  4728: 503.412
-Loss after mini-batch  4752: 509.665
-Loss after mini-batch  4776: 522.980
-Loss after mini-batch  4800: 556.179
-Loss after mini-batch  4824: 563.342
-Loss after mini-batch  4848: 536.655
-Loss after mini-batch  4872: 526.166
-Loss after mini-batch  4896: 522.707
-Loss after mini-batch  4920: 528.845
-Loss after mini-batch  4944: 507.181
-Loss after mini-batch  4968: 537.677
-Loss after mini-batch  4992: 522.954
-Loss after mini-batch  5016: 508.761
-Loss after mini-batch  5040: 494.968
-Loss after mini-batch  5064: 464.734
-Loss after mini-batch  5088: 484.006
-Loss after mini-batch  5112: 507.567
-Loss after mini-batch  5136: 452.375
-Loss after mini-batch  5160: 459.254
-Loss after mini-batch  5184: 481.545
-Loss after mini-batch  5208: 468.251
-Loss after mini-batch  5232: 466.083
-Loss after mini-batch  5256: 484.849
-Loss after mini-batch  5280: 470.632
-Loss after mini-batch  5304: 469.761
-Loss after mini-batch  5328: 476.084
-Loss after mini-batch  5352: 447.455
-Loss after mini-batch  5376: 426.116
-Loss after mini-batch  5400: 461.379
-Loss after mini-batch  5424: 441.482
-Loss after mini-batch  5448: 419.488
-Loss after mini-batch  5472: 444.454
-Loss after mini-batch  5496: 414.637
-Loss after mini-batch  5520: 454.862
-Loss after mini-batch  5544: 446.872
-Loss after mini-batch  5568: 409.690
-Loss after mini-batch  5592: 426.868
-Loss after mini-batch  5616: 427.435
-Loss after mini-batch  5640: 436.608
-Loss after mini-batch  5664: 401.006
-Loss after mini-batch  5688: 397.036
-Loss after mini-batch  5712: 415.228
-Loss after mini-batch  5736: 435.179
-Loss after mini-batch  5760: 449.815
-Loss after mini-batch  5784: 419.112
-Loss after mini-batch  5808: 415.856
-Loss after mini-batch  5832: 407.868
-Loss after mini-batch  5856: 414.168
-Loss after mini-batch  5880: 425.709
-Loss after mini-batch  5904: 437.151
-Loss after mini-batch  5928: 418.867
-Loss after mini-batch  5952: 402.629
-Loss after mini-batch  5976: 423.211
-Loss after mini-batch  6000: 400.376
-Loss after mini-batch  6024: 384.672
-Loss after mini-batch  6048: 373.923
-Loss after mini-batch  6072: 387.376
-Loss after mini-batch  6096: 380.925
-Loss after mini-batch  6120: 399.336
-Loss after mini-batch  6144: 394.397
-Loss after mini-batch  6168: 375.210
-Loss after mini-batch  6192: 351.805
-Loss after mini-batch  6216: 367.073
-Loss after mini-batch  6240: 371.646
-Loss after mini-batch  6264: 414.395
-Loss after mini-batch  6288: 348.596
-Loss after mini-batch  6312: 365.412
-Loss after mini-batch  6336: 371.783
-Loss after mini-batch  6360: 377.309
-Loss after mini-batch  6384: 369.775
-Loss after mini-batch  6408: 355.408
-Loss after mini-batch  6432: 338.489
-Loss after mini-batch  6456: 367.151
-Loss after mini-batch  6480: 355.682
-Loss after mini-batch  6504: 365.592
-Loss after mini-batch  6528: 377.240
-Loss after mini-batch  6552: 370.344
-Loss after mini-batch  6576: 361.222
-Loss after mini-batch  6600: 370.994
-Loss after mini-batch  6624: 373.491
-Loss after mini-batch  6648: 346.526
-Loss after mini-batch  6672: 346.323
-Loss after mini-batch  6696: 339.446
-Loss after mini-batch  6720: 340.516
-Loss after mini-batch  6744: 362.894
-Loss after mini-batch  6768: 360.856
-Loss after mini-batch  6792: 353.632
-Loss after mini-batch  6816: 360.424
-Loss after mini-batch  6840: 334.141
-Loss after mini-batch  6864: 356.025
-Loss after mini-batch  6888: 337.608
-Loss after mini-batch  6912: 342.524
-Loss after mini-batch  6936: 330.369
-Loss after mini-batch  6960: 352.948
-Loss after mini-batch  6984: 325.813
-Loss after mini-batch  7008: 370.107
-Loss after mini-batch  7032: 355.324
-Loss after mini-batch  7056: 330.000
-Loss after mini-batch  7080: 308.380
-Loss after mini-batch  7104: 349.837
-Loss after mini-batch  7128: 334.866
-Loss after mini-batch  7152: 343.961
-Loss after mini-batch  7176: 314.996
-Loss after mini-batch  7200: 350.992
-Loss after mini-batch  7224: 351.057
-Loss after mini-batch  7248: 329.841
-Loss after mini-batch  7272: 311.079
-Loss after mini-batch  7296: 318.903
-Loss after mini-batch  7320: 338.206
-Loss after mini-batch  7344: 316.080
-Loss after mini-batch  7368: 337.572
-Loss after mini-batch  7392: 312.224
-Loss after mini-batch  7416: 332.297
-Loss after mini-batch  7440: 315.806
-Loss after mini-batch  7464: 335.578
-Loss after mini-batch  7488: 338.593
-Loss after mini-batch  7512: 330.714
-Loss after mini-batch  7536: 312.686
-Loss after mini-batch  7560: 318.454
-Loss after mini-batch  7584: 296.576
-Loss after mini-batch  7608: 303.060
-Loss after mini-batch  7632: 324.235
-Loss after mini-batch  7656: 314.823
-Loss after mini-batch  7680: 308.808
-Loss after mini-batch  7704: 324.911
-Loss after mini-batch  7728: 317.111
-Loss after mini-batch  7752: 307.841
-Loss after mini-batch  7776: 316.202
-Loss after mini-batch  7800: 328.455
-Loss after mini-batch  7824: 299.524
-Loss after mini-batch  7848: 298.740
-Loss after mini-batch  7872: 308.111
-Loss after mini-batch  7896: 298.767
-Loss after mini-batch  7920: 305.983
-Loss after mini-batch  7944: 301.215
-Loss after mini-batch  7968: 300.374
-Loss after mini-batch  7992: 318.772
-Loss after mini-batch  8016: 302.797
-Loss after mini-batch  8040: 312.859
-Loss after mini-batch  8064: 300.278
-Loss after mini-batch  8088: 296.896
-Loss after mini-batch  8112: 309.252
-Loss after mini-batch  8136: 297.161
-Loss after mini-batch  8160: 306.099
-Loss after mini-batch  8184: 292.963
-Loss after mini-batch  8208: 282.963
-Loss after mini-batch  8232: 306.696
-Loss after mini-batch  8256: 278.753
-Loss after mini-batch  8280: 298.081
-Loss after mini-batch  8304: 285.912
-Loss after mini-batch  8328: 294.418
-Loss after mini-batch  8352: 288.092
-Loss after mini-batch  8376: 282.070
-Loss after mini-batch  8400: 299.300
-Loss after mini-batch  8424: 305.032
-Loss after mini-batch  8448: 267.207
-Loss after mini-batch  8472: 274.004
-Loss after mini-batch  8496: 299.022
-Loss after mini-batch  8520: 278.938
-Loss after mini-batch  8544: 280.056
-Loss after mini-batch  8568: 264.866
-Loss after mini-batch  8592: 277.922
-Loss after mini-batch  8616: 276.126
-Loss after mini-batch  8640: 284.019
-Loss after mini-batch  8664: 277.590
-Loss after mini-batch  8688: 285.939
-Loss after mini-batch  8712: 255.737
-Loss after mini-batch  8736: 293.080
-Loss after mini-batch  8760: 271.254
-Loss after mini-batch  8784: 277.343
-Loss after mini-batch  8808: 264.755
-Loss after mini-batch  8832: 283.157
-Loss after mini-batch  8856: 263.145
-Loss after mini-batch  8880: 273.065
-Loss after mini-batch  8904: 273.511
-Loss after mini-batch  8928: 261.163
-Loss after mini-batch  8952: 280.449
-Loss after mini-batch  8976: 260.322
-Loss after mini-batch  9000: 285.659
-Loss after mini-batch  9024: 282.125
-Loss after mini-batch  9048: 250.674
-Loss after mini-batch  9072: 271.090
-Loss after mini-batch  9096: 281.309
-Loss after mini-batch  9120: 255.286
-Loss after mini-batch  9144: 259.159
-Loss after mini-batch  9168: 276.929
-Loss after mini-batch  9192: 254.237
-Loss after mini-batch  9216: 289.368
-Loss after mini-batch  9240: 275.231
-Loss after mini-batch  9264: 271.189
-Loss after mini-batch  9288: 254.514
-Loss after mini-batch  9312: 285.387
-Loss after mini-batch  9336: 260.362
-Loss after mini-batch  9360: 284.430
-Loss after mini-batch  9384: 276.306
-Loss after mini-batch  9408: 250.253
-Loss after mini-batch  9432: 246.371
-Loss after mini-batch  9456: 278.039
-Loss after mini-batch  9480: 269.821
-Loss after mini-batch  9504: 246.952
-Loss after mini-batch  9528: 258.980
-Loss after mini-batch  9552: 269.938
-Loss after mini-batch  9576: 253.994
-Loss after mini-batch  9600: 247.426
-Loss after mini-batch  9624: 245.431
-Loss after mini-batch  9648: 262.717
-Loss after mini-batch  9672: 267.367
-Loss after mini-batch  9696: 262.957
-Loss after mini-batch  9720: 252.839
-Loss after mini-batch  9744: 239.627
-Loss after mini-batch  9768: 254.473
-Loss after mini-batch  9792: 264.642
-Loss after mini-batch  9816: 245.793
-Loss after mini-batch  9840: 273.120
-Loss after mini-batch  9864: 242.462
-Loss after mini-batch  9888: 281.241
-Loss after mini-batch  9912: 262.715
-Loss after mini-batch  9936: 235.279
-Loss after mini-batch  9960: 240.354
-Loss after mini-batch  9984: 248.337
-Loss after mini-batch 10008: 233.253
-Loss after mini-batch 10032: 233.073
-Loss after mini-batch 10056: 244.379
-Loss after mini-batch 10080: 221.699
-Loss after mini-batch 10104: 238.349
-Loss after mini-batch 10128: 253.733
-Loss after mini-batch 10152: 241.255
-Loss after mini-batch 10176: 247.733
-Loss after mini-batch 10200: 245.301
-Loss after mini-batch 10224: 230.012
-Loss after mini-batch 10248: 246.730
-Loss after mini-batch 10272: 223.690
-Loss after mini-batch 10296: 245.959
-Loss after mini-batch 10320: 249.722
-Loss after mini-batch 10344: 239.729
-Loss after mini-batch 10368: 239.492
-Loss after mini-batch 10392: 226.958
-Loss after mini-batch 10416: 230.176
-Loss after mini-batch 10440: 264.083
-Loss after mini-batch 10464: 247.333
-Loss after mini-batch 10488: 261.520
-Loss after mini-batch 10512: 237.106
-Loss after mini-batch 10536: 253.247
-Loss after mini-batch 10560: 238.531
-Loss after mini-batch 10584: 230.307
-Loss after mini-batch 10608: 232.233
-Loss after mini-batch 10632: 236.603
-Loss after mini-batch 10656: 238.754
-Loss after mini-batch 10680: 226.904
-Loss after mini-batch 10704: 232.483
-Loss after mini-batch 10728: 244.963
-Loss after mini-batch 10752: 251.766
-Loss after mini-batch 10776: 230.442
-Loss after mini-batch 10800: 242.956
-Loss after mini-batch 10824: 238.707
-Loss after mini-batch 10848: 234.286
-Loss after mini-batch 10872: 237.188
-Loss after mini-batch 10896: 233.581
-Loss after mini-batch 10920: 212.886
-Loss after mini-batch 10944: 224.370
-Loss after mini-batch 10968: 238.564
-Loss after mini-batch 10992: 215.773
-Loss after mini-batch 11016: 229.277
-Loss after mini-batch 11040: 234.052
-Loss after mini-batch 11064: 225.013
-Loss after mini-batch 11088: 219.935
-Loss after mini-batch 11112: 211.863
-Loss after mini-batch 11136: 214.477
-Loss after mini-batch 11160: 222.596
-Loss after mini-batch 11184: 211.976
-Loss after mini-batch 11208: 216.438
-Loss after mini-batch 11232: 227.027
-Loss after mini-batch 11256: 237.528
-Loss after mini-batch 11280: 217.259
-Loss after mini-batch 11304: 226.123
-Loss after mini-batch 11328: 213.402
-Loss after mini-batch 11352: 211.822
-Loss after mini-batch 11376: 217.459
-Loss after mini-batch 11400: 224.744
-Loss after mini-batch 11424: 220.266
-Loss after mini-batch 11448: 221.925
-Loss after mini-batch 11472: 212.099
-Loss after mini-batch 11496: 228.314
-Loss after mini-batch 11520: 229.859
-Loss after mini-batch 11544: 222.323
-Loss after mini-batch 11568: 222.113
-Loss after mini-batch 11592: 236.518
-Loss after mini-batch 11616: 219.509
-Loss after mini-batch 11640: 211.755
-Loss after mini-batch 11664: 221.313
-Loss after mini-batch 11688: 246.803
-Loss after mini-batch 11712: 213.728
-Loss after mini-batch 11736: 220.427
-Loss after mini-batch 11760: 220.908
-Loss after mini-batch 11784: 217.050
-Loss after mini-batch 11808: 233.984
-Loss after mini-batch 11832: 230.897
-Validation loss after mini-batch    24: 207.140
-Validation loss after mini-batch    48: 205.287
-Validation loss after mini-batch    72: 223.224
-Validation loss after mini-batch    96: 231.211
-Validation loss after mini-batch   120: 224.847
-Validation loss after mini-batch   144: 243.033
-Validation loss after mini-batch   168: 195.865
-Validation loss after mini-batch   192: 216.905
-Validation loss after mini-batch   216: 203.013
-Validation loss after mini-batch   240: 211.242
-Validation loss after mini-batch   264: 219.987
-Validation loss after mini-batch   288: 202.822
-Validation loss after mini-batch   312: 211.881
-Validation loss after mini-batch   336: 245.338
-Validation loss after mini-batch   360: 213.441
-Validation loss after mini-batch   384: 215.269
-Validation loss after mini-batch   408: 217.403
-Validation loss after mini-batch   432: 232.095
-Validation loss after mini-batch   456: 228.533
-Validation loss after mini-batch   480: 213.726
-Validation loss after mini-batch   504: 234.566
-Validation loss after mini-batch   528: 222.328
-Validation loss after mini-batch   552: 188.053
-Validation loss after mini-batch   576: 215.002
-Validation loss after mini-batch   600: 228.469
-Validation loss after mini-batch   624: 225.216
-Validation loss after mini-batch   648: 211.009
-Validation loss after mini-batch   672: 193.856
-Validation loss after mini-batch   696: 220.608
-Validation loss after mini-batch   720: 218.410
-Validation loss after mini-batch   744: 216.692
-Validation loss after mini-batch   768: 225.010
-Validation loss after mini-batch   792: 219.697
-Validation loss after mini-batch   816: 240.476
-Validation loss after mini-batch   840: 228.532
-Validation loss after mini-batch   864: 206.799
-Validation loss after mini-batch   888: 206.812
-Validation loss after mini-batch   912: 224.629
-Validation loss after mini-batch   936: 207.931
-Validation loss after mini-batch   960: 235.717
-Validation loss after mini-batch   984: 213.811
-Validation loss after mini-batch  1008: 226.127
-Validation loss after mini-batch  1032: 222.765
-Validation loss after mini-batch  1056: 217.435
-Validation loss after mini-batch  1080: 213.309
-Validation loss after mini-batch  1104: 204.696
-Validation loss after mini-batch  1128: 236.900
-Validation loss after mini-batch  1152: 211.165
-Validation loss after mini-batch  1176: 187.939
-Validation loss after mini-batch  1200: 225.961
-Validation loss after mini-batch  1224: 192.972
-Validation loss after mini-batch  1248: 224.379
-Validation loss after mini-batch  1272: 217.250
-Validation loss after mini-batch  1296: 229.794
-Validation loss after mini-batch  1320: 197.045
-Validation loss after mini-batch  1344: 206.193
-Validation loss after mini-batch  1368: 213.698
-Validation loss after mini-batch  1392: 229.970
-Validation loss after mini-batch  1416: 217.063
-Validation loss after mini-batch  1440: 219.729
-Validation loss after mini-batch  1464: 218.971
-Validation loss after mini-batch  1488: 213.084
-Validation loss after mini-batch  1512: 233.319
-Validation loss after mini-batch  1536: 223.707
-Validation loss after mini-batch  1560: 217.066
-Validation loss after mini-batch  1584: 224.856
-Validation loss after mini-batch  1608: 207.472
-Validation loss after mini-batch  1632: 211.179
-Validation loss after mini-batch  1656: 219.384
-Validation loss after mini-batch  1680: 217.666
-Validation loss after mini-batch  1704: 239.938
-Validation loss after mini-batch  1728: 205.298
-Validation loss after mini-batch  1752: 210.726
-Validation loss after mini-batch  1776: 223.328
-Validation loss after mini-batch  1800: 205.980
-Validation loss after mini-batch  1824: 231.940
-Validation loss after mini-batch  1848: 225.512
-Validation loss after mini-batch  1872: 199.830
-Validation loss after mini-batch  1896: 218.807
-Validation loss after mini-batch  1920: 209.130
-Validation loss after mini-batch  1944: 202.829
-Validation loss after mini-batch  1968: 185.828
-Validation loss after mini-batch  1992: 213.183
-Validation loss after mini-batch  2016: 217.606
-Validation loss after mini-batch  2040: 205.791
-Validation loss after mini-batch  2064: 224.029
-Validation loss after mini-batch  2088: 206.048
-Validation loss after mini-batch  2112: 214.168
-Validation loss after mini-batch  2136: 200.902
-Validation loss after mini-batch  2160: 219.861
-Validation loss after mini-batch  2184: 201.758
-Validation loss after mini-batch  2208: 211.821
-Validation loss after mini-batch  2232: 220.199
-Validation loss after mini-batch  2256: 220.791
-Validation loss after mini-batch  2280: 240.389
-Validation loss after mini-batch  2304: 227.983
-Validation loss after mini-batch  2328: 230.102
-Validation loss after mini-batch  2352: 198.726
-Validation loss after mini-batch  2376: 211.713
-Validation loss after mini-batch  2400: 234.974
-Validation loss after mini-batch  2424: 225.048
-Validation loss after mini-batch  2448: 219.396
-Validation loss after mini-batch  2472: 235.242
-Validation loss after mini-batch  2496: 226.765
-Validation loss after mini-batch  2520: 209.425
-Validation loss after mini-batch  2544: 205.635
-Validation loss after mini-batch  2568: 201.130
-Validation loss after mini-batch  2592: 225.139
-Validation loss after mini-batch  2616: 239.865
-Validation loss after mini-batch  2640: 213.264
-Validation loss after mini-batch  2664: 210.279
-Validation loss after mini-batch  2688: 242.473
-Validation loss after mini-batch  2712: 220.892
+Loss after mini-batch    24: 0.728
+Loss after mini-batch    48: 0.621
+Loss after mini-batch    72: 0.618
+Loss after mini-batch    96: 0.493
+Loss after mini-batch   120: 0.490
+Loss after mini-batch   144: 0.444
+Loss after mini-batch   168: 0.396
+Loss after mini-batch   192: 0.400
+Loss after mini-batch   216: 0.349
+Loss after mini-batch   240: 0.349
+Loss after mini-batch   264: 0.316
+Loss after mini-batch   288: 0.305
+Loss after mini-batch   312: 0.288
+Loss after mini-batch   336: 0.298
+Loss after mini-batch   360: 0.273
+Loss after mini-batch   384: 0.251
+Loss after mini-batch   408: 0.254
+Loss after mini-batch   432: 0.261
+Loss after mini-batch   456: 0.250
+Loss after mini-batch   480: 0.242
+Loss after mini-batch   504: 0.267
+Loss after mini-batch   528: 0.242
+Loss after mini-batch   552: 0.279
+Loss after mini-batch   576: 0.256
+Loss after mini-batch   600: 0.268
+Loss after mini-batch   624: 0.250
+Loss after mini-batch   648: 0.239
+Loss after mini-batch   672: 0.250
+Loss after mini-batch   696: 0.261
+Loss after mini-batch   720: 0.262
+Loss after mini-batch   744: 0.242
+Loss after mini-batch   768: 0.244
+Loss after mini-batch   792: 0.257
+Loss after mini-batch   816: 0.234
+Loss after mini-batch   840: 0.262
+Loss after mini-batch   864: 0.231
+Loss after mini-batch   888: 0.240
+Loss after mini-batch   912: 0.237
+Loss after mini-batch   936: 0.254
+Loss after mini-batch   960: 0.239
+Loss after mini-batch   984: 0.228
+Loss after mini-batch  1008: 0.223
+Loss after mini-batch  1032: 0.225
+Loss after mini-batch  1056: 0.226
+Loss after mini-batch  1080: 0.230
+Loss after mini-batch  1104: 0.243
+Loss after mini-batch  1128: 0.217
+Loss after mini-batch  1152: 0.195
+Loss after mini-batch  1176: 0.210
+Loss after mini-batch  1200: 0.221
+Loss after mini-batch  1224: 0.227
+Loss after mini-batch  1248: 0.234
+Loss after mini-batch  1272: 0.232
+Loss after mini-batch  1296: 0.238
+Loss after mini-batch  1320: 0.225
+Loss after mini-batch  1344: 0.224
+Loss after mini-batch  1368: 0.225
+Loss after mini-batch  1392: 0.191
+Loss after mini-batch  1416: 0.207
+Loss after mini-batch  1440: 0.206
+Loss after mini-batch  1464: 0.224
+Loss after mini-batch  1488: 0.203
+Loss after mini-batch  1512: 0.201
+Loss after mini-batch  1536: 0.203
+Loss after mini-batch  1560: 0.208
+Loss after mini-batch  1584: 0.214
+Loss after mini-batch  1608: 0.222
+Loss after mini-batch  1632: 0.203
+Loss after mini-batch  1656: 0.211
+Loss after mini-batch  1680: 0.211
+Loss after mini-batch  1704: 0.207
+Loss after mini-batch  1728: 0.196
+Loss after mini-batch  1752: 0.217
+Loss after mini-batch  1776: 0.210
+Loss after mini-batch  1800: 0.164
+Loss after mini-batch  1824: 0.198
+Loss after mini-batch  1848: 0.222
+Loss after mini-batch  1872: 0.208
+Loss after mini-batch  1896: 0.226
+Loss after mini-batch  1920: 0.193
+Loss after mini-batch  1944: 0.200
+Loss after mini-batch  1968: 0.196
+Loss after mini-batch  1992: 0.211
+Loss after mini-batch  2016: 0.218
+Loss after mini-batch  2040: 0.221
+Loss after mini-batch  2064: 0.222
+Loss after mini-batch  2088: 0.226
+Loss after mini-batch  2112: 0.204
+Loss after mini-batch  2136: 0.211
+Loss after mini-batch  2160: 0.205
+Loss after mini-batch  2184: 0.187
+Loss after mini-batch  2208: 0.197
+Loss after mini-batch  2232: 0.206
+Loss after mini-batch  2256: 0.224
+Loss after mini-batch  2280: 0.199
+Loss after mini-batch  2304: 0.221
+Loss after mini-batch  2328: 0.233
+Loss after mini-batch  2352: 0.190
+Loss after mini-batch  2376: 0.208
+Loss after mini-batch  2400: 0.200
+Loss after mini-batch  2424: 0.218
+Loss after mini-batch  2448: 0.210
+Loss after mini-batch  2472: 0.198
+Loss after mini-batch  2496: 0.195
+Loss after mini-batch  2520: 0.195
+Loss after mini-batch  2544: 0.208
+Loss after mini-batch  2568: 0.214
+Loss after mini-batch  2592: 0.223
+Loss after mini-batch  2616: 0.199
+Loss after mini-batch  2640: 0.201
+Loss after mini-batch  2664: 0.197
+Loss after mini-batch  2688: 0.204
+Loss after mini-batch  2712: 0.205
+Loss after mini-batch  2736: 0.200
+Loss after mini-batch  2760: 0.200
+Loss after mini-batch  2784: 0.190
+Loss after mini-batch  2808: 0.214
+Loss after mini-batch  2832: 0.199
+Loss after mini-batch  2856: 0.217
+Loss after mini-batch  2880: 0.216
+Loss after mini-batch  2904: 0.220
+Loss after mini-batch  2928: 0.187
+Loss after mini-batch  2952: 0.199
+Loss after mini-batch  2976: 0.190
+Loss after mini-batch  3000: 0.205
+Loss after mini-batch  3024: 0.206
+Loss after mini-batch  3048: 0.193
+Loss after mini-batch  3072: 0.198
+Loss after mini-batch  3096: 0.208
+Loss after mini-batch  3120: 0.176
+Loss after mini-batch  3144: 0.194
+Loss after mini-batch  3168: 0.190
+Loss after mini-batch  3192: 0.224
+Loss after mini-batch  3216: 0.207
+Loss after mini-batch  3240: 0.183
+Loss after mini-batch  3264: 0.198
+Loss after mini-batch  3288: 0.219
+Loss after mini-batch  3312: 0.198
+Loss after mini-batch  3336: 0.197
+Loss after mini-batch  3360: 0.191
+Loss after mini-batch  3384: 0.197
+Loss after mini-batch  3408: 0.194
+Loss after mini-batch  3432: 0.184
+Loss after mini-batch  3456: 0.188
+Loss after mini-batch  3480: 0.205
+Loss after mini-batch  3504: 0.179
+Loss after mini-batch  3528: 0.190
+Loss after mini-batch  3552: 0.190
+Loss after mini-batch  3576: 0.199
+Loss after mini-batch  3600: 0.168
+Loss after mini-batch  3624: 0.227
+Loss after mini-batch  3648: 0.204
+Loss after mini-batch  3672: 0.213
+Loss after mini-batch  3696: 0.209
+Loss after mini-batch  3720: 0.213
+Loss after mini-batch  3744: 0.182
+Loss after mini-batch  3768: 0.198
+Loss after mini-batch  3792: 0.185
+Loss after mini-batch  3816: 0.217
+Loss after mini-batch  3840: 0.194
+Loss after mini-batch  3864: 0.190
+Loss after mini-batch  3888: 0.197
+Loss after mini-batch  3912: 0.170
+Loss after mini-batch  3936: 0.206
+Loss after mini-batch  3960: 0.194
+Loss after mini-batch  3984: 0.213
+Loss after mini-batch  4008: 0.202
+Loss after mini-batch  4032: 0.197
+Loss after mini-batch  4056: 0.192
+Loss after mini-batch  4080: 0.188
+Loss after mini-batch  4104: 0.172
+Loss after mini-batch  4128: 0.215
+Loss after mini-batch  4152: 0.194
+Loss after mini-batch  4176: 0.207
+Loss after mini-batch  4200: 0.200
+Loss after mini-batch  4224: 0.180
+Loss after mini-batch  4248: 0.170
+Loss after mini-batch  4272: 0.176
+Loss after mini-batch  4296: 0.179
+Loss after mini-batch  4320: 0.189
+Loss after mini-batch  4344: 0.201
+Loss after mini-batch  4368: 0.197
+Loss after mini-batch  4392: 0.196
+Loss after mini-batch  4416: 0.203
+Loss after mini-batch  4440: 0.199
+Loss after mini-batch  4464: 0.185
+Loss after mini-batch  4488: 0.170
+Loss after mini-batch  4512: 0.203
+Loss after mini-batch  4536: 0.198
+Loss after mini-batch  4560: 0.182
+Loss after mini-batch  4584: 0.203
+Loss after mini-batch  4608: 0.229
+Loss after mini-batch  4632: 0.203
+Loss after mini-batch  4656: 0.175
+Loss after mini-batch  4680: 0.189
+Loss after mini-batch  4704: 0.202
+Loss after mini-batch  4728: 0.172
+Loss after mini-batch  4752: 0.194
+Loss after mini-batch  4776: 0.208
+Loss after mini-batch  4800: 0.183
+Loss after mini-batch  4824: 0.202
+Loss after mini-batch  4848: 0.185
+Loss after mini-batch  4872: 0.195
+Loss after mini-batch  4896: 0.200
+Loss after mini-batch  4920: 0.192
+Loss after mini-batch  4944: 0.216
+Loss after mini-batch  4968: 0.187
+Loss after mini-batch  4992: 0.205
+Loss after mini-batch  5016: 0.194
+Loss after mini-batch  5040: 0.183
+Loss after mini-batch  5064: 0.190
+Loss after mini-batch  5088: 0.172
+Loss after mini-batch  5112: 0.205
+Loss after mini-batch  5136: 0.198
+Loss after mini-batch  5160: 0.188
+Loss after mini-batch  5184: 0.196
+Loss after mini-batch  5208: 0.173
+Loss after mini-batch  5232: 0.199
+Loss after mini-batch  5256: 0.208
+Loss after mini-batch  5280: 0.191
+Loss after mini-batch  5304: 0.189
+Loss after mini-batch  5328: 0.192
+Loss after mini-batch  5352: 0.189
+Loss after mini-batch  5376: 0.199
+Loss after mini-batch  5400: 0.206
+Loss after mini-batch  5424: 0.169
+Loss after mini-batch  5448: 0.180
+Loss after mini-batch  5472: 0.201
+Loss after mini-batch  5496: 0.158
+Loss after mini-batch  5520: 0.191
+Loss after mini-batch  5544: 0.215
+Loss after mini-batch  5568: 0.186
+Loss after mini-batch  5592: 0.188
+Loss after mini-batch  5616: 0.214
+Loss after mini-batch  5640: 0.194
+Loss after mini-batch  5664: 0.193
+Loss after mini-batch  5688: 0.185
+Loss after mini-batch  5712: 0.170
+Loss after mini-batch  5736: 0.208
+Loss after mini-batch  5760: 0.205
+Loss after mini-batch  5784: 0.178
+Loss after mini-batch  5808: 0.205
+Loss after mini-batch  5832: 0.183
+Loss after mini-batch  5856: 0.188
+Loss after mini-batch  5880: 0.194
+Loss after mini-batch  5904: 0.204
+Loss after mini-batch  5928: 0.207
+Loss after mini-batch  5952: 0.188
+Loss after mini-batch  5976: 0.191
+Loss after mini-batch  6000: 0.178
+Loss after mini-batch  6024: 0.175
+Loss after mini-batch  6048: 0.179
+Loss after mini-batch  6072: 0.179
+Loss after mini-batch  6096: 0.189
+Loss after mini-batch  6120: 0.203
+Loss after mini-batch  6144: 0.191
+Loss after mini-batch  6168: 0.178
+Loss after mini-batch  6192: 0.173
+Loss after mini-batch  6216: 0.181
+Loss after mini-batch  6240: 0.181
+Loss after mini-batch  6264: 0.185
+Loss after mini-batch  6288: 0.178
+Loss after mini-batch  6312: 0.182
+Loss after mini-batch  6336: 0.186
+Loss after mini-batch  6360: 0.191
+Loss after mini-batch  6384: 0.191
+Loss after mini-batch  6408: 0.179
+Loss after mini-batch  6432: 0.195
+Loss after mini-batch  6456: 0.199
+Loss after mini-batch  6480: 0.179
+Loss after mini-batch  6504: 0.180
+Loss after mini-batch  6528: 0.205
+Loss after mini-batch  6552: 0.186
+Loss after mini-batch  6576: 0.188
+Loss after mini-batch  6600: 0.193
+Loss after mini-batch  6624: 0.188
+Loss after mini-batch  6648: 0.188
+Loss after mini-batch  6672: 0.175
+Loss after mini-batch  6696: 0.185
+Loss after mini-batch  6720: 0.170
+Loss after mini-batch  6744: 0.209
+Loss after mini-batch  6768: 0.204
+Loss after mini-batch  6792: 0.191
+Loss after mini-batch  6816: 0.204
+Loss after mini-batch  6840: 0.184
+Loss after mini-batch  6864: 0.194
+Loss after mini-batch  6888: 0.179
+Loss after mini-batch  6912: 0.185
+Loss after mini-batch  6936: 0.177
+Loss after mini-batch  6960: 0.188
+Loss after mini-batch  6984: 0.180
+Loss after mini-batch  7008: 0.211
+Loss after mini-batch  7032: 0.187
+Loss after mini-batch  7056: 0.176
+Loss after mini-batch  7080: 0.180
+Loss after mini-batch  7104: 0.200
+Loss after mini-batch  7128: 0.182
+Loss after mini-batch  7152: 0.176
+Loss after mini-batch  7176: 0.195
+Loss after mini-batch  7200: 0.214
+Loss after mini-batch  7224: 0.201
+Loss after mini-batch  7248: 0.174
+Loss after mini-batch  7272: 0.166
+Loss after mini-batch  7296: 0.174
+Loss after mini-batch  7320: 0.186
+Loss after mini-batch  7344: 0.195
+Loss after mini-batch  7368: 0.215
+Loss after mini-batch  7392: 0.170
+Loss after mini-batch  7416: 0.185
+Loss after mini-batch  7440: 0.184
+Loss after mini-batch  7464: 0.193
+Loss after mini-batch  7488: 0.205
+Loss after mini-batch  7512: 0.192
+Loss after mini-batch  7536: 0.198
+Loss after mini-batch  7560: 0.180
+Loss after mini-batch  7584: 0.162
+Loss after mini-batch  7608: 0.164
+Loss after mini-batch  7632: 0.199
+Loss after mini-batch  7656: 0.189
+Loss after mini-batch  7680: 0.188
+Loss after mini-batch  7704: 0.197
+Loss after mini-batch  7728: 0.188
+Loss after mini-batch  7752: 0.199
+Loss after mini-batch  7776: 0.190
+Loss after mini-batch  7800: 0.193
+Loss after mini-batch  7824: 0.188
+Loss after mini-batch  7848: 0.182
+Loss after mini-batch  7872: 0.195
+Loss after mini-batch  7896: 0.170
+Loss after mini-batch  7920: 0.175
+Loss after mini-batch  7944: 0.188
+Loss after mini-batch  7968: 0.170
+Loss after mini-batch  7992: 0.216
+Loss after mini-batch  8016: 0.178
+Loss after mini-batch  8040: 0.194
+Loss after mini-batch  8064: 0.196
+Loss after mini-batch  8088: 0.171
+Loss after mini-batch  8112: 0.179
+Loss after mini-batch  8136: 0.190
+Loss after mini-batch  8160: 0.192
+Loss after mini-batch  8184: 0.176
+Loss after mini-batch  8208: 0.177
+Loss after mini-batch  8232: 0.170
+Loss after mini-batch  8256: 0.184
+Loss after mini-batch  8280: 0.178
+Loss after mini-batch  8304: 0.188
+Loss after mini-batch  8328: 0.197
+Loss after mini-batch  8352: 0.185
+Loss after mini-batch  8376: 0.187
+Loss after mini-batch  8400: 0.202
+Loss after mini-batch  8424: 0.201
+Loss after mini-batch  8448: 0.174
+Loss after mini-batch  8472: 0.167
+Loss after mini-batch  8496: 0.188
+Loss after mini-batch  8520: 0.172
+Loss after mini-batch  8544: 0.179
+Loss after mini-batch  8568: 0.189
+Loss after mini-batch  8592: 0.192
+Loss after mini-batch  8616: 0.194
+Loss after mini-batch  8640: 0.181
+Loss after mini-batch  8664: 0.177
+Loss after mini-batch  8688: 0.180
+Loss after mini-batch  8712: 0.160
+Loss after mini-batch  8736: 0.180
+Loss after mini-batch  8760: 0.178
+Loss after mini-batch  8784: 0.181
+Loss after mini-batch  8808: 0.183
+Loss after mini-batch  8832: 0.189
+Loss after mini-batch  8856: 0.171
+Loss after mini-batch  8880: 0.180
+Loss after mini-batch  8904: 0.180
+Loss after mini-batch  8928: 0.169
+Loss after mini-batch  8952: 0.203
+Loss after mini-batch  8976: 0.175
+Loss after mini-batch  9000: 0.192
+Loss after mini-batch  9024: 0.190
+Loss after mini-batch  9048: 0.173
+Loss after mini-batch  9072: 0.180
+Loss after mini-batch  9096: 0.195
+Loss after mini-batch  9120: 0.184
+Loss after mini-batch  9144: 0.170
+Loss after mini-batch  9168: 0.196
+Loss after mini-batch  9192: 0.177
+Loss after mini-batch  9216: 0.196
+Loss after mini-batch  9240: 0.204
+Loss after mini-batch  9264: 0.176
+Loss after mini-batch  9288: 0.175
+Loss after mini-batch  9312: 0.201
+Loss after mini-batch  9336: 0.191
+Loss after mini-batch  9360: 0.210
+Loss after mini-batch  9384: 0.209
+Loss after mini-batch  9408: 0.177
+Loss after mini-batch  9432: 0.158
+Loss after mini-batch  9456: 0.204
+Loss after mini-batch  9480: 0.187
+Loss after mini-batch  9504: 0.158
+Loss after mini-batch  9528: 0.176
+Loss after mini-batch  9552: 0.181
+Loss after mini-batch  9576: 0.177
+Loss after mini-batch  9600: 0.185
+Loss after mini-batch  9624: 0.172
+Loss after mini-batch  9648: 0.187
+Loss after mini-batch  9672: 0.179
+Loss after mini-batch  9696: 0.187
+Loss after mini-batch  9720: 0.178
+Loss after mini-batch  9744: 0.178
+Loss after mini-batch  9768: 0.196
+Loss after mini-batch  9792: 0.185
+Loss after mini-batch  9816: 0.174
+Loss after mini-batch  9840: 0.193
+Loss after mini-batch  9864: 0.178
+Loss after mini-batch  9888: 0.214
+Loss after mini-batch  9912: 0.187
+Loss after mini-batch  9936: 0.164
+Loss after mini-batch  9960: 0.178
+Loss after mini-batch  9984: 0.165
+Loss after mini-batch 10008: 0.177
+Loss after mini-batch 10032: 0.166
+Loss after mini-batch 10056: 0.194
+Loss after mini-batch 10080: 0.143
+Loss after mini-batch 10104: 0.182
+Loss after mini-batch 10128: 0.192
+Loss after mini-batch 10152: 0.175
+Loss after mini-batch 10176: 0.182
+Loss after mini-batch 10200: 0.175
+Loss after mini-batch 10224: 0.173
+Loss after mini-batch 10248: 0.182
+Loss after mini-batch 10272: 0.158
+Loss after mini-batch 10296: 0.181
+Loss after mini-batch 10320: 0.198
+Loss after mini-batch 10344: 0.186
+Loss after mini-batch 10368: 0.178
+Loss after mini-batch 10392: 0.172
+Loss after mini-batch 10416: 0.165
+Loss after mini-batch 10440: 0.216
+Loss after mini-batch 10464: 0.188
+Loss after mini-batch 10488: 0.199
+Loss after mini-batch 10512: 0.181
+Loss after mini-batch 10536: 0.200
+Loss after mini-batch 10560: 0.185
+Loss after mini-batch 10584: 0.169
+Loss after mini-batch 10608: 0.177
+Loss after mini-batch 10632: 0.182
+Loss after mini-batch 10656: 0.185
+Loss after mini-batch 10680: 0.195
+Loss after mini-batch 10704: 0.171
+Loss after mini-batch 10728: 0.190
+Loss after mini-batch 10752: 0.196
+Loss after mini-batch 10776: 0.172
+Loss after mini-batch 10800: 0.190
+Loss after mini-batch 10824: 0.184
+Loss after mini-batch 10848: 0.183
+Loss after mini-batch 10872: 0.177
+Loss after mini-batch 10896: 0.171
+Loss after mini-batch 10920: 0.169
+Loss after mini-batch 10944: 0.178
+Loss after mini-batch 10968: 0.186
+Loss after mini-batch 10992: 0.169
+Loss after mini-batch 11016: 0.195
+Loss after mini-batch 11040: 0.181
+Loss after mini-batch 11064: 0.182
+Loss after mini-batch 11088: 0.152
+Loss after mini-batch 11112: 0.172
+Loss after mini-batch 11136: 0.173
+Loss after mini-batch 11160: 0.180
+Loss after mini-batch 11184: 0.181
+Loss after mini-batch 11208: 0.169
+Loss after mini-batch 11232: 0.192
+Loss after mini-batch 11256: 0.180
+Loss after mini-batch 11280: 0.164
+Loss after mini-batch 11304: 0.173
+Loss after mini-batch 11328: 0.171
+Loss after mini-batch 11352: 0.172
+Loss after mini-batch 11376: 0.171
+Loss after mini-batch 11400: 0.181
+Loss after mini-batch 11424: 0.178
+Loss after mini-batch 11448: 0.192
+Loss after mini-batch 11472: 0.176
+Loss after mini-batch 11496: 0.173
+Loss after mini-batch 11520: 0.195
+Loss after mini-batch 11544: 0.208
+Loss after mini-batch 11568: 0.177
+Loss after mini-batch 11592: 0.178
+Loss after mini-batch 11616: 0.172
+Loss after mini-batch 11640: 0.176
+Loss after mini-batch 11664: 0.188
+Loss after mini-batch 11688: 0.187
+Loss after mini-batch 11712: 0.184
+Loss after mini-batch 11736: 0.190
+Loss after mini-batch 11760: 0.183
+Loss after mini-batch 11784: 0.163
+Loss after mini-batch 11808: 0.211
+Loss after mini-batch 11832: 0.189
+Validation loss after mini-batch    24: 0.195
+Validation loss after mini-batch    48: 0.192
+Validation loss after mini-batch    72: 0.200
+Validation loss after mini-batch    96: 0.210
+Validation loss after mini-batch   120: 0.204
+Validation loss after mini-batch   144: 0.222
+Validation loss after mini-batch   168: 0.182
+Validation loss after mini-batch   192: 0.208
+Validation loss after mini-batch   216: 0.183
+Validation loss after mini-batch   240: 0.188
+Validation loss after mini-batch   264: 0.192
+Validation loss after mini-batch   288: 0.189
+Validation loss after mini-batch   312: 0.205
+Validation loss after mini-batch   336: 0.231
+Validation loss after mini-batch   360: 0.192
+Validation loss after mini-batch   384: 0.211
+Validation loss after mini-batch   408: 0.206
+Validation loss after mini-batch   432: 0.213
+Validation loss after mini-batch   456: 0.224
+Validation loss after mini-batch   480: 0.190
+Validation loss after mini-batch   504: 0.230
+Validation loss after mini-batch   528: 0.211
+Validation loss after mini-batch   552: 0.182
+Validation loss after mini-batch   576: 0.219
+Validation loss after mini-batch   600: 0.227
+Validation loss after mini-batch   624: 0.202
+Validation loss after mini-batch   648: 0.190
+Validation loss after mini-batch   672: 0.178
+Validation loss after mini-batch   696: 0.198
+Validation loss after mini-batch   720: 0.202
+Validation loss after mini-batch   744: 0.212
+Validation loss after mini-batch   768: 0.227
+Validation loss after mini-batch   792: 0.203
+Validation loss after mini-batch   816: 0.217
+Validation loss after mini-batch   840: 0.211
+Validation loss after mini-batch   864: 0.199
+Validation loss after mini-batch   888: 0.177
+Validation loss after mini-batch   912: 0.205
+Validation loss after mini-batch   936: 0.202
+Validation loss after mini-batch   960: 0.222
+Validation loss after mini-batch   984: 0.211
+Validation loss after mini-batch  1008: 0.213
+Validation loss after mini-batch  1032: 0.216
+Validation loss after mini-batch  1056: 0.214
+Validation loss after mini-batch  1080: 0.193
+Validation loss after mini-batch  1104: 0.195
+Validation loss after mini-batch  1128: 0.206
+Validation loss after mini-batch  1152: 0.202
+Validation loss after mini-batch  1176: 0.177
+Validation loss after mini-batch  1200: 0.219
+Validation loss after mini-batch  1224: 0.185
+Validation loss after mini-batch  1248: 0.212
+Validation loss after mini-batch  1272: 0.209
+Validation loss after mini-batch  1296: 0.210
+Validation loss after mini-batch  1320: 0.186
+Validation loss after mini-batch  1344: 0.186
+Validation loss after mini-batch  1368: 0.206
+Validation loss after mini-batch  1392: 0.226
+Validation loss after mini-batch  1416: 0.199
+Validation loss after mini-batch  1440: 0.205
+Validation loss after mini-batch  1464: 0.206
+Validation loss after mini-batch  1488: 0.222
+Validation loss after mini-batch  1512: 0.206
+Validation loss after mini-batch  1536: 0.199
+Validation loss after mini-batch  1560: 0.206
+Validation loss after mini-batch  1584: 0.210
+Validation loss after mini-batch  1608: 0.197
+Validation loss after mini-batch  1632: 0.204
+Validation loss after mini-batch  1656: 0.199
+Validation loss after mini-batch  1680: 0.216
+Validation loss after mini-batch  1704: 0.241
+Validation loss after mini-batch  1728: 0.197
+Validation loss after mini-batch  1752: 0.203
+Validation loss after mini-batch  1776: 0.221
+Validation loss after mini-batch  1800: 0.194
+Validation loss after mini-batch  1824: 0.226
+Validation loss after mini-batch  1848: 0.205
+Validation loss after mini-batch  1872: 0.185
+Validation loss after mini-batch  1896: 0.212
+Validation loss after mini-batch  1920: 0.186
+Validation loss after mini-batch  1944: 0.194
+Validation loss after mini-batch  1968: 0.184
+Validation loss after mini-batch  1992: 0.196
+Validation loss after mini-batch  2016: 0.213
+Validation loss after mini-batch  2040: 0.197
+Validation loss after mini-batch  2064: 0.219
+Validation loss after mini-batch  2088: 0.205
+Validation loss after mini-batch  2112: 0.192
+Validation loss after mini-batch  2136: 0.200
+Validation loss after mini-batch  2160: 0.204
+Validation loss after mini-batch  2184: 0.180
+Validation loss after mini-batch  2208: 0.190
+Validation loss after mini-batch  2232: 0.207
+Validation loss after mini-batch  2256: 0.209
+Validation loss after mini-batch  2280: 0.219
+Validation loss after mini-batch  2304: 0.201
+Validation loss after mini-batch  2328: 0.214
+Validation loss after mini-batch  2352: 0.188
+Validation loss after mini-batch  2376: 0.202
+Validation loss after mini-batch  2400: 0.213
+Validation loss after mini-batch  2424: 0.212
+Validation loss after mini-batch  2448: 0.198
+Validation loss after mini-batch  2472: 0.217
+Validation loss after mini-batch  2496: 0.225
+Validation loss after mini-batch  2520: 0.184
+Validation loss after mini-batch  2544: 0.187
+Validation loss after mini-batch  2568: 0.195
+Validation loss after mini-batch  2592: 0.208
+Validation loss after mini-batch  2616: 0.217
+Validation loss after mini-batch  2640: 0.204
+Validation loss after mini-batch  2664: 0.210
+Validation loss after mini-batch  2688: 0.224
+Validation loss after mini-batch  2712: 0.210
 Starting epoch 2
-Loss after mini-batch    24: 211.125
-Loss after mini-batch    48: 203.135
-Loss after mini-batch    72: 213.411
-Loss after mini-batch    96: 203.499
-Loss after mini-batch   120: 247.166
-Loss after mini-batch   144: 208.663
-Loss after mini-batch   168: 223.894
-Loss after mini-batch   192: 233.422
-Loss after mini-batch   216: 215.718
-Loss after mini-batch   240: 215.749
-Loss after mini-batch   264: 193.962
-Loss after mini-batch   288: 235.390
-Loss after mini-batch   312: 237.793
-Loss after mini-batch   336: 211.666
-Loss after mini-batch   360: 234.107
-Loss after mini-batch   384: 231.775
-Loss after mini-batch   408: 241.747
-Loss after mini-batch   432: 208.959
-Loss after mini-batch   456: 232.472
-Loss after mini-batch   480: 197.919
-Loss after mini-batch   504: 226.312
-Loss after mini-batch   528: 222.047
-Loss after mini-batch   552: 221.696
-Loss after mini-batch   576: 208.538
-Loss after mini-batch   600: 218.111
-Loss after mini-batch   624: 219.487
-Loss after mini-batch   648: 214.072
-Loss after mini-batch   672: 196.651
-Loss after mini-batch   696: 228.380
-Loss after mini-batch   720: 231.444
-Loss after mini-batch   744: 222.001
-Loss after mini-batch   768: 209.356
-Loss after mini-batch   792: 193.208
-Loss after mini-batch   816: 215.481
-Loss after mini-batch   840: 193.114
-Loss after mini-batch   864: 207.635
-Loss after mini-batch   888: 218.734
-Loss after mini-batch   912: 226.962
-Loss after mini-batch   936: 228.373
-Loss after mini-batch   960: 208.259
-Loss after mini-batch   984: 194.821
-Loss after mini-batch  1008: 202.046
-Loss after mini-batch  1032: 203.198
-Loss after mini-batch  1056: 219.855
-Loss after mini-batch  1080: 196.924
-Loss after mini-batch  1104: 216.655
-Loss after mini-batch  1128: 196.816
-Loss after mini-batch  1152: 217.708
-Loss after mini-batch  1176: 210.326
-Loss after mini-batch  1200: 206.318
-Loss after mini-batch  1224: 202.863
-Loss after mini-batch  1248: 205.869
-Loss after mini-batch  1272: 213.743
-Loss after mini-batch  1296: 191.208
-Loss after mini-batch  1320: 218.647
-Loss after mini-batch  1344: 221.872
-Loss after mini-batch  1368: 190.652
-Loss after mini-batch  1392: 196.301
-Loss after mini-batch  1416: 202.040
-Loss after mini-batch  1440: 186.176
-Loss after mini-batch  1464: 220.033
-Loss after mini-batch  1488: 206.510
-Loss after mini-batch  1512: 196.208
-Loss after mini-batch  1536: 205.837
-Loss after mini-batch  1560: 200.765
-Loss after mini-batch  1584: 220.750
-Loss after mini-batch  1608: 205.731
-Loss after mini-batch  1632: 184.456
-Loss after mini-batch  1656: 200.129
-Loss after mini-batch  1680: 205.848
-Loss after mini-batch  1704: 192.117
-Loss after mini-batch  1728: 207.825
-Loss after mini-batch  1752: 208.196
-Loss after mini-batch  1776: 189.986
-Loss after mini-batch  1800: 229.567
-Loss after mini-batch  1824: 222.163
-Loss after mini-batch  1848: 200.291
-Loss after mini-batch  1872: 193.934
-Loss after mini-batch  1896: 218.298
-Loss after mini-batch  1920: 204.010
-Loss after mini-batch  1944: 243.011
-Loss after mini-batch  1968: 189.071
-Loss after mini-batch  1992: 198.842
-Loss after mini-batch  2016: 217.561
-Loss after mini-batch  2040: 196.595
-Loss after mini-batch  2064: 198.015
-Loss after mini-batch  2088: 216.047
-Loss after mini-batch  2112: 210.005
-Loss after mini-batch  2136: 212.098
-Loss after mini-batch  2160: 201.837
-Loss after mini-batch  2184: 191.654
-Loss after mini-batch  2208: 229.188
-Loss after mini-batch  2232: 208.500
-Loss after mini-batch  2256: 187.900
-Loss after mini-batch  2280: 212.029
-Loss after mini-batch  2304: 200.407
-Loss after mini-batch  2328: 207.104
-Loss after mini-batch  2352: 194.510
-Loss after mini-batch  2376: 208.383
-Loss after mini-batch  2400: 217.807
-Loss after mini-batch  2424: 195.513
-Loss after mini-batch  2448: 212.903
-Loss after mini-batch  2472: 189.334
-Loss after mini-batch  2496: 199.290
-Loss after mini-batch  2520: 207.147
-Loss after mini-batch  2544: 204.798
-Loss after mini-batch  2568: 187.892
-Loss after mini-batch  2592: 188.346
-Loss after mini-batch  2616: 178.160
-Loss after mini-batch  2640: 192.365
-Loss after mini-batch  2664: 199.946
-Loss after mini-batch  2688: 200.780
-Loss after mini-batch  2712: 201.226
-Loss after mini-batch  2736: 212.562
-Loss after mini-batch  2760: 179.791
-Loss after mini-batch  2784: 188.040
-Loss after mini-batch  2808: 215.038
-Loss after mini-batch  2832: 221.051
-Loss after mini-batch  2856: 190.095
-Loss after mini-batch  2880: 189.752
-Loss after mini-batch  2904: 188.991
-Loss after mini-batch  2928: 197.349
-Loss after mini-batch  2952: 209.317
-Loss after mini-batch  2976: 205.052
-Loss after mini-batch  3000: 219.267
-Loss after mini-batch  3024: 179.301
-Loss after mini-batch  3048: 229.444
-Loss after mini-batch  3072: 171.688
-Loss after mini-batch  3096: 196.663
-Loss after mini-batch  3120: 200.323
-Loss after mini-batch  3144: 211.119
-Loss after mini-batch  3168: 199.775
-Loss after mini-batch  3192: 203.437
-Loss after mini-batch  3216: 211.269
-Loss after mini-batch  3240: 192.792
-Loss after mini-batch  3264: 197.611
-Loss after mini-batch  3288: 201.644
-Loss after mini-batch  3312: 190.445
-Loss after mini-batch  3336: 185.516
-Loss after mini-batch  3360: 187.076
-Loss after mini-batch  3384: 196.060
-Loss after mini-batch  3408: 200.325
-Loss after mini-batch  3432: 191.773
-Loss after mini-batch  3456: 201.041
-Loss after mini-batch  3480: 213.196
-Loss after mini-batch  3504: 201.266
-Loss after mini-batch  3528: 186.306
-Loss after mini-batch  3552: 178.848
-Loss after mini-batch  3576: 197.488
-Loss after mini-batch  3600: 195.958
-Loss after mini-batch  3624: 184.239
-Loss after mini-batch  3648: 192.172
-Loss after mini-batch  3672: 199.859
-Loss after mini-batch  3696: 185.997
-Loss after mini-batch  3720: 210.072
-Loss after mini-batch  3744: 196.204
-Loss after mini-batch  3768: 192.000
-Loss after mini-batch  3792: 188.007
-Loss after mini-batch  3816: 208.448
-Loss after mini-batch  3840: 194.787
-Loss after mini-batch  3864: 194.659
-Loss after mini-batch  3888: 177.863
-Loss after mini-batch  3912: 230.296
-Loss after mini-batch  3936: 185.264
-Loss after mini-batch  3960: 196.740
-Loss after mini-batch  3984: 201.419
-Loss after mini-batch  4008: 187.790
-Loss after mini-batch  4032: 235.822
-Loss after mini-batch  4056: 196.157
-Loss after mini-batch  4080: 183.020
-Loss after mini-batch  4104: 181.856
-Loss after mini-batch  4128: 193.007
-Loss after mini-batch  4152: 202.208
-Loss after mini-batch  4176: 180.190
-Loss after mini-batch  4200: 196.850
-Loss after mini-batch  4224: 207.234
-Loss after mini-batch  4248: 203.664
-Loss after mini-batch  4272: 188.236
-Loss after mini-batch  4296: 194.069
-Loss after mini-batch  4320: 181.426
-Loss after mini-batch  4344: 176.812
-Loss after mini-batch  4368: 197.906
-Loss after mini-batch  4392: 181.780
-Loss after mini-batch  4416: 183.268
-Loss after mini-batch  4440: 187.450
-Loss after mini-batch  4464: 178.873
-Loss after mini-batch  4488: 200.105
-Loss after mini-batch  4512: 203.273
-Loss after mini-batch  4536: 195.920
-Loss after mini-batch  4560: 181.457
-Loss after mini-batch  4584: 186.882
-Loss after mini-batch  4608: 202.822
-Loss after mini-batch  4632: 194.984
-Loss after mini-batch  4656: 192.505
-Loss after mini-batch  4680: 223.754
-Loss after mini-batch  4704: 190.102
-Loss after mini-batch  4728: 176.948
-Loss after mini-batch  4752: 205.875
-Loss after mini-batch  4776: 208.395
-Loss after mini-batch  4800: 191.103
-Loss after mini-batch  4824: 193.293
-Loss after mini-batch  4848: 192.947
-Loss after mini-batch  4872: 208.889
-Loss after mini-batch  4896: 196.557
-Loss after mini-batch  4920: 205.083
-Loss after mini-batch  4944: 178.883
-Loss after mini-batch  4968: 180.145
-Loss after mini-batch  4992: 189.338
-Loss after mini-batch  5016: 185.361
-Loss after mini-batch  5040: 190.208
-Loss after mini-batch  5064: 183.951
-Loss after mini-batch  5088: 191.706
-Loss after mini-batch  5112: 181.773
-Loss after mini-batch  5136: 193.395
-Loss after mini-batch  5160: 181.142
-Loss after mini-batch  5184: 184.366
-Loss after mini-batch  5208: 210.052
-Loss after mini-batch  5232: 196.949
-Loss after mini-batch  5256: 180.356
-Loss after mini-batch  5280: 185.911
-Loss after mini-batch  5304: 177.214
-Loss after mini-batch  5328: 182.488
-Loss after mini-batch  5352: 196.135
-Loss after mini-batch  5376: 175.993
-Loss after mini-batch  5400: 170.261
-Loss after mini-batch  5424: 178.461
-Loss after mini-batch  5448: 185.199
-Loss after mini-batch  5472: 193.272
-Loss after mini-batch  5496: 199.895
-Loss after mini-batch  5520: 202.678
-Loss after mini-batch  5544: 195.981
-Loss after mini-batch  5568: 190.291
-Loss after mini-batch  5592: 195.419
-Loss after mini-batch  5616: 170.340
-Loss after mini-batch  5640: 162.360
-Loss after mini-batch  5664: 189.156
-Loss after mini-batch  5688: 201.931
-Loss after mini-batch  5712: 210.041
-Loss after mini-batch  5736: 181.837
-Loss after mini-batch  5760: 203.728
-Loss after mini-batch  5784: 184.074
-Loss after mini-batch  5808: 189.026
-Loss after mini-batch  5832: 187.066
-Loss after mini-batch  5856: 182.359
-Loss after mini-batch  5880: 181.236
-Loss after mini-batch  5904: 185.572
-Loss after mini-batch  5928: 212.809
-Loss after mini-batch  5952: 186.725
-Loss after mini-batch  5976: 183.105
-Loss after mini-batch  6000: 201.905
-Loss after mini-batch  6024: 186.329
-Loss after mini-batch  6048: 188.068
-Loss after mini-batch  6072: 177.821
-Loss after mini-batch  6096: 223.530
-Loss after mini-batch  6120: 164.623
-Loss after mini-batch  6144: 190.287
-Loss after mini-batch  6168: 182.900
-Loss after mini-batch  6192: 193.292
-Loss after mini-batch  6216: 198.682
-Loss after mini-batch  6240: 170.439
-Loss after mini-batch  6264: 187.978
-Loss after mini-batch  6288: 188.909
-Loss after mini-batch  6312: 202.399
-Loss after mini-batch  6336: 181.661
-Loss after mini-batch  6360: 170.490
-Loss after mini-batch  6384: 205.629
-Loss after mini-batch  6408: 192.022
-Loss after mini-batch  6432: 193.795
-Loss after mini-batch  6456: 197.848
-Loss after mini-batch  6480: 196.175
-Loss after mini-batch  6504: 188.038
-Loss after mini-batch  6528: 194.014
-Loss after mini-batch  6552: 188.704
-Loss after mini-batch  6576: 195.270
-Loss after mini-batch  6600: 180.962
-Loss after mini-batch  6624: 180.224
-Loss after mini-batch  6648: 214.475
-Loss after mini-batch  6672: 184.715
-Loss after mini-batch  6696: 189.540
-Loss after mini-batch  6720: 204.915
-Loss after mini-batch  6744: 180.479
-Loss after mini-batch  6768: 183.049
-Loss after mini-batch  6792: 193.481
-Loss after mini-batch  6816: 192.074
-Loss after mini-batch  6840: 175.116
-Loss after mini-batch  6864: 204.972
-Loss after mini-batch  6888: 200.243
-Loss after mini-batch  6912: 203.073
-Loss after mini-batch  6936: 180.937
-Loss after mini-batch  6960: 185.460
-Loss after mini-batch  6984: 178.418
-Loss after mini-batch  7008: 188.496
-Loss after mini-batch  7032: 183.064
-Loss after mini-batch  7056: 187.310
-Loss after mini-batch  7080: 180.382
-Loss after mini-batch  7104: 201.644
-Loss after mini-batch  7128: 182.858
-Loss after mini-batch  7152: 177.341
-Loss after mini-batch  7176: 207.296
-Loss after mini-batch  7200: 202.814
-Loss after mini-batch  7224: 181.756
-Loss after mini-batch  7248: 192.303
-Loss after mini-batch  7272: 198.071
-Loss after mini-batch  7296: 185.963
-Loss after mini-batch  7320: 181.672
-Loss after mini-batch  7344: 188.106
-Loss after mini-batch  7368: 178.085
-Loss after mini-batch  7392: 193.415
-Loss after mini-batch  7416: 184.353
-Loss after mini-batch  7440: 187.406
-Loss after mini-batch  7464: 177.060
-Loss after mini-batch  7488: 197.829
-Loss after mini-batch  7512: 171.790
-Loss after mini-batch  7536: 192.683
-Loss after mini-batch  7560: 186.266
-Loss after mini-batch  7584: 205.264
-Loss after mini-batch  7608: 187.950
-Loss after mini-batch  7632: 212.408
-Loss after mini-batch  7656: 198.388
-Loss after mini-batch  7680: 199.738
-Loss after mini-batch  7704: 197.969
-Loss after mini-batch  7728: 188.433
-Loss after mini-batch  7752: 194.935
-Loss after mini-batch  7776: 199.039
-Loss after mini-batch  7800: 168.538
-Loss after mini-batch  7824: 185.856
-Loss after mini-batch  7848: 171.508
-Loss after mini-batch  7872: 193.813
-Loss after mini-batch  7896: 213.043
-Loss after mini-batch  7920: 179.367
-Loss after mini-batch  7944: 189.391
-Loss after mini-batch  7968: 195.149
-Loss after mini-batch  7992: 177.848
-Loss after mini-batch  8016: 180.127
-Loss after mini-batch  8040: 173.447
-Loss after mini-batch  8064: 222.921
-Loss after mini-batch  8088: 174.374
-Loss after mini-batch  8112: 199.374
-Loss after mini-batch  8136: 175.549
-Loss after mini-batch  8160: 174.587
-Loss after mini-batch  8184: 198.393
-Loss after mini-batch  8208: 189.339
-Loss after mini-batch  8232: 193.657
-Loss after mini-batch  8256: 191.105
-Loss after mini-batch  8280: 176.527
-Loss after mini-batch  8304: 187.158
-Loss after mini-batch  8328: 173.208
-Loss after mini-batch  8352: 207.715
-Loss after mini-batch  8376: 175.644
-Loss after mini-batch  8400: 177.835
-Loss after mini-batch  8424: 188.275
-Loss after mini-batch  8448: 195.917
-Loss after mini-batch  8472: 171.983
-Loss after mini-batch  8496: 179.306
-Loss after mini-batch  8520: 171.332
-Loss after mini-batch  8544: 189.385
-Loss after mini-batch  8568: 175.577
-Loss after mini-batch  8592: 162.320
-Loss after mini-batch  8616: 177.351
-Loss after mini-batch  8640: 186.363
-Loss after mini-batch  8664: 175.260
-Loss after mini-batch  8688: 181.518
-Loss after mini-batch  8712: 175.445
-Loss after mini-batch  8736: 178.774
-Loss after mini-batch  8760: 181.799
-Loss after mini-batch  8784: 177.260
-Loss after mini-batch  8808: 182.684
-Loss after mini-batch  8832: 179.199
-Loss after mini-batch  8856: 169.471
-Loss after mini-batch  8880: 187.088
-Loss after mini-batch  8904: 170.103
-Loss after mini-batch  8928: 181.652
-Loss after mini-batch  8952: 200.579
-Loss after mini-batch  8976: 169.837
-Loss after mini-batch  9000: 192.917
-Loss after mini-batch  9024: 201.595
-Loss after mini-batch  9048: 186.934
-Loss after mini-batch  9072: 192.082
-Loss after mini-batch  9096: 176.845
-Loss after mini-batch  9120: 198.469
-Loss after mini-batch  9144: 191.727
-Loss after mini-batch  9168: 169.197
-Loss after mini-batch  9192: 174.029
-Loss after mini-batch  9216: 175.607
-Loss after mini-batch  9240: 179.791
-Loss after mini-batch  9264: 166.972
-Loss after mini-batch  9288: 179.877
-Loss after mini-batch  9312: 193.751
-Loss after mini-batch  9336: 170.338
-Loss after mini-batch  9360: 193.150
-Loss after mini-batch  9384: 189.232
-Loss after mini-batch  9408: 171.502
-Loss after mini-batch  9432: 184.802
-Loss after mini-batch  9456: 176.977
-Loss after mini-batch  9480: 190.439
-Loss after mini-batch  9504: 184.286
-Loss after mini-batch  9528: 203.220
-Loss after mini-batch  9552: 175.212
-Loss after mini-batch  9576: 193.436
-Loss after mini-batch  9600: 197.939
-Loss after mini-batch  9624: 181.775
-Loss after mini-batch  9648: 182.543
-Loss after mini-batch  9672: 181.813
-Loss after mini-batch  9696: 177.890
-Loss after mini-batch  9720: 176.407
-Loss after mini-batch  9744: 187.333
-Loss after mini-batch  9768: 191.549
-Loss after mini-batch  9792: 155.496
-Loss after mini-batch  9816: 166.945
-Loss after mini-batch  9840: 177.110
-Loss after mini-batch  9864: 168.188
-Loss after mini-batch  9888: 181.534
-Loss after mini-batch  9912: 186.289
-Loss after mini-batch  9936: 184.123
-Loss after mini-batch  9960: 192.444
-Loss after mini-batch  9984: 192.379
-Loss after mini-batch 10008: 173.038
-Loss after mini-batch 10032: 174.029
-Loss after mini-batch 10056: 190.195
-Loss after mini-batch 10080: 173.721
-Loss after mini-batch 10104: 199.499
-Loss after mini-batch 10128: 201.626
-Loss after mini-batch 10152: 186.372
-Loss after mini-batch 10176: 187.308
-Loss after mini-batch 10200: 203.103
-Loss after mini-batch 10224: 177.340
-Loss after mini-batch 10248: 160.275
-Loss after mini-batch 10272: 177.361
-Loss after mini-batch 10296: 163.698
-Loss after mini-batch 10320: 193.845
-Loss after mini-batch 10344: 176.583
-Loss after mini-batch 10368: 169.897
-Loss after mini-batch 10392: 172.280
-Loss after mini-batch 10416: 193.377
-Loss after mini-batch 10440: 171.194
-Loss after mini-batch 10464: 169.529
-Loss after mini-batch 10488: 185.900
-Loss after mini-batch 10512: 197.993
-Loss after mini-batch 10536: 172.701
-Loss after mini-batch 10560: 173.407
-Loss after mini-batch 10584: 178.632
-Loss after mini-batch 10608: 176.492
-Loss after mini-batch 10632: 176.208
-Loss after mini-batch 10656: 179.235
-Loss after mini-batch 10680: 171.308
-Loss after mini-batch 10704: 188.544
-Loss after mini-batch 10728: 200.748
-Loss after mini-batch 10752: 172.280
-Loss after mini-batch 10776: 186.882
-Loss after mini-batch 10800: 186.450
-Loss after mini-batch 10824: 176.848
-Loss after mini-batch 10848: 164.210
-Loss after mini-batch 10872: 165.141
-Loss after mini-batch 10896: 190.079
-Loss after mini-batch 10920: 193.505
-Loss after mini-batch 10944: 222.077
-Loss after mini-batch 10968: 159.212
-Loss after mini-batch 10992: 174.133
-Loss after mini-batch 11016: 195.030
-Loss after mini-batch 11040: 187.292
-Loss after mini-batch 11064: 177.299
-Loss after mini-batch 11088: 170.453
-Loss after mini-batch 11112: 173.973
-Loss after mini-batch 11136: 188.405
-Loss after mini-batch 11160: 186.066
-Loss after mini-batch 11184: 170.745
-Loss after mini-batch 11208: 186.428
-Loss after mini-batch 11232: 189.205
-Loss after mini-batch 11256: 183.850
-Loss after mini-batch 11280: 169.859
-Loss after mini-batch 11304: 185.310
-Loss after mini-batch 11328: 170.316
-Loss after mini-batch 11352: 174.268
-Loss after mini-batch 11376: 173.695
-Loss after mini-batch 11400: 187.750
-Loss after mini-batch 11424: 189.145
-Loss after mini-batch 11448: 161.890
-Loss after mini-batch 11472: 198.165
-Loss after mini-batch 11496: 177.805
-Loss after mini-batch 11520: 175.516
-Loss after mini-batch 11544: 187.970
-Loss after mini-batch 11568: 178.060
-Loss after mini-batch 11592: 178.434
-Loss after mini-batch 11616: 188.166
-Loss after mini-batch 11640: 184.558
-Loss after mini-batch 11664: 201.223
-Loss after mini-batch 11688: 177.612
-Loss after mini-batch 11712: 176.898
-Loss after mini-batch 11736: 167.532
-Loss after mini-batch 11760: 181.400
-Loss after mini-batch 11784: 172.382
-Loss after mini-batch 11808: 187.871
-Loss after mini-batch 11832: 184.612
-Validation loss after mini-batch    24: 169.049
-Validation loss after mini-batch    48: 167.051
-Validation loss after mini-batch    72: 183.650
-Validation loss after mini-batch    96: 183.147
-Validation loss after mini-batch   120: 175.573
-Validation loss after mini-batch   144: 203.361
-Validation loss after mini-batch   168: 198.513
-Validation loss after mini-batch   192: 181.447
-Validation loss after mini-batch   216: 180.937
-Validation loss after mini-batch   240: 193.501
-Validation loss after mini-batch   264: 174.029
-Validation loss after mini-batch   288: 169.805
-Validation loss after mini-batch   312: 195.152
-Validation loss after mini-batch   336: 174.676
-Validation loss after mini-batch   360: 170.314
-Validation loss after mini-batch   384: 193.828
-Validation loss after mini-batch   408: 181.789
-Validation loss after mini-batch   432: 185.583
-Validation loss after mini-batch   456: 165.250
-Validation loss after mini-batch   480: 187.968
-Validation loss after mini-batch   504: 168.273
-Validation loss after mini-batch   528: 178.109
-Validation loss after mini-batch   552: 166.847
-Validation loss after mini-batch   576: 189.687
-Validation loss after mini-batch   600: 185.408
-Validation loss after mini-batch   624: 173.709
-Validation loss after mini-batch   648: 160.948
-Validation loss after mini-batch   672: 172.371
-Validation loss after mini-batch   696: 172.575
-Validation loss after mini-batch   720: 169.001
-Validation loss after mini-batch   744: 176.092
-Validation loss after mini-batch   768: 192.751
-Validation loss after mini-batch   792: 174.448
-Validation loss after mini-batch   816: 183.201
-Validation loss after mini-batch   840: 189.978
-Validation loss after mini-batch   864: 172.555
-Validation loss after mini-batch   888: 172.047
-Validation loss after mini-batch   912: 166.754
-Validation loss after mini-batch   936: 188.999
-Validation loss after mini-batch   960: 202.248
-Validation loss after mini-batch   984: 196.569
-Validation loss after mini-batch  1008: 171.307
-Validation loss after mini-batch  1032: 175.481
-Validation loss after mini-batch  1056: 202.655
-Validation loss after mini-batch  1080: 185.570
-Validation loss after mini-batch  1104: 189.178
-Validation loss after mini-batch  1128: 175.707
-Validation loss after mini-batch  1152: 184.073
-Validation loss after mini-batch  1176: 172.613
-Validation loss after mini-batch  1200: 166.032
-Validation loss after mini-batch  1224: 171.147
-Validation loss after mini-batch  1248: 174.646
-Validation loss after mini-batch  1272: 172.966
-Validation loss after mini-batch  1296: 210.639
-Validation loss after mini-batch  1320: 167.524
-Validation loss after mini-batch  1344: 197.055
-Validation loss after mini-batch  1368: 177.977
-Validation loss after mini-batch  1392: 180.529
-Validation loss after mini-batch  1416: 186.670
-Validation loss after mini-batch  1440: 182.228
-Validation loss after mini-batch  1464: 191.816
-Validation loss after mini-batch  1488: 183.072
-Validation loss after mini-batch  1512: 189.873
-Validation loss after mini-batch  1536: 181.682
-Validation loss after mini-batch  1560: 175.792
-Validation loss after mini-batch  1584: 192.497
-Validation loss after mini-batch  1608: 181.570
-Validation loss after mini-batch  1632: 203.090
-Validation loss after mini-batch  1656: 167.691
-Validation loss after mini-batch  1680: 170.635
-Validation loss after mini-batch  1704: 190.367
-Validation loss after mini-batch  1728: 179.173
-Validation loss after mini-batch  1752: 185.609
-Validation loss after mini-batch  1776: 194.475
-Validation loss after mini-batch  1800: 175.953
-Validation loss after mini-batch  1824: 179.093
-Validation loss after mini-batch  1848: 196.863
-Validation loss after mini-batch  1872: 196.955
-Validation loss after mini-batch  1896: 189.064
-Validation loss after mini-batch  1920: 183.732
-Validation loss after mini-batch  1944: 182.383
-Validation loss after mini-batch  1968: 173.869
-Validation loss after mini-batch  1992: 156.666
-Validation loss after mini-batch  2016: 194.427
-Validation loss after mini-batch  2040: 177.589
-Validation loss after mini-batch  2064: 184.737
-Validation loss after mini-batch  2088: 166.782
-Validation loss after mini-batch  2112: 210.216
-Validation loss after mini-batch  2136: 169.469
-Validation loss after mini-batch  2160: 194.218
-Validation loss after mini-batch  2184: 184.443
-Validation loss after mini-batch  2208: 182.135
-Validation loss after mini-batch  2232: 192.622
-Validation loss after mini-batch  2256: 177.817
-Validation loss after mini-batch  2280: 186.544
-Validation loss after mini-batch  2304: 166.756
-Validation loss after mini-batch  2328: 189.493
-Validation loss after mini-batch  2352: 172.411
-Validation loss after mini-batch  2376: 168.794
-Validation loss after mini-batch  2400: 182.635
-Validation loss after mini-batch  2424: 194.683
-Validation loss after mini-batch  2448: 173.632
-Validation loss after mini-batch  2472: 187.562
-Validation loss after mini-batch  2496: 192.194
-Validation loss after mini-batch  2520: 180.932
-Validation loss after mini-batch  2544: 201.288
-Validation loss after mini-batch  2568: 175.579
-Validation loss after mini-batch  2592: 172.246
-Validation loss after mini-batch  2616: 173.515
-Validation loss after mini-batch  2640: 184.188
-Validation loss after mini-batch  2664: 177.934
-Validation loss after mini-batch  2688: 175.361
-Validation loss after mini-batch  2712: 202.903
+Loss after mini-batch    24: 0.174
+Loss after mini-batch    48: 0.164
+Loss after mini-batch    72: 0.164
+Loss after mini-batch    96: 0.166
+Loss after mini-batch   120: 0.212
+Loss after mini-batch   144: 0.180
+Loss after mini-batch   168: 0.179
+Loss after mini-batch   192: 0.205
+Loss after mini-batch   216: 0.166
+Loss after mini-batch   240: 0.164
+Loss after mini-batch   264: 0.173
+Loss after mini-batch   288: 0.203
+Loss after mini-batch   312: 0.202
+Loss after mini-batch   336: 0.187
+Loss after mini-batch   360: 0.192
+Loss after mini-batch   384: 0.187
+Loss after mini-batch   408: 0.205
+Loss after mini-batch   432: 0.181
+Loss after mini-batch   456: 0.196
+Loss after mini-batch   480: 0.177
+Loss after mini-batch   504: 0.182
+Loss after mini-batch   528: 0.188
+Loss after mini-batch   552: 0.179
+Loss after mini-batch   576: 0.165
+Loss after mini-batch   600: 0.187
+Loss after mini-batch   624: 0.200
+Loss after mini-batch   648: 0.182
+Loss after mini-batch   672: 0.163
+Loss after mini-batch   696: 0.193
+Loss after mini-batch   720: 0.202
+Loss after mini-batch   744: 0.189
+Loss after mini-batch   768: 0.172
+Loss after mini-batch   792: 0.170
+Loss after mini-batch   816: 0.191
+Loss after mini-batch   840: 0.163
+Loss after mini-batch   864: 0.181
+Loss after mini-batch   888: 0.190
+Loss after mini-batch   912: 0.212
+Loss after mini-batch   936: 0.206
+Loss after mini-batch   960: 0.178
+Loss after mini-batch   984: 0.160
+Loss after mini-batch  1008: 0.176
+Loss after mini-batch  1032: 0.183
+Loss after mini-batch  1056: 0.174
+Loss after mini-batch  1080: 0.180
+Loss after mini-batch  1104: 0.191
+Loss after mini-batch  1128: 0.151
+Loss after mini-batch  1152: 0.195
+Loss after mini-batch  1176: 0.176
+Loss after mini-batch  1200: 0.202
+Loss after mini-batch  1224: 0.180
+Loss after mini-batch  1248: 0.167
+Loss after mini-batch  1272: 0.190
+Loss after mini-batch  1296: 0.169
+Loss after mini-batch  1320: 0.192
+Loss after mini-batch  1344: 0.199
+Loss after mini-batch  1368: 0.164
+Loss after mini-batch  1392: 0.183
+Loss after mini-batch  1416: 0.165
+Loss after mini-batch  1440: 0.168
+Loss after mini-batch  1464: 0.192
+Loss after mini-batch  1488: 0.180
+Loss after mini-batch  1512: 0.177
+Loss after mini-batch  1536: 0.178
+Loss after mini-batch  1560: 0.174
+Loss after mini-batch  1584: 0.196
+Loss after mini-batch  1608: 0.182
+Loss after mini-batch  1632: 0.152
+Loss after mini-batch  1656: 0.175
+Loss after mini-batch  1680: 0.175
+Loss after mini-batch  1704: 0.166
+Loss after mini-batch  1728: 0.169
+Loss after mini-batch  1752: 0.182
+Loss after mini-batch  1776: 0.167
+Loss after mini-batch  1800: 0.205
+Loss after mini-batch  1824: 0.190
+Loss after mini-batch  1848: 0.182
+Loss after mini-batch  1872: 0.175
+Loss after mini-batch  1896: 0.200
+Loss after mini-batch  1920: 0.176
+Loss after mini-batch  1944: 0.221
+Loss after mini-batch  1968: 0.164
+Loss after mini-batch  1992: 0.170
+Loss after mini-batch  2016: 0.193
+Loss after mini-batch  2040: 0.162
+Loss after mini-batch  2064: 0.169
+Loss after mini-batch  2088: 0.209
+Loss after mini-batch  2112: 0.191
+Loss after mini-batch  2136: 0.180
+Loss after mini-batch  2160: 0.178
+Loss after mini-batch  2184: 0.165
+Loss after mini-batch  2208: 0.207
+Loss after mini-batch  2232: 0.196
+Loss after mini-batch  2256: 0.177
+Loss after mini-batch  2280: 0.185
+Loss after mini-batch  2304: 0.187
+Loss after mini-batch  2328: 0.194
+Loss after mini-batch  2352: 0.159
+Loss after mini-batch  2376: 0.189
+Loss after mini-batch  2400: 0.194
+Loss after mini-batch  2424: 0.174
+Loss after mini-batch  2448: 0.184
+Loss after mini-batch  2472: 0.153
+Loss after mini-batch  2496: 0.187
+Loss after mini-batch  2520: 0.180
+Loss after mini-batch  2544: 0.189
+Loss after mini-batch  2568: 0.158
+Loss after mini-batch  2592: 0.161
+Loss after mini-batch  2616: 0.166
+Loss after mini-batch  2640: 0.169
+Loss after mini-batch  2664: 0.181
+Loss after mini-batch  2688: 0.174
+Loss after mini-batch  2712: 0.180
+Loss after mini-batch  2736: 0.196
+Loss after mini-batch  2760: 0.168
+Loss after mini-batch  2784: 0.163
+Loss after mini-batch  2808: 0.193
+Loss after mini-batch  2832: 0.188
+Loss after mini-batch  2856: 0.180
+Loss after mini-batch  2880: 0.180
+Loss after mini-batch  2904: 0.170
+Loss after mini-batch  2928: 0.176
+Loss after mini-batch  2952: 0.203
+Loss after mini-batch  2976: 0.184
+Loss after mini-batch  3000: 0.214
+Loss after mini-batch  3024: 0.158
+Loss after mini-batch  3048: 0.202
+Loss after mini-batch  3072: 0.159
+Loss after mini-batch  3096: 0.169
+Loss after mini-batch  3120: 0.191
+Loss after mini-batch  3144: 0.183
+Loss after mini-batch  3168: 0.194
+Loss after mini-batch  3192: 0.192
+Loss after mini-batch  3216: 0.184
+Loss after mini-batch  3240: 0.183
+Loss after mini-batch  3264: 0.177
+Loss after mini-batch  3288: 0.178
+Loss after mini-batch  3312: 0.186
+Loss after mini-batch  3336: 0.176
+Loss after mini-batch  3360: 0.178
+Loss after mini-batch  3384: 0.190
+Loss after mini-batch  3408: 0.175
+Loss after mini-batch  3432: 0.181
+Loss after mini-batch  3456: 0.190
+Loss after mini-batch  3480: 0.187
+Loss after mini-batch  3504: 0.171
+Loss after mini-batch  3528: 0.164
+Loss after mini-batch  3552: 0.152
+Loss after mini-batch  3576: 0.182
+Loss after mini-batch  3600: 0.177
+Loss after mini-batch  3624: 0.175
+Loss after mini-batch  3648: 0.175
+Loss after mini-batch  3672: 0.182
+Loss after mini-batch  3696: 0.161
+Loss after mini-batch  3720: 0.195
+Loss after mini-batch  3744: 0.186
+Loss after mini-batch  3768: 0.187
+Loss after mini-batch  3792: 0.164
+Loss after mini-batch  3816: 0.184
+Loss after mini-batch  3840: 0.185
+Loss after mini-batch  3864: 0.185
+Loss after mini-batch  3888: 0.176
+Loss after mini-batch  3912: 0.202
+Loss after mini-batch  3936: 0.176
+Loss after mini-batch  3960: 0.192
+Loss after mini-batch  3984: 0.183
+Loss after mini-batch  4008: 0.169
+Loss after mini-batch  4032: 0.219
+Loss after mini-batch  4056: 0.157
+Loss after mini-batch  4080: 0.173
+Loss after mini-batch  4104: 0.173
+Loss after mini-batch  4128: 0.172
+Loss after mini-batch  4152: 0.191
+Loss after mini-batch  4176: 0.171
+Loss after mini-batch  4200: 0.181
+Loss after mini-batch  4224: 0.186
+Loss after mini-batch  4248: 0.189
+Loss after mini-batch  4272: 0.172
+Loss after mini-batch  4296: 0.180
+Loss after mini-batch  4320: 0.173
+Loss after mini-batch  4344: 0.156
+Loss after mini-batch  4368: 0.176
+Loss after mini-batch  4392: 0.171
+Loss after mini-batch  4416: 0.176
+Loss after mini-batch  4440: 0.173
+Loss after mini-batch  4464: 0.166
+Loss after mini-batch  4488: 0.197
+Loss after mini-batch  4512: 0.183
+Loss after mini-batch  4536: 0.173
+Loss after mini-batch  4560: 0.165
+Loss after mini-batch  4584: 0.188
+Loss after mini-batch  4608: 0.176
+Loss after mini-batch  4632: 0.191
+Loss after mini-batch  4656: 0.178
+Loss after mini-batch  4680: 0.200
+Loss after mini-batch  4704: 0.185
+Loss after mini-batch  4728: 0.167
+Loss after mini-batch  4752: 0.207
+Loss after mini-batch  4776: 0.191
+Loss after mini-batch  4800: 0.186
+Loss after mini-batch  4824: 0.180
+Loss after mini-batch  4848: 0.168
+Loss after mini-batch  4872: 0.194
+Loss after mini-batch  4896: 0.178
+Loss after mini-batch  4920: 0.202
+Loss after mini-batch  4944: 0.175
+Loss after mini-batch  4968: 0.167
+Loss after mini-batch  4992: 0.175
+Loss after mini-batch  5016: 0.174
+Loss after mini-batch  5040: 0.174
+Loss after mini-batch  5064: 0.171
+Loss after mini-batch  5088: 0.176
+Loss after mini-batch  5112: 0.173
+Loss after mini-batch  5136: 0.167
+Loss after mini-batch  5160: 0.171
+Loss after mini-batch  5184: 0.161
+Loss after mini-batch  5208: 0.189
+Loss after mini-batch  5232: 0.187
+Loss after mini-batch  5256: 0.161
+Loss after mini-batch  5280: 0.158
+Loss after mini-batch  5304: 0.166
+Loss after mini-batch  5328: 0.180
+Loss after mini-batch  5352: 0.192
+Loss after mini-batch  5376: 0.158
+Loss after mini-batch  5400: 0.153
+Loss after mini-batch  5424: 0.165
+Loss after mini-batch  5448: 0.170
+Loss after mini-batch  5472: 0.181
+Loss after mini-batch  5496: 0.190
+Loss after mini-batch  5520: 0.190
+Loss after mini-batch  5544: 0.176
+Loss after mini-batch  5568: 0.189
+Loss after mini-batch  5592: 0.188
+Loss after mini-batch  5616: 0.169
+Loss after mini-batch  5640: 0.161
+Loss after mini-batch  5664: 0.178
+Loss after mini-batch  5688: 0.188
+Loss after mini-batch  5712: 0.185
+Loss after mini-batch  5736: 0.170
+Loss after mini-batch  5760: 0.197
+Loss after mini-batch  5784: 0.184
+Loss after mini-batch  5808: 0.184
+Loss after mini-batch  5832: 0.192
+Loss after mini-batch  5856: 0.171
+Loss after mini-batch  5880: 0.168
+Loss after mini-batch  5904: 0.166
+Loss after mini-batch  5928: 0.209
+Loss after mini-batch  5952: 0.179
+Loss after mini-batch  5976: 0.175
+Loss after mini-batch  6000: 0.187
+Loss after mini-batch  6024: 0.182
+Loss after mini-batch  6048: 0.181
+Loss after mini-batch  6072: 0.172
+Loss after mini-batch  6096: 0.223
+Loss after mini-batch  6120: 0.164
+Loss after mini-batch  6144: 0.166
+Loss after mini-batch  6168: 0.162
+Loss after mini-batch  6192: 0.196
+Loss after mini-batch  6216: 0.196
+Loss after mini-batch  6240: 0.161
+Loss after mini-batch  6264: 0.178
+Loss after mini-batch  6288: 0.185
+Loss after mini-batch  6312: 0.197
+Loss after mini-batch  6336: 0.184
+Loss after mini-batch  6360: 0.164
+Loss after mini-batch  6384: 0.193
+Loss after mini-batch  6408: 0.185
+Loss after mini-batch  6432: 0.170
+Loss after mini-batch  6456: 0.187
+Loss after mini-batch  6480: 0.189
+Loss after mini-batch  6504: 0.174
+Loss after mini-batch  6528: 0.189
+Loss after mini-batch  6552: 0.178
+Loss after mini-batch  6576: 0.185
+Loss after mini-batch  6600: 0.168
+Loss after mini-batch  6624: 0.176
+Loss after mini-batch  6648: 0.199
+Loss after mini-batch  6672: 0.172
+Loss after mini-batch  6696: 0.185
+Loss after mini-batch  6720: 0.197
+Loss after mini-batch  6744: 0.172
+Loss after mini-batch  6768: 0.178
+Loss after mini-batch  6792: 0.183
+Loss after mini-batch  6816: 0.172
+Loss after mini-batch  6840: 0.175
+Loss after mini-batch  6864: 0.193
+Loss after mini-batch  6888: 0.186
+Loss after mini-batch  6912: 0.199
+Loss after mini-batch  6936: 0.161
+Loss after mini-batch  6960: 0.176
+Loss after mini-batch  6984: 0.174
+Loss after mini-batch  7008: 0.172
+Loss after mini-batch  7032: 0.173
+Loss after mini-batch  7056: 0.171
+Loss after mini-batch  7080: 0.181
+Loss after mini-batch  7104: 0.184
+Loss after mini-batch  7128: 0.170
+Loss after mini-batch  7152: 0.167
+Loss after mini-batch  7176: 0.192
+Loss after mini-batch  7200: 0.203
+Loss after mini-batch  7224: 0.178
+Loss after mini-batch  7248: 0.187
+Loss after mini-batch  7272: 0.181
+Loss after mini-batch  7296: 0.191
+Loss after mini-batch  7320: 0.176
+Loss after mini-batch  7344: 0.183
+Loss after mini-batch  7368: 0.175
+Loss after mini-batch  7392: 0.173
+Loss after mini-batch  7416: 0.190
+Loss after mini-batch  7440: 0.182
+Loss after mini-batch  7464: 0.175
+Loss after mini-batch  7488: 0.197
+Loss after mini-batch  7512: 0.166
+Loss after mini-batch  7536: 0.178
+Loss after mini-batch  7560: 0.182
+Loss after mini-batch  7584: 0.182
+Loss after mini-batch  7608: 0.191
+Loss after mini-batch  7632: 0.197
+Loss after mini-batch  7656: 0.180
+Loss after mini-batch  7680: 0.193
+Loss after mini-batch  7704: 0.193
+Loss after mini-batch  7728: 0.182
+Loss after mini-batch  7752: 0.193
+Loss after mini-batch  7776: 0.182
+Loss after mini-batch  7800: 0.168
+Loss after mini-batch  7824: 0.171
+Loss after mini-batch  7848: 0.166
+Loss after mini-batch  7872: 0.188
+Loss after mini-batch  7896: 0.197
+Loss after mini-batch  7920: 0.186
+Loss after mini-batch  7944: 0.172
+Loss after mini-batch  7968: 0.193
+Loss after mini-batch  7992: 0.182
+Loss after mini-batch  8016: 0.173
+Loss after mini-batch  8040: 0.171
+Loss after mini-batch  8064: 0.212
+Loss after mini-batch  8088: 0.174
+Loss after mini-batch  8112: 0.197
+Loss after mini-batch  8136: 0.158
+Loss after mini-batch  8160: 0.170
+Loss after mini-batch  8184: 0.189
+Loss after mini-batch  8208: 0.186
+Loss after mini-batch  8232: 0.179
+Loss after mini-batch  8256: 0.199
+Loss after mini-batch  8280: 0.169
+Loss after mini-batch  8304: 0.192
+Loss after mini-batch  8328: 0.159
+Loss after mini-batch  8352: 0.216
+Loss after mini-batch  8376: 0.171
+Loss after mini-batch  8400: 0.167
+Loss after mini-batch  8424: 0.195
+Loss after mini-batch  8448: 0.185
+Loss after mini-batch  8472: 0.176
+Loss after mini-batch  8496: 0.182
+Loss after mini-batch  8520: 0.173
+Loss after mini-batch  8544: 0.187
+Loss after mini-batch  8568: 0.172
+Loss after mini-batch  8592: 0.158
+Loss after mini-batch  8616: 0.179
+Loss after mini-batch  8640: 0.179
+Loss after mini-batch  8664: 0.174
+Loss after mini-batch  8688: 0.170
+Loss after mini-batch  8712: 0.167
+Loss after mini-batch  8736: 0.184
+Loss after mini-batch  8760: 0.185
+Loss after mini-batch  8784: 0.184
+Loss after mini-batch  8808: 0.171
+Loss after mini-batch  8832: 0.170
+Loss after mini-batch  8856: 0.172
+Loss after mini-batch  8880: 0.179
+Loss after mini-batch  8904: 0.162
+Loss after mini-batch  8928: 0.184
+Loss after mini-batch  8952: 0.195
+Loss after mini-batch  8976: 0.162
+Loss after mini-batch  9000: 0.183
+Loss after mini-batch  9024: 0.203
+Loss after mini-batch  9048: 0.175
+Loss after mini-batch  9072: 0.201
+Loss after mini-batch  9096: 0.157
+Loss after mini-batch  9120: 0.209
+Loss after mini-batch  9144: 0.185
+Loss after mini-batch  9168: 0.171
+Loss after mini-batch  9192: 0.177
+Loss after mini-batch  9216: 0.172
+Loss after mini-batch  9240: 0.175
+Loss after mini-batch  9264: 0.165
+Loss after mini-batch  9288: 0.172
+Loss after mini-batch  9312: 0.180
+Loss after mini-batch  9336: 0.167
+Loss after mini-batch  9360: 0.180
+Loss after mini-batch  9384: 0.190
+Loss after mini-batch  9408: 0.172
+Loss after mini-batch  9432: 0.175
+Loss after mini-batch  9456: 0.169
+Loss after mini-batch  9480: 0.192
+Loss after mini-batch  9504: 0.183
+Loss after mini-batch  9528: 0.202
+Loss after mini-batch  9552: 0.171
+Loss after mini-batch  9576: 0.184
+Loss after mini-batch  9600: 0.192
+Loss after mini-batch  9624: 0.181
+Loss after mini-batch  9648: 0.175
+Loss after mini-batch  9672: 0.178
+Loss after mini-batch  9696: 0.171
+Loss after mini-batch  9720: 0.180
+Loss after mini-batch  9744: 0.181
+Loss after mini-batch  9768: 0.192
+Loss after mini-batch  9792: 0.152
+Loss after mini-batch  9816: 0.180
+Loss after mini-batch  9840: 0.169
+Loss after mini-batch  9864: 0.153
+Loss after mini-batch  9888: 0.178
+Loss after mini-batch  9912: 0.193
+Loss after mini-batch  9936: 0.184
+Loss after mini-batch  9960: 0.188
+Loss after mini-batch  9984: 0.190
+Loss after mini-batch 10008: 0.154
+Loss after mini-batch 10032: 0.169
+Loss after mini-batch 10056: 0.177
+Loss after mini-batch 10080: 0.173
+Loss after mini-batch 10104: 0.188
+Loss after mini-batch 10128: 0.195
+Loss after mini-batch 10152: 0.179
+Loss after mini-batch 10176: 0.177
+Loss after mini-batch 10200: 0.200
+Loss after mini-batch 10224: 0.189
+Loss after mini-batch 10248: 0.149
+Loss after mini-batch 10272: 0.178
+Loss after mini-batch 10296: 0.150
+Loss after mini-batch 10320: 0.187
+Loss after mini-batch 10344: 0.167
+Loss after mini-batch 10368: 0.162
+Loss after mini-batch 10392: 0.160
+Loss after mini-batch 10416: 0.190
+Loss after mini-batch 10440: 0.166
+Loss after mini-batch 10464: 0.157
+Loss after mini-batch 10488: 0.189
+Loss after mini-batch 10512: 0.202
+Loss after mini-batch 10536: 0.173
+Loss after mini-batch 10560: 0.173
+Loss after mini-batch 10584: 0.169
+Loss after mini-batch 10608: 0.173
+Loss after mini-batch 10632: 0.185
+Loss after mini-batch 10656: 0.168
+Loss after mini-batch 10680: 0.175
+Loss after mini-batch 10704: 0.185
+Loss after mini-batch 10728: 0.195
+Loss after mini-batch 10752: 0.179
+Loss after mini-batch 10776: 0.180
+Loss after mini-batch 10800: 0.181
+Loss after mini-batch 10824: 0.164
+Loss after mini-batch 10848: 0.159
+Loss after mini-batch 10872: 0.158
+Loss after mini-batch 10896: 0.189
+Loss after mini-batch 10920: 0.184
+Loss after mini-batch 10944: 0.206
+Loss after mini-batch 10968: 0.154
+Loss after mini-batch 10992: 0.166
+Loss after mini-batch 11016: 0.200
+Loss after mini-batch 11040: 0.189
+Loss after mini-batch 11064: 0.171
+Loss after mini-batch 11088: 0.169
+Loss after mini-batch 11112: 0.175
+Loss after mini-batch 11136: 0.176
+Loss after mini-batch 11160: 0.183
+Loss after mini-batch 11184: 0.162
+Loss after mini-batch 11208: 0.189
+Loss after mini-batch 11232: 0.181
+Loss after mini-batch 11256: 0.184
+Loss after mini-batch 11280: 0.161
+Loss after mini-batch 11304: 0.175
+Loss after mini-batch 11328: 0.175
+Loss after mini-batch 11352: 0.186
+Loss after mini-batch 11376: 0.176
+Loss after mini-batch 11400: 0.180
+Loss after mini-batch 11424: 0.181
+Loss after mini-batch 11448: 0.161
+Loss after mini-batch 11472: 0.195
+Loss after mini-batch 11496: 0.173
+Loss after mini-batch 11520: 0.171
+Loss after mini-batch 11544: 0.201
+Loss after mini-batch 11568: 0.190
+Loss after mini-batch 11592: 0.182
+Loss after mini-batch 11616: 0.179
+Loss after mini-batch 11640: 0.187
+Loss after mini-batch 11664: 0.199
+Loss after mini-batch 11688: 0.178
+Loss after mini-batch 11712: 0.170
+Loss after mini-batch 11736: 0.164
+Loss after mini-batch 11760: 0.172
+Loss after mini-batch 11784: 0.176
+Loss after mini-batch 11808: 0.188
+Loss after mini-batch 11832: 0.182
+Validation loss after mini-batch    24: 0.177
+Validation loss after mini-batch    48: 0.197
+Validation loss after mini-batch    72: 0.204
+Validation loss after mini-batch    96: 0.211
+Validation loss after mini-batch   120: 0.197
+Validation loss after mini-batch   144: 0.212
+Validation loss after mini-batch   168: 0.213
+Validation loss after mini-batch   192: 0.188
+Validation loss after mini-batch   216: 0.200
+Validation loss after mini-batch   240: 0.216
+Validation loss after mini-batch   264: 0.184
+Validation loss after mini-batch   288: 0.183
+Validation loss after mini-batch   312: 0.208
+Validation loss after mini-batch   336: 0.197
+Validation loss after mini-batch   360: 0.176
+Validation loss after mini-batch   384: 0.220
+Validation loss after mini-batch   408: 0.189
+Validation loss after mini-batch   432: 0.194
+Validation loss after mini-batch   456: 0.185
+Validation loss after mini-batch   480: 0.205
+Validation loss after mini-batch   504: 0.193
+Validation loss after mini-batch   528: 0.191
+Validation loss after mini-batch   552: 0.176
+Validation loss after mini-batch   576: 0.216
+Validation loss after mini-batch   600: 0.199
+Validation loss after mini-batch   624: 0.195
+Validation loss after mini-batch   648: 0.185
+Validation loss after mini-batch   672: 0.186
+Validation loss after mini-batch   696: 0.179
+Validation loss after mini-batch   720: 0.183
+Validation loss after mini-batch   744: 0.191
+Validation loss after mini-batch   768: 0.210
+Validation loss after mini-batch   792: 0.197
+Validation loss after mini-batch   816: 0.205
+Validation loss after mini-batch   840: 0.210
+Validation loss after mini-batch   864: 0.184
+Validation loss after mini-batch   888: 0.182
+Validation loss after mini-batch   912: 0.186
+Validation loss after mini-batch   936: 0.207
+Validation loss after mini-batch   960: 0.229
+Validation loss after mini-batch   984: 0.216
+Validation loss after mini-batch  1008: 0.194
+Validation loss after mini-batch  1032: 0.189
+Validation loss after mini-batch  1056: 0.208
+Validation loss after mini-batch  1080: 0.216
+Validation loss after mini-batch  1104: 0.205
+Validation loss after mini-batch  1128: 0.180
+Validation loss after mini-batch  1152: 0.197
+Validation loss after mini-batch  1176: 0.186
+Validation loss after mini-batch  1200: 0.200
+Validation loss after mini-batch  1224: 0.186
+Validation loss after mini-batch  1248: 0.193
+Validation loss after mini-batch  1272: 0.195
+Validation loss after mini-batch  1296: 0.230
+Validation loss after mini-batch  1320: 0.191
+Validation loss after mini-batch  1344: 0.224
+Validation loss after mini-batch  1368: 0.195
+Validation loss after mini-batch  1392: 0.196
+Validation loss after mini-batch  1416: 0.214
+Validation loss after mini-batch  1440: 0.196
+Validation loss after mini-batch  1464: 0.207
+Validation loss after mini-batch  1488: 0.201
+Validation loss after mini-batch  1512: 0.209
+Validation loss after mini-batch  1536: 0.190
+Validation loss after mini-batch  1560: 0.184
+Validation loss after mini-batch  1584: 0.216
+Validation loss after mini-batch  1608: 0.207
+Validation loss after mini-batch  1632: 0.219
+Validation loss after mini-batch  1656: 0.186
+Validation loss after mini-batch  1680: 0.192
+Validation loss after mini-batch  1704: 0.195
+Validation loss after mini-batch  1728: 0.201
+Validation loss after mini-batch  1752: 0.199
+Validation loss after mini-batch  1776: 0.211
+Validation loss after mini-batch  1800: 0.192
+Validation loss after mini-batch  1824: 0.189
+Validation loss after mini-batch  1848: 0.203
+Validation loss after mini-batch  1872: 0.233
+Validation loss after mini-batch  1896: 0.215
+Validation loss after mini-batch  1920: 0.180
+Validation loss after mini-batch  1944: 0.213
+Validation loss after mini-batch  1968: 0.198
+Validation loss after mini-batch  1992: 0.161
+Validation loss after mini-batch  2016: 0.211
+Validation loss after mini-batch  2040: 0.200
+Validation loss after mini-batch  2064: 0.193
+Validation loss after mini-batch  2088: 0.171
+Validation loss after mini-batch  2112: 0.213
+Validation loss after mini-batch  2136: 0.178
+Validation loss after mini-batch  2160: 0.202
+Validation loss after mini-batch  2184: 0.197
+Validation loss after mini-batch  2208: 0.207
+Validation loss after mini-batch  2232: 0.219
+Validation loss after mini-batch  2256: 0.195
+Validation loss after mini-batch  2280: 0.208
+Validation loss after mini-batch  2304: 0.177
+Validation loss after mini-batch  2328: 0.205
+Validation loss after mini-batch  2352: 0.195
+Validation loss after mini-batch  2376: 0.196
+Validation loss after mini-batch  2400: 0.188
+Validation loss after mini-batch  2424: 0.194
+Validation loss after mini-batch  2448: 0.183
+Validation loss after mini-batch  2472: 0.204
+Validation loss after mini-batch  2496: 0.210
+Validation loss after mini-batch  2520: 0.196
+Validation loss after mini-batch  2544: 0.220
+Validation loss after mini-batch  2568: 0.193
+Validation loss after mini-batch  2592: 0.188
+Validation loss after mini-batch  2616: 0.189
+Validation loss after mini-batch  2640: 0.196
+Validation loss after mini-batch  2664: 0.199
+Validation loss after mini-batch  2688: 0.191
+Validation loss after mini-batch  2712: 0.224
 Starting epoch 3
-Loss after mini-batch    24: 171.209
-Loss after mini-batch    48: 169.860
-Loss after mini-batch    72: 170.910
-Loss after mini-batch    96: 185.247
-Loss after mini-batch   120: 179.671
-Loss after mini-batch   144: 154.812
-Loss after mini-batch   168: 180.080
-Loss after mini-batch   192: 190.255
-Loss after mini-batch   216: 179.237
-Loss after mini-batch   240: 185.665
-Loss after mini-batch   264: 177.710
-Loss after mini-batch   288: 175.005
-Loss after mini-batch   312: 169.494
-Loss after mini-batch   336: 175.571
-Loss after mini-batch   360: 156.475
-Loss after mini-batch   384: 172.575
-Loss after mini-batch   408: 172.401
-Loss after mini-batch   432: 189.181
-Loss after mini-batch   456: 167.291
-Loss after mini-batch   480: 176.799
-Loss after mini-batch   504: 175.968
-Loss after mini-batch   528: 150.821
-Loss after mini-batch   552: 183.514
-Loss after mini-batch   576: 176.514
-Loss after mini-batch   600: 183.844
-Loss after mini-batch   624: 181.802
-Loss after mini-batch   648: 163.600
-Loss after mini-batch   672: 169.777
-Loss after mini-batch   696: 173.014
-Loss after mini-batch   720: 188.625
-Loss after mini-batch   744: 182.032
-Loss after mini-batch   768: 167.685
-Loss after mini-batch   792: 186.671
-Loss after mini-batch   816: 170.408
-Loss after mini-batch   840: 194.898
-Loss after mini-batch   864: 168.233
-Loss after mini-batch   888: 185.604
-Loss after mini-batch   912: 190.764
-Loss after mini-batch   936: 183.959
-Loss after mini-batch   960: 189.415
-Loss after mini-batch   984: 183.748
-Loss after mini-batch  1008: 196.038
-Loss after mini-batch  1032: 182.791
-Loss after mini-batch  1056: 168.620
-Loss after mini-batch  1080: 193.338
-Loss after mini-batch  1104: 201.333
-Loss after mini-batch  1128: 193.026
-Loss after mini-batch  1152: 194.940
-Loss after mini-batch  1176: 183.126
-Loss after mini-batch  1200: 176.806
-Loss after mini-batch  1224: 197.020
-Loss after mini-batch  1248: 182.603
-Loss after mini-batch  1272: 187.388
-Loss after mini-batch  1296: 194.034
-Loss after mini-batch  1320: 181.899
-Loss after mini-batch  1344: 179.759
-Loss after mini-batch  1368: 181.703
-Loss after mini-batch  1392: 183.634
-Loss after mini-batch  1416: 175.773
-Loss after mini-batch  1440: 192.768
-Loss after mini-batch  1464: 167.135
-Loss after mini-batch  1488: 179.580
-Loss after mini-batch  1512: 173.208
-Loss after mini-batch  1536: 171.807
-Loss after mini-batch  1560: 163.978
-Loss after mini-batch  1584: 178.112
-Loss after mini-batch  1608: 179.523
-Loss after mini-batch  1632: 168.104
-Loss after mini-batch  1656: 175.663
-Loss after mini-batch  1680: 190.426
-Loss after mini-batch  1704: 180.306
-Loss after mini-batch  1728: 171.636
-Loss after mini-batch  1752: 170.801
-Loss after mini-batch  1776: 184.220
-Loss after mini-batch  1800: 165.997
-Loss after mini-batch  1824: 182.385
-Loss after mini-batch  1848: 153.342
-Loss after mini-batch  1872: 170.696
-Loss after mini-batch  1896: 181.723
-Loss after mini-batch  1920: 175.021
-Loss after mini-batch  1944: 166.906
-Loss after mini-batch  1968: 176.692
-Loss after mini-batch  1992: 176.077
-Loss after mini-batch  2016: 172.146
-Loss after mini-batch  2040: 180.565
-Loss after mini-batch  2064: 183.155
-Loss after mini-batch  2088: 185.808
-Loss after mini-batch  2112: 184.278
-Loss after mini-batch  2136: 182.719
-Loss after mini-batch  2160: 162.513
-Loss after mini-batch  2184: 161.490
-Loss after mini-batch  2208: 176.859
-Loss after mini-batch  2232: 168.106
-Loss after mini-batch  2256: 180.871
-Loss after mini-batch  2280: 192.968
-Loss after mini-batch  2304: 173.137
-Loss after mini-batch  2328: 201.169
-Loss after mini-batch  2352: 181.605
-Loss after mini-batch  2376: 188.044
-Loss after mini-batch  2400: 159.430
-Loss after mini-batch  2424: 189.487
-Loss after mini-batch  2448: 188.423
-Loss after mini-batch  2472: 189.233
-Loss after mini-batch  2496: 176.184
-Loss after mini-batch  2520: 182.399
-Loss after mini-batch  2544: 166.653
-Loss after mini-batch  2568: 165.907
-Loss after mini-batch  2592: 191.796
-Loss after mini-batch  2616: 165.504
-Loss after mini-batch  2640: 177.269
-Loss after mini-batch  2664: 190.625
-Loss after mini-batch  2688: 178.433
-Loss after mini-batch  2712: 175.986
-Loss after mini-batch  2736: 190.986
-Loss after mini-batch  2760: 174.231
-Loss after mini-batch  2784: 167.223
-Loss after mini-batch  2808: 160.589
-Loss after mini-batch  2832: 177.534
-Loss after mini-batch  2856: 184.342
-Loss after mini-batch  2880: 152.738
-Loss after mini-batch  2904: 176.169
-Loss after mini-batch  2928: 169.331
-Loss after mini-batch  2952: 185.501
-Loss after mini-batch  2976: 174.237
-Loss after mini-batch  3000: 154.742
-Loss after mini-batch  3024: 181.166
-Loss after mini-batch  3048: 178.542
-Loss after mini-batch  3072: 185.972
-Loss after mini-batch  3096: 169.049
-Loss after mini-batch  3120: 183.679
-Loss after mini-batch  3144: 182.400
-Loss after mini-batch  3168: 199.414
-Loss after mini-batch  3192: 185.424
-Loss after mini-batch  3216: 189.269
-Loss after mini-batch  3240: 179.335
-Loss after mini-batch  3264: 166.293
-Loss after mini-batch  3288: 198.121
-Loss after mini-batch  3312: 179.798
-Loss after mini-batch  3336: 176.981
-Loss after mini-batch  3360: 161.120
-Loss after mini-batch  3384: 184.528
-Loss after mini-batch  3408: 180.274
-Loss after mini-batch  3432: 170.040
-Loss after mini-batch  3456: 180.678
-Loss after mini-batch  3480: 181.537
-Loss after mini-batch  3504: 179.293
-Loss after mini-batch  3528: 174.453
-Loss after mini-batch  3552: 173.953
-Loss after mini-batch  3576: 164.898
-Loss after mini-batch  3600: 186.137
-Loss after mini-batch  3624: 165.239
-Loss after mini-batch  3648: 175.922
-Loss after mini-batch  3672: 172.356
-Loss after mini-batch  3696: 167.471
-Loss after mini-batch  3720: 172.229
-Loss after mini-batch  3744: 169.322
-Loss after mini-batch  3768: 179.890
-Loss after mini-batch  3792: 188.594
-Loss after mini-batch  3816: 185.871
-Loss after mini-batch  3840: 189.078
-Loss after mini-batch  3864: 161.855
-Loss after mini-batch  3888: 186.367
-Loss after mini-batch  3912: 188.985
-Loss after mini-batch  3936: 168.048
-Loss after mini-batch  3960: 171.904
-Loss after mini-batch  3984: 173.007
-Loss after mini-batch  4008: 186.618
-Loss after mini-batch  4032: 179.661
-Loss after mini-batch  4056: 165.782
-Loss after mini-batch  4080: 174.109
-Loss after mini-batch  4104: 168.732
-Loss after mini-batch  4128: 155.279
-Loss after mini-batch  4152: 177.769
-Loss after mini-batch  4176: 183.845
-Loss after mini-batch  4200: 171.290
-Loss after mini-batch  4224: 153.252
-Loss after mini-batch  4248: 173.267
-Loss after mini-batch  4272: 169.391
-Loss after mini-batch  4296: 175.717
-Loss after mini-batch  4320: 171.370
-Loss after mini-batch  4344: 189.339
-Loss after mini-batch  4368: 179.810
-Loss after mini-batch  4392: 182.336
-Loss after mini-batch  4416: 183.054
-Loss after mini-batch  4440: 184.910
-Loss after mini-batch  4464: 174.562
-Loss after mini-batch  4488: 175.514
-Loss after mini-batch  4512: 161.228
-Loss after mini-batch  4536: 169.140
-Loss after mini-batch  4560: 196.929
-Loss after mini-batch  4584: 178.785
-Loss after mini-batch  4608: 155.204
-Loss after mini-batch  4632: 188.929
-Loss after mini-batch  4656: 171.065
-Loss after mini-batch  4680: 176.771
-Loss after mini-batch  4704: 164.682
-Loss after mini-batch  4728: 191.262
-Loss after mini-batch  4752: 175.093
-Loss after mini-batch  4776: 178.022
-Loss after mini-batch  4800: 160.171
-Loss after mini-batch  4824: 200.456
-Loss after mini-batch  4848: 168.853
-Loss after mini-batch  4872: 185.649
-Loss after mini-batch  4896: 190.731
-Loss after mini-batch  4920: 172.051
-Loss after mini-batch  4944: 178.843
-Loss after mini-batch  4968: 155.653
-Loss after mini-batch  4992: 164.521
-Loss after mini-batch  5016: 192.438
-Loss after mini-batch  5040: 189.009
-Loss after mini-batch  5064: 164.330
-Loss after mini-batch  5088: 187.269
-Loss after mini-batch  5112: 177.782
-Loss after mini-batch  5136: 175.974
-Loss after mini-batch  5160: 169.309
-Loss after mini-batch  5184: 195.929
-Loss after mini-batch  5208: 176.266
-Loss after mini-batch  5232: 178.265
-Loss after mini-batch  5256: 178.368
-Loss after mini-batch  5280: 182.498
-Loss after mini-batch  5304: 172.752
-Loss after mini-batch  5328: 159.071
-Loss after mini-batch  5352: 166.770
-Loss after mini-batch  5376: 173.197
-Loss after mini-batch  5400: 174.370
-Loss after mini-batch  5424: 156.043
-Loss after mini-batch  5448: 172.840
-Loss after mini-batch  5472: 183.073
-Loss after mini-batch  5496: 185.353
-Loss after mini-batch  5520: 183.472
-Loss after mini-batch  5544: 169.743
-Loss after mini-batch  5568: 171.913
-Loss after mini-batch  5592: 161.022
-Loss after mini-batch  5616: 165.253
-Loss after mini-batch  5640: 174.005
-Loss after mini-batch  5664: 171.231
-Loss after mini-batch  5688: 176.269
-Loss after mini-batch  5712: 180.109
-Loss after mini-batch  5736: 161.356
-Loss after mini-batch  5760: 193.239
-Loss after mini-batch  5784: 170.691
-Loss after mini-batch  5808: 166.853
-Loss after mini-batch  5832: 172.382
-Loss after mini-batch  5856: 176.045
-Loss after mini-batch  5880: 168.923
-Loss after mini-batch  5904: 158.111
-Loss after mini-batch  5928: 176.991
-Loss after mini-batch  5952: 181.422
-Loss after mini-batch  5976: 169.654
-Loss after mini-batch  6000: 178.253
-Loss after mini-batch  6024: 177.106
-Loss after mini-batch  6048: 166.640
-Loss after mini-batch  6072: 165.772
-Loss after mini-batch  6096: 180.137
-Loss after mini-batch  6120: 179.310
-Loss after mini-batch  6144: 183.252
-Loss after mini-batch  6168: 195.029
-Loss after mini-batch  6192: 172.416
-Loss after mini-batch  6216: 145.646
-Loss after mini-batch  6240: 184.823
-Loss after mini-batch  6264: 179.896
-Loss after mini-batch  6288: 184.572
-Loss after mini-batch  6312: 171.061
-Loss after mini-batch  6336: 178.169
-Loss after mini-batch  6360: 179.453
-Loss after mini-batch  6384: 180.610
-Loss after mini-batch  6408: 180.509
-Loss after mini-batch  6432: 163.980
-Loss after mini-batch  6456: 175.048
-Loss after mini-batch  6480: 182.386
-Loss after mini-batch  6504: 173.336
-Loss after mini-batch  6528: 163.695
-Loss after mini-batch  6552: 158.181
-Loss after mini-batch  6576: 189.766
-Loss after mini-batch  6600: 190.520
-Loss after mini-batch  6624: 166.614
-Loss after mini-batch  6648: 170.872
-Loss after mini-batch  6672: 169.924
-Loss after mini-batch  6696: 188.654
-Loss after mini-batch  6720: 186.897
-Loss after mini-batch  6744: 156.094
-Loss after mini-batch  6768: 174.196
-Loss after mini-batch  6792: 178.960
-Loss after mini-batch  6816: 174.330
-Loss after mini-batch  6840: 181.831
-Loss after mini-batch  6864: 187.291
-Loss after mini-batch  6888: 177.034
-Loss after mini-batch  6912: 175.303
-Loss after mini-batch  6936: 170.233
-Loss after mini-batch  6960: 171.532
-Loss after mini-batch  6984: 155.757
-Loss after mini-batch  7008: 164.056
-Loss after mini-batch  7032: 171.934
-Loss after mini-batch  7056: 168.839
-Loss after mini-batch  7080: 162.624
-Loss after mini-batch  7104: 148.327
-Loss after mini-batch  7128: 166.635
-Loss after mini-batch  7152: 163.294
-Loss after mini-batch  7176: 170.769
-Loss after mini-batch  7200: 153.675
-Loss after mini-batch  7224: 160.358
-Loss after mini-batch  7248: 168.148
-Loss after mini-batch  7272: 188.586
-Loss after mini-batch  7296: 180.868
-Loss after mini-batch  7320: 185.537
-Loss after mini-batch  7344: 173.516
-Loss after mini-batch  7368: 162.592
-Loss after mini-batch  7392: 172.370
-Loss after mini-batch  7416: 160.399
-Loss after mini-batch  7440: 176.565
-Loss after mini-batch  7464: 164.981
-Loss after mini-batch  7488: 179.276
-Loss after mini-batch  7512: 178.236
-Loss after mini-batch  7536: 167.770
-Loss after mini-batch  7560: 167.673
-Loss after mini-batch  7584: 165.122
-Loss after mini-batch  7608: 164.390
-Loss after mini-batch  7632: 182.531
-Loss after mini-batch  7656: 163.514
-Loss after mini-batch  7680: 151.194
-Loss after mini-batch  7704: 161.231
-Loss after mini-batch  7728: 171.450
-Loss after mini-batch  7752: 178.157
-Loss after mini-batch  7776: 164.365
-Loss after mini-batch  7800: 179.320
-Loss after mini-batch  7824: 183.596
-Loss after mini-batch  7848: 169.888
-Loss after mini-batch  7872: 178.815
-Loss after mini-batch  7896: 184.881
-Loss after mini-batch  7920: 158.678
-Loss after mini-batch  7944: 159.964
-Loss after mini-batch  7968: 181.824
-Loss after mini-batch  7992: 183.612
-Loss after mini-batch  8016: 183.977
-Loss after mini-batch  8040: 175.652
-Loss after mini-batch  8064: 160.753
-Loss after mini-batch  8088: 178.522
-Loss after mini-batch  8112: 171.562
-Loss after mini-batch  8136: 184.924
-Loss after mini-batch  8160: 172.087
-Loss after mini-batch  8184: 172.767
-Loss after mini-batch  8208: 184.505
-Loss after mini-batch  8232: 178.281
-Loss after mini-batch  8256: 155.466
-Loss after mini-batch  8280: 175.001
-Loss after mini-batch  8304: 171.265
-Loss after mini-batch  8328: 210.759
-Loss after mini-batch  8352: 165.248
-Loss after mini-batch  8376: 183.014
-Loss after mini-batch  8400: 151.844
-Loss after mini-batch  8424: 182.710
-Loss after mini-batch  8448: 179.745
-Loss after mini-batch  8472: 168.713
-Loss after mini-batch  8496: 188.016
-Loss after mini-batch  8520: 188.229
-Loss after mini-batch  8544: 183.969
-Loss after mini-batch  8568: 189.938
-Loss after mini-batch  8592: 189.670
-Loss after mini-batch  8616: 186.421
-Loss after mini-batch  8640: 158.469
-Loss after mini-batch  8664: 187.602
-Loss after mini-batch  8688: 150.972
-Loss after mini-batch  8712: 151.896
-Loss after mini-batch  8736: 173.925
-Loss after mini-batch  8760: 186.866
-Loss after mini-batch  8784: 163.998
-Loss after mini-batch  8808: 169.418
-Loss after mini-batch  8832: 163.405
-Loss after mini-batch  8856: 176.403
-Loss after mini-batch  8880: 161.616
-Loss after mini-batch  8904: 167.493
-Loss after mini-batch  8928: 160.626
-Loss after mini-batch  8952: 172.394
-Loss after mini-batch  8976: 159.997
-Loss after mini-batch  9000: 163.546
-Loss after mini-batch  9024: 169.794
-Loss after mini-batch  9048: 185.727
-Loss after mini-batch  9072: 163.372
-Loss after mini-batch  9096: 158.043
-Loss after mini-batch  9120: 196.903
-Loss after mini-batch  9144: 175.647
-Loss after mini-batch  9168: 168.703
-Loss after mini-batch  9192: 159.351
-Loss after mini-batch  9216: 175.706
-Loss after mini-batch  9240: 168.769
-Loss after mini-batch  9264: 159.397
-Loss after mini-batch  9288: 168.458
-Loss after mini-batch  9312: 164.337
-Loss after mini-batch  9336: 165.102
-Loss after mini-batch  9360: 157.153
-Loss after mini-batch  9384: 160.296
-Loss after mini-batch  9408: 166.101
-Loss after mini-batch  9432: 169.730
-Loss after mini-batch  9456: 163.779
-Loss after mini-batch  9480: 185.648
-Loss after mini-batch  9504: 152.145
-Loss after mini-batch  9528: 167.987
-Loss after mini-batch  9552: 165.745
-Loss after mini-batch  9576: 159.494
-Loss after mini-batch  9600: 172.649
-Loss after mini-batch  9624: 190.588
-Loss after mini-batch  9648: 170.089
-Loss after mini-batch  9672: 183.533
-Loss after mini-batch  9696: 192.824
-Loss after mini-batch  9720: 164.946
-Loss after mini-batch  9744: 184.686
-Loss after mini-batch  9768: 162.272
-Loss after mini-batch  9792: 193.889
-Loss after mini-batch  9816: 156.847
-Loss after mini-batch  9840: 172.424
-Loss after mini-batch  9864: 171.066
-Loss after mini-batch  9888: 173.973
-Loss after mini-batch  9912: 193.253
-Loss after mini-batch  9936: 165.972
-Loss after mini-batch  9960: 162.779
-Loss after mini-batch  9984: 155.728
-Loss after mini-batch 10008: 171.844
-Loss after mini-batch 10032: 170.603
-Loss after mini-batch 10056: 167.074
-Loss after mini-batch 10080: 174.366
-Loss after mini-batch 10104: 171.551
-Loss after mini-batch 10128: 159.642
-Loss after mini-batch 10152: 191.021
-Loss after mini-batch 10176: 164.914
-Loss after mini-batch 10200: 148.074
-Loss after mini-batch 10224: 180.497
-Loss after mini-batch 10248: 179.149
-Loss after mini-batch 10272: 172.968
-Loss after mini-batch 10296: 181.074
-Loss after mini-batch 10320: 175.723
-Loss after mini-batch 10344: 165.658
-Loss after mini-batch 10368: 170.655
-Loss after mini-batch 10392: 167.090
-Loss after mini-batch 10416: 164.985
-Loss after mini-batch 10440: 175.813
-Loss after mini-batch 10464: 176.124
-Loss after mini-batch 10488: 190.725
-Loss after mini-batch 10512: 174.311
-Loss after mini-batch 10536: 154.604
-Loss after mini-batch 10560: 160.896
-Loss after mini-batch 10584: 173.491
-Loss after mini-batch 10608: 188.018
-Loss after mini-batch 10632: 177.769
-Loss after mini-batch 10656: 168.390
-Loss after mini-batch 10680: 165.020
-Loss after mini-batch 10704: 172.552
-Loss after mini-batch 10728: 172.830
-Loss after mini-batch 10752: 171.449
-Loss after mini-batch 10776: 159.518
-Loss after mini-batch 10800: 159.060
-Loss after mini-batch 10824: 167.291
-Loss after mini-batch 10848: 162.197
-Loss after mini-batch 10872: 173.496
-Loss after mini-batch 10896: 151.111
-Loss after mini-batch 10920: 171.198
-Loss after mini-batch 10944: 187.325
-Loss after mini-batch 10968: 157.765
-Loss after mini-batch 10992: 163.360
-Loss after mini-batch 11016: 186.000
-Loss after mini-batch 11040: 174.543
-Loss after mini-batch 11064: 153.519
-Loss after mini-batch 11088: 182.315
-Loss after mini-batch 11112: 150.636
-Loss after mini-batch 11136: 178.485
-Loss after mini-batch 11160: 178.703
-Loss after mini-batch 11184: 174.340
-Loss after mini-batch 11208: 164.385
-Loss after mini-batch 11232: 167.306
-Loss after mini-batch 11256: 172.625
-Loss after mini-batch 11280: 165.324
-Loss after mini-batch 11304: 163.519
-Loss after mini-batch 11328: 165.927
-Loss after mini-batch 11352: 171.349
-Loss after mini-batch 11376: 176.152
-Loss after mini-batch 11400: 161.009
-Loss after mini-batch 11424: 176.019
-Loss after mini-batch 11448: 153.996
-Loss after mini-batch 11472: 161.903
-Loss after mini-batch 11496: 150.916
-Loss after mini-batch 11520: 167.022
-Loss after mini-batch 11544: 163.654
-Loss after mini-batch 11568: 167.897
-Loss after mini-batch 11592: 177.383
-Loss after mini-batch 11616: 183.882
-Loss after mini-batch 11640: 156.198
-Loss after mini-batch 11664: 155.297
-Loss after mini-batch 11688: 181.925
-Loss after mini-batch 11712: 153.209
-Loss after mini-batch 11736: 149.440
-Loss after mini-batch 11760: 176.990
-Loss after mini-batch 11784: 182.140
-Loss after mini-batch 11808: 153.691
-Loss after mini-batch 11832: 169.665
-Validation loss after mini-batch    24: 167.557
-Validation loss after mini-batch    48: 179.922
-Validation loss after mini-batch    72: 157.362
-Validation loss after mini-batch    96: 176.015
-Validation loss after mini-batch   120: 173.527
-Validation loss after mini-batch   144: 183.992
-Validation loss after mini-batch   168: 166.926
-Validation loss after mini-batch   192: 168.501
-Validation loss after mini-batch   216: 176.127
-Validation loss after mini-batch   240: 186.606
-Validation loss after mini-batch   264: 182.875
-Validation loss after mini-batch   288: 170.457
-Validation loss after mini-batch   312: 164.659
-Validation loss after mini-batch   336: 176.180
-Validation loss after mini-batch   360: 159.281
-Validation loss after mini-batch   384: 166.775
-Validation loss after mini-batch   408: 183.925
-Validation loss after mini-batch   432: 177.078
-Validation loss after mini-batch   456: 163.263
-Validation loss after mini-batch   480: 177.184
-Validation loss after mini-batch   504: 173.285
-Validation loss after mini-batch   528: 186.686
-Validation loss after mini-batch   552: 174.680
-Validation loss after mini-batch   576: 169.667
-Validation loss after mini-batch   600: 165.124
-Validation loss after mini-batch   624: 155.686
-Validation loss after mini-batch   648: 163.593
-Validation loss after mini-batch   672: 174.747
-Validation loss after mini-batch   696: 166.031
-Validation loss after mini-batch   720: 172.636
-Validation loss after mini-batch   744: 193.173
-Validation loss after mini-batch   768: 191.516
-Validation loss after mini-batch   792: 169.130
-Validation loss after mini-batch   816: 157.831
-Validation loss after mini-batch   840: 169.488
-Validation loss after mini-batch   864: 185.931
-Validation loss after mini-batch   888: 193.545
-Validation loss after mini-batch   912: 162.390
-Validation loss after mini-batch   936: 171.828
-Validation loss after mini-batch   960: 183.645
-Validation loss after mini-batch   984: 171.843
-Validation loss after mini-batch  1008: 177.049
-Validation loss after mini-batch  1032: 185.587
-Validation loss after mini-batch  1056: 171.003
-Validation loss after mini-batch  1080: 181.530
-Validation loss after mini-batch  1104: 191.678
-Validation loss after mini-batch  1128: 174.629
-Validation loss after mini-batch  1152: 190.984
-Validation loss after mini-batch  1176: 184.673
-Validation loss after mini-batch  1200: 180.846
-Validation loss after mini-batch  1224: 163.136
-Validation loss after mini-batch  1248: 191.947
-Validation loss after mini-batch  1272: 169.746
-Validation loss after mini-batch  1296: 168.550
-Validation loss after mini-batch  1320: 162.799
-Validation loss after mini-batch  1344: 166.070
-Validation loss after mini-batch  1368: 183.018
-Validation loss after mini-batch  1392: 195.154
-Validation loss after mini-batch  1416: 169.734
-Validation loss after mini-batch  1440: 178.694
-Validation loss after mini-batch  1464: 178.717
-Validation loss after mini-batch  1488: 178.947
-Validation loss after mini-batch  1512: 163.337
-Validation loss after mini-batch  1536: 182.039
-Validation loss after mini-batch  1560: 163.085
-Validation loss after mini-batch  1584: 169.574
-Validation loss after mini-batch  1608: 160.649
-Validation loss after mini-batch  1632: 180.814
-Validation loss after mini-batch  1656: 193.843
-Validation loss after mini-batch  1680: 181.794
-Validation loss after mini-batch  1704: 176.076
-Validation loss after mini-batch  1728: 176.715
-Validation loss after mini-batch  1752: 180.069
-Validation loss after mini-batch  1776: 180.637
-Validation loss after mini-batch  1800: 177.763
-Validation loss after mini-batch  1824: 175.838
-Validation loss after mini-batch  1848: 169.619
-Validation loss after mini-batch  1872: 180.855
-Validation loss after mini-batch  1896: 174.320
-Validation loss after mini-batch  1920: 170.680
-Validation loss after mini-batch  1944: 194.019
-Validation loss after mini-batch  1968: 166.209
-Validation loss after mini-batch  1992: 163.045
-Validation loss after mini-batch  2016: 174.947
-Validation loss after mini-batch  2040: 183.346
-Validation loss after mini-batch  2064: 196.906
-Validation loss after mini-batch  2088: 164.725
-Validation loss after mini-batch  2112: 170.480
-Validation loss after mini-batch  2136: 189.151
-Validation loss after mini-batch  2160: 176.057
-Validation loss after mini-batch  2184: 177.021
-Validation loss after mini-batch  2208: 167.540
-Validation loss after mini-batch  2232: 175.433
-Validation loss after mini-batch  2256: 179.266
-Validation loss after mini-batch  2280: 185.853
-Validation loss after mini-batch  2304: 158.227
-Validation loss after mini-batch  2328: 164.059
-Validation loss after mini-batch  2352: 166.028
-Validation loss after mini-batch  2376: 162.045
-Validation loss after mini-batch  2400: 192.880
-Validation loss after mini-batch  2424: 170.933
-Validation loss after mini-batch  2448: 189.255
-Validation loss after mini-batch  2472: 185.254
-Validation loss after mini-batch  2496: 179.963
-Validation loss after mini-batch  2520: 193.783
-Validation loss after mini-batch  2544: 186.283
-Validation loss after mini-batch  2568: 160.683
-Validation loss after mini-batch  2592: 172.725
-Validation loss after mini-batch  2616: 181.591
-Validation loss after mini-batch  2640: 168.769
-Validation loss after mini-batch  2664: 188.537
-Validation loss after mini-batch  2688: 181.965
-Validation loss after mini-batch  2712: 201.561
+Loss after mini-batch    24: 0.168
+Loss after mini-batch    48: 0.171
+Loss after mini-batch    72: 0.168
+Loss after mini-batch    96: 0.181
+Loss after mini-batch   120: 0.176
+Loss after mini-batch   144: 0.154
+Loss after mini-batch   168: 0.172
+Loss after mini-batch   192: 0.192
+Loss after mini-batch   216: 0.179
+Loss after mini-batch   240: 0.187
+Loss after mini-batch   264: 0.171
+Loss after mini-batch   288: 0.168
+Loss after mini-batch   312: 0.163
+Loss after mini-batch   336: 0.179
+Loss after mini-batch   360: 0.154
+Loss after mini-batch   384: 0.172
+Loss after mini-batch   408: 0.164
+Loss after mini-batch   432: 0.179
+Loss after mini-batch   456: 0.152
+Loss after mini-batch   480: 0.167
+Loss after mini-batch   504: 0.177
+Loss after mini-batch   528: 0.155
+Loss after mini-batch   552: 0.180
+Loss after mini-batch   576: 0.172
+Loss after mini-batch   600: 0.182
+Loss after mini-batch   624: 0.193
+Loss after mini-batch   648: 0.169
+Loss after mini-batch   672: 0.169
+Loss after mini-batch   696: 0.168
+Loss after mini-batch   720: 0.194
+Loss after mini-batch   744: 0.189
+Loss after mini-batch   768: 0.168
+Loss after mini-batch   792: 0.183
+Loss after mini-batch   816: 0.163
+Loss after mini-batch   840: 0.192
+Loss after mini-batch   864: 0.161
+Loss after mini-batch   888: 0.179
+Loss after mini-batch   912: 0.187
+Loss after mini-batch   936: 0.187
+Loss after mini-batch   960: 0.173
+Loss after mini-batch   984: 0.191
+Loss after mini-batch  1008: 0.198
+Loss after mini-batch  1032: 0.187
+Loss after mini-batch  1056: 0.167
+Loss after mini-batch  1080: 0.189
+Loss after mini-batch  1104: 0.194
+Loss after mini-batch  1128: 0.194
+Loss after mini-batch  1152: 0.194
+Loss after mini-batch  1176: 0.185
+Loss after mini-batch  1200: 0.171
+Loss after mini-batch  1224: 0.193
+Loss after mini-batch  1248: 0.182
+Loss after mini-batch  1272: 0.200
+Loss after mini-batch  1296: 0.184
+Loss after mini-batch  1320: 0.179
+Loss after mini-batch  1344: 0.172
+Loss after mini-batch  1368: 0.193
+Loss after mini-batch  1392: 0.191
+Loss after mini-batch  1416: 0.181
+Loss after mini-batch  1440: 0.190
+Loss after mini-batch  1464: 0.166
+Loss after mini-batch  1488: 0.176
+Loss after mini-batch  1512: 0.175
+Loss after mini-batch  1536: 0.165
+Loss after mini-batch  1560: 0.156
+Loss after mini-batch  1584: 0.173
+Loss after mini-batch  1608: 0.182
+Loss after mini-batch  1632: 0.165
+Loss after mini-batch  1656: 0.175
+Loss after mini-batch  1680: 0.191
+Loss after mini-batch  1704: 0.184
+Loss after mini-batch  1728: 0.166
+Loss after mini-batch  1752: 0.182
+Loss after mini-batch  1776: 0.176
+Loss after mini-batch  1800: 0.159
+Loss after mini-batch  1824: 0.180
+Loss after mini-batch  1848: 0.164
+Loss after mini-batch  1872: 0.166
+Loss after mini-batch  1896: 0.181
+Loss after mini-batch  1920: 0.177
+Loss after mini-batch  1944: 0.166
+Loss after mini-batch  1968: 0.181
+Loss after mini-batch  1992: 0.170
+Loss after mini-batch  2016: 0.177
+Loss after mini-batch  2040: 0.182
+Loss after mini-batch  2064: 0.187
+Loss after mini-batch  2088: 0.178
+Loss after mini-batch  2112: 0.184
+Loss after mini-batch  2136: 0.177
+Loss after mini-batch  2160: 0.167
+Loss after mini-batch  2184: 0.156
+Loss after mini-batch  2208: 0.175
+Loss after mini-batch  2232: 0.160
+Loss after mini-batch  2256: 0.179
+Loss after mini-batch  2280: 0.180
+Loss after mini-batch  2304: 0.173
+Loss after mini-batch  2328: 0.196
+Loss after mini-batch  2352: 0.175
+Loss after mini-batch  2376: 0.201
+Loss after mini-batch  2400: 0.165
+Loss after mini-batch  2424: 0.202
+Loss after mini-batch  2448: 0.195
+Loss after mini-batch  2472: 0.200
+Loss after mini-batch  2496: 0.173
+Loss after mini-batch  2520: 0.184
+Loss after mini-batch  2544: 0.168
+Loss after mini-batch  2568: 0.163
+Loss after mini-batch  2592: 0.201
+Loss after mini-batch  2616: 0.169
+Loss after mini-batch  2640: 0.189
+Loss after mini-batch  2664: 0.188
+Loss after mini-batch  2688: 0.168
+Loss after mini-batch  2712: 0.166
+Loss after mini-batch  2736: 0.189
+Loss after mini-batch  2760: 0.167
+Loss after mini-batch  2784: 0.171
+Loss after mini-batch  2808: 0.168
+Loss after mini-batch  2832: 0.180
+Loss after mini-batch  2856: 0.186
+Loss after mini-batch  2880: 0.167
+Loss after mini-batch  2904: 0.172
+Loss after mini-batch  2928: 0.168
+Loss after mini-batch  2952: 0.182
+Loss after mini-batch  2976: 0.175
+Loss after mini-batch  3000: 0.155
+Loss after mini-batch  3024: 0.187
+Loss after mini-batch  3048: 0.175
+Loss after mini-batch  3072: 0.198
+Loss after mini-batch  3096: 0.164
+Loss after mini-batch  3120: 0.188
+Loss after mini-batch  3144: 0.177
+Loss after mini-batch  3168: 0.202
+Loss after mini-batch  3192: 0.173
+Loss after mini-batch  3216: 0.201
+Loss after mini-batch  3240: 0.173
+Loss after mini-batch  3264: 0.170
+Loss after mini-batch  3288: 0.191
+Loss after mini-batch  3312: 0.192
+Loss after mini-batch  3336: 0.176
+Loss after mini-batch  3360: 0.150
+Loss after mini-batch  3384: 0.190
+Loss after mini-batch  3408: 0.183
+Loss after mini-batch  3432: 0.173
+Loss after mini-batch  3456: 0.191
+Loss after mini-batch  3480: 0.183
+Loss after mini-batch  3504: 0.173
+Loss after mini-batch  3528: 0.174
+Loss after mini-batch  3552: 0.173
+Loss after mini-batch  3576: 0.172
+Loss after mini-batch  3600: 0.184
+Loss after mini-batch  3624: 0.159
+Loss after mini-batch  3648: 0.191
+Loss after mini-batch  3672: 0.175
+Loss after mini-batch  3696: 0.181
+Loss after mini-batch  3720: 0.176
+Loss after mini-batch  3744: 0.176
+Loss after mini-batch  3768: 0.188
+Loss after mini-batch  3792: 0.181
+Loss after mini-batch  3816: 0.188
+Loss after mini-batch  3840: 0.190
+Loss after mini-batch  3864: 0.174
+Loss after mini-batch  3888: 0.185
+Loss after mini-batch  3912: 0.196
+Loss after mini-batch  3936: 0.176
+Loss after mini-batch  3960: 0.182
+Loss after mini-batch  3984: 0.180
+Loss after mini-batch  4008: 0.188
+Loss after mini-batch  4032: 0.176
+Loss after mini-batch  4056: 0.157
+Loss after mini-batch  4080: 0.178
+Loss after mini-batch  4104: 0.165
+Loss after mini-batch  4128: 0.151
+Loss after mini-batch  4152: 0.182
+Loss after mini-batch  4176: 0.192
+Loss after mini-batch  4200: 0.168
+Loss after mini-batch  4224: 0.156
+Loss after mini-batch  4248: 0.172
+Loss after mini-batch  4272: 0.172
+Loss after mini-batch  4296: 0.180
+Loss after mini-batch  4320: 0.170
+Loss after mini-batch  4344: 0.195
+Loss after mini-batch  4368: 0.183
+Loss after mini-batch  4392: 0.159
+Loss after mini-batch  4416: 0.182
+Loss after mini-batch  4440: 0.182
+Loss after mini-batch  4464: 0.191
+Loss after mini-batch  4488: 0.177
+Loss after mini-batch  4512: 0.172
+Loss after mini-batch  4536: 0.184
+Loss after mini-batch  4560: 0.198
+Loss after mini-batch  4584: 0.180
+Loss after mini-batch  4608: 0.162
+Loss after mini-batch  4632: 0.195
+Loss after mini-batch  4656: 0.189
+Loss after mini-batch  4680: 0.178
+Loss after mini-batch  4704: 0.165
+Loss after mini-batch  4728: 0.197
+Loss after mini-batch  4752: 0.175
+Loss after mini-batch  4776: 0.195
+Loss after mini-batch  4800: 0.158
+Loss after mini-batch  4824: 0.192
+Loss after mini-batch  4848: 0.177
+Loss after mini-batch  4872: 0.177
+Loss after mini-batch  4896: 0.191
+Loss after mini-batch  4920: 0.184
+Loss after mini-batch  4944: 0.196
+Loss after mini-batch  4968: 0.144
+Loss after mini-batch  4992: 0.165
+Loss after mini-batch  5016: 0.195
+Loss after mini-batch  5040: 0.201
+Loss after mini-batch  5064: 0.163
+Loss after mini-batch  5088: 0.198
+Loss after mini-batch  5112: 0.172
+Loss after mini-batch  5136: 0.173
+Loss after mini-batch  5160: 0.166
+Loss after mini-batch  5184: 0.205
+Loss after mini-batch  5208: 0.171
+Loss after mini-batch  5232: 0.180
+Loss after mini-batch  5256: 0.172
+Loss after mini-batch  5280: 0.184
+Loss after mini-batch  5304: 0.175
+Loss after mini-batch  5328: 0.169
+Loss after mini-batch  5352: 0.166
+Loss after mini-batch  5376: 0.173
+Loss after mini-batch  5400: 0.166
+Loss after mini-batch  5424: 0.157
+Loss after mini-batch  5448: 0.186
+Loss after mini-batch  5472: 0.194
+Loss after mini-batch  5496: 0.171
+Loss after mini-batch  5520: 0.186
+Loss after mini-batch  5544: 0.167
+Loss after mini-batch  5568: 0.167
+Loss after mini-batch  5592: 0.170
+Loss after mini-batch  5616: 0.158
+Loss after mini-batch  5640: 0.184
+Loss after mini-batch  5664: 0.167
+Loss after mini-batch  5688: 0.169
+Loss after mini-batch  5712: 0.189
+Loss after mini-batch  5736: 0.163
+Loss after mini-batch  5760: 0.205
+Loss after mini-batch  5784: 0.179
+Loss after mini-batch  5808: 0.178
+Loss after mini-batch  5832: 0.172
+Loss after mini-batch  5856: 0.169
+Loss after mini-batch  5880: 0.177
+Loss after mini-batch  5904: 0.162
+Loss after mini-batch  5928: 0.177
+Loss after mini-batch  5952: 0.191
+Loss after mini-batch  5976: 0.170
+Loss after mini-batch  6000: 0.180
+Loss after mini-batch  6024: 0.179
+Loss after mini-batch  6048: 0.181
+Loss after mini-batch  6072: 0.178
+Loss after mini-batch  6096: 0.179
+Loss after mini-batch  6120: 0.188
+Loss after mini-batch  6144: 0.185
+Loss after mini-batch  6168: 0.201
+Loss after mini-batch  6192: 0.176
+Loss after mini-batch  6216: 0.147
+Loss after mini-batch  6240: 0.189
+Loss after mini-batch  6264: 0.190
+Loss after mini-batch  6288: 0.185
+Loss after mini-batch  6312: 0.175
+Loss after mini-batch  6336: 0.176
+Loss after mini-batch  6360: 0.179
+Loss after mini-batch  6384: 0.179
+Loss after mini-batch  6408: 0.188
+Loss after mini-batch  6432: 0.172
+Loss after mini-batch  6456: 0.176
+Loss after mini-batch  6480: 0.183
+Loss after mini-batch  6504: 0.175
+Loss after mini-batch  6528: 0.173
+Loss after mini-batch  6552: 0.154
+Loss after mini-batch  6576: 0.190
+Loss after mini-batch  6600: 0.185
+Loss after mini-batch  6624: 0.174
+Loss after mini-batch  6648: 0.164
+Loss after mini-batch  6672: 0.164
+Loss after mini-batch  6696: 0.188
+Loss after mini-batch  6720: 0.189
+Loss after mini-batch  6744: 0.154
+Loss after mini-batch  6768: 0.176
+Loss after mini-batch  6792: 0.176
+Loss after mini-batch  6816: 0.168
+Loss after mini-batch  6840: 0.184
+Loss after mini-batch  6864: 0.188
+Loss after mini-batch  6888: 0.185
+Loss after mini-batch  6912: 0.167
+Loss after mini-batch  6936: 0.172
+Loss after mini-batch  6960: 0.170
+Loss after mini-batch  6984: 0.162
+Loss after mini-batch  7008: 0.170
+Loss after mini-batch  7032: 0.173
+Loss after mini-batch  7056: 0.182
+Loss after mini-batch  7080: 0.158
+Loss after mini-batch  7104: 0.152
+Loss after mini-batch  7128: 0.169
+Loss after mini-batch  7152: 0.159
+Loss after mini-batch  7176: 0.174
+Loss after mini-batch  7200: 0.153
+Loss after mini-batch  7224: 0.161
+Loss after mini-batch  7248: 0.157
+Loss after mini-batch  7272: 0.205
+Loss after mini-batch  7296: 0.180
+Loss after mini-batch  7320: 0.195
+Loss after mini-batch  7344: 0.180
+Loss after mini-batch  7368: 0.162
+Loss after mini-batch  7392: 0.176
+Loss after mini-batch  7416: 0.167
+Loss after mini-batch  7440: 0.188
+Loss after mini-batch  7464: 0.169
+Loss after mini-batch  7488: 0.179
+Loss after mini-batch  7512: 0.191
+Loss after mini-batch  7536: 0.166
+Loss after mini-batch  7560: 0.176
+Loss after mini-batch  7584: 0.168
+Loss after mini-batch  7608: 0.166
+Loss after mini-batch  7632: 0.186
+Loss after mini-batch  7656: 0.174
+Loss after mini-batch  7680: 0.162
+Loss after mini-batch  7704: 0.164
+Loss after mini-batch  7728: 0.174
+Loss after mini-batch  7752: 0.192
+Loss after mini-batch  7776: 0.163
+Loss after mini-batch  7800: 0.181
+Loss after mini-batch  7824: 0.191
+Loss after mini-batch  7848: 0.165
+Loss after mini-batch  7872: 0.194
+Loss after mini-batch  7896: 0.198
+Loss after mini-batch  7920: 0.163
+Loss after mini-batch  7944: 0.164
+Loss after mini-batch  7968: 0.178
+Loss after mini-batch  7992: 0.203
+Loss after mini-batch  8016: 0.193
+Loss after mini-batch  8040: 0.187
+Loss after mini-batch  8064: 0.156
+Loss after mini-batch  8088: 0.185
+Loss after mini-batch  8112: 0.175
+Loss after mini-batch  8136: 0.192
+Loss after mini-batch  8160: 0.170
+Loss after mini-batch  8184: 0.174
+Loss after mini-batch  8208: 0.190
+Loss after mini-batch  8232: 0.185
+Loss after mini-batch  8256: 0.158
+Loss after mini-batch  8280: 0.188
+Loss after mini-batch  8304: 0.180
+Loss after mini-batch  8328: 0.215
+Loss after mini-batch  8352: 0.171
+Loss after mini-batch  8376: 0.186
+Loss after mini-batch  8400: 0.159
+Loss after mini-batch  8424: 0.184
+Loss after mini-batch  8448: 0.186
+Loss after mini-batch  8472: 0.176
+Loss after mini-batch  8496: 0.193
+Loss after mini-batch  8520: 0.188
+Loss after mini-batch  8544: 0.198
+Loss after mini-batch  8568: 0.195
+Loss after mini-batch  8592: 0.184
+Loss after mini-batch  8616: 0.186
+Loss after mini-batch  8640: 0.174
+Loss after mini-batch  8664: 0.184
+Loss after mini-batch  8688: 0.150
+Loss after mini-batch  8712: 0.158
+Loss after mini-batch  8736: 0.189
+Loss after mini-batch  8760: 0.192
+Loss after mini-batch  8784: 0.184
+Loss after mini-batch  8808: 0.174
+Loss after mini-batch  8832: 0.159
+Loss after mini-batch  8856: 0.174
+Loss after mini-batch  8880: 0.153
+Loss after mini-batch  8904: 0.170
+Loss after mini-batch  8928: 0.163
+Loss after mini-batch  8952: 0.167
+Loss after mini-batch  8976: 0.160
+Loss after mini-batch  9000: 0.169
+Loss after mini-batch  9024: 0.168
+Loss after mini-batch  9048: 0.200
+Loss after mini-batch  9072: 0.170
+Loss after mini-batch  9096: 0.158
+Loss after mini-batch  9120: 0.205
+Loss after mini-batch  9144: 0.180
+Loss after mini-batch  9168: 0.170
+Loss after mini-batch  9192: 0.168
+Loss after mini-batch  9216: 0.176
+Loss after mini-batch  9240: 0.169
+Loss after mini-batch  9264: 0.171
+Loss after mini-batch  9288: 0.167
+Loss after mini-batch  9312: 0.166
+Loss after mini-batch  9336: 0.154
+Loss after mini-batch  9360: 0.163
+Loss after mini-batch  9384: 0.163
+Loss after mini-batch  9408: 0.171
+Loss after mini-batch  9432: 0.168
+Loss after mini-batch  9456: 0.169
+Loss after mini-batch  9480: 0.189
+Loss after mini-batch  9504: 0.163
+Loss after mini-batch  9528: 0.177
+Loss after mini-batch  9552: 0.173
+Loss after mini-batch  9576: 0.163
+Loss after mini-batch  9600: 0.175
+Loss after mini-batch  9624: 0.200
+Loss after mini-batch  9648: 0.172
+Loss after mini-batch  9672: 0.197
+Loss after mini-batch  9696: 0.201
+Loss after mini-batch  9720: 0.165
+Loss after mini-batch  9744: 0.185
+Loss after mini-batch  9768: 0.160
+Loss after mini-batch  9792: 0.207
+Loss after mini-batch  9816: 0.168
+Loss after mini-batch  9840: 0.168
+Loss after mini-batch  9864: 0.178
+Loss after mini-batch  9888: 0.179
+Loss after mini-batch  9912: 0.186
+Loss after mini-batch  9936: 0.168
+Loss after mini-batch  9960: 0.169
+Loss after mini-batch  9984: 0.162
+Loss after mini-batch 10008: 0.179
+Loss after mini-batch 10032: 0.181
+Loss after mini-batch 10056: 0.173
+Loss after mini-batch 10080: 0.180
+Loss after mini-batch 10104: 0.173
+Loss after mini-batch 10128: 0.163
+Loss after mini-batch 10152: 0.190
+Loss after mini-batch 10176: 0.168
+Loss after mini-batch 10200: 0.151
+Loss after mini-batch 10224: 0.184
+Loss after mini-batch 10248: 0.185
+Loss after mini-batch 10272: 0.171
+Loss after mini-batch 10296: 0.182
+Loss after mini-batch 10320: 0.185
+Loss after mini-batch 10344: 0.174
+Loss after mini-batch 10368: 0.189
+Loss after mini-batch 10392: 0.174
+Loss after mini-batch 10416: 0.170
+Loss after mini-batch 10440: 0.182
+Loss after mini-batch 10464: 0.176
+Loss after mini-batch 10488: 0.204
+Loss after mini-batch 10512: 0.173
+Loss after mini-batch 10536: 0.159
+Loss after mini-batch 10560: 0.169
+Loss after mini-batch 10584: 0.179
+Loss after mini-batch 10608: 0.205
+Loss after mini-batch 10632: 0.180
+Loss after mini-batch 10656: 0.180
+Loss after mini-batch 10680: 0.162
+Loss after mini-batch 10704: 0.178
+Loss after mini-batch 10728: 0.181
+Loss after mini-batch 10752: 0.168
+Loss after mini-batch 10776: 0.186
+Loss after mini-batch 10800: 0.161
+Loss after mini-batch 10824: 0.168
+Loss after mini-batch 10848: 0.175
+Loss after mini-batch 10872: 0.185
+Loss after mini-batch 10896: 0.169
+Loss after mini-batch 10920: 0.169
+Loss after mini-batch 10944: 0.192
+Loss after mini-batch 10968: 0.160
+Loss after mini-batch 10992: 0.183
+Loss after mini-batch 11016: 0.194
+Loss after mini-batch 11040: 0.175
+Loss after mini-batch 11064: 0.163
+Loss after mini-batch 11088: 0.198
+Loss after mini-batch 11112: 0.153
+Loss after mini-batch 11136: 0.194
+Loss after mini-batch 11160: 0.182
+Loss after mini-batch 11184: 0.182
+Loss after mini-batch 11208: 0.172
+Loss after mini-batch 11232: 0.184
+Loss after mini-batch 11256: 0.181
+Loss after mini-batch 11280: 0.170
+Loss after mini-batch 11304: 0.169
+Loss after mini-batch 11328: 0.167
+Loss after mini-batch 11352: 0.192
+Loss after mini-batch 11376: 0.195
+Loss after mini-batch 11400: 0.163
+Loss after mini-batch 11424: 0.177
+Loss after mini-batch 11448: 0.161
+Loss after mini-batch 11472: 0.173
+Loss after mini-batch 11496: 0.152
+Loss after mini-batch 11520: 0.186
+Loss after mini-batch 11544: 0.162
+Loss after mini-batch 11568: 0.178
+Loss after mini-batch 11592: 0.190
+Loss after mini-batch 11616: 0.182
+Loss after mini-batch 11640: 0.165
+Loss after mini-batch 11664: 0.166
+Loss after mini-batch 11688: 0.179
+Loss after mini-batch 11712: 0.167
+Loss after mini-batch 11736: 0.152
+Loss after mini-batch 11760: 0.172
+Loss after mini-batch 11784: 0.203
+Loss after mini-batch 11808: 0.159
+Loss after mini-batch 11832: 0.182
+Validation loss after mini-batch    24: 0.195
+Validation loss after mini-batch    48: 0.206
+Validation loss after mini-batch    72: 0.182
+Validation loss after mini-batch    96: 0.196
+Validation loss after mini-batch   120: 0.193
+Validation loss after mini-batch   144: 0.203
+Validation loss after mini-batch   168: 0.186
+Validation loss after mini-batch   192: 0.184
+Validation loss after mini-batch   216: 0.192
+Validation loss after mini-batch   240: 0.192
+Validation loss after mini-batch   264: 0.203
+Validation loss after mini-batch   288: 0.181
+Validation loss after mini-batch   312: 0.194
+Validation loss after mini-batch   336: 0.195
+Validation loss after mini-batch   360: 0.169
+Validation loss after mini-batch   384: 0.177
+Validation loss after mini-batch   408: 0.201
+Validation loss after mini-batch   432: 0.200
+Validation loss after mini-batch   456: 0.175
+Validation loss after mini-batch   480: 0.190
+Validation loss after mini-batch   504: 0.194
+Validation loss after mini-batch   528: 0.214
+Validation loss after mini-batch   552: 0.191
+Validation loss after mini-batch   576: 0.185
+Validation loss after mini-batch   600: 0.187
+Validation loss after mini-batch   624: 0.186
+Validation loss after mini-batch   648: 0.188
+Validation loss after mini-batch   672: 0.195
+Validation loss after mini-batch   696: 0.180
+Validation loss after mini-batch   720: 0.195
+Validation loss after mini-batch   744: 0.216
+Validation loss after mini-batch   768: 0.218
+Validation loss after mini-batch   792: 0.190
+Validation loss after mini-batch   816: 0.177
+Validation loss after mini-batch   840: 0.188
+Validation loss after mini-batch   864: 0.213
+Validation loss after mini-batch   888: 0.213
+Validation loss after mini-batch   912: 0.170
+Validation loss after mini-batch   936: 0.193
+Validation loss after mini-batch   960: 0.202
+Validation loss after mini-batch   984: 0.190
+Validation loss after mini-batch  1008: 0.196
+Validation loss after mini-batch  1032: 0.196
+Validation loss after mini-batch  1056: 0.183
+Validation loss after mini-batch  1080: 0.195
+Validation loss after mini-batch  1104: 0.208
+Validation loss after mini-batch  1128: 0.200
+Validation loss after mini-batch  1152: 0.212
+Validation loss after mini-batch  1176: 0.211
+Validation loss after mini-batch  1200: 0.206
+Validation loss after mini-batch  1224: 0.178
+Validation loss after mini-batch  1248: 0.219
+Validation loss after mini-batch  1272: 0.188
+Validation loss after mini-batch  1296: 0.193
+Validation loss after mini-batch  1320: 0.170
+Validation loss after mini-batch  1344: 0.182
+Validation loss after mini-batch  1368: 0.200
+Validation loss after mini-batch  1392: 0.213
+Validation loss after mini-batch  1416: 0.190
+Validation loss after mini-batch  1440: 0.198
+Validation loss after mini-batch  1464: 0.204
+Validation loss after mini-batch  1488: 0.210
+Validation loss after mini-batch  1512: 0.181
+Validation loss after mini-batch  1536: 0.202
+Validation loss after mini-batch  1560: 0.179
+Validation loss after mini-batch  1584: 0.208
+Validation loss after mini-batch  1608: 0.174
+Validation loss after mini-batch  1632: 0.200
+Validation loss after mini-batch  1656: 0.202
+Validation loss after mini-batch  1680: 0.193
+Validation loss after mini-batch  1704: 0.189
+Validation loss after mini-batch  1728: 0.199
+Validation loss after mini-batch  1752: 0.199
+Validation loss after mini-batch  1776: 0.198
+Validation loss after mini-batch  1800: 0.197
+Validation loss after mini-batch  1824: 0.185
+Validation loss after mini-batch  1848: 0.176
+Validation loss after mini-batch  1872: 0.197
+Validation loss after mini-batch  1896: 0.192
+Validation loss after mini-batch  1920: 0.191
+Validation loss after mini-batch  1944: 0.219
+Validation loss after mini-batch  1968: 0.176
+Validation loss after mini-batch  1992: 0.185
+Validation loss after mini-batch  2016: 0.196
+Validation loss after mini-batch  2040: 0.198
+Validation loss after mini-batch  2064: 0.219
+Validation loss after mini-batch  2088: 0.181
+Validation loss after mini-batch  2112: 0.190
+Validation loss after mini-batch  2136: 0.205
+Validation loss after mini-batch  2160: 0.196
+Validation loss after mini-batch  2184: 0.200
+Validation loss after mini-batch  2208: 0.173
+Validation loss after mini-batch  2232: 0.190
+Validation loss after mini-batch  2256: 0.185
+Validation loss after mini-batch  2280: 0.203
+Validation loss after mini-batch  2304: 0.181
+Validation loss after mini-batch  2328: 0.183
+Validation loss after mini-batch  2352: 0.179
+Validation loss after mini-batch  2376: 0.180
+Validation loss after mini-batch  2400: 0.202
+Validation loss after mini-batch  2424: 0.190
+Validation loss after mini-batch  2448: 0.200
+Validation loss after mini-batch  2472: 0.209
+Validation loss after mini-batch  2496: 0.192
+Validation loss after mini-batch  2520: 0.208
+Validation loss after mini-batch  2544: 0.205
+Validation loss after mini-batch  2568: 0.183
+Validation loss after mini-batch  2592: 0.183
+Validation loss after mini-batch  2616: 0.188
+Validation loss after mini-batch  2640: 0.189
+Validation loss after mini-batch  2664: 0.210
+Validation loss after mini-batch  2688: 0.196
+Validation loss after mini-batch  2712: 0.232
 Starting epoch 4
-Loss after mini-batch    24: 160.827
-Loss after mini-batch    48: 164.275
-Loss after mini-batch    72: 154.366
-Loss after mini-batch    96: 188.375
-Loss after mini-batch   120: 172.402
-Loss after mini-batch   144: 178.605
-Loss after mini-batch   168: 167.858
-Loss after mini-batch   192: 170.580
-Loss after mini-batch   216: 179.481
-Loss after mini-batch   240: 178.552
-Loss after mini-batch   264: 151.977
-Loss after mini-batch   288: 164.310
-Loss after mini-batch   312: 171.859
-Loss after mini-batch   336: 180.764
-Loss after mini-batch   360: 158.252
-Loss after mini-batch   384: 176.781
-Loss after mini-batch   408: 152.053
-Loss after mini-batch   432: 164.402
-Loss after mini-batch   456: 176.244
-Loss after mini-batch   480: 192.893
-Loss after mini-batch   504: 151.723
-Loss after mini-batch   528: 160.087
-Loss after mini-batch   552: 166.754
-Loss after mini-batch   576: 153.958
-Loss after mini-batch   600: 161.100
-Loss after mini-batch   624: 173.669
-Loss after mini-batch   648: 171.586
-Loss after mini-batch   672: 170.521
-Loss after mini-batch   696: 160.570
-Loss after mini-batch   720: 150.796
-Loss after mini-batch   744: 160.250
-Loss after mini-batch   768: 188.981
-Loss after mini-batch   792: 176.438
-Loss after mini-batch   816: 175.919
-Loss after mini-batch   840: 177.458
-Loss after mini-batch   864: 179.595
-Loss after mini-batch   888: 167.666
-Loss after mini-batch   912: 186.687
-Loss after mini-batch   936: 172.509
-Loss after mini-batch   960: 164.635
-Loss after mini-batch   984: 164.342
-Loss after mini-batch  1008: 196.577
-Loss after mini-batch  1032: 151.755
-Loss after mini-batch  1056: 157.267
-Loss after mini-batch  1080: 159.490
-Loss after mini-batch  1104: 165.905
-Loss after mini-batch  1128: 180.649
-Loss after mini-batch  1152: 173.110
-Loss after mini-batch  1176: 158.576
-Loss after mini-batch  1200: 153.917
-Loss after mini-batch  1224: 172.478
-Loss after mini-batch  1248: 163.510
-Loss after mini-batch  1272: 185.847
-Loss after mini-batch  1296: 174.724
-Loss after mini-batch  1320: 173.305
-Loss after mini-batch  1344: 154.378
-Loss after mini-batch  1368: 158.023
-Loss after mini-batch  1392: 168.405
-Loss after mini-batch  1416: 173.315
-Loss after mini-batch  1440: 160.306
-Loss after mini-batch  1464: 163.833
-Loss after mini-batch  1488: 161.373
-Loss after mini-batch  1512: 174.221
-Loss after mini-batch  1536: 142.783
-Loss after mini-batch  1560: 172.513
-Loss after mini-batch  1584: 172.209
-Loss after mini-batch  1608: 176.129
-Loss after mini-batch  1632: 163.959
-Loss after mini-batch  1656: 179.187
-Loss after mini-batch  1680: 158.654
-Loss after mini-batch  1704: 188.545
-Loss after mini-batch  1728: 187.652
-Loss after mini-batch  1752: 159.680
-Loss after mini-batch  1776: 154.905
-Loss after mini-batch  1800: 171.370
-Loss after mini-batch  1824: 169.447
-Loss after mini-batch  1848: 167.764
-Loss after mini-batch  1872: 160.330
-Loss after mini-batch  1896: 156.345
-Loss after mini-batch  1920: 174.125
-Loss after mini-batch  1944: 152.033
-Loss after mini-batch  1968: 186.238
-Loss after mini-batch  1992: 161.888
-Loss after mini-batch  2016: 170.712
-Loss after mini-batch  2040: 171.361
-Loss after mini-batch  2064: 167.160
-Loss after mini-batch  2088: 177.507
-Loss after mini-batch  2112: 166.835
-Loss after mini-batch  2136: 167.593
-Loss after mini-batch  2160: 162.904
-Loss after mini-batch  2184: 178.169
-Loss after mini-batch  2208: 161.758
-Loss after mini-batch  2232: 167.059
-Loss after mini-batch  2256: 155.948
-Loss after mini-batch  2280: 157.632
-Loss after mini-batch  2304: 174.882
-Loss after mini-batch  2328: 164.232
-Loss after mini-batch  2352: 166.930
-Loss after mini-batch  2376: 171.486
-Loss after mini-batch  2400: 177.156
-Loss after mini-batch  2424: 175.381
-Loss after mini-batch  2448: 157.146
-Loss after mini-batch  2472: 159.950
-Loss after mini-batch  2496: 153.089
-Loss after mini-batch  2520: 169.572
-Loss after mini-batch  2544: 168.172
-Loss after mini-batch  2568: 179.667
-Loss after mini-batch  2592: 181.702
-Loss after mini-batch  2616: 164.029
-Loss after mini-batch  2640: 172.841
-Loss after mini-batch  2664: 166.203
-Loss after mini-batch  2688: 179.473
-Loss after mini-batch  2712: 166.833
-Loss after mini-batch  2736: 177.603
-Loss after mini-batch  2760: 156.290
-Loss after mini-batch  2784: 185.657
-Loss after mini-batch  2808: 159.939
-Loss after mini-batch  2832: 178.168
-Loss after mini-batch  2856: 147.981
-Loss after mini-batch  2880: 171.003
-Loss after mini-batch  2904: 154.858
-Loss after mini-batch  2928: 157.718
-Loss after mini-batch  2952: 172.385
-Loss after mini-batch  2976: 139.113
-Loss after mini-batch  3000: 168.041
-Loss after mini-batch  3024: 158.302
-Loss after mini-batch  3048: 171.279
-Loss after mini-batch  3072: 169.626
-Loss after mini-batch  3096: 183.106
-Loss after mini-batch  3120: 160.180
-Loss after mini-batch  3144: 156.120
-Loss after mini-batch  3168: 156.390
-Loss after mini-batch  3192: 173.110
-Loss after mini-batch  3216: 155.024
-Loss after mini-batch  3240: 179.180
-Loss after mini-batch  3264: 155.729
-Loss after mini-batch  3288: 166.755
-Loss after mini-batch  3312: 162.789
-Loss after mini-batch  3336: 161.467
-Loss after mini-batch  3360: 173.001
-Loss after mini-batch  3384: 182.812
-Loss after mini-batch  3408: 161.774
-Loss after mini-batch  3432: 182.992
-Loss after mini-batch  3456: 167.711
-Loss after mini-batch  3480: 176.660
-Loss after mini-batch  3504: 196.009
-Loss after mini-batch  3528: 175.221
-Loss after mini-batch  3552: 169.400
-Loss after mini-batch  3576: 158.610
-Loss after mini-batch  3600: 176.454
-Loss after mini-batch  3624: 150.061
-Loss after mini-batch  3648: 160.798
-Loss after mini-batch  3672: 160.921
-Loss after mini-batch  3696: 176.732
-Loss after mini-batch  3720: 154.326
-Loss after mini-batch  3744: 175.541
-Loss after mini-batch  3768: 164.261
-Loss after mini-batch  3792: 153.992
-Loss after mini-batch  3816: 164.863
-Loss after mini-batch  3840: 160.038
-Loss after mini-batch  3864: 162.286
-Loss after mini-batch  3888: 168.457
-Loss after mini-batch  3912: 184.146
-Loss after mini-batch  3936: 168.148
-Loss after mini-batch  3960: 175.349
-Loss after mini-batch  3984: 165.618
-Loss after mini-batch  4008: 188.383
-Loss after mini-batch  4032: 170.400
-Loss after mini-batch  4056: 176.616
-Loss after mini-batch  4080: 160.088
-Loss after mini-batch  4104: 181.820
-Loss after mini-batch  4128: 156.930
-Loss after mini-batch  4152: 147.379
-Loss after mini-batch  4176: 165.987
-Loss after mini-batch  4200: 166.629
-Loss after mini-batch  4224: 193.618
-Loss after mini-batch  4248: 163.781
-Loss after mini-batch  4272: 152.111
-Loss after mini-batch  4296: 155.923
-Loss after mini-batch  4320: 177.926
-Loss after mini-batch  4344: 147.702
-Loss after mini-batch  4368: 178.754
-Loss after mini-batch  4392: 149.840
-Loss after mini-batch  4416: 168.824
-Loss after mini-batch  4440: 175.901
-Loss after mini-batch  4464: 167.436
-Loss after mini-batch  4488: 182.988
-Loss after mini-batch  4512: 157.905
-Loss after mini-batch  4536: 148.601
-Loss after mini-batch  4560: 141.395
-Loss after mini-batch  4584: 174.600
-Loss after mini-batch  4608: 154.822
-Loss after mini-batch  4632: 170.111
-Loss after mini-batch  4656: 164.242
-Loss after mini-batch  4680: 151.341
-Loss after mini-batch  4704: 165.776
-Loss after mini-batch  4728: 170.420
-Loss after mini-batch  4752: 140.805
-Loss after mini-batch  4776: 175.298
-Loss after mini-batch  4800: 137.472
-Loss after mini-batch  4824: 170.362
-Loss after mini-batch  4848: 179.026
-Loss after mini-batch  4872: 159.317
-Loss after mini-batch  4896: 176.797
-Loss after mini-batch  4920: 169.843
-Loss after mini-batch  4944: 166.167
-Loss after mini-batch  4968: 174.670
-Loss after mini-batch  4992: 173.949
-Loss after mini-batch  5016: 152.510
-Loss after mini-batch  5040: 155.482
-Loss after mini-batch  5064: 174.854
-Loss after mini-batch  5088: 164.300
-Loss after mini-batch  5112: 158.880
-Loss after mini-batch  5136: 159.998
-Loss after mini-batch  5160: 180.315
-Loss after mini-batch  5184: 176.760
-Loss after mini-batch  5208: 149.710
-Loss after mini-batch  5232: 160.844
-Loss after mini-batch  5256: 165.572
-Loss after mini-batch  5280: 168.759
-Loss after mini-batch  5304: 159.962
-Loss after mini-batch  5328: 163.577
-Loss after mini-batch  5352: 164.161
-Loss after mini-batch  5376: 172.865
-Loss after mini-batch  5400: 166.561
-Loss after mini-batch  5424: 178.969
-Loss after mini-batch  5448: 170.414
-Loss after mini-batch  5472: 180.488
-Loss after mini-batch  5496: 173.835
-Loss after mini-batch  5520: 163.031
-Loss after mini-batch  5544: 167.202
-Loss after mini-batch  5568: 179.249
-Loss after mini-batch  5592: 166.685
-Loss after mini-batch  5616: 181.375
-Loss after mini-batch  5640: 179.036
-Loss after mini-batch  5664: 162.914
-Loss after mini-batch  5688: 148.885
-Loss after mini-batch  5712: 165.676
-Loss after mini-batch  5736: 170.648
-Loss after mini-batch  5760: 156.154
-Loss after mini-batch  5784: 158.587
-Loss after mini-batch  5808: 149.811
-Loss after mini-batch  5832: 186.537
-Loss after mini-batch  5856: 175.708
-Loss after mini-batch  5880: 172.156
-Loss after mini-batch  5904: 156.201
-Loss after mini-batch  5928: 156.788
-Loss after mini-batch  5952: 170.306
-Loss after mini-batch  5976: 171.387
-Loss after mini-batch  6000: 168.014
-Loss after mini-batch  6024: 152.432
-Loss after mini-batch  6048: 171.147
-Loss after mini-batch  6072: 181.031
-Loss after mini-batch  6096: 177.836
-Loss after mini-batch  6120: 152.856
-Loss after mini-batch  6144: 150.336
-Loss after mini-batch  6168: 160.632
-Loss after mini-batch  6192: 179.201
-Loss after mini-batch  6216: 160.699
-Loss after mini-batch  6240: 143.483
-Loss after mini-batch  6264: 162.082
-Loss after mini-batch  6288: 158.151
-Loss after mini-batch  6312: 156.031
-Loss after mini-batch  6336: 152.595
-Loss after mini-batch  6360: 152.460
-Loss after mini-batch  6384: 161.398
-Loss after mini-batch  6408: 176.033
-Loss after mini-batch  6432: 144.007
-Loss after mini-batch  6456: 175.996
-Loss after mini-batch  6480: 154.678
-Loss after mini-batch  6504: 162.279
-Loss after mini-batch  6528: 201.333
-Loss after mini-batch  6552: 157.504
-Loss after mini-batch  6576: 182.662
-Loss after mini-batch  6600: 176.766
-Loss after mini-batch  6624: 173.886
-Loss after mini-batch  6648: 184.198
-Loss after mini-batch  6672: 145.345
-Loss after mini-batch  6696: 169.981
-Loss after mini-batch  6720: 169.617
-Loss after mini-batch  6744: 170.944
-Loss after mini-batch  6768: 168.927
-Loss after mini-batch  6792: 156.111
-Loss after mini-batch  6816: 180.480
-Loss after mini-batch  6840: 162.557
-Loss after mini-batch  6864: 166.513
-Loss after mini-batch  6888: 165.911
-Loss after mini-batch  6912: 174.802
-Loss after mini-batch  6936: 166.723
-Loss after mini-batch  6960: 164.000
-Loss after mini-batch  6984: 156.875
-Loss after mini-batch  7008: 189.696
-Loss after mini-batch  7032: 162.931
-Loss after mini-batch  7056: 157.036
-Loss after mini-batch  7080: 170.186
-Loss after mini-batch  7104: 165.231
-Loss after mini-batch  7128: 167.944
-Loss after mini-batch  7152: 167.947
-Loss after mini-batch  7176: 190.524
-Loss after mini-batch  7200: 168.028
-Loss after mini-batch  7224: 167.795
-Loss after mini-batch  7248: 160.372
-Loss after mini-batch  7272: 158.554
-Loss after mini-batch  7296: 150.392
-Loss after mini-batch  7320: 182.632
-Loss after mini-batch  7344: 160.815
-Loss after mini-batch  7368: 156.161
-Loss after mini-batch  7392: 173.114
-Loss after mini-batch  7416: 186.306
-Loss after mini-batch  7440: 168.169
-Loss after mini-batch  7464: 178.106
-Loss after mini-batch  7488: 161.454
-Loss after mini-batch  7512: 174.157
-Loss after mini-batch  7536: 143.301
-Loss after mini-batch  7560: 158.643
-Loss after mini-batch  7584: 170.882
-Loss after mini-batch  7608: 159.861
-Loss after mini-batch  7632: 155.259
-Loss after mini-batch  7656: 177.651
-Loss after mini-batch  7680: 165.861
-Loss after mini-batch  7704: 173.650
-Loss after mini-batch  7728: 171.690
-Loss after mini-batch  7752: 161.367
-Loss after mini-batch  7776: 168.520
-Loss after mini-batch  7800: 155.388
-Loss after mini-batch  7824: 161.704
-Loss after mini-batch  7848: 155.208
-Loss after mini-batch  7872: 158.755
-Loss after mini-batch  7896: 165.462
-Loss after mini-batch  7920: 161.553
-Loss after mini-batch  7944: 172.248
-Loss after mini-batch  7968: 178.906
-Loss after mini-batch  7992: 167.863
-Loss after mini-batch  8016: 170.926
-Loss after mini-batch  8040: 175.604
-Loss after mini-batch  8064: 174.110
-Loss after mini-batch  8088: 152.480
-Loss after mini-batch  8112: 178.826
-Loss after mini-batch  8136: 155.871
-Loss after mini-batch  8160: 180.305
-Loss after mini-batch  8184: 171.682
-Loss after mini-batch  8208: 146.785
-Loss after mini-batch  8232: 177.457
-Loss after mini-batch  8256: 159.090
-Loss after mini-batch  8280: 172.976
-Loss after mini-batch  8304: 146.894
-Loss after mini-batch  8328: 154.649
-Loss after mini-batch  8352: 180.244
-Loss after mini-batch  8376: 171.357
-Loss after mini-batch  8400: 151.791
-Loss after mini-batch  8424: 164.197
-Loss after mini-batch  8448: 160.805
-Loss after mini-batch  8472: 164.830
-Loss after mini-batch  8496: 155.368
-Loss after mini-batch  8520: 162.514
-Loss after mini-batch  8544: 166.788
-Loss after mini-batch  8568: 165.265
-Loss after mini-batch  8592: 170.624
-Loss after mini-batch  8616: 160.761
-Loss after mini-batch  8640: 159.293
-Loss after mini-batch  8664: 195.113
-Loss after mini-batch  8688: 165.125
-Loss after mini-batch  8712: 156.613
-Loss after mini-batch  8736: 172.207
-Loss after mini-batch  8760: 160.963
-Loss after mini-batch  8784: 156.797
-Loss after mini-batch  8808: 175.892
-Loss after mini-batch  8832: 174.867
-Loss after mini-batch  8856: 179.808
-Loss after mini-batch  8880: 169.509
-Loss after mini-batch  8904: 161.046
-Loss after mini-batch  8928: 157.410
-Loss after mini-batch  8952: 174.830
-Loss after mini-batch  8976: 176.471
-Loss after mini-batch  9000: 158.853
-Loss after mini-batch  9024: 160.327
-Loss after mini-batch  9048: 150.527
-Loss after mini-batch  9072: 143.637
-Loss after mini-batch  9096: 159.030
-Loss after mini-batch  9120: 194.584
-Loss after mini-batch  9144: 147.088
-Loss after mini-batch  9168: 163.909
-Loss after mini-batch  9192: 160.644
-Loss after mini-batch  9216: 169.640
-Loss after mini-batch  9240: 157.845
-Loss after mini-batch  9264: 167.236
-Loss after mini-batch  9288: 174.951
-Loss after mini-batch  9312: 150.439
-Loss after mini-batch  9336: 159.183
-Loss after mini-batch  9360: 166.844
-Loss after mini-batch  9384: 146.099
-Loss after mini-batch  9408: 167.173
-Loss after mini-batch  9432: 173.641
-Loss after mini-batch  9456: 158.290
-Loss after mini-batch  9480: 164.661
-Loss after mini-batch  9504: 161.345
-Loss after mini-batch  9528: 147.795
-Loss after mini-batch  9552: 157.471
-Loss after mini-batch  9576: 157.855
-Loss after mini-batch  9600: 170.432
-Loss after mini-batch  9624: 182.477
-Loss after mini-batch  9648: 171.521
-Loss after mini-batch  9672: 183.131
-Loss after mini-batch  9696: 175.392
-Loss after mini-batch  9720: 149.484
-Loss after mini-batch  9744: 170.434
-Loss after mini-batch  9768: 152.300
-Loss after mini-batch  9792: 155.687
-Loss after mini-batch  9816: 163.779
-Loss after mini-batch  9840: 159.596
-Loss after mini-batch  9864: 160.112
-Loss after mini-batch  9888: 166.561
-Loss after mini-batch  9912: 156.827
-Loss after mini-batch  9936: 157.896
-Loss after mini-batch  9960: 172.325
-Loss after mini-batch  9984: 169.725
-Loss after mini-batch 10008: 155.697
-Loss after mini-batch 10032: 165.820
-Loss after mini-batch 10056: 165.634
-Loss after mini-batch 10080: 166.889
-Loss after mini-batch 10104: 157.527
-Loss after mini-batch 10128: 168.188
-Loss after mini-batch 10152: 177.927
-Loss after mini-batch 10176: 159.897
-Loss after mini-batch 10200: 157.755
-Loss after mini-batch 10224: 182.276
-Loss after mini-batch 10248: 151.949
-Loss after mini-batch 10272: 158.551
-Loss after mini-batch 10296: 141.240
-Loss after mini-batch 10320: 169.660
-Loss after mini-batch 10344: 140.473
-Loss after mini-batch 10368: 151.357
-Loss after mini-batch 10392: 159.722
-Loss after mini-batch 10416: 141.662
-Loss after mini-batch 10440: 164.812
-Loss after mini-batch 10464: 167.076
-Loss after mini-batch 10488: 169.583
-Loss after mini-batch 10512: 175.411
-Loss after mini-batch 10536: 159.140
-Loss after mini-batch 10560: 173.951
-Loss after mini-batch 10584: 155.928
-Loss after mini-batch 10608: 174.422
-Loss after mini-batch 10632: 163.412
-Loss after mini-batch 10656: 148.112
-Loss after mini-batch 10680: 153.355
-Loss after mini-batch 10704: 154.484
-Loss after mini-batch 10728: 146.922
-Loss after mini-batch 10752: 152.429
-Loss after mini-batch 10776: 168.215
-Loss after mini-batch 10800: 159.696
-Loss after mini-batch 10824: 153.889
-Loss after mini-batch 10848: 151.422
-Loss after mini-batch 10872: 183.779
-Loss after mini-batch 10896: 156.505
-Loss after mini-batch 10920: 163.880
-Loss after mini-batch 10944: 163.542
-Loss after mini-batch 10968: 162.803
-Loss after mini-batch 10992: 152.164
-Loss after mini-batch 11016: 173.761
-Loss after mini-batch 11040: 172.927
-Loss after mini-batch 11064: 179.970
-Loss after mini-batch 11088: 150.468
-Loss after mini-batch 11112: 152.527
-Loss after mini-batch 11136: 162.030
-Loss after mini-batch 11160: 176.826
-Loss after mini-batch 11184: 150.236
-Loss after mini-batch 11208: 168.323
-Loss after mini-batch 11232: 158.781
-Loss after mini-batch 11256: 162.147
-Loss after mini-batch 11280: 167.476
-Loss after mini-batch 11304: 149.798
-Loss after mini-batch 11328: 144.980
-Loss after mini-batch 11352: 149.538
-Loss after mini-batch 11376: 180.206
-Loss after mini-batch 11400: 145.679
-Loss after mini-batch 11424: 158.229
-Loss after mini-batch 11448: 171.596
-Loss after mini-batch 11472: 147.739
-Loss after mini-batch 11496: 179.974
-Loss after mini-batch 11520: 165.728
-Loss after mini-batch 11544: 169.148
-Loss after mini-batch 11568: 154.631
-Loss after mini-batch 11592: 163.455
-Loss after mini-batch 11616: 168.999
-Loss after mini-batch 11640: 152.068
-Loss after mini-batch 11664: 162.512
-Loss after mini-batch 11688: 185.163
-Loss after mini-batch 11712: 179.330
-Loss after mini-batch 11736: 166.222
-Loss after mini-batch 11760: 189.357
-Loss after mini-batch 11784: 160.776
-Loss after mini-batch 11808: 158.607
-Loss after mini-batch 11832: 170.964
-Validation loss after mini-batch    24: 147.365
-Validation loss after mini-batch    48: 168.353
-Validation loss after mini-batch    72: 162.364
-Validation loss after mini-batch    96: 174.933
-Validation loss after mini-batch   120: 183.271
-Validation loss after mini-batch   144: 182.283
-Validation loss after mini-batch   168: 184.927
-Validation loss after mini-batch   192: 176.494
-Validation loss after mini-batch   216: 195.346
-Validation loss after mini-batch   240: 172.086
-Validation loss after mini-batch   264: 183.892
-Validation loss after mini-batch   288: 162.771
-Validation loss after mini-batch   312: 173.625
-Validation loss after mini-batch   336: 181.740
-Validation loss after mini-batch   360: 178.915
-Validation loss after mini-batch   384: 179.257
-Validation loss after mini-batch   408: 169.749
-Validation loss after mini-batch   432: 180.487
-Validation loss after mini-batch   456: 163.457
-Validation loss after mini-batch   480: 172.604
-Validation loss after mini-batch   504: 177.675
-Validation loss after mini-batch   528: 183.979
-Validation loss after mini-batch   552: 190.683
-Validation loss after mini-batch   576: 185.518
-Validation loss after mini-batch   600: 160.790
-Validation loss after mini-batch   624: 176.628
-Validation loss after mini-batch   648: 167.033
-Validation loss after mini-batch   672: 184.136
-Validation loss after mini-batch   696: 176.720
-Validation loss after mini-batch   720: 187.968
-Validation loss after mini-batch   744: 144.314
-Validation loss after mini-batch   768: 191.072
-Validation loss after mini-batch   792: 169.097
-Validation loss after mini-batch   816: 162.821
-Validation loss after mini-batch   840: 181.029
-Validation loss after mini-batch   864: 170.178
-Validation loss after mini-batch   888: 181.493
-Validation loss after mini-batch   912: 178.705
-Validation loss after mini-batch   936: 177.893
-Validation loss after mini-batch   960: 166.697
-Validation loss after mini-batch   984: 182.815
-Validation loss after mini-batch  1008: 163.671
-Validation loss after mini-batch  1032: 144.246
-Validation loss after mini-batch  1056: 163.923
-Validation loss after mini-batch  1080: 180.531
-Validation loss after mini-batch  1104: 176.596
-Validation loss after mini-batch  1128: 178.500
-Validation loss after mini-batch  1152: 159.508
-Validation loss after mini-batch  1176: 168.911
-Validation loss after mini-batch  1200: 180.840
-Validation loss after mini-batch  1224: 189.434
-Validation loss after mini-batch  1248: 166.405
-Validation loss after mini-batch  1272: 153.905
-Validation loss after mini-batch  1296: 168.665
-Validation loss after mini-batch  1320: 165.271
-Validation loss after mini-batch  1344: 183.926
-Validation loss after mini-batch  1368: 175.029
-Validation loss after mini-batch  1392: 192.903
-Validation loss after mini-batch  1416: 182.478
-Validation loss after mini-batch  1440: 197.703
-Validation loss after mini-batch  1464: 169.324
-Validation loss after mini-batch  1488: 151.984
-Validation loss after mini-batch  1512: 182.447
-Validation loss after mini-batch  1536: 170.884
-Validation loss after mini-batch  1560: 169.168
-Validation loss after mini-batch  1584: 172.760
-Validation loss after mini-batch  1608: 156.236
-Validation loss after mini-batch  1632: 163.229
-Validation loss after mini-batch  1656: 158.490
-Validation loss after mini-batch  1680: 164.646
-Validation loss after mini-batch  1704: 188.309
-Validation loss after mini-batch  1728: 177.794
-Validation loss after mini-batch  1752: 166.299
-Validation loss after mini-batch  1776: 157.581
-Validation loss after mini-batch  1800: 172.693
-Validation loss after mini-batch  1824: 163.075
-Validation loss after mini-batch  1848: 184.082
-Validation loss after mini-batch  1872: 159.392
-Validation loss after mini-batch  1896: 188.536
-Validation loss after mini-batch  1920: 175.484
-Validation loss after mini-batch  1944: 173.742
-Validation loss after mini-batch  1968: 185.270
-Validation loss after mini-batch  1992: 174.732
-Validation loss after mini-batch  2016: 159.091
-Validation loss after mini-batch  2040: 169.777
-Validation loss after mini-batch  2064: 174.062
-Validation loss after mini-batch  2088: 202.389
-Validation loss after mini-batch  2112: 160.099
-Validation loss after mini-batch  2136: 173.611
-Validation loss after mini-batch  2160: 181.503
-Validation loss after mini-batch  2184: 181.357
-Validation loss after mini-batch  2208: 173.480
-Validation loss after mini-batch  2232: 180.686
-Validation loss after mini-batch  2256: 167.966
-Validation loss after mini-batch  2280: 167.940
-Validation loss after mini-batch  2304: 154.328
-Validation loss after mini-batch  2328: 169.619
-Validation loss after mini-batch  2352: 160.377
-Validation loss after mini-batch  2376: 193.251
-Validation loss after mini-batch  2400: 173.106
-Validation loss after mini-batch  2424: 172.957
-Validation loss after mini-batch  2448: 157.447
-Validation loss after mini-batch  2472: 163.990
-Validation loss after mini-batch  2496: 180.965
-Validation loss after mini-batch  2520: 170.988
-Validation loss after mini-batch  2544: 170.441
-Validation loss after mini-batch  2568: 158.064
-Validation loss after mini-batch  2592: 165.785
-Validation loss after mini-batch  2616: 171.782
-Validation loss after mini-batch  2640: 161.325
-Validation loss after mini-batch  2664: 171.500
-Validation loss after mini-batch  2688: 167.369
-Validation loss after mini-batch  2712: 168.780
+Loss after mini-batch    24: 0.160
+Loss after mini-batch    48: 0.179
+Loss after mini-batch    72: 0.160
+Loss after mini-batch    96: 0.195
+Loss after mini-batch   120: 0.182
+Loss after mini-batch   144: 0.185
+Loss after mini-batch   168: 0.186
+Loss after mini-batch   192: 0.170
+Loss after mini-batch   216: 0.191
+Loss after mini-batch   240: 0.180
+Loss after mini-batch   264: 0.169
+Loss after mini-batch   288: 0.168
+Loss after mini-batch   312: 0.191
+Loss after mini-batch   336: 0.185
+Loss after mini-batch   360: 0.181
+Loss after mini-batch   384: 0.192
+Loss after mini-batch   408: 0.160
+Loss after mini-batch   432: 0.173
+Loss after mini-batch   456: 0.185
+Loss after mini-batch   480: 0.195
+Loss after mini-batch   504: 0.165
+Loss after mini-batch   528: 0.175
+Loss after mini-batch   552: 0.177
+Loss after mini-batch   576: 0.169
+Loss after mini-batch   600: 0.166
+Loss after mini-batch   624: 0.177
+Loss after mini-batch   648: 0.181
+Loss after mini-batch   672: 0.171
+Loss after mini-batch   696: 0.156
+Loss after mini-batch   720: 0.165
+Loss after mini-batch   744: 0.156
+Loss after mini-batch   768: 0.190
+Loss after mini-batch   792: 0.195
+Loss after mini-batch   816: 0.180
+Loss after mini-batch   840: 0.184
+Loss after mini-batch   864: 0.181
+Loss after mini-batch   888: 0.178
+Loss after mini-batch   912: 0.188
+Loss after mini-batch   936: 0.196
+Loss after mini-batch   960: 0.179
+Loss after mini-batch   984: 0.175
+Loss after mini-batch  1008: 0.207
+Loss after mini-batch  1032: 0.167
+Loss after mini-batch  1056: 0.172
+Loss after mini-batch  1080: 0.162
+Loss after mini-batch  1104: 0.170
+Loss after mini-batch  1128: 0.197
+Loss after mini-batch  1152: 0.175
+Loss after mini-batch  1176: 0.164
+Loss after mini-batch  1200: 0.159
+Loss after mini-batch  1224: 0.180
+Loss after mini-batch  1248: 0.169
+Loss after mini-batch  1272: 0.192
+Loss after mini-batch  1296: 0.180
+Loss after mini-batch  1320: 0.186
+Loss after mini-batch  1344: 0.159
+Loss after mini-batch  1368: 0.158
+Loss after mini-batch  1392: 0.175
+Loss after mini-batch  1416: 0.178
+Loss after mini-batch  1440: 0.171
+Loss after mini-batch  1464: 0.184
+Loss after mini-batch  1488: 0.169
+Loss after mini-batch  1512: 0.178
+Loss after mini-batch  1536: 0.147
+Loss after mini-batch  1560: 0.176
+Loss after mini-batch  1584: 0.180
+Loss after mini-batch  1608: 0.187
+Loss after mini-batch  1632: 0.170
+Loss after mini-batch  1656: 0.181
+Loss after mini-batch  1680: 0.173
+Loss after mini-batch  1704: 0.198
+Loss after mini-batch  1728: 0.197
+Loss after mini-batch  1752: 0.169
+Loss after mini-batch  1776: 0.170
+Loss after mini-batch  1800: 0.172
+Loss after mini-batch  1824: 0.170
+Loss after mini-batch  1848: 0.172
+Loss after mini-batch  1872: 0.167
+Loss after mini-batch  1896: 0.167
+Loss after mini-batch  1920: 0.183
+Loss after mini-batch  1944: 0.155
+Loss after mini-batch  1968: 0.196
+Loss after mini-batch  1992: 0.172
+Loss after mini-batch  2016: 0.176
+Loss after mini-batch  2040: 0.177
+Loss after mini-batch  2064: 0.167
+Loss after mini-batch  2088: 0.177
+Loss after mini-batch  2112: 0.174
+Loss after mini-batch  2136: 0.179
+Loss after mini-batch  2160: 0.181
+Loss after mini-batch  2184: 0.186
+Loss after mini-batch  2208: 0.166
+Loss after mini-batch  2232: 0.167
+Loss after mini-batch  2256: 0.159
+Loss after mini-batch  2280: 0.175
+Loss after mini-batch  2304: 0.189
+Loss after mini-batch  2328: 0.166
+Loss after mini-batch  2352: 0.178
+Loss after mini-batch  2376: 0.184
+Loss after mini-batch  2400: 0.184
+Loss after mini-batch  2424: 0.187
+Loss after mini-batch  2448: 0.173
+Loss after mini-batch  2472: 0.170
+Loss after mini-batch  2496: 0.159
+Loss after mini-batch  2520: 0.179
+Loss after mini-batch  2544: 0.172
+Loss after mini-batch  2568: 0.191
+Loss after mini-batch  2592: 0.188
+Loss after mini-batch  2616: 0.174
+Loss after mini-batch  2640: 0.184
+Loss after mini-batch  2664: 0.187
+Loss after mini-batch  2688: 0.186
+Loss after mini-batch  2712: 0.175
+Loss after mini-batch  2736: 0.178
+Loss after mini-batch  2760: 0.174
+Loss after mini-batch  2784: 0.196
+Loss after mini-batch  2808: 0.170
+Loss after mini-batch  2832: 0.190
+Loss after mini-batch  2856: 0.156
+Loss after mini-batch  2880: 0.185
+Loss after mini-batch  2904: 0.167
+Loss after mini-batch  2928: 0.167
+Loss after mini-batch  2952: 0.185
+Loss after mini-batch  2976: 0.150
+Loss after mini-batch  3000: 0.176
+Loss after mini-batch  3024: 0.161
+Loss after mini-batch  3048: 0.171
+Loss after mini-batch  3072: 0.173
+Loss after mini-batch  3096: 0.174
+Loss after mini-batch  3120: 0.167
+Loss after mini-batch  3144: 0.158
+Loss after mini-batch  3168: 0.167
+Loss after mini-batch  3192: 0.187
+Loss after mini-batch  3216: 0.163
+Loss after mini-batch  3240: 0.179
+Loss after mini-batch  3264: 0.173
+Loss after mini-batch  3288: 0.169
+Loss after mini-batch  3312: 0.178
+Loss after mini-batch  3336: 0.154
+Loss after mini-batch  3360: 0.181
+Loss after mini-batch  3384: 0.185
+Loss after mini-batch  3408: 0.171
+Loss after mini-batch  3432: 0.201
+Loss after mini-batch  3456: 0.177
+Loss after mini-batch  3480: 0.188
+Loss after mini-batch  3504: 0.207
+Loss after mini-batch  3528: 0.192
+Loss after mini-batch  3552: 0.177
+Loss after mini-batch  3576: 0.166
+Loss after mini-batch  3600: 0.190
+Loss after mini-batch  3624: 0.160
+Loss after mini-batch  3648: 0.156
+Loss after mini-batch  3672: 0.169
+Loss after mini-batch  3696: 0.181
+Loss after mini-batch  3720: 0.164
+Loss after mini-batch  3744: 0.190
+Loss after mini-batch  3768: 0.175
+Loss after mini-batch  3792: 0.160
+Loss after mini-batch  3816: 0.174
+Loss after mini-batch  3840: 0.169
+Loss after mini-batch  3864: 0.183
+Loss after mini-batch  3888: 0.181
+Loss after mini-batch  3912: 0.204
+Loss after mini-batch  3936: 0.177
+Loss after mini-batch  3960: 0.170
+Loss after mini-batch  3984: 0.178
+Loss after mini-batch  4008: 0.190
+Loss after mini-batch  4032: 0.181
+Loss after mini-batch  4056: 0.198
+Loss after mini-batch  4080: 0.165
+Loss after mini-batch  4104: 0.177
+Loss after mini-batch  4128: 0.167
+Loss after mini-batch  4152: 0.153
+Loss after mini-batch  4176: 0.182
+Loss after mini-batch  4200: 0.175
+Loss after mini-batch  4224: 0.192
+Loss after mini-batch  4248: 0.172
+Loss after mini-batch  4272: 0.146
+Loss after mini-batch  4296: 0.160
+Loss after mini-batch  4320: 0.179
+Loss after mini-batch  4344: 0.156
+Loss after mini-batch  4368: 0.192
+Loss after mini-batch  4392: 0.162
+Loss after mini-batch  4416: 0.172
+Loss after mini-batch  4440: 0.180
+Loss after mini-batch  4464: 0.168
+Loss after mini-batch  4488: 0.191
+Loss after mini-batch  4512: 0.173
+Loss after mini-batch  4536: 0.152
+Loss after mini-batch  4560: 0.150
+Loss after mini-batch  4584: 0.182
+Loss after mini-batch  4608: 0.161
+Loss after mini-batch  4632: 0.175
+Loss after mini-batch  4656: 0.175
+Loss after mini-batch  4680: 0.156
+Loss after mini-batch  4704: 0.171
+Loss after mini-batch  4728: 0.176
+Loss after mini-batch  4752: 0.149
+Loss after mini-batch  4776: 0.193
+Loss after mini-batch  4800: 0.138
+Loss after mini-batch  4824: 0.180
+Loss after mini-batch  4848: 0.187
+Loss after mini-batch  4872: 0.172
+Loss after mini-batch  4896: 0.189
+Loss after mini-batch  4920: 0.176
+Loss after mini-batch  4944: 0.176
+Loss after mini-batch  4968: 0.188
+Loss after mini-batch  4992: 0.183
+Loss after mini-batch  5016: 0.161
+Loss after mini-batch  5040: 0.173
+Loss after mini-batch  5064: 0.189
+Loss after mini-batch  5088: 0.176
+Loss after mini-batch  5112: 0.170
+Loss after mini-batch  5136: 0.167
+Loss after mini-batch  5160: 0.195
+Loss after mini-batch  5184: 0.187
+Loss after mini-batch  5208: 0.150
+Loss after mini-batch  5232: 0.166
+Loss after mini-batch  5256: 0.170
+Loss after mini-batch  5280: 0.173
+Loss after mini-batch  5304: 0.171
+Loss after mini-batch  5328: 0.158
+Loss after mini-batch  5352: 0.171
+Loss after mini-batch  5376: 0.178
+Loss after mini-batch  5400: 0.185
+Loss after mini-batch  5424: 0.191
+Loss after mini-batch  5448: 0.180
+Loss after mini-batch  5472: 0.183
+Loss after mini-batch  5496: 0.193
+Loss after mini-batch  5520: 0.175
+Loss after mini-batch  5544: 0.174
+Loss after mini-batch  5568: 0.190
+Loss after mini-batch  5592: 0.176
+Loss after mini-batch  5616: 0.194
+Loss after mini-batch  5640: 0.201
+Loss after mini-batch  5664: 0.170
+Loss after mini-batch  5688: 0.161
+Loss after mini-batch  5712: 0.175
+Loss after mini-batch  5736: 0.177
+Loss after mini-batch  5760: 0.174
+Loss after mini-batch  5784: 0.160
+Loss after mini-batch  5808: 0.161
+Loss after mini-batch  5832: 0.190
+Loss after mini-batch  5856: 0.190
+Loss after mini-batch  5880: 0.187
+Loss after mini-batch  5904: 0.165
+Loss after mini-batch  5928: 0.167
+Loss after mini-batch  5952: 0.180
+Loss after mini-batch  5976: 0.185
+Loss after mini-batch  6000: 0.181
+Loss after mini-batch  6024: 0.156
+Loss after mini-batch  6048: 0.180
+Loss after mini-batch  6072: 0.188
+Loss after mini-batch  6096: 0.191
+Loss after mini-batch  6120: 0.156
+Loss after mini-batch  6144: 0.163
+Loss after mini-batch  6168: 0.169
+Loss after mini-batch  6192: 0.180
+Loss after mini-batch  6216: 0.178
+Loss after mini-batch  6240: 0.160
+Loss after mini-batch  6264: 0.171
+Loss after mini-batch  6288: 0.168
+Loss after mini-batch  6312: 0.163
+Loss after mini-batch  6336: 0.154
+Loss after mini-batch  6360: 0.156
+Loss after mini-batch  6384: 0.176
+Loss after mini-batch  6408: 0.187
+Loss after mini-batch  6432: 0.160
+Loss after mini-batch  6456: 0.197
+Loss after mini-batch  6480: 0.172
+Loss after mini-batch  6504: 0.182
+Loss after mini-batch  6528: 0.222
+Loss after mini-batch  6552: 0.166
+Loss after mini-batch  6576: 0.177
+Loss after mini-batch  6600: 0.189
+Loss after mini-batch  6624: 0.182
+Loss after mini-batch  6648: 0.196
+Loss after mini-batch  6672: 0.161
+Loss after mini-batch  6696: 0.178
+Loss after mini-batch  6720: 0.180
+Loss after mini-batch  6744: 0.178
+Loss after mini-batch  6768: 0.177
+Loss after mini-batch  6792: 0.166
+Loss after mini-batch  6816: 0.184
+Loss after mini-batch  6840: 0.167
+Loss after mini-batch  6864: 0.174
+Loss after mini-batch  6888: 0.188
+Loss after mini-batch  6912: 0.197
+Loss after mini-batch  6936: 0.184
+Loss after mini-batch  6960: 0.167
+Loss after mini-batch  6984: 0.167
+Loss after mini-batch  7008: 0.193
+Loss after mini-batch  7032: 0.171
+Loss after mini-batch  7056: 0.175
+Loss after mini-batch  7080: 0.189
+Loss after mini-batch  7104: 0.179
+Loss after mini-batch  7128: 0.174
+Loss after mini-batch  7152: 0.179
+Loss after mini-batch  7176: 0.196
+Loss after mini-batch  7200: 0.185
+Loss after mini-batch  7224: 0.177
+Loss after mini-batch  7248: 0.182
+Loss after mini-batch  7272: 0.168
+Loss after mini-batch  7296: 0.157
+Loss after mini-batch  7320: 0.192
+Loss after mini-batch  7344: 0.168
+Loss after mini-batch  7368: 0.167
+Loss after mini-batch  7392: 0.187
+Loss after mini-batch  7416: 0.194
+Loss after mini-batch  7440: 0.172
+Loss after mini-batch  7464: 0.188
+Loss after mini-batch  7488: 0.169
+Loss after mini-batch  7512: 0.191
+Loss after mini-batch  7536: 0.147
+Loss after mini-batch  7560: 0.173
+Loss after mini-batch  7584: 0.174
+Loss after mini-batch  7608: 0.166
+Loss after mini-batch  7632: 0.172
+Loss after mini-batch  7656: 0.183
+Loss after mini-batch  7680: 0.177
+Loss after mini-batch  7704: 0.177
+Loss after mini-batch  7728: 0.179
+Loss after mini-batch  7752: 0.163
+Loss after mini-batch  7776: 0.182
+Loss after mini-batch  7800: 0.165
+Loss after mini-batch  7824: 0.163
+Loss after mini-batch  7848: 0.169
+Loss after mini-batch  7872: 0.179
+Loss after mini-batch  7896: 0.165
+Loss after mini-batch  7920: 0.174
+Loss after mini-batch  7944: 0.181
+Loss after mini-batch  7968: 0.188
+Loss after mini-batch  7992: 0.184
+Loss after mini-batch  8016: 0.179
+Loss after mini-batch  8040: 0.183
+Loss after mini-batch  8064: 0.180
+Loss after mini-batch  8088: 0.151
+Loss after mini-batch  8112: 0.201
+Loss after mini-batch  8136: 0.170
+Loss after mini-batch  8160: 0.195
+Loss after mini-batch  8184: 0.177
+Loss after mini-batch  8208: 0.167
+Loss after mini-batch  8232: 0.184
+Loss after mini-batch  8256: 0.169
+Loss after mini-batch  8280: 0.187
+Loss after mini-batch  8304: 0.164
+Loss after mini-batch  8328: 0.170
+Loss after mini-batch  8352: 0.177
+Loss after mini-batch  8376: 0.188
+Loss after mini-batch  8400: 0.161
+Loss after mini-batch  8424: 0.169
+Loss after mini-batch  8448: 0.169
+Loss after mini-batch  8472: 0.175
+Loss after mini-batch  8496: 0.162
+Loss after mini-batch  8520: 0.173
+Loss after mini-batch  8544: 0.174
+Loss after mini-batch  8568: 0.187
+Loss after mini-batch  8592: 0.184
+Loss after mini-batch  8616: 0.173
+Loss after mini-batch  8640: 0.175
+Loss after mini-batch  8664: 0.207
+Loss after mini-batch  8688: 0.181
+Loss after mini-batch  8712: 0.162
+Loss after mini-batch  8736: 0.173
+Loss after mini-batch  8760: 0.181
+Loss after mini-batch  8784: 0.167
+Loss after mini-batch  8808: 0.177
+Loss after mini-batch  8832: 0.195
+Loss after mini-batch  8856: 0.176
+Loss after mini-batch  8880: 0.188
+Loss after mini-batch  8904: 0.180
+Loss after mini-batch  8928: 0.171
+Loss after mini-batch  8952: 0.181
+Loss after mini-batch  8976: 0.186
+Loss after mini-batch  9000: 0.166
+Loss after mini-batch  9024: 0.168
+Loss after mini-batch  9048: 0.165
+Loss after mini-batch  9072: 0.163
+Loss after mini-batch  9096: 0.169
+Loss after mini-batch  9120: 0.206
+Loss after mini-batch  9144: 0.157
+Loss after mini-batch  9168: 0.180
+Loss after mini-batch  9192: 0.160
+Loss after mini-batch  9216: 0.178
+Loss after mini-batch  9240: 0.166
+Loss after mini-batch  9264: 0.174
+Loss after mini-batch  9288: 0.191
+Loss after mini-batch  9312: 0.156
+Loss after mini-batch  9336: 0.171
+Loss after mini-batch  9360: 0.174
+Loss after mini-batch  9384: 0.159
+Loss after mini-batch  9408: 0.173
+Loss after mini-batch  9432: 0.191
+Loss after mini-batch  9456: 0.167
+Loss after mini-batch  9480: 0.175
+Loss after mini-batch  9504: 0.176
+Loss after mini-batch  9528: 0.151
+Loss after mini-batch  9552: 0.166
+Loss after mini-batch  9576: 0.164
+Loss after mini-batch  9600: 0.175
+Loss after mini-batch  9624: 0.193
+Loss after mini-batch  9648: 0.177
+Loss after mini-batch  9672: 0.187
+Loss after mini-batch  9696: 0.179
+Loss after mini-batch  9720: 0.154
+Loss after mini-batch  9744: 0.174
+Loss after mini-batch  9768: 0.168
+Loss after mini-batch  9792: 0.165
+Loss after mini-batch  9816: 0.174
+Loss after mini-batch  9840: 0.170
+Loss after mini-batch  9864: 0.163
+Loss after mini-batch  9888: 0.174
+Loss after mini-batch  9912: 0.165
+Loss after mini-batch  9936: 0.170
+Loss after mini-batch  9960: 0.184
+Loss after mini-batch  9984: 0.174
+Loss after mini-batch 10008: 0.174
+Loss after mini-batch 10032: 0.180
+Loss after mini-batch 10056: 0.179
+Loss after mini-batch 10080: 0.177
+Loss after mini-batch 10104: 0.167
+Loss after mini-batch 10128: 0.175
+Loss after mini-batch 10152: 0.183
+Loss after mini-batch 10176: 0.174
+Loss after mini-batch 10200: 0.162
+Loss after mini-batch 10224: 0.201
+Loss after mini-batch 10248: 0.161
+Loss after mini-batch 10272: 0.171
+Loss after mini-batch 10296: 0.143
+Loss after mini-batch 10320: 0.181
+Loss after mini-batch 10344: 0.147
+Loss after mini-batch 10368: 0.169
+Loss after mini-batch 10392: 0.167
+Loss after mini-batch 10416: 0.152
+Loss after mini-batch 10440: 0.175
+Loss after mini-batch 10464: 0.184
+Loss after mini-batch 10488: 0.185
+Loss after mini-batch 10512: 0.183
+Loss after mini-batch 10536: 0.169
+Loss after mini-batch 10560: 0.191
+Loss after mini-batch 10584: 0.166
+Loss after mini-batch 10608: 0.185
+Loss after mini-batch 10632: 0.179
+Loss after mini-batch 10656: 0.151
+Loss after mini-batch 10680: 0.158
+Loss after mini-batch 10704: 0.174
+Loss after mini-batch 10728: 0.152
+Loss after mini-batch 10752: 0.170
+Loss after mini-batch 10776: 0.180
+Loss after mini-batch 10800: 0.165
+Loss after mini-batch 10824: 0.168
+Loss after mini-batch 10848: 0.161
+Loss after mini-batch 10872: 0.194
+Loss after mini-batch 10896: 0.167
+Loss after mini-batch 10920: 0.185
+Loss after mini-batch 10944: 0.181
+Loss after mini-batch 10968: 0.183
+Loss after mini-batch 10992: 0.170
+Loss after mini-batch 11016: 0.180
+Loss after mini-batch 11040: 0.184
+Loss after mini-batch 11064: 0.194
+Loss after mini-batch 11088: 0.156
+Loss after mini-batch 11112: 0.158
+Loss after mini-batch 11136: 0.169
+Loss after mini-batch 11160: 0.192
+Loss after mini-batch 11184: 0.165
+Loss after mini-batch 11208: 0.172
+Loss after mini-batch 11232: 0.168
+Loss after mini-batch 11256: 0.158
+Loss after mini-batch 11280: 0.170
+Loss after mini-batch 11304: 0.157
+Loss after mini-batch 11328: 0.154
+Loss after mini-batch 11352: 0.166
+Loss after mini-batch 11376: 0.194
+Loss after mini-batch 11400: 0.157
+Loss after mini-batch 11424: 0.165
+Loss after mini-batch 11448: 0.181
+Loss after mini-batch 11472: 0.154
+Loss after mini-batch 11496: 0.198
+Loss after mini-batch 11520: 0.174
+Loss after mini-batch 11544: 0.181
+Loss after mini-batch 11568: 0.161
+Loss after mini-batch 11592: 0.174
+Loss after mini-batch 11616: 0.190
+Loss after mini-batch 11640: 0.172
+Loss after mini-batch 11664: 0.176
+Loss after mini-batch 11688: 0.195
+Loss after mini-batch 11712: 0.189
+Loss after mini-batch 11736: 0.180
+Loss after mini-batch 11760: 0.198
+Loss after mini-batch 11784: 0.179
+Loss after mini-batch 11808: 0.169
+Loss after mini-batch 11832: 0.182
+Validation loss after mini-batch    24: 0.168
+Validation loss after mini-batch    48: 0.193
+Validation loss after mini-batch    72: 0.187
+Validation loss after mini-batch    96: 0.198
+Validation loss after mini-batch   120: 0.207
+Validation loss after mini-batch   144: 0.210
+Validation loss after mini-batch   168: 0.207
+Validation loss after mini-batch   192: 0.196
+Validation loss after mini-batch   216: 0.218
+Validation loss after mini-batch   240: 0.196
+Validation loss after mini-batch   264: 0.210
+Validation loss after mini-batch   288: 0.188
+Validation loss after mini-batch   312: 0.194
+Validation loss after mini-batch   336: 0.207
+Validation loss after mini-batch   360: 0.201
+Validation loss after mini-batch   384: 0.196
+Validation loss after mini-batch   408: 0.179
+Validation loss after mini-batch   432: 0.204
+Validation loss after mini-batch   456: 0.183
+Validation loss after mini-batch   480: 0.191
+Validation loss after mini-batch   504: 0.196
+Validation loss after mini-batch   528: 0.199
+Validation loss after mini-batch   552: 0.208
+Validation loss after mini-batch   576: 0.212
+Validation loss after mini-batch   600: 0.180
+Validation loss after mini-batch   624: 0.196
+Validation loss after mini-batch   648: 0.198
+Validation loss after mini-batch   672: 0.201
+Validation loss after mini-batch   696: 0.198
+Validation loss after mini-batch   720: 0.207
+Validation loss after mini-batch   744: 0.157
+Validation loss after mini-batch   768: 0.217
+Validation loss after mini-batch   792: 0.186
+Validation loss after mini-batch   816: 0.182
+Validation loss after mini-batch   840: 0.214
+Validation loss after mini-batch   864: 0.199
+Validation loss after mini-batch   888: 0.195
+Validation loss after mini-batch   912: 0.205
+Validation loss after mini-batch   936: 0.195
+Validation loss after mini-batch   960: 0.189
+Validation loss after mini-batch   984: 0.202
+Validation loss after mini-batch  1008: 0.188
+Validation loss after mini-batch  1032: 0.169
+Validation loss after mini-batch  1056: 0.186
+Validation loss after mini-batch  1080: 0.204
+Validation loss after mini-batch  1104: 0.193
+Validation loss after mini-batch  1128: 0.217
+Validation loss after mini-batch  1152: 0.180
+Validation loss after mini-batch  1176: 0.194
+Validation loss after mini-batch  1200: 0.200
+Validation loss after mini-batch  1224: 0.207
+Validation loss after mini-batch  1248: 0.187
+Validation loss after mini-batch  1272: 0.178
+Validation loss after mini-batch  1296: 0.185
+Validation loss after mini-batch  1320: 0.179
+Validation loss after mini-batch  1344: 0.211
+Validation loss after mini-batch  1368: 0.199
+Validation loss after mini-batch  1392: 0.213
+Validation loss after mini-batch  1416: 0.196
+Validation loss after mini-batch  1440: 0.226
+Validation loss after mini-batch  1464: 0.186
+Validation loss after mini-batch  1488: 0.181
+Validation loss after mini-batch  1512: 0.192
+Validation loss after mini-batch  1536: 0.201
+Validation loss after mini-batch  1560: 0.191
+Validation loss after mini-batch  1584: 0.192
+Validation loss after mini-batch  1608: 0.172
+Validation loss after mini-batch  1632: 0.176
+Validation loss after mini-batch  1656: 0.189
+Validation loss after mini-batch  1680: 0.185
+Validation loss after mini-batch  1704: 0.216
+Validation loss after mini-batch  1728: 0.200
+Validation loss after mini-batch  1752: 0.194
+Validation loss after mini-batch  1776: 0.178
+Validation loss after mini-batch  1800: 0.192
+Validation loss after mini-batch  1824: 0.182
+Validation loss after mini-batch  1848: 0.210
+Validation loss after mini-batch  1872: 0.183
+Validation loss after mini-batch  1896: 0.200
+Validation loss after mini-batch  1920: 0.205
+Validation loss after mini-batch  1944: 0.186
+Validation loss after mini-batch  1968: 0.216
+Validation loss after mini-batch  1992: 0.188
+Validation loss after mini-batch  2016: 0.176
+Validation loss after mini-batch  2040: 0.190
+Validation loss after mini-batch  2064: 0.196
+Validation loss after mini-batch  2088: 0.226
+Validation loss after mini-batch  2112: 0.173
+Validation loss after mini-batch  2136: 0.190
+Validation loss after mini-batch  2160: 0.214
+Validation loss after mini-batch  2184: 0.198
+Validation loss after mini-batch  2208: 0.198
+Validation loss after mini-batch  2232: 0.203
+Validation loss after mini-batch  2256: 0.195
+Validation loss after mini-batch  2280: 0.182
+Validation loss after mini-batch  2304: 0.177
+Validation loss after mini-batch  2328: 0.189
+Validation loss after mini-batch  2352: 0.174
+Validation loss after mini-batch  2376: 0.213
+Validation loss after mini-batch  2400: 0.190
+Validation loss after mini-batch  2424: 0.193
+Validation loss after mini-batch  2448: 0.168
+Validation loss after mini-batch  2472: 0.185
+Validation loss after mini-batch  2496: 0.203
+Validation loss after mini-batch  2520: 0.190
+Validation loss after mini-batch  2544: 0.186
+Validation loss after mini-batch  2568: 0.168
+Validation loss after mini-batch  2592: 0.193
+Validation loss after mini-batch  2616: 0.192
+Validation loss after mini-batch  2640: 0.182
+Validation loss after mini-batch  2664: 0.188
+Validation loss after mini-batch  2688: 0.188
+Validation loss after mini-batch  2712: 0.186
 Training and validation process has finished.

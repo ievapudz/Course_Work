@@ -116,6 +116,48 @@ def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', label
                                                   sep, True)
         print(record)
 
+def print_joined_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', labelled=True):
+    # data - an array that contains dictionaries with keys, for which values are 
+    #        embeddings and temperature label
+    for i in range(len(data_tensor[keys_tensor[0]])):
+        length = get_joined_sequence_length_as_CSV(data, i, key_data, sep)
+        if(labelled):
+            record = get_id_as_CSV(data[0], i, key_data, 0, sep) + \
+                     get_id_as_CSV(data[0], i, key_data, 1, sep) + length + \
+                     get_temperature_label_as_CSV(data_tensor, i,
+                                                  keys_tensor[1], sep,
+                                                  False) + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i,
+                                                  keys_tensor[0], True)
+        else:
+            """
+            record = data[0][key_data]['X_filtered'][i].name + sep + \
+                     data[0][key_data]['X_filtered'][i].seq + \
+                     data[1][key_data]['X_filtered'][i].seq + sep + length + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0],
+                                                  sep, True)
+            """
+            record = data[0][key_data]['X_filtered'][i].name + sep + \
+                     get_sequence_as_CSV(data, i, key_data, sep) + length + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0],
+                                                  sep, True)             
+        print(record)
+   
+# Joining the sequence 
+def get_sequence_as_CSV(data, index, key, sep=',', last_value=False):
+    # data - an array with objects with sequences in FASTA format
+    # index - the index of record in data object
+    # key - the chosen key of an inside of data object
+    sequence = ''
+    for i in range(len(data)):
+        sequence += data[i][key]['X_filtered'][index].seq
+
+    if last_value:
+        return sequence
+    else:
+        return sequence + sep
+
+
 # A function that returns the sequence length for CSV
 def get_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
     # data - an object with sequences in FASTA format
@@ -126,6 +168,20 @@ def get_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
         return sequence_length
     else:
         return sequence_length + sep
+
+# A function that returns the joined sequence length for CSV
+def get_joined_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
+    # data - an array with objects with sequences in FASTA format
+    # index - the index of record in data object
+    # key - the chosen key of an inside of data object
+    sequence_length = 0
+    for i in range(len(data)):
+        sequence_length += len(data[i][key]['X_filtered'][index].seq)
+
+    if last_value:
+        return str(sequence_length)
+    else:
+        return str(sequence_length) + sep
 
 # A function that returns the needed identificator (property) of the sequence
 # from the header
