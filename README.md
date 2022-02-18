@@ -566,8 +566,8 @@ The CSV file was converted to TSV file and it was pasted with SLP classificator'
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
 
 Original files are found in `./data/CRISPR/FASTA/Cas12b/original/`. They contained space character in FASTA headers,
-therefore to avoid any difficulties with processing of the predictions TSV files (that will be produced), the 
-headers were modified:
+therefore to avoid any difficulties with processing of embeddings PT files and predictions TSV files 
+(that will be produced after inference takes place), the headers were modified:
 
 ```
 cat cas12bNterm.mfa | grep '>' | tr ' ' '-' > Cas12b_N.fasta
@@ -576,6 +576,11 @@ cat cas12bCterm.mfa | grep '>' | tr ' ' '-' > Cas12b_C.fasta
 
 There were 32 sequences in `Cas12b_N.fasta` and `Cas12b_C.fasta`.
 
+The commands that were run to produce embeddings for sequences:
+```
+sbatch --output=data/CRISPR/slurm/Cas12b_N.out scripts/CRISPR/Cas12b_N_embeddings.sh
+sbatch --output=data/CRISPR/slurm/Cas12b_C.out scripts/CRISPR/Cas12b_C_embeddings.sh
+```
 
 ### Regressor with 003 v2 data
 
