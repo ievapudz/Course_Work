@@ -542,6 +542,9 @@ A command that was used to create embeddings:
 sbatch --output=data/CRISPR/slurm/C2EP.out scripts/CRISPR/C2EP_embeddings.sh
 ```
 
+690 (out of 943) sequences were short enough to have full embeddings for them. The remaining sequences needed
+to be split to generate their embeddings (other dataset created - documentation of the flow below).
+
 A command that was used to save embeddings to NPZ and CSV files:
 ```
 ./scripts/CRISPR/C2EP_embeddings.py > data/CRISPR/C2EP_embeddings.csv
@@ -557,6 +560,22 @@ The script `./scripts/CRISPR/C2EP_classificator` ran the SLP inference flow and 
 
 The CSV file was converted to TSV file and it was pasted with SLP classificator's predictions (inferences) - the result is in
 `results/SLP/CRISPR/C2EP_embeddings_and_predictions.tsv` file.
+
+### Testing classificator with CRISPR protein sequences (Cas12b)
+
+The data directory: `./data/CRISPR/FASTA/Cas12b`.
+
+Original files are found in `./data/CRISPR/FASTA/Cas12b/original/`. They contained space character in FASTA headers,
+therefore to avoid any difficulties with processing of the predictions TSV files (that will be produced), the 
+headers were modified:
+
+```
+cat cas12bNterm.mfa | grep '>' | tr ' ' '-' > Cas12b_N.fasta
+cat cas12bCterm.mfa | grep '>' | tr ' ' '-' > Cas12b_C.fasta
+```
+
+There were 32 sequences in `Cas12b_N.fasta` and `Cas12b_C.fasta`.
+
 
 ### Regressor with 003 v2 data
 
@@ -607,6 +626,27 @@ Validation loss values in epochs 1-4:
 3. 0.018
 4. 0.014
 
+```
+./scripts/003/003_regressor_normalised.py > results/regressor/003/training_and_validation_10_normalised.txt
+```
+
+Validation loss values in epochs 5-10:
+5. 0.015
+6. 0.016
+7. 0.017
+8. 0.016
+9. 0.015
+10. 0.014
+
+Program's `time` output:
+```
+real    1m53.171s
+user    2m45.538s
+sys     0m6.538s
+```
+
+Four epochs were enough for training and validation.
+
 #### Regressor with normalised (as z-scores with respect to 65 degrees) values
 
 ```
@@ -614,10 +654,33 @@ Validation loss values in epochs 1-4:
 ```
 
 Validation loss values in epochs 1-4:
-1. 220.892
-2. 202.903
-3. 201.561
-4. 164.275
+1. 0.210
+2. 0.224
+3. 0.232
+4. 0.186
+
+It was decided to have more epochs to train and validate the regressors.
+
+```
+./scripts/003/003_regressor_normalised_z_scores.py > results/regressor/003/training_and_validation_10_normalised_as_z_scores.txt
+```
+
+Validation loss values in epochs 5-10:
+5. 0.196
+6. 0.210
+7. 0.214
+8. 0.206
+9. 0.191
+10. 0.183
+
+Four epochs were enough for training and validation.
+
+Program's `time` output:
+```
+real    1m51.964s
+user    2m45.062s
+sys     0m5.772s
+```
 
 ### Dataset for SLP testing (004)
 
