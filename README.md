@@ -542,6 +542,9 @@ A command that was used to create embeddings:
 sbatch --output=data/CRISPR/slurm/C2EP.out scripts/CRISPR/C2EP_embeddings.sh
 ```
 
+690 (out of 943) sequences were short enough to have full embeddings for them. The remaining sequences needed
+to be split to generate their embeddings (other dataset created - documentation of the flow below).
+
 A command that was used to save embeddings to NPZ and CSV files:
 ```
 ./scripts/CRISPR/C2EP_embeddings.py > data/CRISPR/C2EP_embeddings.csv
@@ -557,6 +560,22 @@ The script `./scripts/CRISPR/C2EP_classificator` ran the SLP inference flow and 
 
 The CSV file was converted to TSV file and it was pasted with SLP classificator's predictions (inferences) - the result is in
 `results/SLP/CRISPR/C2EP_embeddings_and_predictions.tsv` file.
+
+### Testing classificator with CRISPR protein sequences (Cas12b)
+
+The data directory: `./data/CRISPR/FASTA/Cas12b`.
+
+Original files are found in `./data/CRISPR/FASTA/Cas12b/original/`. They contained space character in FASTA headers,
+therefore to avoid any difficulties with processing of the predictions TSV files (that will be produced), the 
+headers were modified:
+
+```
+cat cas12bNterm.mfa | grep '>' | tr ' ' '-' > Cas12b_N.fasta
+cat cas12bCterm.mfa | grep '>' | tr ' ' '-' > Cas12b_C.fasta
+```
+
+There were 32 sequences in `Cas12b_N.fasta` and `Cas12b_C.fasta`.
+
 
 ### Regressor with 003 v2 data
 
