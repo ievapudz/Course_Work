@@ -122,14 +122,16 @@ def create_data(dataset_dir_prefix, dataset_names=['training', 'validation', 'te
 
     return data
 
-def create_testing_data(dataset_dir_prefix, dataset_names=['testing'], labelled=True):
+def create_testing_data(dataset_dir_prefix, dataset_parent_dir=['testing'], 
+                        dataset_names=['testing'], labelled=True):
     # dataset_dir_prefix - notes where the information about dataset is placed
     # dataset_names - names of the dataset partitions
+    
     data = {
         'test': {
             'X' : [],
             'Y' : [],
-            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_names[0]+'/'+dataset_names[0]+'.fasta',
+            'FASTA': dataset_dir_prefix+'FASTA/'+dataset_parent_dir[0]+'/'+dataset_names[0]+'.fasta',
             'embeddings': dataset_dir_prefix+'EMB_ESM1b/'+dataset_names[0]+'/',
         }
     }
