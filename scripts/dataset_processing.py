@@ -260,3 +260,34 @@ def get_ESM_embeddings_as_tensor(data, keys):
 
     return [Xs_tensor, Ys_tensor]
 
+# Embedding joining
+def join_embeddings(data, keys, dims=1280):
+    # data - is an array of data objects that keep information about
+    #        divided protein sequences.
+    EMB_LAYER = 33
+
+    number_of_sequences = len(data[0][keys[0]]['Y_filtered'])
+    joined_Xs = torch.zeros([number_of_sequences, dims])
+    joined_Ys = []
+    
+    for i in range(number_of_sequences):
+        joined_Ys.append(data[0][keys[0]]['Y_filtered'][i])
+
+        Xs_accum = torch.zeros([dims])
+        overall_seq_length = 0
+
+        for data_object in data:
+            EMB_PATH = data_object[keys[0]]['embeddings']
+            file_name = data_object[keys[0]]['X_filtered'][i].id
+            fn = f'{EMB_PATH}/{file_name}.pt'
+            embs = torch.load(fn)
+
+            Xs = torch.mul(embs['mean_representations'][EMB_LAYER], 
+                           len(data_object[keys[0]]['X_filtered'][i].seq))
+            Xs_accum = torch.add(Xs_accum, Xs)
+            overall_seq_length += len(data_object[keys[0]]['X_filtered'][i].seq)
+
+        Xs_accum = torch.div(Xs_accum, overall_seq_length)
+        joined_Xs[i] = Xs_accum
+
+    return [joined_Xs, joined_Ys]
