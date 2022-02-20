@@ -597,7 +597,7 @@ Making inferences about divided protein sequences:
 Results were placed in `results/SLP/CRISPR/Cas12b_N_predictions.tsv` and `results/SLP/CRISPR/Cas12b_C_predictions.tsv`
 files.
 
-The command that showed inconsistencies between predictions:
+The command that showed inconsistencies (25 out of 32) between predictions:
 ```
 paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv
 ```
@@ -621,6 +621,26 @@ paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_pr
 
 There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
 the joint prediction always matched the separately produced predictions if these were equal. 
+
+Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
+in the set that was used to train the model.
+
+```
+makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
+
+blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
+
+cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
+```
+
+The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
+considered as more than 80 percent identical.
+
+100 percent identity was detected:
+- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
+- CfaIscB1 with 937334|A0A1I5YB75|70
+
+Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
 
 ### Regressor with 003 v2 data
 
