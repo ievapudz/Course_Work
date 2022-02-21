@@ -566,16 +566,81 @@ The CSV file was converted to TSV file and it was pasted with SLP classificator'
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
 
 Original files are found in `./data/CRISPR/FASTA/Cas12b/original/`. They contained space character in FASTA headers,
-therefore to avoid any difficulties with processing of the predictions TSV files (that will be produced), the 
-headers were modified:
+therefore to avoid any difficulties with processing of embeddings PT files and predictions TSV files 
+(that will be produced after inference takes place), the headers were modified:
 
 ```
-cat cas12bNterm.mfa | grep '>' | tr ' ' '-' > Cas12b_N.fasta
-cat cas12bCterm.mfa | grep '>' | tr ' ' '-' > Cas12b_C.fasta
+cat data/CRISPR/FASTA/Cas12b/original/cas12bNterm.mfa | tr ' ' '-' > data/CRISPR/FASTA/Cas12b/Cas12b_N.fasta
+cat data/CRISPR/FASTA/Cas12b/original/cas12bCterm.mfa | tr ' ' '-' > data/CRISPR/FASTA/Cas12b/Cas12b_C.fasta
 ```
 
 There were 32 sequences in `Cas12b_N.fasta` and `Cas12b_C.fasta`.
 
+The commands that were run to produce embeddings for sequences:
+```
+sbatch --output=data/CRISPR/slurm/Cas12b_N.out scripts/CRISPR/Cas12b_N_embeddings.sh
+sbatch --output=data/CRISPR/slurm/Cas12b_C.out scripts/CRISPR/Cas12b_C_embeddings.sh
+```
+
+Preparation of embeddings and printing them to NPZ and TSV files:
+```
+./scripts/CRISPR/Cas12b_N_embeddings.py > ./data/CRISPR/Cas12b_N_embeddings.tsv
+./scripts/CRISPR/Cas12b_C_embeddings.py > ./data/CRISPR/Cas12b_C_embeddings.tsv
+```
+
+Making inferences about divided protein sequences:
+```
+./scripts/CRISPR/Cas12b_N_classificator.py
+./scripts/CRISPR/Cas12b_C_classificator.py
+```
+
+Results were placed in `results/SLP/CRISPR/Cas12b_N_predictions.tsv` and `results/SLP/CRISPR/Cas12b_C_predictions.tsv`
+files.
+
+The command that showed inconsistencies (25 out of 32) between predictions:
+```
+paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv
+```
+
+Joining of embeddings was required to make more reliable inferences about thermostability of sequences.
+
+Joint flow:
+```
+./scripts/CRISPR/Cas12b_embeddings.py > ./data/CRISPR/Cas12b_embeddings.tsv
+./scripts/CRISPR/Cas12b_classificator.py
+```
+
+Prediction results were joined with sequences from embeddings creation stage. The result files are:
+`results/SLP/CRISPR/Cas12b_sequence_and_predictions.tsv` and 
+`results/SLP/CRISPR/Cas12b_sequence_and_predictions.fasta`. 
+
+Comparison of prediction tendency separately and in joint case:
+```
+paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv
+````
+
+There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
+the joint prediction always matched the separately produced predictions if these were equal. 
+
+Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
+in the set that was used to train the model.
+
+```
+makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
+
+blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
+
+cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
+```
+
+The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
+considered as more than 80 percent identical.
+
+100 percent identity was detected:
+- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
+- CfaIscB1 with 937334|A0A1I5YB75|70
+
+Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
 
 ### Regressor with 003 v2 data
 
