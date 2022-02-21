@@ -642,6 +642,23 @@ considered as more than 80 percent identical.
 
 Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
 
+The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
+predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
+than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
+in FASTA format had an asterisk symbol '*' appended to the end 
+of the sequence. It was checked, whether this symbol has influence
+to the embeddings representation. Another embedding vector  version of 
+FchIscB1 sequence without '*' in the end was created, which this time 
+matched embedding of 310769|A0A1G8BSF0|75 sequence.
+
+It was decided to clean `C2EP.fasta` file and to redo embeddings 
+and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
+
+Asterisk-free embeddings generation:
+```
+sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
+```
+
 ### Regressor with 003 v2 data
 
 There was a single-layer regressor defined to predict the temperature of the given protein.
