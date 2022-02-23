@@ -526,6 +526,12 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+### Checking 003 prediction accuracies per organism
+
+```
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_tensors_with_predictions.tsv 
+```
+
 ### Testing classificator with CRISPR protein sequences (C2EP)
 
 The testing set was placed to `data/CRISPR/` folder. 
@@ -786,6 +792,73 @@ Spearman's correlation:
              temperature  prediction
 temperature     1.000000    0.830454
 prediction      0.830454    1.000000
+
+### MLPs with one hidden layer (003 v2 data)
+
+Multiple-layers perceptrons were made with one hidden layer. To choose the best number of nodes in the hidden layer, at first 2, 4, 8 
+and 16 nodes were set.
+
+Case for 2 nodes:
+Validation loss after 4 epochs:  0.180
+
+real    1m30.332s
+user    1m54.940s
+sys     0m4.509s
+
+        0       1
+0       29455   3329
+1       1786    30566
+Accuracy:       0.9214719970523213
+Precision:      0.9017849240300929
+Recall: 0.9447947576656776
+Area under the curve:   0.9216256609216626
+
+Case for 4 nodes:
+Validation loss after 4 epochs: 0.183
+
+real    1m41.287s
+user    2m0.455s
+sys     0m9.885s
+
+        0       1
+0       28941   3843
+1       1366    30986
+Accuracy:       0.9200288626873004
+Precision:      0.8896609147549456
+Recall: 0.9577769535113749
+Area under the curve:   0.9202775689958046
+
+Case for 8 nodes:
+Validation loss after 4 epochs: 0.178
+
+real    1m48.066s
+user    2m9.253s
+sys     0m7.177s
+
+        0       1
+0       29227   3557
+1       1513    30839
+Accuracy:       0.922162859248342
+Precision:      0.8965868124200489
+Recall: 0.9532331849653808
+Area under the curve:   0.9223675685685858
+
+Case for 16 nodes:
+Validation loss after 4 epochs: 0.209
+
+real    1m56.436s
+user    26m54.701s
+sys     0m33.266s
+
+        0       1
+0       29170   3614
+1       1489    30863
+Accuracy:       0.9216562269712602
+Precision:      0.8951764944745773
+Recall: 0.9539750247279921
+Area under the curve:   0.9218691619491596
+
+Overall there were no significant differences seen between the performance of SLP and MLPs.
 
 ### Dataset for SLP testing (004)
 
