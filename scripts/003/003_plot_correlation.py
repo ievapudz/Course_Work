@@ -10,7 +10,7 @@ df = pd.read_csv(sys.argv[1], sep="\t")
 x = df['temperature']
 y = df['prediction']
 
-plt.scatter(y, x, c='navy')
+plt.scatter(x, y, c='navy')
 plt.title('A plot to show the correlation between temperature and prediction')
 plt.ylim(-2.5, 2.5)
 plt.xlim(-2.5, 2.5) 
