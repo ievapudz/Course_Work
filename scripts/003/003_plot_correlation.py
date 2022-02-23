@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import sys
-import numpy as np
+import numpy
 
 df = pd.read_csv(sys.argv[1], sep="\t")
 
@@ -17,4 +17,8 @@ plt.xlim(-2.5, 2.5)
 plt.xlabel('Normalised temperature')
 plt.ylabel('Prediction value')
 plt.plot()
+
+m, b = numpy.polyfit(x, y, 1)
+plt.plot(x, m*x+b)
+
 plt.savefig(sys.argv[2])
