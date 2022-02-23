@@ -16,9 +16,9 @@ plt.ylim(-2.5, 2.5)
 plt.xlim(-2.5, 2.5) 
 plt.xlabel('Normalised temperature')
 plt.ylabel('Prediction value')
-plt.plot()
+plt.plot(color='navy')
 
 m, b = numpy.polyfit(x, y, 1)
-plt.plot(x, m*x+b)
+plt.plot(x, m*x+b, color='lightpink')
 
 plt.savefig(sys.argv[2])
