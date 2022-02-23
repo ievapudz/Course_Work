@@ -22,3 +22,12 @@ m, b = numpy.polyfit(x, y, 1)
 plt.plot(x, m*x+b, color='lightpink')
 
 plt.savefig(sys.argv[2])
+
+# Printing Pearson's correlation
+print('Pearson\'s correlation: ')
+print(df.corr())
+print()
+
+# Printing Spearman's correlation
+print('Spearman\'s correlation: ')
+print(df.corr(method="spearman"))
