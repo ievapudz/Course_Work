@@ -14,6 +14,7 @@ y = df['prediction']
 
 densities = densCols(x, y, nbin = 128)
 #plt.scatter(x, y, c='navy')
+plt.figure(figsize=(8,6))
 plt.title('A plot to show the correlation between temperature and prediction')
 plt.ylim(-2.5, 2.5)
 plt.xlim(-2.5, 2.5) 
