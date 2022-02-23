@@ -8,7 +8,8 @@ from cycler import cycler
 import numpy
 
 def train_epoch(model, trainloader, loss_function, optimizer, batch_size, 
-                epoch_batch_size, epoch, print_predictions=False):
+                epoch_batch_size, epoch, print_predictions=False,
+                print_loss=True):
     # Set current loss value
     current_loss = 0.0
     
@@ -43,14 +44,16 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size,
         # Print statistics
         current_loss += loss.item()
         if i % batch_size == (batch_size-1):
-            print('Loss after mini-batch %5d: %.3f' %
-                  (i + 1, current_loss / batch_size))
+            if(print_loss):
+                print('Loss after mini-batch %5d: %.3f' %
+                      (i + 1, current_loss / batch_size))
             current_loss = 0.0
 
 def validation_epoch(model, validateloader, loss_function, batch_size, 
 		     epoch_batch_size, num_of_epochs, epoch, 
                      ROC_curve_plot_file_dir='./results/', 
-                     confusion_matrix_file_dir=''):
+                     confusion_matrix_file_dir='',
+                     print_predictions=False, print_loss=True):
     current_loss = 0.0 
 
     tensor_list = []
@@ -65,6 +68,11 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
         # Compute loss
         outputs = model(inputs)
         
+        # Printing prediction values
+        if(print_predictions):
+            for index, output in enumerate(outputs):
+                print(targets[index].item(), output.item())
+
         # Print statistics
         loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
@@ -74,7 +82,8 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
 
         current_loss += loss.item()
         if i % batch_size == (batch_size-1):
-            print('Validation loss after mini-batch %5d: %.3f' %
+            if(print_loss):
+                print('Validation loss after mini-batch %5d: %.3f' %
                   (i + 1, current_loss / batch_size))
             current_loss = 0.0
             
@@ -155,7 +164,6 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
     if(file_for_predictions != ''):
         file_handle = open(file_for_predictions, 'w')
-        file_handle_2 = open('data/003/temperature_correlation_x_binary.lst', 'w')
     
     # Iterate over the DataLoader for testing data
     for i, data in enumerate(test_loader, 0):
@@ -174,12 +182,9 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
         epoch_outputs.append(outputs)
         tensor_list.append(targets)
 
-        for target in targets:
-            file_handle_2.write(str(target)+"\n")
-
         # Printing prediction values
-        for output in outputs:
-            file_handle.write(str(output)+"\n")
+        for index, output in enumerate(outputs):
+            file_handle.write(str(targets[index].item())+"\t"+str(output.item())+"\n")
 
         # Summing up loss
         current_loss += loss.item()
@@ -187,7 +192,8 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
             current_loss = 0.0
 
     epoch_targets = torch.cat(tensor_list, dim = 0)
-    plot_ROC_curve(epoch_targets, 1,
+    if ROC_curve_plot_file_dir != '':
+        plot_ROC_curve(epoch_targets, 1,
                    numpy.array(epoch_outputs).flatten(),
                    ROC_curve_plot_file_dir+'testing_0_'+
                    str(i)+'.png', True)

@@ -21,7 +21,7 @@ from dataset_processing import filter_sequences
 from dataset_processing import get_ESM_embeddings_as_tensor
 
 data = create_testing_data('data/CRISPR/', dataset_names=['C2EP'], 
-                           labelled=False)
+                           dataset_parent_dir=['C2EP'], labelled=False)
 
 filter_sequences(data, 'test', data['test']['embeddings'], labelled=False)
 
