@@ -36,7 +36,7 @@ trainloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 validate_dataset = TensorDataset(dataset['x_validate'], dataset['y_validate'])  
 validateloader = DataLoader(validate_dataset, batch_size=BATCH_SIZE, 
-                 shuffle=True)
+                 shuffle=False)
 
 # Set fixed random number seed
 torch.manual_seed(42)
@@ -50,12 +50,12 @@ optimizer = torch.optim.Adam(regressor.parameters(), lr=1e-4)
 
 for epoch in range(0, NUM_OF_EPOCHS):
     # Print epoch
-    print(f'Starting epoch {epoch+1}')
+    #print(f'Starting epoch {epoch+1}')
     
     train_epoch(regressor, trainloader, loss_function, optimizer, BATCH_SIZE, 
-                EPOCH_BATCH_SIZE, epoch)
+                EPOCH_BATCH_SIZE, epoch, print_loss=False)
     validation_epoch(regressor, validateloader, loss_function, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, '',
-                '')
+                '', print_loss=False, print_predictions=True)
 
 print('Training and validation process has finished.')
