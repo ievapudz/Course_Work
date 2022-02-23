@@ -155,7 +155,7 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
                epoch_batch_size,
                ROC_curve_plot_file_dir='./results/',
                confusion_matrix_file_dir='', 
-               file_for_predictions=''):
+               file_for_predictions='', print_true_labels=True):
     # Set current loss value
     current_loss = 0.0
 
@@ -184,7 +184,10 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
 
         # Printing prediction values
         for index, output in enumerate(outputs):
-            file_handle.write(str(targets[index].item())+"\t"+str(output.item())+"\n")
+            if(print_true_labels):
+                file_handle.write(str(targets[index].item())+"\t"+str(output.item())+"\n")
+            else:
+                file_handle.write(str(output.item())+"\n")
 
         # Summing up loss
         current_loss += loss.item()
@@ -229,3 +232,30 @@ def unlabelled_test_epoch(model, test_loader, threshold, file_for_predictions=''
                 file_handle.write("0\n")
 
     file_handle.close()
+
+# Calculation of prediction's accuracy per organism 
+def calculate_accuracy_per_tax_id(predictions_dict, out_filename=''):
+    
+    if(out_filename != ''):
+        file_handle = open(out_filename, 'w')
+        file_handle.write("TaxID\ttrue_temperature\tperc_0\tperc_1\n")
+    else:
+        print("TaxID\ttrue_temperature\tperc_0\tperc_1")
+
+    for taxid in predictions_dict.keys():
+        all_predictions = predictions_dict[taxid]['0'] + \
+                          predictions_dict[taxid]['1']
+        predicted_0_percentage = predictions_dict[taxid]['0'] / \
+                                 all_predictions * 100
+        predicted_1_percentage = predictions_dict[taxid]['1'] / \
+                                 all_predictions * 100
+        if(out_filename != ''):
+            file_handle.write('{}\t{}\t{}\t{}\n'.format(taxid, predictions_dict[taxid]['true_temperature'],
+                              predicted_0_percentage, predicted_1_percentage))
+        else:
+            print('{}\t{}\t{}\t{}'.format(taxid, predictions_dict[taxid]['true_temperature'], 
+                              predicted_0_percentage, predicted_1_percentage))
+
+    if(out_filename != ''):
+        file_handle.close()
+
