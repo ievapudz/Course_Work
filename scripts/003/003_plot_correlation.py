@@ -4,19 +4,24 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import sys
 import numpy
+from kern_smooth import densCols
+from matplotlib import cm
 
 df = pd.read_csv(sys.argv[1], sep="\t")
 
 x = df['temperature']
 y = df['prediction']
 
-plt.scatter(x, y, c='navy')
+densities = densCols(x, y, nbin = 128)
+#plt.scatter(x, y, c='navy')
 plt.title('A plot to show the correlation between temperature and prediction')
 plt.ylim(-2.5, 2.5)
 plt.xlim(-2.5, 2.5) 
 plt.xlabel('Normalised temperature')
 plt.ylabel('Prediction value')
-plt.plot()
+sc = plt.scatter(x, y, c=densities, s=15, edgecolors='none', alpha=0.75, cmap=cm.jet)
+plt.colorbar(sc)
+plt.show()
 
 m, b = numpy.polyfit(x, y, 1)
 plt.plot(x, m*x+b, color='lightpink')
