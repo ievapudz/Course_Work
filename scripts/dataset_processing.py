@@ -143,7 +143,8 @@ def create_testing_data(dataset_dir_prefix, dataset_parent_dir=['testing'],
                 data[key]['X'].append(record)
                 if(labelled):
                     data[key]['Y'].append(record.name.split('|')[2])
-                data[key]['Y'].append(0)
+                else:
+                    data[key]['Y'].append(0)
 
     # Shuffling the datasets
     for element in data.keys():

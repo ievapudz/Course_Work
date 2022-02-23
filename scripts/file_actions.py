@@ -94,6 +94,30 @@ def print_tensor_elements(dataset, keys, out_file):
             file_handle.write(str(el.item())+"\n")
     file_handle.close()
 
+# Printing tensors to *SV file
+def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor, out_file_name='', 
+                               sep=',', labelled=True):
+    file_handle = open(out_file_name, "w")
+    for i in range(len(data_tensor[keys_tensor[0]])):
+        if(labelled):
+            record = get_id_as_CSV(data, i, key_data, 0, sep) + \
+                     get_id_as_CSV(data, i, key_data, 1, sep) + \
+                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
+                     get_temperature_label_as_CSV(data_tensor, i, 
+                                                  keys_tensor[1], sep,
+                                                  False) + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, 
+                                                  keys_tensor[0], sep, True)
+        else:
+            record = data[key_data]['X_filtered'][i].name + sep + \
+                     data[key_data]['X_filtered'][i].seq + sep + \
+                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
+                     get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
+                                                  sep, True)
+        file_handle.write(record+"\n")
+ 
+    file_handle.close()
+
 # A function that prints embedding with its temperature label as CSV
 def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', labelled=True):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
@@ -251,3 +275,22 @@ def calculate_MCC(predictions_file_name, true_labels_index, prediction_index,
     file.close()
     MCC = (TP*TN-FP*FN)/(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
     return MCC
+
+# Parsing predictions *SV file and returning its contents as dictionary 
+def return_SV_as_dict(predictions_file_name, tax_id_index, true_temperature_index, prediction_index, 
+                      separator="\t", has_header=True, threshold=0.5):
+    contents = {}
+    with open(predictions_file_name) as file:
+        predictions_file = csv.reader(file, delimiter=separator)
+        for index, line in enumerate(predictions_file):
+            if(index == 0 and has_header):
+                continue
+            if(line[tax_id_index] not in contents):
+                contents[line[tax_id_index]] = {'0': 0, '1': 0, 'true_temperature': line[true_temperature_index]}
+            if(float(line[prediction_index]) < threshold):
+                contents[line[tax_id_index]]['0'] += 1
+            elif(float(line[prediction_index]) >= threshold):
+                contents[line[tax_id_index]]['1'] += 1
+
+    file.close()
+    return contents 
