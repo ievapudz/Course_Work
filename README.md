@@ -764,6 +764,29 @@ user    2m45.062s
 sys     0m5.772s
 ```
 
+Using `scripts/003/003_plot_correlation.py` real normalised temperatures versus predicted normalised temperatures graph with regression
+line was plotted and Pearson's with Spearman's correlation coefficients were calculated:
+
+```
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_vs_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png
+```
+![testing_4_real_vs_predictions_z_scores](./results/regressor/003/testing_4_real_vs_predictions_z_scores.png) 
+
+**Fig. 3.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised as z-scores
+with respect of 65
+
+The output of the calculations:
+
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.859176
+prediction      0.859176    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.830454
+prediction      0.830454    1.000000
+
 ### Dataset for SLP testing (004)
 
 This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
