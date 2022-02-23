@@ -642,6 +642,23 @@ considered as more than 80 percent identical.
 
 Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
 
+The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
+predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
+than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
+in FASTA format had an asterisk symbol '*' appended to the end 
+of the sequence. It was checked, whether this symbol has influence
+to the embeddings representation. Another embedding vector  version of 
+FchIscB1 sequence without '*' in the end was created, which this time 
+matched embedding of 310769|A0A1G8BSF0|75 sequence.
+
+It was decided to clean `C2EP.fasta` file and to redo embeddings 
+and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
+
+Asterisk-free embeddings generation:
+```
+sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
+```
+
 ### Regressor with 003 v2 data
 
 There was a single-layer regressor defined to predict the temperature of the given protein.
@@ -746,6 +763,29 @@ real    1m51.964s
 user    2m45.062s
 sys     0m5.772s
 ```
+
+Using `scripts/003/003_plot_correlation.py` real normalised temperatures versus predicted normalised temperatures graph with regression
+line was plotted and Pearson's with Spearman's correlation coefficients were calculated:
+
+```
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_vs_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png
+```
+![testing_4_real_vs_predictions_z_scores](./results/regressor/003/testing_4_real_vs_predictions_z_scores.png) 
+
+**Fig. 3.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised as z-scores
+with respect of 65
+
+The output of the calculations:
+
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.859176
+prediction      0.859176    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.830454
+prediction      0.830454    1.000000
 
 ### Dataset for SLP testing (004)
 
