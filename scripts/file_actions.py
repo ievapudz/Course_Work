@@ -154,13 +154,6 @@ def print_joined_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=','
                      get_embeddings_tensor_as_CSV(data_tensor, i,
                                                   keys_tensor[0], True)
         else:
-            """
-            record = data[0][key_data]['X_filtered'][i].name + sep + \
-                     data[0][key_data]['X_filtered'][i].seq + \
-                     data[1][key_data]['X_filtered'][i].seq + sep + length + \
-                     get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0],
-                                                  sep, True)
-            """
             record = data[0][key_data]['X_filtered'][i].name + sep + \
                      get_sequence_as_CSV(data, i, key_data, sep) + length + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0],
@@ -294,3 +287,10 @@ def return_SV_as_dict(predictions_file_name, tax_id_index, true_temperature_inde
 
     file.close()
     return contents 
+
+# Printing FASTA records given in array of SeqRecords (Biopython objects)
+def print_SeqRecords_to_FASTA(seq_records, out_filename):
+    file_handle = open(out_filename, 'w')
+    for record in seq_records:
+        file_handle.write('>'+record.name+"\n"+str(record.seq)+"\n\n")
+    file_handle.close()
