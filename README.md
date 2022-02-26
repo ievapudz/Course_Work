@@ -567,6 +567,60 @@ The script `./scripts/CRISPR/C2EP_classificator` ran the SLP inference flow and 
 The CSV file was converted to TSV file and it was pasted with SLP classificator's predictions (inferences) - the result is in
 `results/SLP/CRISPR/C2EP_embeddings_and_predictions.tsv` file.
 
+Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
+in the set that was used to train the model.
+
+```
+makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
+
+blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
+
+cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
+```
+
+The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
+considered as more than 80 percent identical.
+
+100 percent identity was detected:
+- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
+- CfaIscB1 with 937334|A0A1I5YB75|70
+
+Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
+
+The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
+predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
+than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
+in FASTA format had an asterisk symbol '*' appended to the end 
+of the sequence. It was checked, whether this symbol has influence
+to the embeddings representation. Another embedding vector  version of 
+FchIscB1 sequence without '*' in the end was created, which this time 
+matched embedding of 310769|A0A1G8BSF0|75 sequence.
+
+It was decided to clean `C2EP.fasta` file and to redo embeddings 
+and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
+
+Asterisk-free embeddings generation:
+```
+sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
+```
+
+### Methodology to make inferences for longer (than 1024 aminoacids) sequences
+
+Predictions for N and C terms were not identical. It was decided to try out sliding window principle with kmers, when 
+k is equal to 1024 and observe how predictions change.
+
+The following command printed kmers for long sequences from C2EP into `data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta` file:
+```
+./scripts/CRISPR/C2EP_make_kmers.py data/CRISPR/FASTA/C2EP/C2EP.fasta 1022 data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta
+```
+
+1022 number was taken because "\n" symbol used to create FASTA records from kmers was considered as two additional symbols for sequence.
+
+Generation of embeddings
+```
+sbatch --output=data/CRISPR/slurm/C2EP_kmers.out scripts/CRISPR/C2EP_kmers_embeddings.sh
+```
+
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
@@ -628,42 +682,6 @@ paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_pr
 There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
 the joint prediction always matched the separately produced predictions if these were equal. 
 
-Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
-in the set that was used to train the model.
-
-```
-makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
-
-blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
-
-cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
-```
-
-The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
-considered as more than 80 percent identical.
-
-100 percent identity was detected:
-- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
-- CfaIscB1 with 937334|A0A1I5YB75|70
-
-Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
-
-The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
-predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
-than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
-in FASTA format had an asterisk symbol '*' appended to the end 
-of the sequence. It was checked, whether this symbol has influence
-to the embeddings representation. Another embedding vector  version of 
-FchIscB1 sequence without '*' in the end was created, which this time 
-matched embedding of 310769|A0A1G8BSF0|75 sequence.
-
-It was decided to clean `C2EP.fasta` file and to redo embeddings 
-and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
-
-Asterisk-free embeddings generation:
-```
-sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
-```
 
 ### Regressor with 003 v2 data
 
