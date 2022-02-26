@@ -34,5 +34,5 @@ save_tensors_as_NPZ([Xs_test_tensor, Ys_test_tensor], ['x_test', 'y_test'],
 data_tensor = { 'x_test': Xs_test_tensor, 'y_test': Ys_test_tensor }
 
 print_tensors_as_SV_to_file(data, data_tensor, 'test', ['x_test', 'y_test'], 
-                            out_file_name='data/003/TSV/003_testing_tensors.tsv', 
+                            out_file_name='data/003/TSV/testing_v2_tensors.tsv', 
                             sep="\t", labelled=True)

@@ -74,8 +74,6 @@ dataset_test_initial = load_tensor_from_NPZ(
 trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
 
 # Save the current dataset values to file
-print_tensor_elements(dataset_test_initial, ['y_test'], 'data/003/temperature_predictions_correlation_x.lst')
-
 convert_labels_to_binary(dataset_test_initial, ['y_test'])
   
 test_dataset = TensorDataset(dataset_test_initial['x_test'], 
@@ -86,7 +84,7 @@ test_epoch(slp, test_loader, loss_function, optimizer, BATCH_SIZE,
            EPOCH_BATCH_SIZE, 
            ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
            confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/', 
-           file_for_predictions='data/003/testing_real_vs_predictions.lst',
+           file_for_predictions='./results/SLP/003/testing_real_vs_predictions.lst',
            print_true_labels=True)
 
 print('Testing process has finished.')
