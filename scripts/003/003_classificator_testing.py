@@ -80,8 +80,7 @@ test_dataset = TensorDataset(dataset_test_initial['x_test'],
                              dataset_test_initial['y_test'])
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
-test_epoch(slp, test_loader, loss_function, optimizer, BATCH_SIZE,
-           EPOCH_BATCH_SIZE, 
+test_epoch(slp, test_loader, BATCH_SIZE,
            ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
            confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/', 
            file_for_predictions='./results/SLP/003/testing_real_vs_predictions.lst',
