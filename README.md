@@ -534,26 +534,50 @@ observations more grounded, it was decided to make inferences not only for testi
 Inferences were made using scripts `./scripts/003/003_classificator_inferences_training_validation.py` and `scripts/003/003_classificator_testing.py`.
 
 ```
-paste data/003/TSV/training_v2_tensors.tsv results/SLP/003/training_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/training_v2_predictions.tsv
+paste data/003/TSV/training_v2_tensors.tsv results/SLP/003/training_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/training_v2_predictions.tsv
 
-paste data/003/TSV/validation_v2_tensors.tsv results/SLP/003/validation_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/validation_v2_predictions.tsv
+paste data/003/TSV/validation_v2_tensors.tsv results/SLP/003/validation_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/validation_v2_predictions.tsv
 
-paste data/003/TSV/testing_v2_tensors.tsv results/SLP/003/testing_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/testing_v2_predictions.tsv
+paste data/003/TSV/testing_v2_tensors.tsv results/SLP/003/testing_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/testing_v2_predictions.tsv
 ```
 
+Accuracies are calculated using the following command, where the first argument is a file with predictions structured as:
+- #0 - taxonomy identifier
+- #1 - sequence identifier
+- #2 - real temperature label
+- #3 - temperature prediction (float number from 0 to 1)
+
+The second argument is a name of an output file to store accuracies.
+
 ```
-./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_tensors_with_predictions.tsv 
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/training_v2_predictions.tsv results/SLP/003/training_v2_accuracy_per_taxid.tsv
+
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/validation_v2_predictions.tsv results/SLP/003/validation_v2_accuracy_per_taxid.tsv
+
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_v2_predictions.tsv results/SLP/003/testing_v2_accuracy_per_taxid.tsv
 ```
+
+The final step is mapping taxonomy identifiers to the domains that the organism belongs to.
 
 ### Mapping tax IDs to domains
 
 `./data/003/TSV/all_taxids_domains.tsv` file was created from `./data/003/TSV/proteome_UniParc_IDs_non_redundant_no_excluded.tsv `.
 
 The following command running script `003_map_taxid_to_domain.py` was executed to get TSV files with taxonomy identifiers, 
-sequence accession identifiers, and organism domain.
+sequence accession identifiers, and organism domain. A new table is created.
 ```
 ./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./data/003/TSV/testing_v2_tensors.tsv > data/003/TSV/testing_v2_domains.tsv
 ```
+
+Also, this script can be used to map the calculated accuracy scores for organism to the respective domain.
+```
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/training_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/training_v2_accuracy_per_taxid_with_domains.tsv
+
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/validation_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/validation_v2_accuracy_per_taxid_with_domains.tsv
+
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/testing_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/testing_v2_accuracy_per_taxid_with_domains.tsv
+```
+
 ### Testing classificator with CRISPR protein sequences (C2EP)
 
 The testing set was placed to `data/CRISPR/` folder. 
