@@ -528,6 +528,19 @@ MCC for 003 v2 testing was: 0.8478.
 
 ### Checking 003 prediction accuracies per organism
 
+It was interesting to check how accurately the classifying model predicts thermostability class within each organism. To make 
+observations more grounded, it was decided to make inferences not only for testing, yet also for training and validation sets on the trained model.
+
+Inferences were made using scripts `./scripts/003/003_classificator_inferences_training_validation.py` and `scripts/003/003_classificator_testing.py`.
+
+```
+paste data/003/TSV/training_v2_tensors.tsv results/SLP/003/training_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/training_v2_predictions.tsv
+
+paste data/003/TSV/validation_v2_tensors.tsv results/SLP/003/validation_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/validation_v2_predictions.tsv
+
+paste data/003/TSV/testing_v2_tensors.tsv results/SLP/003/testing_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $2, $4, $1286}' > results/SLP/003/testing_v2_predictions.tsv
+```
+
 ```
 ./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_tensors_with_predictions.tsv 
 ```
