@@ -294,3 +294,34 @@ def print_SeqRecords_to_FASTA(seq_records, out_filename):
     for record in seq_records:
         file_handle.write('>'+record.name+"\n"+str(record.seq)+"\n\n")
     file_handle.close()
+
+# Reading mapping from a TSV file into dictionary
+def read_map_from_SV(SV_filename, sep="\t", headerless=True):
+    mapping = {}
+    file_handle = open(SV_filename, 'r')
+    lines = file_handle.readlines()
+    file_handle.close()
+    for line in lines:
+        if(line.split(sep)[0] not in mapping.keys()):
+            mapping[line.split(sep)[0]] = line.split(sep)[1].strip('\n')
+    return mapping
+
+# Reading particular values from file
+def get_values_from_SV(SV_filename, indeces, sep="\t", headerless=True):
+    values = []
+    file_handle = open(SV_filename, 'r')
+    while True:
+        next_line = file_handle.readline()
+        if not next_line:
+            break;
+        line = next_line.strip().split(sep)
+        line_values = []
+
+        for index in indeces:
+            line_values.append(line[index])
+        
+        values.append(line_values)
+
+    file_handle.close()
+
+    return values
