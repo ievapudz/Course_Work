@@ -151,8 +151,7 @@ def create_confusion_matrix(targets, outputs, file_path=''):
             file_handle.write(result)
             file_handle.write(scores)
     
-def test_epoch(model, test_loader, loss_function, optimizer, batch_size, 
-               epoch_batch_size,
+def test_epoch(model, test_loader, batch_size, prefix='testing_0_', 
                ROC_curve_plot_file_dir='./results/',
                confusion_matrix_file_dir='', 
                file_for_predictions='', print_true_labels=True):
@@ -169,14 +168,14 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
     for i, data in enumerate(test_loader, 0):
         # Get inputs
         inputs, targets = data
-        targets = targets.reshape(batch_size, 1)
+        #targets = targets.reshape(batch_size, 1)
         targets = targets.to(torch.float32)
 
         # Perform forward pass
         outputs = model(inputs)
 
         # Compute loss
-        loss = loss_function(outputs, targets)
+        #loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
 
         epoch_outputs.append(outputs)
@@ -190,21 +189,22 @@ def test_epoch(model, test_loader, loss_function, optimizer, batch_size,
                 file_handle.write(str(output.item())+"\n")
 
         # Summing up loss
+        """
         current_loss += loss.item()
         if i % batch_size == (batch_size-1):
             current_loss = 0.0
-
+        """
     epoch_targets = torch.cat(tensor_list, dim = 0)
     if ROC_curve_plot_file_dir != '':
         plot_ROC_curve(epoch_targets, 1,
                    numpy.array(epoch_outputs).flatten(),
-                   ROC_curve_plot_file_dir+'testing_0_'+
+                   ROC_curve_plot_file_dir+prefix+
                    str(i)+'.png', True)
     
     if confusion_matrix_file_dir != '':
         create_confusion_matrix(epoch_targets, epoch_outputs,
                                 confusion_matrix_file_dir+
-                                'testing_0_'+
+                                prefix+
                                 str(i)+'.txt')
 
     file_handle.close()
