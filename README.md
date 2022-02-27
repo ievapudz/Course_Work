@@ -532,6 +532,15 @@ MCC for 003 v2 testing was: 0.8478.
 ./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_tensors_with_predictions.tsv 
 ```
 
+### Mapping tax IDs to domains
+
+`./data/003/TSV/all_taxids_domains.tsv` file was created from `./data/003/TSV/proteome_UniParc_IDs_non_redundant_no_excluded.tsv `.
+
+The following command running script `003_map_taxid_to_domain.py` was executed to get TSV files with taxonomy identifiers, 
+sequence accession identifiers, and organism domain.
+```
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./data/003/TSV/testing_v2_tensors.tsv > data/003/TSV/testing_v2_domains.tsv
+```
 ### Testing classificator with CRISPR protein sequences (C2EP)
 
 The testing set was placed to `data/CRISPR/` folder. 
