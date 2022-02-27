@@ -309,11 +309,18 @@ def read_map_from_SV(SV_filename, sep="\t", headerless=True):
 # Reading particular values from file
 def get_values_from_SV(SV_filename, indeces, sep="\t", headerless=True):
     values = []
+    line_count = 0
     file_handle = open(SV_filename, 'r')
     while True:
         next_line = file_handle.readline()
         if not next_line:
-            break;
+            break
+
+        line_count += 1
+
+        if(headerless==False and line_count==1):
+            continue
+
         line = next_line.strip().split(sep)
         line_values = []
 
