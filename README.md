@@ -662,9 +662,13 @@ The following command printed kmers for long sequences from C2EP into `data/CRIS
 
 1022 number was taken because "\n" symbol used to create FASTA records from kmers was considered as two additional symbols for sequence.
 
-Generation of embeddings
 ```
-sbatch --output=data/CRISPR/slurm/C2EP_kmers.out scripts/CRISPR/C2EP_kmers_embeddings.sh
+../programs/fasta-splitter.pl --n-parts 12 --out-dirdata/CRISPR/FASTA/C2EP/C2EP_kmers/ --nopad data/CRISPR/FASTA/C2EP/C2EP_kmers/C2EP_kmers.fasta
+```
+
+Generation of embeddings (parallel):
+```
+sbatch --array=1-12 --output=data/CRISPR/slurm/C2EP_kmers.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
