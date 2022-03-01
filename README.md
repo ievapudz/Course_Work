@@ -655,6 +655,16 @@ sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.
 Predictions for N and C terms were not identical. It was decided to try out sliding window principle with kmers, when 
 k is equal to 1024 and observe how predictions change.
 
+Steps will be:
+1. Divide sequences into kmers
+2. Split the FASTA file of kmers into parts
+3. Compute embeddings in parallel
+4. Save the embeddings to NPZ and TSV files
+5. Load embeddings from an NPZ file for the model
+6. Make inferences with the trained model
+7. Save predictions in a separate TSV file
+8. Join the columns of embeddings TSV file with predictions using awk
+
 The following command printed kmers for long sequences from C2EP into `data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta` file:
 ```
 ./scripts/CRISPR/C2EP_make_kmers.py data/CRISPR/FASTA/C2EP/C2EP.fasta 1022 data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta
