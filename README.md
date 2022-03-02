@@ -681,6 +681,11 @@ Generation of embeddings (parallel):
 sbatch --array=1-12 --output=data/CRISPR/slurm/C2EP_kmers.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
+Saving embeddings to NPZ and TSV files:
+```
+./scripts/CRISPR/C2EP_kmers_embeddings.py > data/CRISPR/TSV/C2EP_kmers_embeddings.tsv
+```
+
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
