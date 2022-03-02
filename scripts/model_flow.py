@@ -155,8 +155,6 @@ def test_epoch(model, test_loader, batch_size, prefix='testing_0_',
                ROC_curve_plot_file_dir='./results/',
                confusion_matrix_file_dir='', 
                file_for_predictions='', print_true_labels=True):
-    # Set current loss value
-    current_loss = 0.0
 
     tensor_list = []
     epoch_outputs = []
@@ -175,7 +173,6 @@ def test_epoch(model, test_loader, batch_size, prefix='testing_0_',
         outputs = model(inputs)
 
         # Compute loss
-        #loss = loss_function(outputs, targets)
         outputs = outputs.detach().numpy()
 
         epoch_outputs.append(outputs)
@@ -188,12 +185,6 @@ def test_epoch(model, test_loader, batch_size, prefix='testing_0_',
             else:
                 file_handle.write(str(output.item())+"\n")
 
-        # Summing up loss
-        """
-        current_loss += loss.item()
-        if i % batch_size == (batch_size-1):
-            current_loss = 0.0
-        """
     epoch_targets = torch.cat(tensor_list, dim = 0)
     if ROC_curve_plot_file_dir != '':
         plot_ROC_curve(epoch_targets, 1,
@@ -210,7 +201,8 @@ def test_epoch(model, test_loader, batch_size, prefix='testing_0_',
     file_handle.close()
 
 # A function that makes inferences about unlabelled data
-def unlabelled_test_epoch(model, test_loader, threshold, file_for_predictions=''):
+def unlabelled_test_epoch(model, test_loader, threshold, 
+                          file_for_predictions='', binary_predictions_only=True):
     
     epoch_outputs = []
 
@@ -226,10 +218,16 @@ def unlabelled_test_epoch(model, test_loader, threshold, file_for_predictions=''
         
          # Printing prediction values
         for output in outputs:
-            if(output[0] >= threshold):
-                file_handle.write("1\n")
+            if(binary_predictions_only):
+                if(output[0] >= threshold):
+                    file_handle.write("1\n")
+                else:
+                    file_handle.write("0\n")
             else:
-                file_handle.write("0\n")
+                if(output[0] >= threshold):
+                    file_handle.write("1\t"+str(output[0])+"\n")
+                else:
+                    file_handle.write("0\t"+str(output[0])+"\n")
 
     file_handle.close()
 
