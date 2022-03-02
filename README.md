@@ -686,6 +686,29 @@ Saving embeddings to NPZ and TSV files:
 ./scripts/CRISPR/C2EP_kmers_embeddings.py > data/CRISPR/TSV/C2EP_kmers_embeddings.tsv
 ```
 
+Inference making:
+```
+./scripts/CRISPR/C2EP_kmers_classificator.py
+```
+
+Result processing:
+```
+paste data/CRISPR/TSV/C2EP_kmers_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_predictions.tsv | awk 'gsub("-", "\t", $1){ print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 
+```
+
+For comparison with the separate inferences:
+```
+paste  results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv data/CRISPR/TSV/Cas12b_embeddings.tsv | awk 'BEGIN{ OFS="\t"}{ print $4, $1, $2, $3 }' > results/SLP/CRISPR/Cas12b_predictions_id_N_C_unified.tsv
+```
+
+After inferences will be made for C2EP kmers and predictions file will be 
+appended with information about sequence identifier and kmer number, the following command can
+be useful to sort the file by the order of sequences and kmers:
+
+```
+cat [file with seq ids in #1 column, kmer number in #2 and prediction in #3] | awk 'gsub("-", "\t", $1){ print $1, $2, $1285 }' | sort -k 1,1 -k 2n,2
+```
+
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
