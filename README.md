@@ -706,7 +706,18 @@ appended with information about sequence identifier and kmer number, the followi
 be useful to sort the file by the order of sequences and kmers:
 
 ```
-cat [file with seq ids in #1 column, kmer number in #2 and prediction in #3] | awk 'gsub("-", "\t", $1){ print $1, $2, $1285 }' | sort -k 1,1 -k 2n,2
+cat [file with seq ids in #1 column, kmer number in #2 and prediction in #3] | awk 'gsub("-", "\t", $1) BEGIN{OFS="\t"}{ print $1, $2, $1285 }' | sort -k 1,1 -k 2n,2
+```
+
+For example, a command to check the predictions of kmers:
+```
+paste data/CRISPR/TSV/C2EP_kmers_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_predictions.tsv | awk 'BEGIN{ OFS="\t" } gsub("-", "\t", $1) { print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv
+```
+
+Writing to FASTA file was done. Headers in FASTA contain the sequence ID and the average prediction of the sequence. The sequences are composed of 0s and 1s that represent the class labels of each kmer.
+
+```
+./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv results/SLP/CRISPR/C2EP_kmers_predictions.fasta
 ```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
