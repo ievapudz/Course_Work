@@ -526,6 +526,58 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+### Checking 003 prediction accuracies per organism
+
+It was interesting to check how accurately the classifying model predicts thermostability class within each organism. To make 
+observations more grounded, it was decided to make inferences not only for testing, yet also for training and validation sets on the trained model.
+
+Inferences were made using scripts `./scripts/003/003_classificator_inferences_training_validation.py` and `scripts/003/003_classificator_testing.py`.
+
+```
+paste data/003/TSV/training_v2_tensors.tsv results/SLP/003/training_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/training_v2_predictions.tsv
+
+paste data/003/TSV/validation_v2_tensors.tsv results/SLP/003/validation_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/validation_v2_predictions.tsv
+
+paste data/003/TSV/testing_v2_tensors.tsv results/SLP/003/testing_predictions.tsv | awk 'BEGIN{ OFS="\t" }{ print $1, $2, $4, $1286}' > results/SLP/003/testing_v2_predictions.tsv
+```
+
+Accuracies are calculated using the following command, where the first argument is a file with predictions structured as:
+- #0 - taxonomy identifier
+- #1 - sequence identifier
+- #2 - real temperature label
+- #3 - temperature prediction (float number from 0 to 1)
+
+The second argument is a name of an output file to store accuracies.
+
+```
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/training_v2_predictions.tsv results/SLP/003/training_v2_accuracy_per_taxid.tsv
+
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/validation_v2_predictions.tsv results/SLP/003/validation_v2_accuracy_per_taxid.tsv
+
+./scripts/003/003_accuracy_per_organism.py results/SLP/003/testing_v2_predictions.tsv results/SLP/003/testing_v2_accuracy_per_taxid.tsv
+```
+
+The final step is mapping taxonomy identifiers to the domains that the organism belongs to.
+
+### Mapping tax IDs to domains
+
+`./data/003/TSV/all_taxids_domains.tsv` file was created from `./data/003/TSV/proteome_UniParc_IDs_non_redundant_no_excluded.tsv `.
+
+The following command running script `003_map_taxid_to_domain.py` was executed to get TSV files with taxonomy identifiers, 
+sequence accession identifiers, and organism domain. A new table is created.
+```
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./data/003/TSV/testing_v2_tensors.tsv > data/003/TSV/testing_v2_domains.tsv
+```
+
+Also, this script can be used to map the calculated accuracy scores for organism to the respective domain.
+```
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/training_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/training_v2_accuracy_per_taxid_with_domains.tsv
+
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/validation_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/validation_v2_accuracy_per_taxid_with_domains.tsv
+
+./scripts/003/003_map_taxid_to_domain.py ./data/003/TSV/all_taxids_domains.tsv ./results/SLP/003/testing_v2_accuracy_per_taxid.tsv | sed "1 i TaxID\ttrue_temperature\tperc_0\tperc_1\tdomain" > ./results/SLP/003/testing_v2_accuracy_per_taxid_with_domains.tsv
+```
+
 ### Testing classificator with CRISPR protein sequences (C2EP)
 
 The testing set was placed to `data/CRISPR/` folder. 
@@ -560,6 +612,113 @@ The script `./scripts/CRISPR/C2EP_classificator` ran the SLP inference flow and 
 
 The CSV file was converted to TSV file and it was pasted with SLP classificator's predictions (inferences) - the result is in
 `results/SLP/CRISPR/C2EP_embeddings_and_predictions.tsv` file.
+
+Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
+in the set that was used to train the model.
+
+```
+makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
+
+blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
+
+cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
+```
+
+The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
+considered as more than 80 percent identical.
+
+100 percent identity was detected:
+- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
+- CfaIscB1 with 937334|A0A1I5YB75|70
+
+Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
+
+The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
+predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
+than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
+in FASTA format had an asterisk symbol '*' appended to the end 
+of the sequence. It was checked, whether this symbol has influence
+to the embeddings representation. Another embedding vector  version of 
+FchIscB1 sequence without '*' in the end was created, which this time 
+matched embedding of 310769|A0A1G8BSF0|75 sequence.
+
+It was decided to clean `C2EP.fasta` file and to redo embeddings 
+and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
+
+Asterisk-free embeddings generation:
+```
+sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
+```
+
+### Methodology to make inferences for longer (than 1024 aminoacids) sequences
+
+Predictions for N and C terms were not identical. It was decided to try out sliding window principle with kmers, when 
+k is equal to 1024 and observe how predictions change.
+
+Steps will be:
+1. Divide sequences into kmers
+2. Split the FASTA file of kmers into parts
+3. Compute embeddings in parallel
+4. Save the embeddings to NPZ and TSV files
+5. Load embeddings from an NPZ file for the model
+6. Make inferences with the trained model
+7. Save predictions in a separate TSV file
+8. Join the columns of embeddings TSV file with predictions using awk
+
+The following command printed kmers for long sequences from C2EP into `data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta` file:
+```
+./scripts/CRISPR/C2EP_make_kmers.py data/CRISPR/FASTA/C2EP/C2EP.fasta 1022 data/CRISPR/FASTA/C2EP/C2EP_kmers.fasta
+```
+
+1022 number was taken because "\n" symbol used to create FASTA records from kmers was considered as two additional symbols for sequence.
+
+```
+../programs/fasta-splitter.pl --n-parts 12 --out-dirdata/CRISPR/FASTA/C2EP/C2EP_kmers/ --nopad data/CRISPR/FASTA/C2EP/C2EP_kmers/C2EP_kmers.fasta
+```
+
+Generation of embeddings (parallel):
+```
+sbatch --array=1-12 --output=data/CRISPR/slurm/C2EP_kmers.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
+```
+
+Saving embeddings to NPZ and TSV files:
+```
+./scripts/CRISPR/C2EP_kmers_embeddings.py > data/CRISPR/TSV/C2EP_kmers_embeddings.tsv
+```
+
+Inference making:
+```
+./scripts/CRISPR/C2EP_kmers_classificator.py
+```
+
+Result processing:
+```
+paste data/CRISPR/TSV/C2EP_kmers_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_predictions.tsv | awk 'gsub("-", "\t", $1){ print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 
+```
+
+For comparison with the separate inferences:
+```
+paste  results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv data/CRISPR/TSV/Cas12b_embeddings.tsv | awk 'BEGIN{ OFS="\t"}{ print $4, $1, $2, $3 }' > results/SLP/CRISPR/Cas12b_predictions_id_N_C_unified.tsv
+```
+
+After inferences will be made for C2EP kmers and predictions file will be 
+appended with information about sequence identifier and kmer number, the following command can
+be useful to sort the file by the order of sequences and kmers:
+
+```
+cat [file with seq ids in #1 column, kmer number in #2 and prediction in #3] | awk 'gsub("-", "\t", $1) BEGIN{OFS="\t"}{ print $1, $2, $1285 }' | sort -k 1,1 -k 2n,2
+```
+
+For example, a command to check the predictions of kmers:
+```
+paste data/CRISPR/TSV/C2EP_kmers_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_predictions.tsv | awk 'BEGIN{ OFS="\t" } gsub("-", "\t", $1) { print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv
+```
+
+Writing to FASTA file was done. Headers in FASTA contain the sequence ID and the average prediction of the sequence. The sequences are composed of 0s and 1s that represent the class labels of each kmer.
+
+```
+./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv results/SLP/CRISPR/C2EP_kmers_predictions.fasta
+```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
@@ -622,42 +781,6 @@ paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_pr
 There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
 the joint prediction always matched the separately produced predictions if these were equal. 
 
-Protein BLAST program was run to check, whether there were identical sequences from the inferece set 
-in the set that was used to train the model.
-
-```
-makeblastdb -in data/003/FASTA/training_v2/training_v2.fasta -dbtype prot
-
-blastp -db data/003/FASTA/training_v2/training_v2.fasta -query data/CRISPR/FASTA/C2EP/C2EP.fasta -out data/CRISPR/C2EP_training_v2_matches.tsv -outfmt '7 qacc sacc pident evalue'
-
-cat data/CRISPR/C2EP_training_v2_matches.tsv | sed '/^[@#]/ d' | awk '{ if($3 > 80) print $0 }' > data/CRISPR/C2EP_training_v2_matches_over_80.tsv
-```
-
-The file `data/CRISPR/C2EP_training_v2_matches_over_80.tsv` contains headers of headers that were
-considered as more than 80 percent identical.
-
-100 percent identity was detected:
-- FchIscB1 with 310769|A0A1G8BSF0|75 and 310769|A0A1G8E103|75
-- CfaIscB1 with 937334|A0A1I5YB75|70
-
-Additionally, sequence CfaIscB1 had 99.528 identity with 551788|A0A2W4KI91|70.
-
-The predictions and BLAST results were compared. FchIscB1 and 310769|A0A1G8BSF0|75
-predictions were different. Apparently, FchIscB1 had a slightly different representation as embeddings vector
-than its sequence match 310769|A0A1G8BSF0|75. FchIscB1 sequence 
-in FASTA format had an asterisk symbol '*' appended to the end 
-of the sequence. It was checked, whether this symbol has influence
-to the embeddings representation. Another embedding vector  version of 
-FchIscB1 sequence without '*' in the end was created, which this time 
-matched embedding of 310769|A0A1G8BSF0|75 sequence.
-
-It was decided to clean `C2EP.fasta` file and to redo embeddings 
-and predictions. The FASTA file used before was renamed to `C2EP_with_stop.fasta`.
-
-Asterisk-free embeddings generation:
-```
-sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.sh
-```
 
 ### Regressor with 003 v2 data
 
@@ -775,7 +898,7 @@ line was plotted and Pearson's with Spearman's correlation coefficients were cal
 **Fig. 3.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised as z-scores
 with respect of 65
 
-The output of the calculations:
+The output of the calculations is given below. The maximum that was reached by MCC was equal to 0.8213 with the threshold set to -0.5:
 
 Pearson's correlation: 
              temperature  prediction
@@ -786,6 +909,107 @@ Spearman's correlation:
              temperature  prediction
 temperature     1.000000    0.830454
 prediction      0.830454    1.000000
+
+Matthew's correlation coefficient (with prediction threshold -0.5): 
+0.8212748574099856
+
+Matthew's correlation coefficient (with prediction threshold 0): 
+0.6769122505397441
+
+The same flow was done with data normalised by division of 100 (max temperature in the data subset).
+
+```
+./scripts/003/003_regressor_normalised_testing.py
+```
+
+A file `results/regressor/003/testing_4_real_and_predictions_normalised.tsv` was received, which was modified afterwards to contain a header for a correlation calculation script.
+
+```
+sed '1 i temperature\tprediction' results/regressor/003/testing_4_real_and_predictions_normalised.tsv > results/regressor/003/testing_4_real_and_predictions_normalised.tsv2
+
+mv results/regressor/003/testing_4_real_and_predictions_normalised.tsv2 results/regressor/003/testing_4_real_and_predictions_normalised.tsv
+```
+
+Running the correlation plotting script:
+```
+conda activate py37_pandas
+
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png
+```
+
+![testing_4_real_vs_predictions_normalised](./results/regressor/003/testing_4_real_vs_predictions_normalised.png) 
+
+**Fig. 4.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised by division of 100 (the maximum temperature of the dataset)
+
+Matthew's correlation coefficient (with prediction threshold -0.5): 
+0.8237084507820616
+
+### MLPs with one hidden layer (003 v2 data)
+
+Multiple-layers perceptrons were made with one hidden layer. To choose the best number of nodes in the hidden layer, at first 2, 4, 8 
+and 16 nodes were set.
+
+Case for 2 nodes:
+Validation loss after 4 epochs:  0.180
+
+real    1m30.332s
+user    1m54.940s
+sys     0m4.509s
+
+        0       1
+0       29455   3329
+1       1786    30566
+Accuracy:       0.9214719970523213
+Precision:      0.9017849240300929
+Recall: 0.9447947576656776
+Area under the curve:   0.9216256609216626
+
+Case for 4 nodes:
+Validation loss after 4 epochs: 0.183
+
+real    1m41.287s
+user    2m0.455s
+sys     0m9.885s
+
+        0       1
+0       28941   3843
+1       1366    30986
+Accuracy:       0.9200288626873004
+Precision:      0.8896609147549456
+Recall: 0.9577769535113749
+Area under the curve:   0.9202775689958046
+
+Case for 8 nodes:
+Validation loss after 4 epochs: 0.178
+
+real    1m48.066s
+user    2m9.253s
+sys     0m7.177s
+
+        0       1
+0       29227   3557
+1       1513    30839
+Accuracy:       0.922162859248342
+Precision:      0.8965868124200489
+Recall: 0.9532331849653808
+Area under the curve:   0.9223675685685858
+
+Case for 16 nodes:
+Validation loss after 4 epochs: 0.209
+
+real    1m56.436s
+user    26m54.701s
+sys     0m33.266s
+
+        0       1
+0       29170   3614
+1       1489    30863
+Accuracy:       0.9216562269712602
+Precision:      0.8951764944745773
+Recall: 0.9539750247279921
+Area under the curve:   0.9218691619491596
+
+Overall there were no significant differences seen between the performance of SLP and MLPs.
 
 ### Dataset for SLP testing (004)
 
