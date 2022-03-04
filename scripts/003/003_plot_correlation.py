@@ -1,5 +1,11 @@
 #!/usr/bin/env python3.7
 
+# A script that plots correlation plots for regressor inferences and
+# calculates correlation coefficients (Pearson, Spearman and Matthew's).
+
+# An example usage:
+# ./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png 0.3 0.9
+
 import sys
 import os
 
@@ -46,9 +52,13 @@ print(df.corr(method="spearman"))
 print()
 
 # Printing Matthew's correlation coefficient
-thresholds = [ -1, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0,
-               0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ]
+thresholds = numpy.linspace(float(sys.argv[3]), float(sys.argv[4]),
+                            int((float(sys.argv[4])-float(sys.argv[3]))/0.1), 
+                            False)
+
 for threshold in thresholds:
-    print('Matthew\'s correlation coefficient (with prediction threshold '+str(threshold)+'): ')
-    print(calculate_MCC(x, y, real_threshold=threshold, prediction_threshold=threshold))
+    print('Matthew\'s correlation coefficient (with prediction threshold '+\
+          str(round(threshold, 2))+'): ')
+    print(calculate_MCC(x, y, real_threshold=threshold, 
+          prediction_threshold=threshold))
     print()
