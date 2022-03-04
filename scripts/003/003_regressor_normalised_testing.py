@@ -9,7 +9,7 @@ sys.path.append(parent)
 
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
-from model_dataset_processing import normalise_labels_as_z_scores
+from model_dataset_processing import normalise_labels
 from regressor import Regressor
 import torch
 from torch.utils.data import DataLoader
@@ -31,7 +31,7 @@ dataset = load_tensor_from_NPZ(
 trim_dataset(dataset, ['x_train', 'y_train'], BATCH_SIZE)
 trim_dataset(dataset, ['x_validate', 'y_validate'], BATCH_SIZE)
 
-normalise_labels_as_z_scores(dataset, ['y_train', 'y_validate'], ref_point=65)
+normalise_labels(dataset, ['y_train', 'y_validate'], 100)
 
 train_dataset = TensorDataset(dataset['x_train'], dataset['y_train'])  
 trainloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -63,7 +63,7 @@ dataset_test_initial = load_tensor_from_NPZ(
 
 trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
 
-normalise_labels_as_z_scores(dataset_test_initial, ['y_test'], ref_point=65)
+normalise_labels(dataset_test_initial, ['y_test'], 100)
 
 test_dataset = TensorDataset(dataset_test_initial['x_test'],
                              dataset_test_initial['y_test'])
