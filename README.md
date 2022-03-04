@@ -898,7 +898,7 @@ line was plotted and Pearson's with Spearman's correlation coefficients were cal
 **Fig. 3.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised as z-scores
 with respect of 65
 
-The output of the calculations:
+The output of the calculations is given below. The maximum that was reached by MCC was equal to 0.8213 with the threshold set to -0.5:
 
 Pearson's correlation: 
              temperature  prediction
@@ -909,6 +909,40 @@ Spearman's correlation:
              temperature  prediction
 temperature     1.000000    0.830454
 prediction      0.830454    1.000000
+
+Matthew's correlation coefficient (with prediction threshold -0.5): 
+0.8212748574099856
+
+Matthew's correlation coefficient (with prediction threshold 0): 
+0.6769122505397441
+
+The same flow was done with data normalised by division of 100 (max temperature in the data subset).
+
+```
+./scripts/003/003_regressor_normalised_testing.py
+```
+
+A file `results/regressor/003/testing_4_real_and_predictions_normalised.tsv` was received, which was modified afterwards to contain a header for a correlation calculation script.
+
+```
+sed '1 i temperature\tprediction' results/regressor/003/testing_4_real_and_predictions_normalised.tsv > results/regressor/003/testing_4_real_and_predictions_normalised.tsv2
+
+mv results/regressor/003/testing_4_real_and_predictions_normalised.tsv2 results/regressor/003/testing_4_real_and_predictions_normalised.tsv
+```
+
+Running the correlation plotting script:
+```
+conda activate py37_pandas
+
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png
+```
+
+![testing_4_real_vs_predictions_normalised](./results/regressor/003/testing_4_real_vs_predictions_normalised.png) 
+
+**Fig. 4.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised by division of 100 (the maximum temperature of the dataset)
+
+Matthew's correlation coefficient (with prediction threshold -0.5): 
+0.8237084507820616
 
 ### MLPs with one hidden layer (003 v2 data)
 
