@@ -49,9 +49,6 @@ loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(regressor.parameters(), lr=1e-4)
 
 for epoch in range(0, NUM_OF_EPOCHS):
-    # Print epoch
-    #print(f'Starting epoch {epoch+1}')
-    
     train_epoch(regressor, trainloader, loss_function, optimizer, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, epoch, print_loss=False)
     validation_epoch(regressor, validateloader, loss_function, BATCH_SIZE, 
