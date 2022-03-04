@@ -1,7 +1,9 @@
+import statistics
 import math
 
 # Preparing kmers results to be printed in FASTA format.
-def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_name, include_mean):
+def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_name, 
+                               include_min, include_max, include_mean, include_median, include_std):
     file_handle = open(input_file_name, 'r')
     
     sequences = {} 
@@ -18,29 +20,47 @@ def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_nam
         if(line_arr[0] not in sequences.keys()):
             sequences[line_arr[0]] = {}
             sequences[line_arr[0]]['label_seq'] = line_arr[2]
-            sequences[line_arr[0]]['predictions_sum'] = 0
+            sequences[line_arr[0]]['predictions'] = []
+            #sequences[line_arr[0]]['predictions_sum'] = 0
         else:
             sequences[line_arr[0]]['label_seq'] += line_arr[2]
          
-        sequences[line_arr[0]]['predictions_sum'] += float(line_arr[3])
+        #sequences[line_arr[0]]['predictions_sum'] += float(line_arr[3])
+        sequences[line_arr[0]]['predictions'].append(float(line_arr[3]))
 
     file_handle.close()
     
     file_handle = open(output_file_name, 'w')
 
     for seq in sequences.keys():
+       line_to_write = '>'+seq
+       if(include_min):
+           minimum = min(sequences[seq]['predictions'])
+           line_to_write += "\t"+'min='+str(minimum)
+       if(include_max):
+           maximum = max(sequences[seq]['predictions'])
+           line_to_write += "\t"+'max='+str(maximum)
        if(include_mean):
            mean = get_kmers_predictions_mean(sequences, seq)
-           file_handle.write('>'+seq+"\t"+str(mean)+"\n"+sequences[seq]['label_seq']+"\n")
-       else:
-           file_handle.write('>'+seq+"\n"+sequences[seq]['label_seq']+"\n")
-    
+           line_to_write += "\t"+'mean='+str(mean)
+       if(include_median):
+           median = statistics.median(sequences[seq]['predictions'])
+           line_to_write += "\t"+'median='+str(median)
+       if(include_std):
+           std = statistics.stdev(sequences[seq]['predictions'])
+           line_to_write += "\t"+'std='+str(std)
+
+       file_handle.write(line_to_write+"\n"+sequences[seq]['label_seq']+"\n")
     file_handle.close()
 
 # Calculating the average class prediction for the sequence.
 def get_kmers_predictions_mean(seq_dict, seq_key):
-    mean = seq_dict[seq_key]['predictions_sum'] / \
-           len(seq_dict[seq_key]['label_seq'])
+    predictions_sum = 0
+
+    for pred in seq_dict[seq_key]['predictions']:
+        predictions_sum += pred
+
+    mean = predictions_sum / len(seq_dict[seq_key]['label_seq'])
 
     return mean
 

@@ -18,4 +18,7 @@ from results_processing import get_kmers_results_as_FASTA
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-get_kmers_results_as_FASTA(input_file, "\t", True, output_file, True)
+get_kmers_results_as_FASTA(input_file, "\t", True, output_file, 
+                           include_max=True, include_min=True, 
+                           include_mean=True, include_median=True, 
+                           include_std=True)
