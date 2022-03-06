@@ -78,14 +78,14 @@ def visualise_aminoacid_frequencies_PCA(data, keys, plotpath, colormap):
              s=50)
     plt.savefig(plotpath, dpi=300)
 
-def visualise_aminoacid_frequencies_PCA_3D(data, keys, plotpath, colormap):
+def visualise_aminoacid_frequencies_MDE_PCA(data, keys, plotpath, colormap):
     [Xs, Ys] = get_aminoacid_frequencies_as_list(data, keys)
 
-    #for i in range(len(Ys)):
-    #    if(int(Ys[i]) >= 65):
-    #        Ys[i] = 1
-    #    elif(int(Ys[i]) < 65):
-    #       Ys[i] = 0
+    for i in range(len(Ys)):
+        if(int(Ys[i]) >= 65):
+            Ys[i] = 1
+        elif(int(Ys[i]) < 65):
+           Ys[i] = 0
 
     #analysed_seq = ProteinAnalysis(str(data[keys[0]]['X'][0].seq))
     #aa_freq_columns = list(analysed_seq.count_amino_acids().keys())
@@ -108,6 +108,6 @@ visualise_aminoacid_frequencies_PCA(data, ['validate'],
                                     'data/003/visualisation_v2/validation_v2_aa_freq_PCA.png',
                                     two_color_cmap)
 
-visualise_aminoacid_frequencies_PCA_3D(data, ['validate'],
-                                    'data/003/visualisation_v2/validation_v2_aa_freq_PCA.png',
+visualise_aminoacid_frequencies_MDE_PCA(data, ['validate'],
+                                    'data/003/visualisation_v2/validation_v2_aa_freq_MDE_PCA_3D.png',
                                     two_color_cmap)
