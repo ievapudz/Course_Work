@@ -10,6 +10,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 
+import pymde
 import numpy
 import torch
 import pandas as pd
@@ -62,7 +63,7 @@ def visualise_aminoacid_frequencies_PCA(data, keys, plotpath, colormap):
 
     pca = PCA(2)
     principalComponents=pca.fit_transform(X)
-    principalDf=pd.DataFrame(data=principalComponents,columns=['principal component 1','principal component 2'])     
+    principalDf=pd.DataFrame(data=principalComponents,columns=['principal component 1','principal component 2'])
     finalDf=pd.concat([principalDf,df[['temperature']]],axis=1)
 
     fig=plt.figure(figsize=(8,8))  
@@ -76,17 +77,27 @@ def visualise_aminoacid_frequencies_PCA(data, keys, plotpath, colormap):
              c=color,
              s=50)
     plt.savefig(plotpath, dpi=300)
-    """
-    print("Visualisation") 
-    fig_dims = (7, 6)
-    fig, ax = plt.subplots(figsize=fig_dims)
-    sc = ax.scatter(Xs_pca_c[:,0], Xs_pca_c[:,1], c=Ys, marker='.', cmap=colormap)
-    ax.set_xlabel('PCA first principal component')
-    ax.set_ylabel('PCA second principal component')
-    plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
-    plt.savefig(plotpath, dpi=300)
 
-    """
+def visualise_aminoacid_frequencies_PCA_3D(data, keys, plotpath, colormap):
+    [Xs, Ys] = get_aminoacid_frequencies_as_list(data, keys)
+
+    #for i in range(len(Ys)):
+    #    if(int(Ys[i]) >= 65):
+    #        Ys[i] = 1
+    #    elif(int(Ys[i]) < 65):
+    #       Ys[i] = 0
+
+    #analysed_seq = ProteinAnalysis(str(data[keys[0]]['X'][0].seq))
+    #aa_freq_columns = list(analysed_seq.count_amino_acids().keys())
+    #df = pd.DataFrame(Xs, columns=aa_freq_columns)
+    #df['temperature'] = Ys
+
+    #X=df.loc[:,aa_freq_columns].values
+    #Y=df.loc[:,'temperature'].values
+    Xs = torch.stack(Xs, dim=0).numpy()
+    Xs_torch = torch.from_numpy(Xs)
+    pca_embedding = pymde.pca(Xs_torch, 20)
+    pymde.plot(pca_embedding, color_by=Ys, savepath=plotpath, color_map=colormap, figsize_inches=(11, 10), marker_size=20.0)
 
 print("Creating data object")
 data = create_data('data/003/', dataset_names=['training_v2',
@@ -94,5 +105,9 @@ data = create_data('data/003/', dataset_names=['training_v2',
                                                'testing_v2'])
 
 visualise_aminoacid_frequencies_PCA(data, ['validate'], 
+                                    'data/003/visualisation_v2/validation_v2_aa_freq_PCA.png',
+                                    two_color_cmap)
+
+visualise_aminoacid_frequencies_PCA_3D(data, ['validate'],
                                     'data/003/visualisation_v2/validation_v2_aa_freq_PCA.png',
                                     two_color_cmap)
