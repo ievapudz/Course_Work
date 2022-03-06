@@ -105,9 +105,9 @@ data = create_data('data/003/', dataset_names=['training_v2',
                                                'testing_v2'])
 
 visualise_aminoacid_frequencies_PCA(data, ['validate'], 
-                                    'data/003/visualisation_v2/validation_v2_aa_freq_PCA.png',
+                                    'data/003/visualisation_v2/003_validation_v2_aa_freq_PCA.png',
                                     two_color_cmap)
 
 visualise_aminoacid_frequencies_MDE_PCA(data, ['validate'],
-                                    'data/003/visualisation_v2/validation_v2_aa_freq_MDE_PCA_3D.png',
+                                    'data/003/visualisation_v2/003_validation_v2_aa_freq_MDE_PCA_3D.png',
                                     two_color_cmap)
