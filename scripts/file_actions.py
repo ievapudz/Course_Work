@@ -95,25 +95,28 @@ def print_tensor_elements(dataset, keys, out_file):
     file_handle.close()
 
 # Printing tensors to *SV file
-def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor, out_file_name='', 
-                               sep=',', labelled=True):
+def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor, 
+                                dim=1280, subkey='X_filtered', out_file_name='', 
+                                sep=',', labelled=True):
     file_handle = open(out_file_name, "w")
     for i in range(len(data_tensor[keys_tensor[0]])):
         if(labelled):
-            record = get_id_as_CSV(data, i, key_data, 0, sep) + \
-                     get_id_as_CSV(data, i, key_data, 1, sep) + \
-                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
+            record = get_id_as_CSV(data, i, key_data, 0, subkey=subkey, sep=sep) + \
+                     get_id_as_CSV(data, i, key_data, 1, subkey=subkey, sep=sep) + \
+                     get_sequence_length_as_CSV(data, i, key_data, subkey=subkey, 
+                                                sep=sep) + \
                      get_temperature_label_as_CSV(data_tensor, i, 
-                                                  keys_tensor[1], sep,
-                                                  False) + \
+                                                  keys_tensor[1], 
+                                                  sep=sep, last_value=False) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, 
-                                                  keys_tensor[0], sep, True)
+                                                  keys_tensor[0], dim=dim,
+                                                  sep=sep, last_value=True)
         else:
-            record = data[key_data]['X_filtered'][i].name + sep + \
-                     data[key_data]['X_filtered'][i].seq + sep + \
-                     get_sequence_length_as_CSV(data, i, key_data, sep) + \
+            record = data[key_data][subkey][i].name + sep + \
+                     data[key_data][subkey][i].seq + sep + \
+                     get_sequence_length_as_CSV(data, i, key_data, subkey=subkey, sep=sep) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
-                                                  sep, True)
+                                                  dim=dim, sep=sep, last_value=True)
         file_handle.write(record+"\n")
  
     file_handle.close()
@@ -176,24 +179,26 @@ def get_sequence_as_CSV(data, index, key, sep=',', last_value=False):
 
 
 # A function that returns the sequence length for CSV
-def get_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
+def get_sequence_length_as_CSV(data, index, key, subkey='X_filtered', 
+                               sep=',', last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
-    sequence_length = str(len(data[key]['X_filtered'][index].seq))
+    sequence_length = str(len(data[key][subkey][index].seq))
     if last_value:
         return sequence_length
     else:
         return sequence_length + sep
 
 # A function that returns the joined sequence length for CSV
-def get_joined_sequence_length_as_CSV(data, index, key, sep=',', last_value=False):
+def get_joined_sequence_length_as_CSV(data, index, key, subkey='X_filtered',
+                                      sep=',', last_value=False):
     # data - an array with objects with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
     sequence_length = 0
     for i in range(len(data)):
-        sequence_length += len(data[i][key]['X_filtered'][index].seq)
+        sequence_length += len(data[i][key][subkey][index].seq)
 
     if last_value:
         return str(sequence_length)
@@ -202,7 +207,7 @@ def get_joined_sequence_length_as_CSV(data, index, key, sep=',', last_value=Fals
 
 # A function that returns the needed identificator (property) of the sequence
 # from the header
-def get_id_as_CSV(data, index, key, id_index, sep, last_value=False):
+def get_id_as_CSV(data, index, key, id_index, subkey='X_filtered', sep=',', last_value=False):
     # data - an object with sequences in FASTA format
     # index - the index of record in data object
     # key - the chosen key of an inside of data object
@@ -210,7 +215,7 @@ def get_id_as_CSV(data, index, key, id_index, sep, last_value=False):
     #        0 - taxonomy ID
     #        1 - protein ID
     #        2 - temperature label
-    identificator = data[key]['X_filtered'][index].name.split('|')[id_index]
+    identificator = data[key][subkey][index].name.split('|')[id_index]
     
     if last_value:
         return identificator
@@ -218,16 +223,16 @@ def get_id_as_CSV(data, index, key, id_index, sep, last_value=False):
         return identificator + sep
         
 # A function that processes embeddings to be represented in CSV format
-def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, sep=',', 
+def get_embeddings_tensor_as_CSV(data, embedding_tensor_index, key, dim=1280, sep=',', 
                                  last_value=False):
     record = ''
-    for j in range(1280):
+    for j in range(dim):
         embeddings_element = f"{data[key][embedding_tensor_index][j].item():{6}.{3}}"
         record = record + embeddings_element
 
-        if j == 1279 and not last_value:
+        if j == dim-1 and not last_value:
             record = record + sep
-        elif j == 1279 and last_value:
+        elif j == dim-1 and last_value:
             record = record 
         else:
             record = record + sep
