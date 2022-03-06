@@ -891,7 +891,7 @@ Using `scripts/003/003_plot_correlation.py` real normalised temperatures versus 
 line was plotted and Pearson's with Spearman's correlation coefficients were calculated:
 
 ```
-./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_vs_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_vs_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png -1.0 0.8
 ```
 ![testing_4_real_vs_predictions_z_scores](./results/regressor/003/testing_4_real_vs_predictions_z_scores.png) 
 
@@ -934,15 +934,25 @@ Running the correlation plotting script:
 ```
 conda activate py37_pandas
 
-./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png 0.3 0.9
 ```
 
 ![testing_4_real_vs_predictions_normalised](./results/regressor/003/testing_4_real_vs_predictions_normalised.png) 
 
 **Fig. 4.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised by division of 100 (the maximum temperature of the dataset)
 
-Matthew's correlation coefficient (with prediction threshold -0.5): 
-0.8237084507820616
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.861614
+prediction      0.861614    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.831956
+prediction      0.831956    1.000000
+
+Matthew's correlation coefficient (with prediction threshold 0.5): 
+0.823900675275014
 
 ### MLPs with one hidden layer (003 v2 data)
 
