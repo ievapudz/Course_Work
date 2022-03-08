@@ -910,11 +910,11 @@ Spearman's correlation:
 temperature     1.000000    0.830454
 prediction      0.830454    1.000000
 
-Matthew's correlation coefficient (with prediction threshold -0.5): 
-0.8212748574099856
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+0.8237228311506027
 
-Matthew's correlation coefficient (with prediction threshold 0): 
-0.6769122505397441
+Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
+0.7080278511067488
 
 The same flow was done with data normalised by division of 100 (max temperature in the data subset).
 
@@ -951,7 +951,7 @@ Spearman's correlation:
 temperature     1.000000    0.831956
 prediction      0.831956    1.000000
 
-Matthew's correlation coefficient (with prediction threshold 0.5): 
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 50.0)): 
 0.823900675275014
 
 ### Checking results if input is aminoacid sequences
