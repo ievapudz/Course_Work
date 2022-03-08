@@ -10,6 +10,7 @@ sys.path.append(parent)
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
 from model_dataset_processing import normalise_labels_as_z_scores
+from model_dataset_processing import standard_deviation
 from regressor import Regressor
 import torch
 from torch.utils.data import DataLoader
@@ -61,7 +62,7 @@ dataset_test_initial = load_tensor_from_NPZ(
     'data/003/NPZ/testing_embeddings_v2.npz',
     ['x_test', 'y_test'])
 
-trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
+#trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
 
 normalise_labels_as_z_scores(dataset_test_initial, ['y_test'], ref_point=65)
 
@@ -69,9 +70,15 @@ test_dataset = TensorDataset(dataset_test_initial['x_test'],
                              dataset_test_initial['y_test'])
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
+predictions_out_file_tmp = 'results/regressor/003/testing_4_real_and_predictions_z_scores.tmp'
+predictions_out_file_tsv = 'results/regressor/003/testing_4_real_and_predictions_z_scores.tsv'
+
 test_epoch(regressor, test_loader, BATCH_SIZE,
            ROC_curve_plot_file_dir='',
            confusion_matrix_file_dir='', 
-           file_for_predictions='results/regressor/003/testing_4_real_and_predictions_z_scores.tsv')
+           file_for_predictions=predictions_out_file_tmp)
 
-
+command = 'sed \'1 i temperature\tprediction\' '+predictions_out_file_tmp+' > '+predictions_out_file_tsv
+os.system(command)
+command = 'rm '+predictions_out_file_tmp
+os.system(command)
