@@ -4,7 +4,8 @@
 # calculates correlation coefficients (Pearson, Spearman and Matthew's).
 
 # An example usage:
-# ./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png 0.3 0.9
+# ./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_normalised.tsv results/regressor/003/testing_4_real_vs_predictions_normalised.png 0.3 0.9 
+# ./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_and_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png 0.1 0.9 True
 
 import sys
 import os
@@ -18,7 +19,21 @@ import pandas as pd
 import numpy
 from kern_smooth import densCols
 from matplotlib import cm
+from model_dataset_processing import load_tensor_from_NPZ
+from model_dataset_processing import standard_deviation
+from model_dataset_processing import convert_z_score_to_label
 from results_processing import calculate_MCC
+
+Z_SCORE_NORM = False
+
+if(len(sys.argv) >= 6 and bool(sys.argv[5]) == True):
+    Z_SCORE_NORM = bool(sys.argv[5])
+    # Loading tensors to get the standard deviation of the dataset
+    data_test = load_tensor_from_NPZ(
+        'data/003/NPZ/testing_embeddings_v2.npz',
+        ['x_test', 'y_test'])
+
+    std = standard_deviation(data_test['y_test'], 65)
 
 df = pd.read_csv(sys.argv[1], sep="\t")
 
@@ -61,8 +76,14 @@ thresholds = numpy.linspace(float(sys.argv[3]), float(sys.argv[4]),
                             False)
 
 for threshold in thresholds:
+    converted_threshold = ''
+    if(Z_SCORE_NORM):
+        converted_threshold = convert_z_score_to_label(threshold, 65, std)
+    else:
+        converted_threshold = threshold * 100 
+
     print('Matthew\'s correlation coefficient (with prediction threshold '+\
-          str(round(threshold, 2))+'): ')
+          str(round(threshold, 2))+' (real: '+str(converted_threshold.item())+')): ')
     print(calculate_MCC(x, y, real_threshold=threshold, 
           prediction_threshold=threshold))
     print()

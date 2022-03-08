@@ -57,6 +57,13 @@ def normalise_labels_as_z_scores(dataset, keywords, ref_point):
             normalised_labels.append(float_tensor_normalised)
         dataset[keyword] = torch.FloatTensor(normalised_labels)
 
+# Conversion of z-score normalisation back to a temperature label
+def convert_z_score_to_label(z_score_tensor, ref_point, std):
+    # ref_point - by default, it is mean of sample to calculate z-score. 
+    #             This function allows to calculate z-score from point other
+    #             than the mean. 
+    return torch.tensor(float(z_score_tensor.item() * std + ref_point), dtype=torch.float32)
+
 # A function to calculate standard deviation
 def standard_deviation(dataset, mean):
     N = len(dataset)
