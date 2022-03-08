@@ -10,6 +10,7 @@ sys.path.append(parent)
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
 from model_dataset_processing import normalise_labels_as_z_scores
+from model_dataset_processing import standard_deviation
 from regressor import Regressor
 import torch
 from torch.utils.data import DataLoader
@@ -61,7 +62,7 @@ dataset_test_initial = load_tensor_from_NPZ(
     'data/003/NPZ/testing_embeddings_v2.npz',
     ['x_test', 'y_test'])
 
-trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
+#trim_dataset(dataset_test_initial, ['x_test', 'y_test'], BATCH_SIZE)
 
 normalise_labels_as_z_scores(dataset_test_initial, ['y_test'], ref_point=65)
 
