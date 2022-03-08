@@ -954,13 +954,23 @@ prediction      0.831956    1.000000
 Matthew's correlation coefficient (with prediction threshold 0.5): 
 0.823900675275014
 
+### Checking results if input is aminoacid sequences
+
+For earch sequence there were 20-dimensional vectors generated, which represented aminoacids relative frequency in
+order: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'].
+
+PCA visualisation was made using:
+```
+./scripts/003/003_aa_freq_visualisation.py
+```
+
 ### MLPs with one hidden layer (003 v2 data)
 
 Multiple-layers perceptrons were made with one hidden layer. To choose the best number of nodes in the hidden layer, at first 2, 4, 8 
 and 16 nodes were set.
 
 Case for 2 nodes:
-Validation loss after 4 epochs:  0.180
+Validation loss after 5 epochs:  0.180
 
 real    1m30.332s
 user    1m54.940s
@@ -975,7 +985,7 @@ Recall: 0.9447947576656776
 Area under the curve:   0.9216256609216626
 
 Case for 4 nodes:
-Validation loss after 4 epochs: 0.183
+Validation loss after 5 epochs: 0.183
 
 real    1m41.287s
 user    2m0.455s
@@ -990,7 +1000,7 @@ Recall: 0.9577769535113749
 Area under the curve:   0.9202775689958046
 
 Case for 8 nodes:
-Validation loss after 4 epochs: 0.178
+Validation loss after 5 epochs: 0.178
 
 real    1m48.066s
 user    2m9.253s
@@ -1005,7 +1015,7 @@ Recall: 0.9532331849653808
 Area under the curve:   0.9223675685685858
 
 Case for 16 nodes:
-Validation loss after 4 epochs: 0.209
+Validation loss after 5 epochs: 0.209
 
 real    1m56.436s
 user    26m54.701s
@@ -1020,6 +1030,32 @@ Recall: 0.9539750247279921
 Area under the curve:   0.9218691619491596
 
 Overall there were no significant differences seen between the performance of SLP and MLPs.
+
+Case for 640 nodes:
+Validation loss after 5 epochs: 0.177
+
+real    4m39.986s
+user    56m8.220s
+sys     15m11.854s
+
+        0       1
+0       29579   3207
+1       1577    30773
+Accuracy:       0.9265536723163842
+Precision:      0.9056209535020601
+Recall: 0.9512519319938176
+Area under the curve:   0.9267178954790048
+
+Case for 640 nodes with 1 batch normalisation (1D):
+Validation loss after 5 epochs: 0.222
+
+        0       1
+0       29154   3632
+1       1753    30597
+Accuracy:       0.9173268238761975
+Precision:      0.893891144935581
+Recall: 0.9458114374034003
+Area under the curve:   0.9175162231853212
 
 ### Dataset for SLP testing (004)
 
