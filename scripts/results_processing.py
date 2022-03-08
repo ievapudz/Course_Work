@@ -1,3 +1,4 @@
+import sys
 import statistics
 import math
 
@@ -80,5 +81,8 @@ def calculate_MCC(real, prediction, real_threshold=0.65,
             FP += 1
         if float(el) >= real_threshold and float(prediction[i]) < prediction_threshold:
             FN += 1
-    MCC = (TP*TN-FP*FN)/(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
-    return MCC
+    if(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)) == 0):
+        print(sys.argv[0]+": division by 0 at threshold "+str(prediction_threshold), file=sys.stderr)
+    else:
+        MCC = (TP*TN-FP*FN)/(math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)))
+        return MCC
