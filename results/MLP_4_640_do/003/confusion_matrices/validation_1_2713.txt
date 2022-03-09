@@ -1,0 +1,7 @@
+	0	1
+0	0	32786
+1	0	32350
+Accuracy:	0.49665315647261116
+Precision:	0.49665315647261116
+Recall:	1.0
+Area under the curve:	0.5

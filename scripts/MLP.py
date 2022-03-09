@@ -117,7 +117,7 @@ class MLP_4_640_bn1_2aa(nn.Module):
     # before and after the hidden layer.
 
     # The second batch normalisation was added
-    # after the activation function (2aa).
+    # after the second activation function (2ba).
 
     def __init__(self):
         super().__init__()
@@ -127,8 +127,31 @@ class MLP_4_640_bn1_2aa(nn.Module):
             nn.BatchNorm1d(640, affine=False),
             nn.Linear(640, 1),
             nn.Sigmoid(),
-            nn.BatchNorm1d(1, affine=False)
+            nn.BatchNorm1d(1, affine=False),
+            nn.Sigmoid()
         )
 
     def forward(self, x):
         return self.layers(x)
+
+class MLP_4_640_do(nn.Module):
+
+    # A model with dropout layers included
+    # before and after the hidden layer.
+
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(1280, 640),
+            nn.Sigmoid(),
+            nn.Dropout(p=0.1),
+            nn.Linear(640, 1),
+            nn.Sigmoid(),
+            nn.Dropout(p=0.1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.layers(x)
+
+

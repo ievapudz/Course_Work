@@ -10,7 +10,7 @@ sys.path.append(parent)
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
 from model_dataset_processing import convert_labels_to_binary
-from MLP import MLP_4_640_bn1_2ba
+from MLP import MLP_4_640_bn1_2aa
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
@@ -22,10 +22,10 @@ BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
 NUM_OF_EPOCHS = 5
 
-command = 'mkdir ./results/MLP_4_640_bn1_2ba/'
+command = 'mkdir ./results/MLP_4_640_bn1_2aa/'
 os.system(command)
 
-DIR = './results/MLP_4_640_bn1_2ba/003/'
+DIR = './results/MLP_4_640_bn1_2aa/003/'
 MODEL_PATH = DIR+'/model.pt'
 
 # Create directories
@@ -54,22 +54,22 @@ validateloader = DataLoader(validate_dataset, batch_size=BATCH_SIZE,
 torch.manual_seed(42)
 
 # Initialize the SLP
-mlp_4_640_bn1_2ba = MLP_4_640_bn1_2ba()
+mlp_4_640_bn1_2aa = MLP_4_640_bn1_2aa()
 
 # Define the loss function (with activation function) and optimizer
 loss_function = nn.BCELoss()
-optimizer = torch.optim.Adam(mlp_4_640_bn1_2ba.parameters(), lr=1e-4)
+optimizer = torch.optim.Adam(mlp_4_640_bn1_2aa.parameters(), lr=1e-4)
 
 for epoch in range(0, NUM_OF_EPOCHS):
     # Print epoch
     print(f'Starting epoch {epoch+1}')
     
-    train_epoch(mlp_4_640_bn1_2ba, trainloader, loss_function, optimizer, BATCH_SIZE, 
+    train_epoch(mlp_4_640_bn1_2aa, trainloader, loss_function, optimizer, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, epoch)
-    validation_epoch(mlp_4_640_bn1_2ba, validateloader, loss_function, BATCH_SIZE, 
+    validation_epoch(mlp_4_640_bn1_2aa, validateloader, loss_function, BATCH_SIZE, 
                 EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, DIR+'/ROC/',
                 DIR+'/confusion_matrices/')
   
 print('Training and validation process has finished.')
 
-torch.save(mlp_4_640_bn1_2ba.state_dict(), MODEL_PATH)
+torch.save(mlp_4_640_bn1_2aa.state_dict(), MODEL_PATH)
