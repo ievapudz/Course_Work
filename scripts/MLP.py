@@ -89,3 +89,46 @@ class MLP_3_640_bn1(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
+class MLP_4_640_bn1_2ba(nn.Module):
+
+    # A model with batch normalisation included
+    # before and after the hidden layer.
+
+    # The second batch normalisation was added
+    # before the activation function (2ba).
+
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(1280, 640),
+            nn.Sigmoid(),
+            nn.BatchNorm1d(640, affine=False),
+            nn.Linear(640, 1),
+            nn.BatchNorm1d(1, affine=False),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.layers(x)
+
+class MLP_4_640_bn1_2aa(nn.Module):
+
+    # A model with batch normalisation included
+    # before and after the hidden layer.
+
+    # The second batch normalisation was added
+    # after the activation function (2aa).
+
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(1280, 640),
+            nn.Sigmoid(),
+            nn.BatchNorm1d(640, affine=False),
+            nn.Linear(640, 1),
+            nn.Sigmoid(),
+            nn.BatchNorm1d(1, affine=False)
+        )
+
+    def forward(self, x):
+        return self.layers(x)
