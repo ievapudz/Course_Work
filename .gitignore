@@ -2,5 +2,18 @@ data/003/EMB_ESM1b/
 data/003/NPZ/*.npz
 data/003/FASTA/
 data/003/CSV/
+data/003/TSV/
+data/003/slurm/
+data/003/TXT/
 
+data/CRISPR/FASTA/C2EP_kmers_1022/C2EP_kmers.part-*
+data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.part-*
+data/CRISPR/NPZ/
+data/CRISPR/TSV/
+data/CRISPR/slurm/
+data/CRISPR/C2EP_training_v2_matches.res
+data/CRISPR/EMB_ESM1b/
+data/CRISPR/FASTA/C2EP/C2EP_with_stop.fasta
+
+.profile
 scripts/__pycache__/
