@@ -7,7 +7,7 @@ data/003/slurm/
 data/003/TXT/
 
 data/CRISPR/FASTA/C2EP_kmers_1022/C2EP_kmers.part-*
-data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.part-*
+data/CRISPR/FASTA/C2EP_kmers_600/*
 data/CRISPR/NPZ/
 data/CRISPR/TSV/
 data/CRISPR/slurm/
