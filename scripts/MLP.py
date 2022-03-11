@@ -8,7 +8,7 @@ class MLP_2_2(nn.Module):
         super().__init__()
         self.layers = nn.Sequential(
             nn.Linear(1280, 2),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(2, 1),
             nn.Sigmoid()
         )
