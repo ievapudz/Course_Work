@@ -22,7 +22,7 @@ class MLP_2_4(nn.Module):
         super().__init__()
         self.layers = nn.Sequential(
             nn.Linear(1280, 4),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(4, 1),
             nn.Sigmoid()
         )
@@ -36,7 +36,7 @@ class MLP_2_8(nn.Module):
         super().__init__()
         self.layers = nn.Sequential(
             nn.Linear(1280, 8),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(8, 1),
             nn.Sigmoid()
         )
@@ -50,7 +50,7 @@ class MLP_2_16(nn.Module):
         super().__init__()
         self.layers = nn.Sequential(
             nn.Linear(1280, 16),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(16, 1),
             nn.Sigmoid()
         )
