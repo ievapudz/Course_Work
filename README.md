@@ -653,7 +653,7 @@ sbatch --output=data/CRISPR/slurm/C2EP_clean.out scripts/CRISPR/C2EP_embeddings.
 ### Methodology to make inferences for longer (than 1024 aminoacids) sequences
 
 Predictions for N and C terms were not identical. It was decided to try out sliding window principle with kmers, when 
-k is equal to 1024 and observe how predictions change.
+k is equal to 1022 and observe how predictions change.
 
 Steps will be:
 1. Divide sequences into kmers
@@ -718,6 +718,23 @@ Writing to FASTA file was done. Headers in FASTA contain the sequence ID and the
 
 ```
 ./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv results/SLP/CRISPR/C2EP_kmers_predictions.fasta
+```
+
+The additional flow was decided to perform for kmers of length 200, 400, and 600. Due to high computations required, the flow was decided
+to be done from length of 600.
+
+```
+./scripts/CRISPR/C2EP_make_kmers.py data/CRISPR/FASTA/C2EP/C2EP.fasta 600 data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta
+```
+
+The `C2EP_kmers_600.fasta` with 176143 sequences needed to be split into 18 smaller parts.
+```
+../programs/fasta-splitter.pl --n-parts 18 --out-dir data/CRISPR/FASTA/C2EP_kmers_600/ --nopad data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta
+```
+
+Job name was changed to C2EP_kmers_600 and the following command was run to generate embeddings:
+```
+sbatch --array=1-18 --output=data/CRISPR/slurm/C2EP_kmers_600.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
@@ -970,92 +987,86 @@ Multiple-layers perceptrons were made with one hidden layer. To choose the best 
 and 16 nodes were set.
 
 Case for 2 nodes:
-Validation loss after 5 epochs:  0.180
-
-real    1m30.332s
-user    1m54.940s
-sys     0m4.509s
+Validation loss after 8 epochs:  0.183
 
         0       1
-0       29455   3329
-1       1786    30566
-Accuracy:       0.9214719970523213
-Precision:      0.9017849240300929
-Recall: 0.9447947576656776
-Area under the curve:   0.9216256609216626
+0       29472   3314
+1       1729    30621
+Accuracy:       0.9225773765659543
+Precision:      0.9023427140120819
+Recall: 0.9465533230293663
+Area under the curve:   0.9227367969383395
+
+The hidden layer with 2 nodes and an internal activation function ReLU took more epochs to get trained. After the first epoch
+the neural network was considered as a random classifier.
 
 Case for 4 nodes:
-Validation loss after 5 epochs: 0.183
-
-real    1m41.287s
-user    2m0.455s
-sys     0m9.885s
+Validation loss after 3 epochs: 0.155
 
         0       1
-0       28941   3843
-1       1366    30986
-Accuracy:       0.9200288626873004
-Precision:      0.8896609147549456
-Recall: 0.9577769535113749
-Area under the curve:   0.9202775689958046
+0       29368   3418
+1       1739    30611
+Accuracy:       0.9208271923360354
+Precision:      0.8995562608363454
+Recall: 0.9462442040185471
+Area under the curve:   0.9209961946097737
 
 Case for 8 nodes:
-Validation loss after 5 epochs: 0.178
-
-real    1m48.066s
-user    2m9.253s
-sys     0m7.177s
+Validation loss after 2 epochs: 0.171
 
         0       1
-0       29227   3557
-1       1513    30839
-Accuracy:       0.922162859248342
-Precision:      0.8965868124200489
-Recall: 0.9532331849653808
-Area under the curve:   0.9223675685685858
+0       29098   3688
+1       1518    30832
+Accuracy:       0.9200749201670352
+Precision:      0.8931633835457705
+Recall: 0.9530757341576507
+Area under the curve:   0.9202943485038237
 
 Case for 16 nodes:
-Validation loss after 5 epochs: 0.209
-
-real    1m56.436s
-user    26m54.701s
-sys     0m33.266s
+Validation loss after 8 epochs: 0.154
 
         0       1
-0       29170   3614
-1       1489    30863
-Accuracy:       0.9216562269712602
-Precision:      0.8951764944745773
-Recall: 0.9539750247279921
-Area under the curve:   0.9218691619491596
+0       29181   3605
+1       1204    31146
+Accuracy:       0.9261698599852616
+Precision:      0.8962619780725735
+Recall: 0.9627820710973725
+Area under the curve:   0.9264133011498575
 
-Overall there were no significant differences seen between the performance of SLP and MLPs.
+Overall, there were no significant differences seen between the performance of SLP and MLPs.
 
 Case for 640 nodes:
-Validation loss after 5 epochs: 0.177
-
-real    4m39.986s
-user    56m8.220s
-sys     15m11.854s
+Validation loss after 5 epochs: 0.157
 
         0       1
-0       29579   3207
-1       1577    30773
-Accuracy:       0.9265536723163842
-Precision:      0.9056209535020601
-Recall: 0.9512519319938176
-Area under the curve:   0.9267178954790048
+0       29848   2938
+1       1437    30913
+Accuracy:       0.9328328420535495
+Precision:      0.9132078815987711
+Recall: 0.9555795981452859
+Area under the curve:   0.9329840893184795
 
 Case for 640 nodes with 1 batch normalisation (1D):
-Validation loss after 5 epochs: 0.222
+Validation loss after 1 epochs: 0.167
 
         0       1
-0       29154   3632
-1       1753    30597
-Accuracy:       0.9173268238761975
-Precision:      0.893891144935581
-Recall: 0.9458114374034003
-Area under the curve:   0.9175162231853212
+0       29767   3019
+1       1973    30377
+Accuracy:       0.9233603537214443
+Precision:      0.9095999520900707
+Recall: 0.9390108191653787
+Area under the curve:   0.9234644164758755
+
+Case for 640 nodes with 1 dropout layer:
+Validation loss after 14 epochs: 0.147
+
+        0       1
+0       29822   2964
+1       1299    31051
+Accuracy:       0.9345523212969786
+Precision:      0.912861972659121
+Recall: 0.9598454404945904
+Area under the curve:   0.9347204997873428
 
 ### Dataset for SLP testing (004)
 

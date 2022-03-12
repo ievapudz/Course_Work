@@ -17,3 +17,24 @@ data/CRISPR/FASTA/C2EP/C2EP_with_stop.fasta
 
 .profile
 scripts/__pycache__/
+
+
+.ipynb_checkpoints/
+The_COINS/
+data/001/EMB_ESM1b/
+data/002/CSV/
+data/002/FASTA/
+data/003/proteome_TaxIDs_UniParc_IDs.tsv
+data/CRISPR/C2EP.csv
+data/cluster_tests/001/EMB_ESM1b/
+data/cluster_tests/001/FASTA/001_
+data/cluster_tests/002/EMB_ESM1b/
+data/cluster_tests/003/EMB_ESM1b/
+data/cluster_tests/004/EMB_ESM1b/
+data/cluster_tests/005/FASTA/
+esm/
+literature/
+notes/
+scripts/.Rhistory
+scripts/r_analysis.Rmd
+thesis/
