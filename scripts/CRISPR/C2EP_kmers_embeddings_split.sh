@@ -13,7 +13,7 @@ set -ue
 #SBATCH --mem-per-cpu=8000
 
 DATA_DIR=data/CRISPR/
-JOB_NAME=C2EP_kmers
+JOB_NAME=C2EP_kmers_600
 FASTA_PREFIX=${DATA_DIR}FASTA/${JOB_NAME}/${JOB_NAME}.part-
 
 echo "Job started at $(date)"
