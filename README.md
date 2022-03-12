@@ -981,6 +981,11 @@ PCA visualisation was made using:
 ./scripts/003/003_aa_freq_visualisation.py
 ```
 
+Additionally, the plot of aminoacid frequencies was added. 
+```
+./scripts/003/003_aminoacid_averages.py data/003/TSV/validation_v2_aa_freq_tensors.tsv data/003/visualisation_v2/003_validate_v2_aa_freq_means.png
+```
+
 ### MLPs with one hidden layer (003 v2 data)
 
 Multiple-layers perceptrons were made with one hidden layer. To choose the best number of nodes in the hidden layer, at first 2, 4, 8 
