@@ -31,7 +31,12 @@ for i in range(4, len(class_0_data.columns)):
 class_means_df = pandas.DataFrame(class_means)
 
 class_means_df = class_means_df.T
-print(class_means_df)
 
 class_means_df.plot.scatter(x=0, y=1)
+
+for i, label in enumerate(data.columns[4:]):
+    plt.annotate(label, (class_means_df[0][i], class_means_df[1][i]))
+
+plt.xlabel('Class 0')
+plt.ylabel('Class 1')
 plt.savefig(sys.argv[2])
