@@ -46,6 +46,6 @@ max_val = max(class_means_df[0])
 if max(class_means_df[1]) > max_val:
     max_val = max(class_means_df[1])
 
-plt.plot(numpy.array[0, max_val])
+plt.plot(numpy.array([0, max_val]), numpy.array([0, max_val]))
 
 plt.savefig(sys.argv[2])
