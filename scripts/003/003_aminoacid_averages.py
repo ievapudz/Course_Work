@@ -39,4 +39,5 @@ for i, label in enumerate(data.columns[4:]):
 
 plt.xlabel('Class 0')
 plt.ylabel('Class 1')
+plt.plot([0, 0.12])
 plt.savefig(sys.argv[2])
