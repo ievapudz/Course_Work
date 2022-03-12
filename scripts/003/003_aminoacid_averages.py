@@ -39,4 +39,12 @@ for i, label in enumerate(data.columns[4:]):
 
 plt.xlabel('Class 0')
 plt.ylabel('Class 1')
+plt.title('Aminoacid frequencies in embeddings')
+
+max_val = max(class_means_df[0])
+if max(class_means_df[1]) > max_val:
+    max_val = max(class_means_df[1])
+
+plt.plot([0, max_val])
+
 plt.savefig(sys.argv[2])
