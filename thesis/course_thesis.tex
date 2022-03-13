@@ -1,0 +1,176 @@
+\documentclass[12pt]{report}
+
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+	\begin{center}
+	    \vspace*{1cm}
+	    \Large
+	    VILNIUS UNIVERSITY
+	    
+	    \vspace*{4cm}
+        \Large
+        IEVA PUDŽIUVELYTĖ
+	    
+        \vspace*{2cm}
+        \Large
+        PROTEIN THERMOSTABILITY PREDICTION USING 
+		SEQUENCE REPRESENTATIONS FROM PROTEIN 
+		LANGUAGE MODELS 
+        
+        \vspace*{2cm}
+        \large
+        Course thesis
+        
+        \vspace*{2cm}
+        \large
+        Vilnius, 2022
+        
+	\end{center}
+	
+	\newpage
+
+	\tableofcontents
+
+	\newpage
+	
+	\Large
+	\section{Introduction}
+
+    \vspace*{1cm}
+        
+	\normalsize
+
+	The variety of proteins is no less diverse than the variety of organisms. 
+	Just as the latter set is divided into domains, there are different 
+	attempts to classify proteins into distinct subsets. One way is to 
+	consider the heat-resistance property of biological macromolecules, which 
+	is an important trait for practical applications, for example, PCR.
+
+	Earlier studies show that protein's sequence and structural properties 
+	influence the thermostability of the macromolecule (Modarres et al. 2016). 
+	Furthermore, one of the most recent achievements in the field of deep 
+	learning are transformer architecture-based language models or, particularly, 
+	protein language models that have not yet been used to classify proteins based on
+	their thermostability. Therefore, it was decided to apply protein 
+	representations from the protein language model to make inferences about 
+	thermostability of the biological macromolecules.
+
+	There are transformer architecture-based language models trained in an 
+	unsupervised fashion to predict probabilities of elements in sequences 
+	(Devlin et al. 2018). 
+	Simultaneously, the process of training creates sequences' embeddings – the 
+	real numbered vectors that represent semantic connections of language 
+	components. These representations can be transferred as input to specific 
+	application models trained using a supervised learning method to complete 
+	the defined task, such as the classification problem. Unsurprisingly, the 
+	transition between two types of learning has a name of 'transfer learning'. 
+	This separation is practically useful because the computationally-heavy 
+	task to train the language model can be excluded from the development of 
+	the application model.
+
+	Since proteins can be represented in aminoacid sequences assumed as a 
+	particular language, there are protein language models – models trained on 
+	protein sequences – that provide embeddings as output. The multi-dimensional 
+	vectors are transferred for the application neural network as its input to 
+	observe the results and decide whether the computed representations are 
+	suitable to solve the specific biological task.
+
+	This work presents a novel way to predict thermal stability of proteins. 
+	The solution is a feed- forward neural network (FNN). To train the FNN, 
+	the evolutionary scale model 1b (ESM-1b) (Rives et al. 2021) is used to 
+	generate embeddings for proteins of organisms with annotated growth 
+	temperatures (Engqvist 2018). The model 
+	takes the generated embedding to predict the thermostability class of the 
+	input protein.
+
+	\newpage
+
+	\section{Theory}
+
+	The main objective of the work is to create a classifier that could 
+	determine to which thermostability class the protein sequence belongs.
+
+	Thermostability classes were created by setting the threshold of 
+	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
+	than the given threshold should be assigned to class '0', whereas the 
+	remaining ones compose the class '1'. 
+
+	\subsection{ESM-1b embeddings}
+
+	Due to the novelty of embeddings, a considerably good performance of
+	protein language models, and a recently emerged availability of embeddings,
+	it was decided to develop a neural network model that would take protein
+	embeddings from ESM-1b model as input and give the thermostability class
+	label as output.
+
+	ESM-1b is one of evolutionary scale models trained by Facebook Research 
+	(Rives et al. 2021). The model has 33 layers and 650 million parameters. 
+	The model was trained in an 
+	unsupervised fashion on UniRef50 dataset (March 28, 2018). In order to ensure
+	determinism in the validation set, authors removed protein sequences that
+	were longer than 1024 aminoacids. 
+
+	The authors made a script to extract model's embeddings available in the 
+	repository "Evolutionary Scale Modeling". The script allows to choose 
+	from which model and layer embeddings will be taken, what embeddings 
+	(mean, per aminoacid, or beginning of the sequence token) to keep. In the
+	result of using the script, a 1280 dimensional vector for protein is generated.
+	
+	The fact that sequences longer than 1024 aminoacids were removed from the 
+	validation dataset for ESM-1b model's training implies to the limitation of 
+	model's embeddings, which cannot be generated for sequences longer than 
+	1024 aminoacids. For this reason, various methods to get the most accurate 
+	prediction for longer sequences were tried.
+
+	\newpage
+
+	\section{Methods}
+
+	Generally, the workflow consisted of the following steps:
+
+	\begin{enumerate}
+		\item Collecting sets of sequences
+		\item Calculating ESM-1b embeddings for the sets of sequences
+		\item Processing the set of generated embeddings
+		\item Visualising ESM-1b embeddings
+		\item Training and validating the neural network model of the chosen architecture 
+		\item Testing the trained neural network model
+		\item Presenting the results of the model
+	\end{enumerate}
+
+	The workflow will be reviewed in terms of these points.
+
+	\subsection{Collecting data}
+
+	Initially, the steps prior to the neural network model construction 
+	were done using a small dataset that was composed of proteomes of two 
+	organisms: a mesophilic bacteria \textit{Escherichia coli} 
+	(\href{https://www.uniprot.org/proteomes/UP000000625}{UP000000625}) and a 
+	thermophilic archaeon \textit{Sulfolobus solfataricus} 
+	(\href{https://www.uniprot.org/proteomes/UP000001974}{UP000001974}). The 
+	growth temperature of \textit{E. coli} is $37\ ^\circ$C (Jang et al. 2017) 
+	and $80\ ^\circ$C for \textit{S. solfataricus} (Zaparty et al. 2010).
+
+	\newpage
+
+	\section{Results}
+
+	\dots
+
+	\section{Conclusions}
+
+	\dots
+
+	\nocite{*}
+	
+	\normalsize
+
+\bibliography{references} 
+\bibliographystyle{ieeetr}
+
+\end{document}
