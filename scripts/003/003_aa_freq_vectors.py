@@ -49,8 +49,7 @@ def visualise_aminoacid_frequencies_PCA(data, keys, plotpath, colormap):
     pca = PCA(2)
     Xs_scale = scaler.transform(Xs)
     Xs_pca = pca.fit_transform(Xs_scale)
-    #Xs_pca_c = numpy.ascontiguousarray(Xs_pca, dtype=numpy.float32)    
-    finalDf = pand.concat([principalDf, Ys, axis = 1)    
+    finalDf = pand.concat([principalDf, Ys], axis = 1)    
 
 
     print("Visualisation") 
@@ -67,19 +66,19 @@ data = create_data('data/003/', dataset_names=['training_v2',
                                                'validation_v2',
                                                'testing_v2'])
 
-#print("Converting aminoacid frequencies (training) to tensor")
-#[Xs_train_tensor, Ys_train_tensor] = get_aminoacid_frequencies_as_tensor(data,
-#                                     ['train'])
+print("Converting aminoacid frequencies (training) to tensor")
+[Xs_train_tensor, Ys_train_tensor] = get_aminoacid_frequencies_as_tensor(data,
+                                                                  ['train'])
 
 print("Converting aminoacid frequencies (validation) to tensor")
 [Xs_validate_tensor, Ys_validate_tensor] = get_aminoacid_frequencies_as_tensor(data,
                                                                   ['validate'])
-print("Visualising aminoacid frequencies vectors")
-visualise_aminoacid_frequencies_PCA(data, ['validate'], 
-                                    'data/003/visualisation_v2/validation_v2_aa_freqs_PCA.png', 
-                                    two_color_cmap) 
-"""
-print("Saving tensors to NPZ file")
+
+print("Converting aminoacid frequencies (testing) to tensor")
+[Xs_test_tensor, Ys_test_tensor] = get_aminoacid_frequencies_as_tensor(data,
+                                                                  ['test'])
+
+print("Saving (training and validation) tensors to NPZ file")
 save_tensors_as_NPZ([Xs_train_tensor, Ys_train_tensor,
                      Xs_validate_tensor, Ys_validate_tensor],
                     ['x_train', 'y_train', 'x_validate', 'y_validate'],
@@ -100,4 +99,12 @@ print_tensors_as_SV_to_file(data, data_validate_tensor, 'validate', ['x_validate
                             dim=20, subkey='X',
                             out_file_name='data/003/TSV/validation_v2_aa_freq_tensors.tsv',
                             sep="\t", labelled=True)
-"""
+
+
+data_test_tensor = { 'x_test': Xs_test_tensor, 'y_test': Ys_test_tensor }
+
+print("Saving testing tensors to a TSV file")
+print_tensors_as_SV_to_file(data, data_test_tensor, 'test', ['x_test', 'y_test'],
+                            dim=20, subkey='X',
+                            out_file_name='data/003/TSV/testing_v2_aa_freq_tensors.tsv',
+                            sep="\t", labelled=True)

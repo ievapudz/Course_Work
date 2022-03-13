@@ -87,13 +87,6 @@ def visualise_aminoacid_frequencies_MDE_PCA(data, keys, plotpath, colormap):
         elif(int(Ys[i]) < 65):
            Ys[i] = 0
 
-    #analysed_seq = ProteinAnalysis(str(data[keys[0]]['X'][0].seq))
-    #aa_freq_columns = list(analysed_seq.count_amino_acids().keys())
-    #df = pd.DataFrame(Xs, columns=aa_freq_columns)
-    #df['temperature'] = Ys
-
-    #X=df.loc[:,aa_freq_columns].values
-    #Y=df.loc[:,'temperature'].values
     Xs = torch.stack(Xs, dim=0).numpy()
     Xs_torch = torch.from_numpy(Xs)
     pca_embedding = pymde.pca(Xs_torch, 20)
@@ -104,10 +97,10 @@ data = create_data('data/003/', dataset_names=['training_v2',
                                                'validation_v2',
                                                'testing_v2'])
 
-visualise_aminoacid_frequencies_PCA(data, ['validate'], 
-                                    'data/003/visualisation_v2/003_validation_v2_aa_freq_PCA.png',
+visualise_aminoacid_frequencies_PCA(data, ['test'], 
+                                    'data/003/visualisation_v2/003_testing_v2_aa_freq_PCA.png',
                                     two_color_cmap)
 
-visualise_aminoacid_frequencies_MDE_PCA(data, ['validate'],
-                                    'data/003/visualisation_v2/003_validation_v2_aa_freq_MDE_PCA_3D.png',
+visualise_aminoacid_frequencies_MDE_PCA(data, ['test'],
+                                    'data/003/visualisation_v2/003_testing_v2_aa_freq_MDE_PCA_3D.png',
                                     two_color_cmap)
