@@ -173,7 +173,7 @@
 		\item \textit{Nitrosopumilus maritimus} strain SCM1 (\href{https://www.uniprot.org/proteomes/UP000000792}{UP000000792})
 	\end{itemize}
 
-	Thermophilic bacteria
+	Thermophilic bacteria:
 
 	\begin{itemize}
 		\item \textit{Aquifex aeolicus} (strain VF5)
@@ -182,6 +182,42 @@
 		(strain ATCC 43589 / DSM 3109 / JCM 10099 / NBRC 100826 / MSB8) 
 		(\href{https://www.uniprot.org/proteomes/UP000008183}{UP000008183})
 	\end{itemize}
+
+	After receiving the results of the first neural network model, it was decided
+	to train and test the model on the first real dataset. '003' dataset was a subset
+	of the dataset of 21458 annotated organisms (Engqvist 2018). 
+	
+	Requirements for '003' dataset were: the dataset needed to be balanced and a
+	single taxonomy identifier can be apparent only in either training, validation,
+	or testing dataset.
+
+	\begin{table}[h!]
+		\caption{Numbers of different proteomes that compose training, 
+		validation, and testing datasets}
+		\label{table:1} 
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ c c c }
+			 & Class '0' & Class '1' \\
+			Training & 32 & 77 \\ 
+			Validation & 8 & 17 \\
+			Testing & 11 & 17   
+		\end{tabular}
+	\end{table}
+
+	\begin{table}[h!]
+		\caption{Numbers of aminoacid sequences that compose training, 
+		validation, and testing datasets}
+		\label{table:2} 
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ c c c }
+			 & Class '0' & Class '1' \\
+			Training & 145128 & 143868 \\ 
+			Validation & 33204 & 32616 \\
+			Testing & 38263 & 36245   
+		\end{tabular}
+	\end{table}
 
 	\newpage
 
