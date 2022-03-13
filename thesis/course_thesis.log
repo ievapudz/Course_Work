@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  13 MAR 2022 19:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  13 MAR 2022 19:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -210,25 +210,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [2
 
-] [3] [4] [5] [6] (./course_thesis.bbl [7]) [8
+] [3] [4] [5] [6] [7] (./course_thesis.bbl [8]) [9
 
 ] (./course_thesis.aux)
 Package rerunfilecheck Info: File `course_thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 1089F821752541D2C78F2BBBED21C835;709.
  ) 
 Here is how much of TeX's memory you used:
- 7596 strings out of 480539
- 115066 string characters out of 5902059
+ 7600 strings out of 480539
+ 115108 string characters out of 5902059
  412800 words of memory out of 5000000
- 25134 multiletter control sequences out of 15000+600000
- 408330 words of font info for 43 fonts, out of 8000000 for 9000
+ 25136 multiletter control sequences out of 15000+600000
+ 408667 words of font info for 44 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,5n,66p,273b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
-</Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (8 pages, 82411 bytes).
+ 60i,5n,66p,273b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on course_thesis.pdf (9 pages, 84656 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
+ 141 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
