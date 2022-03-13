@@ -971,10 +971,18 @@ prediction      0.831956    1.000000
 Matthew's correlation coefficient (with prediction threshold 0.5 (real: 50.0)): 
 0.823900675275014
 
-### Checking results if input is aminoacid sequences
+### Checking results if input is aminoacid frequencies
 
-For earch sequence there were 20-dimensional vectors generated, which represented aminoacids relative frequency in
+For each sequence there were 20-dimensional vectors generated, which represented aminoacids relative frequency in
 order: ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y'].
+
+The following script was used to create TSV files for training, validation, and testing sets. These TSV files were later used
+for frequency mean calculations. This script also saves NPZ file for training and validation set, although, if needed, saving
+of the testing set should be additionally included.
+
+```
+./scripts/003/003_aa_freq_vectors.py
+```
 
 PCA visualisation was made using:
 ```
