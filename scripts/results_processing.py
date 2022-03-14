@@ -30,11 +30,17 @@ def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_nam
         sequences[line_arr[0]]['predictions'].append(float(line_arr[3]))
 
     file_handle.close()
-    
+   
     file_handle = open(output_file_name, 'w')
 
     for seq in sequences.keys():
+
+       if(seq == 'Cas'):
+           print(sequences[seq])
+
        line_to_write = '>'+seq
+       if(len(sequences[seq]['predictions']) < 2):
+           continue 
        if(include_min):
            minimum = min(sequences[seq]['predictions'])
            line_to_write += "\t"+'min='+str(minimum)
