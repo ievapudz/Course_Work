@@ -155,6 +155,40 @@ def create_testing_data(dataset_dir_prefix, dataset_parent_dir=['testing'],
 
     return data
 
+# Rewritten create_testing_data function more suitable for automatic flow
+def create_testing_data_2(dataset_FASTA, dataset_embeddings_dir, labelled=True):
+    # dataset_FASTA - FASTA file with sequences for testing dataset
+    # dataset_embeddings_dir - directory with all generated testing embeddings
+    # labelled - flag to determine whether the data is labelled or not
+
+    data = {
+        'test': {
+            'X' : [],
+            'Y' : [],
+            'FASTA': dataset_FASTA,
+            'embeddings': dataset_embeddings_dir+'/',
+        }
+    }
+
+    for key in data.keys():
+        if(exists(data[key]['FASTA'])):
+            # Parsing sequences (X dataset) from one dataset 
+            for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
+                data[key]['X'].append(record)
+                if(labelled):
+                    data[key]['Y'].append(record.name.split('|')[2])
+                else:
+                    data[key]['Y'].append(0)
+
+    # Shuffling the datasets
+    for element in data.keys():
+        if(labelled):
+            data[element]['X'], data[element]['Y'] = shuffle(data[element]['X'], data[element]['Y'], random_state=1)
+        else:
+            data[element]['X'] = shuffle(data[element]['X'], random_state=1)
+
+    return data
+
 def get_equal_proportions(data, key, overall_number, classes):
     expected_number = [int(overall_number/len(classes))] * len(classes)
     X_equal_proportions = []

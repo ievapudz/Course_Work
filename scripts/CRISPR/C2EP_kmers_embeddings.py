@@ -4,8 +4,9 @@
 # NPZ file.
 # It has to be run after embeddings were generated.
 
-# Usage:
-# ./scripts/CRISPR/C2EP_kmers_embeddings.py > data/CRISPR/TSV/C2EP_kmers_embeddings.tsv
+# Example usage:
+# ./scripts/CRISPR/C2EP_kmers_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta 
+# -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
 
 import sys
 import os
@@ -14,23 +15,39 @@ current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 
-from file_actions import print_tensor_as_CSV
+from optparse import OptionParser
+from file_actions import print_tensors_as_SV_to_file
 from file_actions import save_tensors_as_NPZ
-from dataset_processing import create_testing_data
+from dataset_processing import create_testing_data_2
 from dataset_processing import filter_sequences
 from dataset_processing import get_ESM_embeddings_as_tensor
 
-data = create_testing_data('data/CRISPR/', dataset_names=['C2EP_kmers'], 
-                           dataset_parent_dir=['C2EP_kmers'], labelled=False)
+parser = OptionParser()
+parser.add_option("--fasta", "-f", dest="fasta", 
+                   help="path to the FASTA of dataset")
 
-filter_sequences(data, 'test', data['test']['embeddings'], labelled=False)
+parser.add_option("--embeddings", "-e", dest="embeddings",
+                   help="path to the embeddings directory")
+
+parser.add_option("--labelled", "-l", dest="labelled",
+                   help="flag that determines whether data is labelled")
+
+parser.add_option("--output", "-o", dest="output",
+                   help="output prefix (without extension)")
+
+(options, args) = parser.parse_args()
+
+data = create_testing_data_2(options.fasta, options.embeddings, options.labelled)
+
+filter_sequences(data, 'test', data['test']['embeddings'], options.labelled)
 
 [Xs_test_tensor, Ys_test_tensor] = get_ESM_embeddings_as_tensor(data, ['test'])
 
 save_tensors_as_NPZ([Xs_test_tensor, Ys_test_tensor], ['x_test', 'y_test'], 
-                    'data/CRISPR/NPZ/C2EP_kmers_embeddings.npz')
+                    options.output+'.npz')
 
 data_tensor = { 'x_test': Xs_test_tensor, 'y_test': Ys_test_tensor }
 
-print_tensor_as_CSV(data, data_tensor, 'test', ['x_test', 'y_test'], sep="\t", 
-                    labelled=False)
+print_tensors_as_SV_to_file(data, data_tensor, 'test',  ['x_test', 'y_test'],
+                                dim=1280, subkey='X_filtered', out_file_name=options.output+'.tsv',
+                                sep='\t', labelled=options.labelled)
