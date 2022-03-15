@@ -117,14 +117,20 @@ def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor,
                      get_sequence_length_as_CSV(data, i, key_data, subkey=subkey, sep=sep) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
                                                   dim=dim, sep=sep, last_value=True)
-        file_handle.write(record+"\n")
+        file_handle.write(str(record)+"\n")
  
     file_handle.close()
 
 # A function that prints embedding with its temperature label as CSV
-def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', labelled=True):
+def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, 
+                        sep=',', labelled=True):
     # data - a dictionary that contains keys for which values are embeddings and temperature label
     # keys - an array with a key pair: ['x_set', 'y_set']
+    file_handle = None
+
+    if(file_name != ''):
+        file_handle = open(file_name, 'w')
+
     for i in range(len(data_tensor[keys_tensor[0]])):
         if(labelled):
             record = get_id_as_CSV(data, i, key_data, 0, sep) + \
@@ -141,7 +147,13 @@ def print_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', label
                      get_sequence_length_as_CSV(data, i, key_data, sep) + \
                      get_embeddings_tensor_as_CSV(data_tensor, i, keys_tensor[0], 
                                                   sep, True)
-        print(record)
+        if(file_name == ''):
+            print(record)
+        else:
+            file_handle.write(record+'\n')
+
+    if(file_name != ''):
+        file_handle = close()
 
 def print_joined_tensor_as_CSV(data, data_tensor, key_data, keys_tensor, sep=',', labelled=True):
     # data - an array that contains dictionaries with keys, for which values are 

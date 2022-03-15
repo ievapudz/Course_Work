@@ -20,5 +20,5 @@ input_FASTA_file = sys.argv[1]
 k = sys.argv[2]
 output_FASTA_file = sys.argv[3]
 
-kmers = make_kmers(k, input_FASTA_file)
+kmers = make_kmers(k, input_FASTA_file, threshold=1022)
 print_SeqRecords_to_FASTA(kmers, output_FASTA_file) 
