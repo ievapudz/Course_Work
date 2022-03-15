@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{modarres2016protein}
+H.~P. Modarres, M.~Mofrad, and A.~Sanati-Nezhad, ``Protein thermostability
+  engineering,'' {\em RSC advances}, vol.~6, no.~116, pp.~115252--115270, 2016.
+
+\bibitem{devlin2018bert}
+J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova, ``Bert: Pre-training of deep
+  bidirectional transformers for language understanding,'' {\em arXiv preprint
+  arXiv:1810.04805}, 2018.
+
+\bibitem{rives2021biological}
+A.~Rives, J.~Meier, T.~Sercu, S.~Goyal, Z.~Lin, J.~Liu, D.~Guo, M.~Ott, C.~L.
+  Zitnick, J.~Ma, {\em et~al.}, ``Biological structure and function emerge from
+  scaling unsupervised learning to 250 million protein sequences,'' {\em
+  Proceedings of the National Academy of Sciences}, vol.~118, no.~15, 2021.
+
+\bibitem{engqvist_martin_karl_magnus_2018_1175609}
+M.~K.~M. Engqvist, ``Growth temperatures for 21,498 microorganisms,'' Feb.
+  2018.
+
+\bibitem{jang2017environmental}
+J.~Jang, H.-G. Hur, M.~J. Sadowsky, M.~Byappanahalli, T.~Yan, and S.~Ishii,
+  ``Environmental escherichia coli: ecology and public health implications—a
+  review,'' {\em Journal of applied microbiology}, vol.~123, no.~3,
+  pp.~570--581, 2017.
+
+\bibitem{zaparty2010hot}
+M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
+  Pham, J.~Reimann, K.~Schreiber, P.~Sierocinski, {\em et~al.}, ``“hot
+  standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
+  {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
+
+\end{thebibliography}
