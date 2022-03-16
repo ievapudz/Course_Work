@@ -720,12 +720,12 @@ sbatch --array=1-12 --output=data/CRISPR/slurm/C2EP_kmers.part-%a.slurm-%A_%a.ou
 
 Saving embeddings to NPZ and TSV files:
 ```
-./scripts/CRISPR/testing_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
+./scripts/CRISPR/testing_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_1022/C2EP_kmers_1022.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_1022/ -o data/CRISPR/C2EP_kmers_1022
 ```
 
 Inference making:
 ```
-./scripts/CRISPR/C2EP_kmers_classificator.py
+./scripts/003/classifier_inferences.py -n data/CRISPR/NPZ/C2EP_kmers_1022_embeddings.npz -o results/SLP/CRISPR/C2EP_kmers_1022_predictions.tsv
 ```
 
 Result processing:
@@ -781,7 +781,7 @@ Saving embeddings to NPZ and TSV files:
 
 Inference making:
 ```
-./scripts/CRISPR/C2EP_kmers_classificator.py -n data/CRISPR/NPZ/C2EP_kmers_600_embeddings.npz -o results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv
+./scripts/003/classifier_inferences.py -n data/CRISPR/NPZ/C2EP_kmers_600_embeddings.npz -o results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv
 ```
 
 Result processing:
@@ -878,6 +878,22 @@ Command used to save embeddings to NPZ and TSV files:
 ```
 ./scripts/testing_embeddings.py -f data/CRISPR/FASTA/Cas12a/Cas12a_N.fasta -e data/CRISPR/EMB_ESM1b/Cas12a_N/ -o data/CRISPR/Cas12a_N
 ./scripts/testing_embeddings.py -f data/CRISPR/FASTA/Cas12a/Cas12a_C.fasta -e data/CRISPR/EMB_ESM1b/Cas12a_C/ -o data/CRISPR/Cas12a_C
+```
+
+Classification step:
+```
+./scripts/003/classifier_inferences.py -n data/CRISPR/NPZ/Cas12a_N.npz -o results/SLP/CRISPR/Cas12a_N_predictions.tsv
+./scripts/003/classifier_inferences.py -n data/CRISPR/NPZ/Cas12a_C.npz -o results/SLP/CRISPR/Cas12a_C_predictions.tsv
+```
+
+Results processing:
+```
+paste data/CRISPR/TSV/Cas12a_N.tsv results/SLP/CRISPR/Cas12a_N_predictions.tsv | awk 'BEGIN{OFS="\t"}{ print $1, 0, $1284, $1285 }' > Cas12a_ids_and_predictions.tmp
+paste data/CRISPR/TSV/Cas12a_C.tsv results/SLP/CRISPR/Cas12a_C_predictions.tsv | awk 'BEGIN{OFS="\t"}{ print $1, 1, $1284, $1285 }' >> Cas12a_ids_and_predictions.tmp
+
+cat Cas12a_ids_and_predictions.tmp | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/Cas12a_ids_and_predictions.tsv
+
+rm Cas12a_ids_and_predictions.tmp
 ```
 
 ### Regressor with 003 v2 data
