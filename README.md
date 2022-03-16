@@ -526,6 +526,43 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+Extracting temperatures and predictions to a separate file:
+```
+cat results/SLP/003/testing_v2_predictions.tsv | awk 'BEGIN{ OFS="\t"; print "temperature\tprediction" }{ print $3, $4 }' > results/SLP/003/testing_v2_temperature_and_predictions.tsv 
+```
+
+```
+./scripts/003/003_plot_correlation.py results/SLP/003/testing_v2_temperature_and_predictions_normalised.tsv results/SLP/003/testing_v2_real_vs_predictions_normalised.png 0.3 0.9
+```
+
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.884713
+prediction      0.884713    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.817421
+prediction      0.817421    1.000000
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 30.0)): 
+0.6326904902140469
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 40.0)): 
+0.8447122257452042
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 50.0)): 
+0.8478352572043204
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 60.00000000000001)): 
+0.8438221718870992
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 70.0)): 
+0.5435905683296942
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 80.0)): 
+0.43687868240795935
+
 ### Checking 003 prediction accuracies per organism
 
 It was interesting to check how accurately the classifying model predicts thermostability class within each organism. To make 
@@ -720,7 +757,7 @@ Writing to FASTA file was done. Headers in FASTA contain the sequence ID and the
 ./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv results/SLP/CRISPR/C2EP_kmers_predictions.fasta
 ```
 
-The additional flow was decided to perform for kmers of length 200, 400, and 600. Due to high computations required, the flow was decided
+The additional flow was decided to perform for kmers of length **200, 400, and 600**. Due to high computations required, the flow was decided
 to be done from length of 600.
 
 ```
@@ -737,7 +774,24 @@ Job name was changed to C2EP_kmers_600 and the following command was run to gene
 sbatch --array=1-18 --output=data/CRISPR/slurm/C2EP_kmers_600.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
+Saving embeddings to NPZ and TSV files:
+```
+./scripts/CRISPR/C2EP_kmers_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
+```
 
+Inference making:
+```
+./scripts/CRISPR/C2EP_kmers_classificator.py -n data/CRISPR/NPZ/C2EP_kmers_600_embeddings.npz -o results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv
+```
+
+Result processing:
+```
+paste data/CRISPR/TSV/C2EP_kmers_600_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv | awk 'BEGIN{OFS="\t"}gsub("-", "\t", $1){ print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/C2EP_kmers_600_ids_and_predictions.tsv
+```
+
+```
+./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_600_ids_and_predictions.tsv results/SLP/CRISPR/C2EP_kmers_600_predictions.fasta
+```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
