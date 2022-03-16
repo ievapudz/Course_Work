@@ -1,11 +1,11 @@
 #!/usr/bin/env python3.7
 
-# A script that saves C2EP kmers sequences embeddings to
-# NPZ file.
+# A script that saves sequences (testing) embeddings to
+# NPZ and TSV files.
 # It has to be run after embeddings were generated.
 
 # Example usage:
-# ./scripts/CRISPR/C2EP_kmers_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta 
+# ./testing_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta 
 # -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
 
 import sys
