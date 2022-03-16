@@ -720,7 +720,7 @@ sbatch --array=1-12 --output=data/CRISPR/slurm/C2EP_kmers.part-%a.slurm-%A_%a.ou
 
 Saving embeddings to NPZ and TSV files:
 ```
-./scripts/CRISPR/C2EP_kmers_embeddings.py > data/CRISPR/TSV/C2EP_kmers_embeddings.tsv
+./scripts/CRISPR/testing_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
 ```
 
 Inference making:
@@ -776,7 +776,7 @@ sbatch --array=1-18 --output=data/CRISPR/slurm/C2EP_kmers_600.part-%a.slurm-%A_%
 
 Saving embeddings to NPZ and TSV files:
 ```
-./scripts/CRISPR/C2EP_kmers_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
+./scripts/CRISPR/testing_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
 ```
 
 Inference making:
@@ -872,6 +872,12 @@ The commands that were run to produce embeddings for sequences:
 ```
 sbatch --output=data/CRISPR/slurm/Cas12a_N.out scripts/CRISPR/Cas12a_N_embeddings.sh
 sbatch --output=data/CRISPR/slurm/Cas12a_C.out scripts/CRISPR/Cas12a_C_embeddings.sh
+```
+
+Command used to save embeddings to NPZ and TSV files:
+```
+./scripts/testing_embeddings.py -f data/CRISPR/FASTA/Cas12a/Cas12a_N.fasta -e data/CRISPR/EMB_ESM1b/Cas12a_N/ -o data/CRISPR/Cas12a_N
+./scripts/testing_embeddings.py -f data/CRISPR/FASTA/Cas12a/Cas12a_C.fasta -e data/CRISPR/EMB_ESM1b/Cas12a_C/ -o data/CRISPR/Cas12a_C
 ```
 
 ### Regressor with 003 v2 data
