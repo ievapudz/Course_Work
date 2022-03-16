@@ -854,6 +854,15 @@ paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_pr
 There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
 the joint prediction always matched the separately produced predictions if these were equal. 
 
+```
+paste data/CRISPR/TSV/Cas12b_N_embeddings.tsv results/SLP/CRISPR/Cas12b_N_predictions.tsv | awk 'BEGIN{OFS="\t"}{ print $1, 0, $1284, $1285 }' > Cas12b_ids_and_predictions.tmp
+paste data/CRISPR/TSV/Cas12b_C_embeddings.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv | awk 'BEGIN{OFS="\t"}{ print $1, 1, $1284, $1285 }' >> Cas12b_ids_and_predictions.tmp
+
+cat Cas12b_ids_and_predictions.tmp | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/Cas12b_ids_and_predictions.tsv
+
+rm Cas12b_ids_and_predictions.tmp
+```
+
 ### Testing classificator with CRISPR protein sequences (Cas12a)
 
 The data directory: `./data/CRISPR/FASTA/Cas12a`.
