@@ -720,7 +720,7 @@ Writing to FASTA file was done. Headers in FASTA contain the sequence ID and the
 ./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_predictions_sorted.tsv results/SLP/CRISPR/C2EP_kmers_predictions.fasta
 ```
 
-The additional flow was decided to perform for kmers of length 200, 400, and 600. Due to high computations required, the flow was decided
+The additional flow was decided to perform for kmers of length **200, 400, and 600**. Due to high computations required, the flow was decided
 to be done from length of 600.
 
 ```
@@ -737,7 +737,24 @@ Job name was changed to C2EP_kmers_600 and the following command was run to gene
 sbatch --array=1-18 --output=data/CRISPR/slurm/C2EP_kmers_600.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
+Saving embeddings to NPZ and TSV files:
+```
+./scripts/CRISPR/C2EP_kmers_embeddings.py -f data/CRISPR/FASTA/C2EP_kmers_600/C2EP_kmers_600.fasta -e data/CRISPR/EMB_ESM1b/C2EP_kmers_600/ -o data/CRISPR/C2EP_kmers_600
+```
 
+Inference making:
+```
+./scripts/CRISPR/C2EP_kmers_classificator.py -n data/CRISPR/NPZ/C2EP_kmers_600_embeddings.npz -o results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv
+```
+
+Result processing:
+```
+paste data/CRISPR/TSV/C2EP_kmers_600_embeddings.tsv results/SLP/CRISPR/C2EP_kmers_600_predictions.tsv | awk 'BEGIN{OFS="\t"}gsub("-", "\t", $1){ print $1, $1284, $1285 }' | sort -k 1,1 -k 2n,2 > results/SLP/CRISPR/C2EP_kmers_600_ids_and_predictions.tsv
+```
+
+```
+./scripts/CRISPR/C2EP_kmers_processing_results.py results/SLP/CRISPR/C2EP_kmers_600_ids_and_predictions.tsv results/SLP/CRISPR/C2EP_kmers_600_predictions.fasta
+```
 
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
