@@ -737,6 +737,8 @@ Job name was changed to C2EP_kmers_600 and the following command was run to gene
 sbatch --array=1-18 --output=data/CRISPR/slurm/C2EP_kmers_600.part-%a.slurm-%A_%a.out scripts/CRISPR/C2EP_kmers_embeddings_split.sh
 ```
 
+
+
 ### Testing classificator with CRISPR protein sequences (Cas12b)
 
 The data directory: `./data/CRISPR/FASTA/Cas12b`.
@@ -792,12 +794,31 @@ Prediction results were joined with sequences from embeddings creation stage. Th
 
 Comparison of prediction tendency separately and in joint case:
 ```
-paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv
-````
+paste results/SLP/CRISPR/Cas12b_N_predictions.tsv results/SLP/CRISPR/Cas12b_C_predictions.tsv results/SLP/CRISPR/Cas12b_predictions.tsv 
+```
 
 There were no tendency, which domain has the bigger impact on the prediction. There was no case such that: separately 
 the joint prediction always matched the separately produced predictions if these were equal. 
 
+### Testing classificator with CRISPR protein sequences (Cas12a)
+
+The data directory: `./data/CRISPR/FASTA/Cas12a`.
+
+Original files are found in `./data/CRISPR/FASTA/Cas12a/original/`. They contained additional information about the range of
+aminoacids of the whole sequence in FASTA headers, therefore to avoid any difficulties with processing of embeddings PT files and predictions TSV files (that will be produced after inference takes place), the headers were modified:
+
+```
+sed 's/\/.*//g' ./data/CRISPR/FASTA/Cas12a/original/cas12aNterm.fa > ./data/CRISPR/FASTA/Cas12a/Cas12a_N.fasta
+sed 's/\/.*//g' ./data/CRISPR/FASTA/Cas12a/original/cas12aNterm.fa > ./data/CRISPR/FASTA/Cas12a/Cas12a_C.fasta
+```
+
+There were 88 sequences in `Cas12a_N.fasta` and `Cas12a_C.fasta`.
+
+The commands that were run to produce embeddings for sequences:
+```
+sbatch --output=data/CRISPR/slurm/Cas12a_N.out scripts/CRISPR/Cas12a_N_embeddings.sh
+sbatch --output=data/CRISPR/slurm/Cas12a_C.out scripts/CRISPR/Cas12a_C_embeddings.sh
+```
 
 ### Regressor with 003 v2 data
 
