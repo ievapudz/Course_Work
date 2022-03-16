@@ -526,6 +526,43 @@ and a column of predictions (values from 0 to 1). The function was called in scr
 
 MCC for 003 v2 testing was: 0.8478.
 
+Extracting temperatures and predictions to a separate file:
+```
+cat results/SLP/003/testing_v2_predictions.tsv | awk 'BEGIN{ OFS="\t"; print "temperature\tprediction" }{ print $3, $4 }' > results/SLP/003/testing_v2_temperature_and_predictions.tsv 
+```
+
+```
+./scripts/003/003_plot_correlation.py results/SLP/003/testing_v2_temperature_and_predictions_normalised.tsv results/SLP/003/testing_v2_real_vs_predictions_normalised.png 0.3 0.9
+```
+
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.884713
+prediction      0.884713    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.817421
+prediction      0.817421    1.000000
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 30.0)): 
+0.6326904902140469
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 40.0)): 
+0.8447122257452042
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 50.0)): 
+0.8478352572043204
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 60.00000000000001)): 
+0.8438221718870992
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 70.0)): 
+0.5435905683296942
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 80.0)): 
+0.43687868240795935
+
 ### Checking 003 prediction accuracies per organism
 
 It was interesting to check how accurately the classifying model predicts thermostability class within each organism. To make 
