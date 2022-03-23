@@ -1187,14 +1187,14 @@ Precision:      0.912861972659121
 Recall: 0.9598454404945904
 Area under the curve:   0.9347204997873428
 
-### Dataset for SLP testing (004)
+### Dataset for SLP testing (cd_hit)
 
 This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
 (version 4.8.1).
 
-The FASTA file with all embedded sequences (423127) from 003 dataset (`data/004/FASTA/004.fasta`) was composed:
+The FASTA file with all embedded sequences (423127) from 003 dataset (`data/cd_hit/FASTA/cd_hit.fasta`) was composed:
 ```
-./scripts/004/004_filtered_FASTA.py > data/004/FASTA/004.fasta
+./scripts/cd_hit/cd_hit_filtered_FASTA.py > data/cd_hit/FASTA/cd_hit.fasta
 ```
 
 The clusters were made using `cd-hit` program. 
@@ -1209,14 +1209,14 @@ Option meanings :
 ```
 conda activate cd-hit
 
-cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_90.fasta
-cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_100.fasta
+cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_90.fasta
+cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_100.fasta
 ```
 
 | File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
 |---------------------------------|---------------|------------------------|------------------------|
-| data/004/FASTA/004_c_90.fasta   |      391795   |                     51 |                    111 |
-| data/004/FASTA/004_c_100.fasta  |      418958   |                    TBU |                    TBU |
+| data/cd_hit/FASTA/cd_hit_c_90.fasta   |      391795   |                     51 |                    111 |
+| data/cd_hit/FASTA/cd_hit_c_100.fasta  |      418958   |                    TBU |                    TBU |
 
 
 ## Tasks to do
