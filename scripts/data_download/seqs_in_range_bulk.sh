@@ -16,10 +16,10 @@ for((i=${FIRST};i<=${SECOND};i++));
 do
 	if ! [ $i -eq 0 ]
 	then
-		echo "^$i${STEP}_*";
-		./scripts/data_download/seqs_in_range.sh ${DIR} "^$i${STEP}_*" ${THRESHOLD};
+		echo "^$i${STEP}_.*";
+		./scripts/data_download/seqs_in_range.sh ${DIR} "^$i${STEP}_.*" ${THRESHOLD};
 	else
-		echo "^${STEP}_*";
-		./scripts/data_download/seqs_in_range.sh ${DIR} "^${STEP}_*" ${THRESHOLD};
+		echo "^${STEP}_.*";
+		./scripts/data_download/seqs_in_range.sh ${DIR} "^${STEP}_.*" ${THRESHOLD};
 	fi
 done
