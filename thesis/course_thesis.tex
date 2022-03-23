@@ -73,7 +73,7 @@
 	task to train the language model can be excluded from the development of 
 	the application model.
 
-	Since proteins can be represented in aminoacid sequences assumed as a 
+	Since proteins can be represented in amino acid sequences assumed as a 
 	particular language, there are protein language models – models trained on 
 	protein sequences – that provide embeddings as output. The multi-dimensional 
 	vectors are transferred for the application neural network as its input to 
@@ -81,7 +81,7 @@
 	suitable to solve the specific biological task.
 
 	This work presents a novel way to predict thermal stability of proteins. 
-	The solution is a feed- forward neural network (FNN). To train the FNN, 
+	The solution is a feed-forward neural network (FNN). To train the FNN, 
 	the evolutionary scale model 1b (ESM-1b) (Rives et al. 2021) is used to 
 	generate embeddings for proteins of organisms with annotated growth 
 	temperatures (Engqvist 2018). The model 
@@ -97,7 +97,7 @@
 
 	Thermostability classes were created by setting the threshold of 
 	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
-	than the given threshold should be assigned to class '0', whereas the 
+	than the given threshold should be assigned to class '0' and the 
 	remaining ones compose the class '1'. 
 
 	\subsection{ESM-1b embeddings}
@@ -111,20 +111,21 @@
 	ESM-1b is one of evolutionary scale models trained by Facebook Research 
 	(Rives et al. 2021). The model has 33 layers and 650 million parameters. 
 	The model was trained in an 
-	unsupervised fashion on UniRef50 dataset (March 28, 2018). In order to ensure
+	unsupervised fashion on UniRef50 dataset (accessed March 28, 2018). In order to ensure
 	determinism in the validation set, authors removed protein sequences that
-	were longer than 1024 aminoacids. 
+	were longer than 1024 amino acids. 
 
 	The authors made a script to extract model's embeddings available in the 
 	repository "Evolutionary Scale Modeling". The script allows to choose 
 	from which model and layer embeddings will be taken, what embeddings 
-	(mean, per aminoacid, or beginning of the sequence token) to keep. In the
-	result of using the script, a 1280 dimensional vector for protein is generated.
+	(mean, per amino acid, or beginning of the sequence token) to keep. In the
+	result of using the script, a 1280 dimensional vector for each protein is 
+	generated.
 	
-	The fact that sequences longer than 1024 aminoacids were removed from the 
+	The fact that sequences longer than 1024 amino acids were removed from the 
 	validation dataset for ESM-1b model's training implies to the limitation of 
 	model's embeddings, which cannot be generated for sequences longer than 
-	1024 aminoacids. For this reason, various methods to get the most accurate 
+	1024 amino acids. For this reason, various methods to get the most accurate 
 	prediction for longer sequences were tried.
 
 	\newpage
@@ -188,13 +189,20 @@
 	of the dataset of 21458 annotated organisms (Engqvist 2018). 
 	
 	Requirements for '003' dataset were: the dataset needed to be balanced and a
-	single taxonomy identifier can be apparent only in either training, validation,
-	or testing dataset.
+	single taxonomy identifier could be apparent only in either training, validation,
+	or testing dataset. 
+	
+	To make the dataset balanced, 216595 sequences from 51 proteomes taken 
+	for the class '0' and 212729 sequences from 111 proteomes of the class '1' 
+	(Table \ref{table:proteomes003}, Table \ref{table:sequences003}).
+
+	Proportions that were chosen to divide classes of '003'
+	dataset were 70\%, 15\%, and 15\% for training, validation, and testing
+	sets respectively.
 
 	\begin{table}[h!]
 		\caption{Numbers of different proteomes that compose training, 
 		validation, and testing datasets}
-		\label{table:1} 
 		\vspace{0.2cm}
 		\centering
 		\begin{tabular}{ | c | c | c | }
@@ -208,12 +216,12 @@
 			Testing & 11 & 17 \\
 			\hline   
 		\end{tabular}
+		\label{table:proteomes003}
 	\end{table}
 
 	\begin{table}[h!]
-		\caption{Numbers of aminoacid sequences that compose training, 
+		\caption{Numbers of amino acid sequences that compose training, 
 		validation, and testing datasets}
-		\label{table:2} 
 		\vspace{0.2cm}
 		\centering
 		\begin{tabular}{ | c | c | c | }
@@ -227,7 +235,64 @@
 			Testing & 38263 & 36245 \\
 			\hline    
 		\end{tabular}
+		\label{table:sequences003}
 	\end{table}
+
+	\subsection{Calculating embeddings}
+
+	The final layer of ESM-1b model was used to generate protein embeddings
+	taken as input to the classification neural network. For training, validation,
+	and initial testing stages embeddings averaged over the full sequence were
+	chosen. These embeddings were vectors of 1280 dimensions.
+
+	\subsection{Processing generated embeddings}
+
+	As it was mentioned in previous sections, ESM-1b embeddings can be 
+	calculated only for sequences that are not longer than 1024 amino acids.
+	Therefore, after the generation of embeddings, sequences without embeddings 
+	were filtered out from the initial dataset. The final dataset consisted
+	of 423127 embeddings (212144 of class '0' and 210983 of class '1') (Table 
+	\ref{table:embeddings003}).
+
+	\begin{table}[h!]
+		\caption{Numbers of embeddings that compose training, 
+		validation, and testing datasets}
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ | c | c | c | }
+			\hline 
+			& Class '0' & Class '1' \\
+			\hline 
+			Training & 141602 & 142707 \\
+			\hline  
+			Validation & 32793 & 32363 \\
+			\hline 
+			Testing & 37749 & 35913 \\
+			\hline    
+		\end{tabular}
+		\label{table:embeddings003}
+	\end{table}
+
+	These embeddings were saved to NPZ and TSV files. NPZ files are binary files
+	that are used to load sequence representations to the model. TSV files with embedding vectors
+	were created for a human-readable record and analysis with other tools. TSV files
+	were made headerless with columns representing the following information:
+
+	\begin{itemize}
+		\item \#0 - Taxonomy ID of the organism, to which the sequence belongs
+		\item \#1 - Accession ID of the sequence
+		\item \#2 - Length of the sequence
+		\item \#3 - Temperature label
+		\item \#4 - \#1284 Components of embeddings
+	  \end{itemize}
+
+	\subsection{Visualising embeddings}
+
+	Calculated embeddings were visualised using principal component analysis (PCA)
+	from \textit{Scikit-Learn Python} library (version 0.24.2). 
+	
+	Additionally, \textit{Python} minimum-distortion embedding (\textit{PyMDE}) 
+	library (version 0.1.5) was used to visualise datasets of embeddings.
 
 	\newpage
 

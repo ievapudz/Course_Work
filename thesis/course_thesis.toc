@@ -3,5 +3,8 @@
 \contentsline {subsection}{ESM-1b embeddings}{5}{section*.4}%
 \contentsline {section}{Methods}{6}{section*.5}%
 \contentsline {subsection}{Collecting data}{6}{section*.6}%
-\contentsline {section}{Results}{8}{section*.7}%
-\contentsline {section}{Conclusions}{8}{section*.8}%
+\contentsline {subsection}{Calculating embeddings}{8}{section*.7}%
+\contentsline {subsection}{Processing generated embeddings}{8}{section*.8}%
+\contentsline {subsection}{Visualising embeddings}{9}{section*.9}%
+\contentsline {section}{Results}{10}{section*.10}%
+\contentsline {section}{Conclusions}{10}{section*.11}%
