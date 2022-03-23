@@ -99,7 +99,7 @@ model.eval()
 print('Inference process begins')
 
 unlabelled_test_epoch(model, input_loader, 0.5, 
-                      file_for_predictions=options.output+'.tsv',
+                      file_for_predictions=options.output+'_predictions.tsv',
                       binary_predictions_only=False)
 
 print('Inference process has finished')
