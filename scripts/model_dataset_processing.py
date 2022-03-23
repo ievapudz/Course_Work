@@ -1,5 +1,7 @@
 import numpy
 import torch
+import sys
+import os
 
 # A funtion that loads embeddings to dictionary of numpy arrays with according keywords
 # Example keywords: ['x_train', 'y_train']
@@ -72,3 +74,9 @@ def standard_deviation(dataset, mean):
         var += (float(dataset[i].item() - mean))**2
     var *= float(1/N)
     return var**(0.5)
+
+# Function that checks whether the dataset successfully fills up with proteomes
+def fill_model_sets(directory, range_regex, max_seq_in_prot, capacity, 
+					proportions, threshold):
+	proteomes = os.system('ls '+directory+' | egrep "'+range_regex+'"')
+	print(proteomes) 
