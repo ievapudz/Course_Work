@@ -75,8 +75,3 @@ def standard_deviation(dataset, mean):
     var *= float(1/N)
     return var**(0.5)
 
-# Function that checks whether the dataset successfully fills up with proteomes
-def fill_model_sets(directory, range_regex, max_seq_in_prot, capacity, 
-					proportions, threshold):
-	proteomes = os.system('ls '+directory+' | egrep "'+range_regex+'"')
-	print(proteomes) 
