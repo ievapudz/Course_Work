@@ -1218,6 +1218,32 @@ cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/
 | data/cd_hit/FASTA/cd_hit_c_90.fasta   |      391795   |                     51 |                    111 |
 | data/cd_hit/FASTA/cd_hit_c_100.fasta  |      418958   |                    TBU |                    TBU |
 
+## Improved dataset (004)
+
+The main challenge of this part was to fill datasets with equal number of sequences in each temperature range, and keep the restriction 
+of non-repretitive taxonomy idenitifers among the model's datasets.
+
+```
+(py37_pandas) [ievap@master Protein_Classificator]$ ./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000
+1000    ^[0-9]_.*       5000    0       0       failure
+1000    ^1[0-4]_.*      17500   3750    3750    success
+1000    ^1[5-9]_.*      17500   3750    3750    success
+1000    ^2[0-4]_.*      17500   3750    3750    success
+1000    ^2[5-9]_.*      17500   3750    3750    success
+1000    ^3[0-4]_.*      17500   3750    3750    success
+1000    ^3[5-9]_.*      17500   3750    3750    success
+1000    ^4[0-4]_.*      17500   3750    3750    success
+1000    ^4[5-9]_.*      17500   3750    3750    success
+1000    ^5[0-4]_.*      17500   3750    3750    success
+1000    ^5[5-9]_.*      17500   3750    3750    success
+1000    ^6[0-4]_.*      17500   3750    3750    success
+1000    ^6[5-9]_.*      17500   3750    3750    success
+1000    ^7[0-4]_.*      17500   3750    3750    success
+1000    ^7[5-9]_.*      13276   0       0       failure
+1000    ^8[0-4]_.*      16970   0       0       failure
+1000    ^8[5-9]_.*      14600   0       0       failure
+1000    ^9[0-9]_.*      8925    0       0       failure
+```
 
 ## Tasks to do
 
