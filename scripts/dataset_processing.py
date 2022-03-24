@@ -330,9 +330,12 @@ def join_embeddings(data, keys, dims=1280):
 # Checking, whether the dataset successfully fills up with proteomes
 def fill_model_sets(directory, range_regex, max_seq_in_prot, capacity,
                     proportions, threshold):
+
+    random.seed(27)
+
     tmp_file = 'out.tmp'
-    command_code = os.system('ls '+directory+' | egrep "'+range_regex+'" > '+\
-                            tmp_file)
+    command_code = os.system('ls '+directory+' | egrep "'+range_regex+'" > '+tmp_file)
+    
     proteomes_str = ''
     if(command_code == 0):
         file_handle = open(tmp_file, 'r')
@@ -342,6 +345,7 @@ def fill_model_sets(directory, range_regex, max_seq_in_prot, capacity,
 
     proteomes = proteomes_str.split('\n')
     proteomes.remove('')
+    random.shuffle(proteomes)
 
     set_names = ['train', 'validate', 'test']
     sets = { 
@@ -353,23 +357,32 @@ def fill_model_sets(directory, range_regex, max_seq_in_prot, capacity,
     capacities = [proportion*capacity for proportion in proportions]
     proteomes_track = list(proteomes)
 
-    print('proteome num: '+str(len(proteomes)))
-    for proteome in proteomes:    
-        if(len(proteomes_track) and (proteome in proteomes_track)):
-            for index, record in enumerate(SeqIO.parse(directory+'/'+proteome, "fasta")):
-                if(index < max_seq_in_prot and len(sets[set_names[0]]) < capacities[0]):
-                    record.name = proteome.split('.')[0]
-                    sets[set_names[0]].append(record)
-                elif(len(sets[set_names[0]]) >= capacities[0]):
-                    #print('breaking because filled')
-                    proteomes_track.remove(proteome)
-                    break                  
-                elif(index >= max_seq_in_prot):
-                    #print('breaking because max_prot reached. leftover proteomes'+str(proteomes))
-                    proteomes_track.remove(proteome)
-                    break
-    
+    for i_cap, cap in enumerate(capacities):
+        for proteome in proteomes:    
+            if(proteome in proteomes_track and len(sets[set_names[i_cap]]) < cap):
+                for index, record in enumerate(SeqIO.parse(directory+'/'+proteome, "fasta")):
+                    if(index < max_seq_in_prot and len(sets[set_names[i_cap]]) < cap):
+                        record.name = proteome.split('.')[0]
+                        sets[set_names[i_cap]].append(record)
+                    elif(len(sets[set_names[i_cap]]) >= cap):
+                        proteomes_track.remove(proteome)
+                        break                  
+                    elif(index >= max_seq_in_prot):
+                        proteomes_track.remove(proteome)
+                        break
+            elif(len(sets[set_names[i_cap]]) == cap):
+                break
+   
+    print('training') 
     for record in sets['train']:
+        print(record.name)
+
+    print('validation')
+    for record in sets['validate']:
+        print(record.name)
+
+    print('testing')
+    for record in sets['test']:
         print(record.name)
       
     #print(str(max_seq_in_prot)+'\t'+range_regex+'\t'+str(len(sets['train']))+'\t'+\
