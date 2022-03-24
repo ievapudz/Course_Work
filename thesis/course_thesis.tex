@@ -375,11 +375,62 @@
 			\hline 
 			Recall & 0.9511 \\
 			\hline    
-			AUC & 0.92 \\
+			ROC AUC & 0.92 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsValidation4}
 	\end{table}
+
+	\newpage
+
+	\subsection{Testing of the model}
+
+	The model was tested with the testing subset of '003' dataset that was
+	not exposed to the model before the testing stage. 
+
+	\begin{table}[h!]
+		\caption{Confusion matrix in the testing phase}
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ | c | c | c | }
+			\hline 
+			& 0 & 1 \\
+			\hline  
+			0 & 34933 & 2813 \\
+			\hline 
+			1 & 2788 & 33122 \\
+			\hline    
+		\end{tabular}
+		\label{table:SLP003confusionMatrixTesting}
+	\end{table}
+
+	\begin{table}[h!]
+		\caption{Model performance metrics in the testing phase}
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ | c | c | }
+			\hline 
+			Accuracy & 0.924 \\
+			\hline  
+			Precision & 0.922 \\
+			\hline 
+			Recall & 0.922 \\
+			\hline    
+			ROC AUC & 0.924 \\
+			\hline 
+			MCC & 0.845 \\
+			\hline 
+		\end{tabular}
+		\label{table:SLP003metricsTesting}
+	\end{table}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.7]{testing_0_3068.png}
+
+		\caption{ ROC curve after the testing stage}
+		\label{figure:SLP003testing}
+	\end{figure}
 
 	\newpage
 

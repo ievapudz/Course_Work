@@ -7,4 +7,5 @@
 \contentsline {subsection}{Processing generated embeddings}{6}{section*.8}%
 \contentsline {subsection}{Visualising embeddings}{7}{section*.9}%
 \contentsline {subsection}{Training and validation of the neural network}{8}{section*.10}%
-\contentsline {section}{Conclusions}{9}{section*.11}%
+\contentsline {subsection}{Testing of the model}{9}{section*.11}%
+\contentsline {section}{Conclusions}{10}{section*.12}%
