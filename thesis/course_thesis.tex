@@ -3,8 +3,9 @@
 \usepackage{indentfirst}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
 
-\graphicspath{ {../data/003/visualisation_v2/} }
+\graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} }
 
 \setcounter{secnumdepth}{0}
 
@@ -325,9 +326,62 @@
 
 	\newpage
 
-	\section{Results}
+	\subsection{Training and validation of the neural network}
 
-	\dots
+	At first, it was decided to try training the neural network built of
+	the most simple architecture - a single layer perceptron (SLP). The input of the 
+	layer is 1280-dimensional - it takes the input of protein embeddings - and the 
+	output is a binary label that represents the thermostability class. The 
+	activation function was chosen to be sigmoid and loss function binary cross
+	entropy. Adam optimizer with learning rate of 0.0001 was chosen.
+
+	The model was trained and validated in 5 epochs taking mini-batch size of 24
+	embeddings.
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.7]{validation_4_2713.png}
+
+		\caption{ ROC curves for each validation epoch - the orange 
+		one denotes the curve of the fifth epoch}
+		\label{figure:SLP003validation4}
+	\end{figure}
+
+	\begin{table}[h!]
+		\caption{Confusion matrix after the fifth validation epoch}
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ | c | c | c | }
+			\hline 
+			& 0 & 1 \\
+			\hline  
+			0 & 32793 & 3636 \\
+			\hline 
+			1 & 1582 & 30770 \\
+			\hline    
+		\end{tabular}
+		\label{table:SLP003confusionMatrixValidation4}
+	\end{table}
+
+	\begin{table}[h!]
+		\caption{Model performance metrics after the fifth validation epoch}
+		\vspace{0.2cm}
+		\centering
+		\begin{tabular}{ | c | c | }
+			\hline 
+			Accuracy & 0.91989 \\
+			\hline  
+			Precision & 0.89432 \\
+			\hline 
+			Recall & 0.9511 \\
+			\hline    
+			AUC & 0.92 \\
+			\hline 
+		\end{tabular}
+		\label{table:SLP003metricsValidation4}
+	\end{table}
+
+	\newpage
 
 	\section{Conclusions}
 
