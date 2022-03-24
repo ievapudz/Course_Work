@@ -4,6 +4,8 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 
+\graphicspath{ {../data/003/visualisation_v2/} }
+
 \setcounter{secnumdepth}{0}
 
 \begin{document}
@@ -275,7 +277,7 @@
 
 	These embeddings were saved to NPZ and TSV files. NPZ files are binary files
 	that are used to load sequence representations to the model. TSV files with embedding vectors
-	were created for a human-readable record and analysis with other tools. TSV files
+	were created for a human-readable record and analysis with other tools. The TSV files
 	were made headerless with columns representing the following information:
 
 	\begin{itemize}
@@ -289,10 +291,37 @@
 	\subsection{Visualising embeddings}
 
 	Calculated embeddings were visualised using principal component analysis (PCA)
-	from \textit{Scikit-Learn Python} library (version 0.24.2). 
+	from \textit{Scikit-Learn Python} library (version 0.24.2) (Figure \ref{figure:ScikitPCAembeddings003}). 
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.3]{003_train_v2_PCA.png}
+		\includegraphics[scale=0.3]{003_validate_v2_PCA.png}
+
+		\includegraphics[scale=0.3]{003_test_v2_PCA.png}
+
+		\caption{PCA visualisations of '003' model datasets' embeddings: training set
+				in the upper left, validation set in the upper right, and 
+				testing set in the lower center}
+		\label{figure:ScikitPCAembeddings003}
+	\end{figure}
 	
 	Additionally, \textit{Python} minimum-distortion embedding (\textit{PyMDE}) 
-	library (version 0.1.5) was used to visualise datasets of embeddings.
+	library (version 0.1.5) was used to visualise datasets of embeddings 
+	(Figure \ref{figure:PyMDEPCAembeddings003}).
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.3]{003_train_v2_MDE_PCA.png}
+		\includegraphics[scale=0.3]{003_validate_v2_MDE_PCA.png}
+
+		\includegraphics[scale=0.3]{003_test_v2_MDE_PCA.png}
+
+		\caption{\textit{PyMDE} PCA visualisations of '003' model datasets' embeddings: training set
+				in the upper left, validation set in the upper right, and 
+				testing set in the lower center}
+		\label{figure:PyMDEPCAembeddings003}
+	\end{figure}
 
 	\newpage
 
