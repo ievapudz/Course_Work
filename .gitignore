@@ -18,6 +18,9 @@ data/CRISPR/FASTA/C2EP/C2EP_with_stop.fasta
 .profile
 scripts/__pycache__/
 
+thermoclass/__pycache__/
+thermoclass/emb/
+
 .ipynb_checkpoints/
 The_COINS/
 data/001/EMB_ESM1b/

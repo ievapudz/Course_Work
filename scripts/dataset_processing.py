@@ -326,3 +326,102 @@ def join_embeddings(data, keys, dims=1280):
         joined_Xs[i] = Xs_accum
 
     return [joined_Xs, joined_Ys]
+
+def get_list_of_proteomes(directory, range_regex):
+    random.seed(27)
+
+    tmp_file = 'out.tmp'
+    command_code = os.system('ls '+directory+' | egrep "'+range_regex+'" > '+tmp_file)
+
+    proteomes_str = ''
+    if(command_code == 0):
+        file_handle = open(tmp_file, 'r')
+        proteomes_str = file_handle.read()
+        file_handle.close()
+        os.remove(tmp_file)
+
+    proteomes = proteomes_str.split('\n')
+    proteomes.remove('')
+    random.shuffle(proteomes)
+
+    return proteomes
+
+# Filtering sequences in the proteomes by length threshold
+def filter_sequences_by_length_before_embeddings(proteomes, directory, threshold=1022):
+    filtered_sequences = {}
+
+    for proteome in proteomes:
+        filtered_sequences[proteome] = []
+        for index, record in enumerate(SeqIO.parse(directory+'/'+proteome, "fasta")):
+            if(len(record.seq) <= threshold):
+                record.name = proteome.split('.')[0]
+                filtered_sequences[proteome].append(record)
+
+    return filtered_sequences
+
+# Checking, whether the dataset successfully fills up with proteomes
+def fill_model_sets(proteomes, filtered_sequences, range_regex, max_seq_in_prot, capacity,
+                    proportions, threshold):
+
+    set_names = ['train', 'validate', 'test']
+    sets = { 
+        set_names[0]: [],
+        set_names[1]: [],
+        set_names[2]: []
+    }
+
+    capacities = [proportion*capacity for proportion in proportions]
+    proteomes_track = list(proteomes)
+
+    for i_cap, cap in enumerate(capacities):
+        for proteome in proteomes:    
+            if(proteome in proteomes_track and len(sets[set_names[i_cap]]) < cap):
+                for index, record in enumerate(filtered_sequences[proteome]):
+                    if(index < len(filtered_sequences[proteome]) and index < max_seq_in_prot and len(sets[set_names[i_cap]]) < cap):
+                        record.name = proteome.split('.')[0]
+                        sets[set_names[i_cap]].append(record)
+                    elif(len(sets[set_names[i_cap]]) >= cap):
+                        if(proteome in proteomes_track):
+                            proteomes_track.remove(proteome)
+                        break                  
+                    elif(index >= max_seq_in_prot):
+                        if(proteome in proteomes_track):
+                            proteomes_track.remove(proteome)
+                        break
+                if(len(filtered_sequences[proteome]) < max_seq_in_prot):
+                    if(proteome in proteomes_track):
+                        proteomes_track.remove(proteome)
+                    continue
+            elif(len(sets[set_names[i_cap]]) == cap):
+                break
+  
+    prots_in_sets = [ set(), set(), set() ]
+
+    for i, name in enumerate(set_names):
+        for record in sets[name]:
+            prots_in_sets[i].add(record.name)
+ 
+    fill_success = 'success'
+    for i, name in enumerate(set_names):
+        if(len(sets[name]) < capacities[i]):
+            fill_success = 'failure'
+            break
+    """
+    print('training') 
+    for record in sets['train']:
+        print(record.name)
+
+    print('validation')
+    for record in sets['validate']:
+        print(record.name)
+
+    print('testing')
+    for record in sets['test']:
+        print(record.name)
+    """
+
+    print(str(max_seq_in_prot)+'\t'+range_regex+'\t'+str(len(sets['train']))+'\t'+\
+          str(len(sets['validate']))+'\t'+str(len(sets['test']))+'\t'+fill_success+'\t'+\
+          str(len(prots_in_sets[0]))+'\t'+str(len(prots_in_sets[1]))+'\t'+\
+          str(len(prots_in_sets[2])))
+	

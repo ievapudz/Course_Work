@@ -72,6 +72,22 @@ class MLP_2_640(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
+class MLP_3_640(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(1280, 640),
+            nn.ReLU(),
+            nn.Linear(640, 640),
+            nn.ReLU(),
+            nn.Linear(640, 1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.layers(x)
+
 class MLP_3_640_bn1(nn.Module):
 
     # A model with batch normalisation included.
@@ -92,7 +108,7 @@ class MLP_3_640_bn1(nn.Module):
 class MLP_3_640_do(nn.Module):
 
     # A model with a dropout layer included
-    # before the hidden layer..
+    # before the hidden layer.
 
     def __init__(self):
         super().__init__()
@@ -107,3 +123,22 @@ class MLP_3_640_do(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
+class MLP_4_640_do(nn.Module):
+
+    # A model with a dropout layer included
+    # between the hidden layers.
+
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(1280, 640),
+            nn.ReLU(),
+            nn.Dropout(p=0.1),
+            nn.Linear(640, 640),
+            nn.ReLU(),
+            nn.Linear(640, 1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.layers(x)
