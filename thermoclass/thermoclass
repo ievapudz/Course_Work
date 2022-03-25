@@ -63,6 +63,7 @@ if(options.generate):
               '--include mean'
 	if(options.per_tok):
 		esm_extract_command += ' per_tok'
+		print(esm_extract_command)
 	os.system(esm_extract_command)
 	print('Embeddings calculated')
 
