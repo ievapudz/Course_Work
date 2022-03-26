@@ -59,7 +59,7 @@ if(options.version):
 if(options.generate):
 	print('Calculating embeddings')
 	esm_extract_command = 'python3 '+options.extract+' esm1b_t33_650M_UR50S '+\
-              options.fasta+' '+options.embeddings+' --repr_layers 0 32 33 '+\
+              options.fasta+' '+options.embeddings+' --repr_layers 33 '+\
               '--include mean'
 	if(options.per_tok):
 		esm_extract_command += ' per_tok'
