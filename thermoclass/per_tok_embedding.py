@@ -21,6 +21,6 @@ data = create_testing_data(fasta_file, emb_dir, emb_case=1, labelled=False)
 
 filter_sequences(data, 'test', data['test']['embeddings'], labelled=False)
 
-[Xs_input_tensor, Ys_input_tensor] = get_ESM_embeddings_as_tensor(data, ['test'], emb_key='representations')
+[Xs_input_tensor, Ys_input_tensor] = get_ESM_embeddings_as_tensor(data, ['test'], emb_key='mean_representations')
 
-print(len(Xs_input_tensor), len(Ys_input_tensor))
+

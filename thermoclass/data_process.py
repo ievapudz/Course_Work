@@ -77,7 +77,7 @@ def filter_sequences(data, key, path_to_embeddings, labelled=True):
 	data[key]['Y_filtered'] = []
 
 	for i in range(len(data[key]['X'])):
-		if(data[key]['X'][i].id in emb_set):
+		if(data[key]['X'][i].name in emb_set):
 			data[key]['X_filtered'].append(data[key]['X'][i])
 			if(labelled):
 				data[key]['Y_filtered'].append(data[key]['Y'][i])
@@ -100,31 +100,16 @@ def get_ESM_embeddings_as_list(data, keys, emb_key='mean_representations'):
 		for i in range(len(data[key]['X_filtered'])):
 			Ys.append(data[key]['Y_filtered'][i])
 
-			file_name = data[key]['X_filtered'][i].id
-			fn = f'{EMB_PATH}/{file_name}.pt'
-			embs = torch.load(fn)
-			Xs.append(embs['mean_representations'][EMB_LAYER])
-	
-	return [Xs, Ys]
-
-# Gathering per_tok ESM embeddings to a list representation
-def get_ESM_per_tok_embeddings_as_list(data, key):
-	# data - dictionary that was created by filter_sequences function.
-	# keys - array of the sets that need to be visualised in one plot.
-	EMB_LAYER = 33
-	Ys = []
-	Xs = []
-
-	for key in keys:
-		EMB_PATH = data[key]['embeddings']
-		for i in range(len(data[key]['X_filtered'])):
-			Ys.append(data[key]['Y_filtered'][i])
-
 			file_name = data[key]['X_filtered'][i].name
 			fn = f'{EMB_PATH}/{file_name}.pt'
 			embs = torch.load(fn)
-			for emb in embs['representations'][EMB_LAYER]:
-				Xs.append(emb)
+			if(emb_key == 'mean_representations'):
+				Xs.append(embs[emb_key][EMB_LAYER])
+			elif(emb_key == 'representations'):
+				for emb in embs[emb_key][EMB_LAYER]:
+					Xs.append(emb)
+	
+	return [Xs, Ys]
 
 # Converting the input list to a tensor
 def get_tensor_from_list(Xs, Ys):
@@ -141,8 +126,8 @@ def get_tensor_from_list(Xs, Ys):
 		return [Xs_tensor, None]
 
 # Converting ESM embeddings to a tensor
-def get_ESM_embeddings_as_tensor(data, keys):
-	[Xs, Ys] = get_ESM_embeddings_as_list(data, keys)
+def get_ESM_embeddings_as_tensor(data, keys, emb_key='mean_representations'):
+	[Xs, Ys] = get_ESM_embeddings_as_list(data, keys, emb_key)
 	[Xs_tensor, Ys_tensor] = get_tensor_from_list(Xs, Ys)
 
 	return [Xs_tensor, Ys_tensor]
