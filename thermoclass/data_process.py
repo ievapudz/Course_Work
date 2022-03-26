@@ -4,6 +4,8 @@ import torch
 import numpy
 from os.path import exists
 from Bio import SeqIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
 from sklearn.utils import shuffle
 
 # Function that returns data object for inference flow
@@ -11,7 +13,9 @@ def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, label
 	# dataset_FASTA - FASTA file with sequences for testing dataset
 	# dataset_embeddings_dir - directory with all generated testing embeddings
 	# labelled - flag to determine whether the data is labelled or not
-
+	# emb_case - determines which type of embeddings the input has
+	#	0 - mean representations of ESM-1b
+	#	1 - per_tok representations of ESM-1b
 	data = {
 		'test': {
 			'X' : [],
@@ -26,6 +30,19 @@ def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, label
 				# Parsing sequences (X dataset) from one dataset 
 				for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
 					data[key]['X'].append(record)
+					if(labelled):
+						data[key]['Y'].append(record.name.split('|')[2])
+					else:
+						data[key]['Y'].append(None)
+	elif(emb_case == 1):
+		for key in data.keys():
+			if(exists(data[key]['FASTA'])):
+				for record in SeqIO.parse(data[key]['FASTA'], "fasta"):
+					for i in range(len(record.seq)):
+						aa_record = SeqRecord(Seq(record.seq[i]), id=record.id+'-'+str(i), 
+												name=record.name,
+												description='Created for thermoclass per_tok flow.')
+						data[key]['X'].append(aa_record)
 					if(labelled):
 						data[key]['Y'].append(record.name.split('|')[2])
 					else:
@@ -71,10 +88,9 @@ def filter_sequences(data, key, path_to_embeddings, labelled=True):
 	os.system(command)
 
 # Gathering ESM embeddings to a list representation
-def get_ESM_embeddings_as_list(data, keys):
+def get_ESM_embeddings_as_list(data, keys, emb_key='mean_representations'):
 	# data - dictionary that was created by filter_sequences function.
 	# keys - array of the sets that need to be visualised in one plot.
-	# output_file_path - path to the output file.
 	EMB_LAYER = 33
 	Ys = []
 	Xs = []
@@ -90,6 +106,25 @@ def get_ESM_embeddings_as_list(data, keys):
 			Xs.append(embs['mean_representations'][EMB_LAYER])
 	
 	return [Xs, Ys]
+
+# Gathering per_tok ESM embeddings to a list representation
+def get_ESM_per_tok_embeddings_as_list(data, key):
+	# data - dictionary that was created by filter_sequences function.
+	# keys - array of the sets that need to be visualised in one plot.
+	EMB_LAYER = 33
+	Ys = []
+	Xs = []
+
+	for key in keys:
+		EMB_PATH = data[key]['embeddings']
+		for i in range(len(data[key]['X_filtered'])):
+			Ys.append(data[key]['Y_filtered'][i])
+
+			file_name = data[key]['X_filtered'][i].name
+			fn = f'{EMB_PATH}/{file_name}.pt'
+			embs = torch.load(fn)
+			for emb in embs['representations'][EMB_LAYER]:
+				Xs.append(emb)
 
 # Converting the input list to a tensor
 def get_tensor_from_list(Xs, Ys):
@@ -154,7 +189,7 @@ def get_id_as_SV(data, index, key, id_index, subkey='X_filtered', sep=',', last_
 	#		0 - taxonomy ID
 	#		1 - protein ID
 	#		2 - temperature label
-	identificator = data[key][subkey][index].name.split('|')[id_index]
+	identificator = data[key][subkey][index].id.split('|')[id_index]
 
 	if last_value:
 		return identificator

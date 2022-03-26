@@ -25,29 +25,29 @@ MODEL = './SLP_003.pt'
 
 parser = OptionParser()
 parser.add_option('--fasta', '-f', dest='fasta',
-                   help='path to the input FASTA file')
+				   help='path to the input FASTA file')
 
 parser.add_option('--generate', '-g', dest='generate', default=False,
-                   action='store_true',
-                   help='set to calculate embeddings for input sequences')
+				   action='store_true',
+				   help='set to calculate embeddings for input sequences')
 
 parser.add_option('--per_tok', '-p', dest='per_tok',
-				   action='store_true', default=False,                   
+				   action='store_true', default=False,				   
 				   help='set to include per_tok representations in the embeddings')
 
 parser.add_option('--extract', dest='extract', 
-                   default='../../programs/esm-0.4.0/extract.py',
-                   help='path to the embeddings extraction script')
+				   default='../../programs/esm-0.4.0/extract.py',
+				   help='path to the embeddings extraction script')
 
 parser.add_option('--version', '-v', dest='version', action='store_true',
-                   default=False,  
-                   help='prints out the version of the program')
+				   default=False,  
+				   help='prints out the version of the program')
 
 parser.add_option('--embeddings', '-e', dest='embeddings', default='./emb/',
-                   help='path to the embeddings directory')
+				   help='path to the embeddings directory')
 
 parser.add_option("--output", "-o", dest="output",
-                   help="output prefix (without extension)")
+				   help="output prefix (without extension)")
 
 (options, args) = parser.parse_args()
 
@@ -59,15 +59,16 @@ if(options.version):
 if(options.generate):
 	print('Calculating embeddings')
 	esm_extract_command = 'python3 '+options.extract+' esm1b_t33_650M_UR50S '+\
-              options.fasta+' '+options.embeddings+' --repr_layers 33 '+\
-              '--include mean'
+			  options.fasta+' '+options.embeddings+' --repr_layers 33 '+\
+			  '--include mean'
 	if(options.per_tok):
 		esm_extract_command += ' per_tok'
 		print(esm_extract_command)
 	os.system(esm_extract_command)
 	print('Embeddings calculated')
 
-	data = create_testing_data(options.fasta, options.embeddings, False)
+	data = create_testing_data(options.fasta, options.embeddings, emb_case=0, 
+								labelled=False)
 
 	filter_sequences(data, 'test', data['test']['embeddings'], False)
 
@@ -76,15 +77,15 @@ if(options.generate):
 
 	print("Saving tensors to NPZ file")
 	save_tensors_as_NPZ([Xs_input_tensor, Ys_input_tensor], 
-                    ['x_input', 'y_input'], 
-                    options.embeddings+options.output+'.npz')
+					['x_input', 'y_input'], 
+					options.embeddings+options.output+'.npz')
 
 	input_tensor = { 'x_input': Xs_input_tensor, 'y_input': Ys_input_tensor }
 
 	print("Saving tensors to a TSV file")
 	print_tensors_as_SV_to_file(data, input_tensor, 'test', ['x_input', 'y_input'],
-                            out_file_name=options.embeddings+options.output+'.tsv', 
-                            sep="\t", labelled=False)
+							out_file_name=options.embeddings+options.output+'.tsv', 
+							sep="\t", labelled=False)
 
 dataset = load_tensor_from_NPZ(options.embeddings+options.output+'.npz', 
 							   ['x_input', 'y_input'])
@@ -100,8 +101,8 @@ model.eval()
 print('Inference process begins')
 
 unlabelled_test_epoch(model, input_loader, 0.5, 
-                      file_for_predictions=options.output+'_predictions.tsv',
-                      binary_predictions_only=False)
+					  file_for_predictions=options.output+'_predictions.tsv',
+					  binary_predictions_only=False)
 
 print('Inference process has finished')
 
