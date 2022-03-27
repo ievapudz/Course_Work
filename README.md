@@ -1223,6 +1223,39 @@ cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/
 The main challenge of this part was to fill datasets with equal number of sequences in each temperature range, and keep the restriction 
 of non-repretitive taxonomy idenitifers among the model's datasets.
 
+# Development of thermoclass
+
+A command to generate mean embeddings:
+```
+./thermoclass -f input.fasta -g -n test0327_mean -o test0327_mean_predictions -e emb/
+```
+
+A command to generate per_tok embeddings:
+```
+./thermoclass -f input.fasta -g -p -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+```
+
+PT files in both cases will include mean embeddings.
+
+If mean embeddings are already generated, the command that can be run:
+```
+./thermoclass -f input.fasta -n test0327_mean -o test0327_mean_predictions -e emb/
+```
+
+If per_tok embeddings are already generated, the command that can be run:
+```
+./thermoclass -f input.fasta -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+```
+
+The latter two commands do not differ in options - in inference stage mean and per_tok embeddings are treated equally.
+It is up to user to know in which file what type of embeddings are placed if program is used without embeddings
+generation (-g option) step.
+
+A command to see how predictions were distributed:
+```
+paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $1, $2, $1284, $1285}' | sort -V | less
+```
+
 ```
 (py37_pandas) [ievap@master Protein_Classificator]$ ./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000
 1000    ^[0-9]_.*       5000    0       0       failure
