@@ -106,9 +106,9 @@ def get_ESM_embeddings_as_list(data, keys, emb_key='mean_representations'):
 			if(emb_key == 'mean_representations'):
 				Xs.append(embs[emb_key][EMB_LAYER])
 			elif(emb_key == 'representations'):
-				for emb in embs[emb_key][EMB_LAYER]:
-					Xs.append(emb)
-	
+				emb_index = data[key]['X_filtered'][i].id.split('-')[-1]
+				Xs.append(embs[emb_key][EMB_LAYER][int(emb_index)])
+
 	return [Xs, Ys]
 
 # Converting the input list to a tensor
@@ -143,6 +143,7 @@ def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor,
 								dim=1280, subkey='X_filtered', out_file_name='',
 								sep=',', labelled=True):
 	file_handle = open(out_file_name, "w")
+	
 	for i in range(len(data_tensor[keys_tensor[0]])):
 		if(labelled):
 			record = get_id_as_SV(data, i, key_data, 0, subkey=subkey, sep=sep) + \
@@ -156,7 +157,7 @@ def print_tensors_as_SV_to_file(data, data_tensor, key_data, keys_tensor,
 												 keys_tensor[0], dim=dim,
 												 sep=sep, last_value=True)
 		else:
-			record = data[key_data][subkey][i].name + sep + \
+			record = data[key_data][subkey][i].id + sep + \
 					data[key_data][subkey][i].seq + sep + \
 					get_sequence_length_as_SV(data, i, key_data, subkey=subkey, sep=sep) + \
 					get_embeddings_tensor_as_SV(data_tensor, i, keys_tensor[0],
@@ -214,6 +215,7 @@ def get_sequence_length_as_SV(data, index, key, subkey='X_filtered',
 	# data - an object with sequences in FASTA format
 	# index - the index of record in data object
 	# key - the chosen key of an inside of data object
+	
 	sequence_length = str(len(data[key][subkey][index].seq))
 	if last_value:
 		return sequence_length
