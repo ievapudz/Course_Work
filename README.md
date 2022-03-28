@@ -1227,24 +1227,29 @@ of non-repretitive taxonomy idenitifers among the model's datasets.
 
 A command to generate mean embeddings:
 ```
-./thermoclass -f input.fasta -g -n test0327_mean -o test0327_mean_predictions -e emb/
+./thermoclass -f input.fasta -g -n emb/test0327_mean.npz -o test0327_mean_predictions -e emb/
 ```
 
 A command to generate per_tok embeddings:
 ```
-./thermoclass -f input.fasta -g -p -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+./thermoclass -f input.fasta -g -p -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
 ```
 
 PT files in both cases will include mean embeddings.
 
 If mean embeddings are already generated, the command that can be run:
 ```
-./thermoclass -f input.fasta -n test0327_mean -o test0327_mean_predictions -e emb/
+./thermoclass -f input.fasta -n emb/test0327_mean.npz -o test0327_mean_predictions -e emb/
 ```
 
 If per_tok embeddings are already generated, the command that can be run:
 ```
-./thermoclass -f input.fasta -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+./thermoclass -f input.fasta -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
+```
+
+The program was run for real data (C2EP) with a command:
+```
+./thermoclass -f ../data/CRISPR/FASTA/C2EP/C2EP.fasta -n ../data/CRISPR/NPZ/C2EP_embeddings.npz -o C2EP_thermoclass_predictions -k 'x_test y_test'
 ```
 
 The latter two commands do not differ in options - in inference stage mean and per_tok embeddings are treated equally.
