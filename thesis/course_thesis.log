@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  13 MAR 2022 20:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  24 MAR 2022 14:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -26,11 +26,11 @@ File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
@@ -61,11 +61,9 @@ Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 \Hy@linkcounter=\count191
 \Hy@pagecounter=\count192
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel languages
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
@@ -73,23 +71,23 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count193
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4192.
-Package hyperref Info: Link nesting OFF on input line 4197.
-Package hyperref Info: Hyper index ON on input line 4200.
-Package hyperref Info: Plain pages OFF on input line 4207.
-Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4445.
+Package hyperref Info: Bookmarks ON on input line 4390.
 \c@Hy@tempcnt=\count194
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4804.
+LaTeX Info: Redefining \url on input line 4749.
 \XeTeXLinkMargin=\dimen140
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -99,15 +97,15 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 \Fld@menulength=\count195
 \Field@Width=\dimen141
 \Fld@charsize=\dimen142
-Package hyperref Info: Hyper figures OFF on input line 6076.
-Package hyperref Info: Link nesting OFF on input line 6081.
-Package hyperref Info: Hyper index ON on input line 6084.
-Package hyperref Info: backreferencing OFF on input line 6091.
-Package hyperref Info: Link coloring OFF on input line 6096.
-Package hyperref Info: Link coloring with OCG OFF on input line 6101.
-Package hyperref Info: PDF/A mode OFF on input line 6106.
-LaTeX Info: Redefining \ref on input line 6146.
-LaTeX Info: Redefining \pageref on input line 6150.
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
@@ -118,7 +116,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
@@ -148,32 +146,49 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
+) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count267
+\Gm@cntv=\count268
+\c@Gm@tempcnt=\count269
+\Gm@bindingoffset=\dimen145
+\Gm@wd@mp=\dimen146
+\Gm@odd@mp=\dimen147
+\Gm@even@mp=\dimen148
+\Gm@layoutwidth=\dimen149
+\Gm@layoutheight=\dimen150
+\Gm@layouthoffset=\dimen151
+\Gm@layoutvoffset=\dimen152
+\Gm@dimlist=\toks17
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count267
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count270
 \l__pdf_internal_box=\box50
 ) (./course_thesis.aux)
 \openout1 = `course_thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-Package hyperref Info: Link coloring OFF on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+Package hyperref Info: Link coloring OFF on input line 12.
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -181,11 +196,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count268
+\c@section@level=\count271
 )
-LaTeX Info: Redefining \ref on input line 9.
-LaTeX Info: Redefining \pageref on input line 9.
-LaTeX Info: Redefining \nameref on input line 9.
+LaTeX Info: Redefining \ref on input line 12.
+LaTeX Info: Redefining \pageref on input line 12.
+LaTeX Info: Redefining \nameref on input line 12.
  (./course_thesis.out) (./course_thesis.out)
 \@outlinefile=\write3
 \openout3 = `course_thesis.out'.
@@ -195,7 +210,42 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) [1
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+[1
 
 {/Users/ieva/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./course_thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -210,25 +260,89 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [2
 
-] [3] [4] [5] [6] [7] (./course_thesis.bbl [8]) [9
+] [3] [4] [5]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6]
+<../data/003/visualisation_v2//003_train_v2_PCA.png, id=111, 505.89pt x 433.62pt>
+File: ../data/003/visualisation_v2//003_train_v2_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_train_v2_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 299.
+(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+<../data/003/visualisation_v2//003_validate_v2_PCA.png, id=113, 505.89pt x 433.62pt>
+File: ../data/003/visualisation_v2//003_validate_v2_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_validate_v2_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 300.
+(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+<../data/003/visualisation_v2//003_test_v2_PCA.png, id=114, 505.89pt x 433.62pt>
+File: ../data/003/visualisation_v2//003_test_v2_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_test_v2_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 302.
+(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+<../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=116, 547.0839pt x 547.0839pt>
+File: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 316.
+(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+<../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=117, 547.0839pt x 547.0839pt>
+File: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 317.
+(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+<../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=118, 547.0839pt x 547.0839pt>
+File: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png Graphic file (type png)
+<use ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 319.
+(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <../data/003/visualisation_v2//003_train_v2_PCA.png> <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>]
+<../results/SLP/003/ROC//validation_4_2713.png, id=129, 462.528pt x 346.896pt>
+File: ../results/SLP/003/ROC//validation_4_2713.png Graphic file (type png)
+<use ../results/SLP/003/ROC//validation_4_2713.png>
+Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 343.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../results/SLP/003/ROC//testing_0_3068.png, id=138, 462.528pt x 346.896pt>
+File: ../results/SLP/003/ROC//testing_0_3068.png Graphic file (type png)
+<use ../results/SLP/003/ROC//testing_0_3068.png>
+Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 429.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <../results/SLP/003/ROC//validation_4_2713.png>] (./course_thesis.bbl [10 <../results/SLP/003/ROC//testing_0_3068.png>]) [11
 
 ] (./course_thesis.aux)
 Package rerunfilecheck Info: File `course_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 1089F821752541D2C78F2BBBED21C835;709.
+(rerunfilecheck)             Checksum: 26B2E43E3CBDE0BBEFECEFD2F8097FFA;1644.
  ) 
 Here is how much of TeX's memory you used:
- 7605 strings out of 480539
- 115155 string characters out of 5902059
- 414018 words of memory out of 5000000
- 25139 multiletter control sequences out of 15000+600000
+ 8125 strings out of 480539
+ 125087 string characters out of 5902059
+ 431841 words of memory out of 5000000
+ 25630 multiletter control sequences out of 15000+600000
  408667 words of font info for 44 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,8n,66p,289b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,66p,399b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (9 pages, 85739 bytes).
+Output written on course_thesis.pdf (11 pages, 1109041 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 119 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

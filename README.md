@@ -1187,14 +1187,14 @@ Precision:      0.912861972659121
 Recall: 0.9598454404945904
 Area under the curve:   0.9347204997873428
 
-### Dataset for SLP testing (004)
+### Dataset for SLP testing (cd_hit)
 
 This dataset will contain only representatives of clusters. The clusters will be generated using `cd-hit` program 
 (version 4.8.1).
 
-The FASTA file with all embedded sequences (423127) from 003 dataset (`data/004/FASTA/004.fasta`) was composed:
+The FASTA file with all embedded sequences (423127) from 003 dataset (`data/cd_hit/FASTA/cd_hit.fasta`) was composed:
 ```
-./scripts/004/004_filtered_FASTA.py > data/004/FASTA/004.fasta
+./scripts/cd_hit/cd_hit_filtered_FASTA.py > data/cd_hit/FASTA/cd_hit.fasta
 ```
 
 The clusters were made using `cd-hit` program. 
@@ -1209,15 +1209,74 @@ Option meanings :
 ```
 conda activate cd-hit
 
-cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_90.fasta
-cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/004/FASTA/004.fasta -o data/004/FASTA/004_c_100.fasta
+cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_90.fasta
+cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_100.fasta
 ```
 
 | File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
 |---------------------------------|---------------|------------------------|------------------------|
-| data/004/FASTA/004_c_90.fasta   |      391795   |                     51 |                    111 |
-| data/004/FASTA/004_c_100.fasta  |      418958   |                    TBU |                    TBU |
+| data/cd_hit/FASTA/cd_hit_c_90.fasta   |      391795   |                     51 |                    111 |
+| data/cd_hit/FASTA/cd_hit_c_100.fasta  |      418958   |                    TBU |                    TBU |
 
+## Improved dataset (004)
+
+The main challenge of this part was to fill datasets with equal number of sequences in each temperature range, and keep the restriction 
+of non-repretitive taxonomy idenitifers among the model's datasets.
+
+# Development of thermoclass
+
+A command to generate mean embeddings:
+```
+./thermoclass -f input.fasta -g -n test0327_mean -o test0327_mean_predictions -e emb/
+```
+
+A command to generate per_tok embeddings:
+```
+./thermoclass -f input.fasta -g -p -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+```
+
+PT files in both cases will include mean embeddings.
+
+If mean embeddings are already generated, the command that can be run:
+```
+./thermoclass -f input.fasta -n test0327_mean -o test0327_mean_predictions -e emb/
+```
+
+If per_tok embeddings are already generated, the command that can be run:
+```
+./thermoclass -f input.fasta -n test0327_per_tok -o test0327_per_tok_predictions -e emb/
+```
+
+The latter two commands do not differ in options - in inference stage mean and per_tok embeddings are treated equally.
+It is up to user to know in which file what type of embeddings are placed if program is used without embeddings
+generation (-g option) step.
+
+A command to see how predictions were distributed:
+```
+paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $1, $2, $1284, $1285}' | sort -V | less
+```
+
+```
+(py37_pandas) [ievap@master Protein_Classificator]$ ./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000
+1000    ^[0-9]_.*       5000    0       0       failure
+1000    ^1[0-4]_.*      17500   3750    3750    success
+1000    ^1[5-9]_.*      17500   3750    3750    success
+1000    ^2[0-4]_.*      17500   3750    3750    success
+1000    ^2[5-9]_.*      17500   3750    3750    success
+1000    ^3[0-4]_.*      17500   3750    3750    success
+1000    ^3[5-9]_.*      17500   3750    3750    success
+1000    ^4[0-4]_.*      17500   3750    3750    success
+1000    ^4[5-9]_.*      17500   3750    3750    success
+1000    ^5[0-4]_.*      17500   3750    3750    success
+1000    ^5[5-9]_.*      17500   3750    3750    success
+1000    ^6[0-4]_.*      17500   3750    3750    success
+1000    ^6[5-9]_.*      17500   3750    3750    success
+1000    ^7[0-4]_.*      17500   3750    3750    success
+1000    ^7[5-9]_.*      13276   0       0       failure
+1000    ^8[0-4]_.*      16970   0       0       failure
+1000    ^8[5-9]_.*      14600   0       0       failure
+1000    ^9[0-9]_.*      8925    0       0       failure
+```
 
 ## Tasks to do
 
