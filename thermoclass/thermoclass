@@ -80,9 +80,11 @@ if(options.generate):
 	print('Calculating embeddings')
 	esm_extract_command = 'python3 '+options.extract+' esm1b_t33_650M_UR50S '+\
 			  options.fasta+' '+options.embeddings+' --repr_layers 33 '+\
-			  '--include mean'
+			  '--include '
 	if(options.per_tok):
-		esm_extract_command += ' per_tok'
+		esm_extract_command += 'per_tok'
+	else:
+		esm_extract_command += 'mean'
 	
 	os.system(esm_extract_command)
 	print('Embeddings calculated')
