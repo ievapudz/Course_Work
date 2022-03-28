@@ -29,29 +29,39 @@ parser.add_option('--fasta', '-f', dest='fasta',
 
 parser.add_option('--generate', '-g', dest='generate', default=False,
 				   action='store_true',
-				   help='set to calculate embeddings for input sequences')
+				   help='set to calculate embeddings for input sequences, '+\
+						'by default embeddings are not generated')
 
 parser.add_option('--per_tok', '-p', dest='per_tok',
 				   action='store_true', default=False,				   
 				   help='set to include per_tok representations in the generation '+\
-						'of embeddings and make predictions for each amino acid')
+						'of embeddings and make predictions for each amino acid '+\
+						'by default mean embeddings are only created')
 
 parser.add_option('--extract', dest='extract', 
 				   default='../../programs/esm-0.4.0/extract.py',
-				   help='path to the embeddings extraction script')
+				   help='path to the embeddings extraction script,\n'+\
+						'default: ../../programs/esm-0.4.0/extract.py')
 
 parser.add_option('--version', '-v', dest='version', action='store_true',
 				   default=False,  
 				   help='prints out the version of the program')
 
 parser.add_option('--embeddings', '-e', dest='embeddings', default='./emb/',
-				   help='path to the embeddings directory')
+				   help='path to the embeddings directory to save PT files, '+\
+						'\ndefault: ./emb/')
 
-parser.add_option('--output', '-o', dest='output',
-				   help='output prefix (without extension)')
+parser.add_option('--output', '-o', dest='output', default='./output',
+				   help='predictions output TSV file,\ndefault: ./output')
 
-parser.add_option('--embeddings_name', '-n', dest='emb_name', default='',
-				   help='name of the embeddings TSV and NPZ files (without extension)')
+parser.add_option('--embeddings_npz', '-n', dest='emb_npz', default='./emb/esm_emb_1b.npz',
+				   help='path to the embeddings NPZ files (if -g option is set, '+\
+						'TSV file will get the same name),\ndefault: ./emb/esm_1b.npz')
+
+parser.add_option('--npz_keywords', '-k', dest='npz_keywords', 
+				   default='x_input y_input', 
+				   help='NPZ file keywords with which the data was saved,\ndefault: '+\
+						'\'x_input y_input\'')
 
 (options, args) = parser.parse_args()
 
@@ -59,8 +69,11 @@ if(options.version):
 	print(sys.argv[0]+': version 0.1.0-dev')
 	exit
 
-if(options.emb_name == ''):
-	options.emb_name = options.fasta.split('.fasta')[0]
+if(options.emb_npz == ''):
+	options.emb_npz = options.fasta.split('.fasta')[0]
+
+x_npz_keyword = options.npz_keywords.split(' ')[0]
+y_npz_keyword = options.npz_keywords.split(' ')[1]
 
 # Generation of input sequence embeddings
 if(options.generate):
@@ -96,20 +109,19 @@ if(options.generate):
 
 	print("Saving tensors to an NPZ file")
 	save_tensors_as_NPZ([Xs_input_tensor, Ys_input_tensor], 
-					['x_input', 'y_input'], 
-					options.embeddings+options.emb_name+'.npz')
+					[x_npz_keyword, y_npz_keyword], 
+					options.emb_npz)
 
-	input_tensor = { 'x_input': Xs_input_tensor, 'y_input': Ys_input_tensor }
+	input_tensor = { x_npz_keyword: Xs_input_tensor, y_npz_keyword: Ys_input_tensor }
 
 	print("Saving tensors to a TSV file")
-	print_tensors_as_SV_to_file(data, input_tensor, 'test', ['x_input', 'y_input'],
-							out_file_name=options.embeddings+options.emb_name+'.tsv', 
+	print_tensors_as_SV_to_file(data, input_tensor, 'test', [x_npz_keyword, y_npz_keyword],
+							out_file_name=options.emb_npz.split('.npz')[0]+'.tsv', 
 							sep="\t", labelled=False)
 
-dataset = load_tensor_from_NPZ(options.embeddings+options.emb_name+'.npz', 
-							   ['x_input', 'y_input'])
+dataset = load_tensor_from_NPZ(options.emb_npz, [x_npz_keyword, y_npz_keyword])
 
-input_dataset = TensorDataset(dataset['x_input'], dataset['y_input'])  
+input_dataset = TensorDataset(dataset[x_npz_keyword], dataset[y_npz_keyword])  
 input_loader = DataLoader(input_dataset, shuffle=False)
 
 # Load the trained SLP
@@ -120,7 +132,7 @@ model.eval()
 print('Inference process begins')
 
 unlabelled_test_epoch(model, input_loader, 0.5, 
-					  file_for_predictions=options.output+'.tsv',
+					  file_for_predictions=options.output.split('.tsv')[0]+'.tsv',
 					  binary_predictions_only=False)
 
 print('Inference process has finished')
