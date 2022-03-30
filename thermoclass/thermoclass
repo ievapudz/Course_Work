@@ -20,6 +20,7 @@ from inference import unlabelled_test_epoch
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 from models import SLP_with_sigmoid
+from results import get_kmers_results_as_FASTA
 
 MODEL = './SLP_003.pt'
 
@@ -64,6 +65,9 @@ parser.add_option('--npz_keywords', '-k', dest='npz_keywords',
 
 parser.add_option('--output', '-o', dest='output', default='./output',
                    help='predictions output TSV file, default: ./output')
+
+parser.add_option('--output_fasta', dest='output_fasta', default='',
+				   help='per tok predictions output a FASTA file')
 
 parser.add_option('--version', '-v', dest='version', action='store_true',
                    default=False,
@@ -151,16 +155,25 @@ print('Inference process has finished')
 
 print('Processing results')
 
-command = 'echo -e seq_header\tseq\tbinary_prediction\traw_prediction > '+\
+command = 'echo -e seq_id\tkmer\tseq\tbinary_prediction\traw_prediction > '+\
 		  options.output+'.tmp'
 os.system(command)
 
-command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'{OFS="\t"}{ '+\
+command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
 		  'print $1, $2, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
 os.system(command)
 
 command = 'mv '+options.output+'.tmp '+options.output
 os.system(command)
+
+if(options.output_fasta != ''):
+	indeces = [3, 4]
+
+	get_kmers_results_as_FASTA(options.output, "\t", False, options.output_fasta,
+						   indeces,
+                           include_max=True, include_min=True,
+                           include_mean=True, include_median=True,
+                           include_std=True)
 
 os.system('echo "thermoclass finished:" `date`')
 

@@ -22,11 +22,9 @@ def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_nam
             sequences[line_arr[0]] = {}
             sequences[line_arr[0]]['label_seq'] = line_arr[2]
             sequences[line_arr[0]]['predictions'] = []
-            #sequences[line_arr[0]]['predictions_sum'] = 0
         else:
             sequences[line_arr[0]]['label_seq'] += line_arr[2]
          
-        #sequences[line_arr[0]]['predictions_sum'] += float(line_arr[3])
         sequences[line_arr[0]]['predictions'].append(float(line_arr[3]))
 
     file_handle.close()
