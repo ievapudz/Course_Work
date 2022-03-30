@@ -1223,6 +1223,16 @@ cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/
 The main challenge of this part was to fill datasets with equal number of sequences in each temperature range, and keep the restriction 
 of non-repretitive taxonomy idenitifers among the model's datasets.
 
+A command that was run to construct tables of possible datasets:
+```
+./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000 > data/004/filling_model_25000.tsv
+sort -n -k1 data/004/filling_model_25000.tsv > data/004/filling_model_25000_sorted.tsv
+
+rm filling_model_25000.tsv
+```
+
+Analogous commands were run for `seqs_in_set` arguments: 5000, 10000, 15000, and 20000.
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
