@@ -3,7 +3,7 @@
 # A script that constructs 004 dataset.
 
 # Example usage:
-# ./scripts/004/004_construct_datasets.py 1000 25000
+# ./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000
 
 import sys
 import os
