@@ -96,3 +96,5 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, smooth
 
 	plt.plot(x_values, y_values, linewidth=1, color='black')
 	plt.savefig(output_png)
+	plt.clf()
+
