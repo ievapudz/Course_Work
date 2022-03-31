@@ -21,6 +21,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 from models import SLP_with_sigmoid
 from results import get_kmers_results_as_FASTA
+from results import plot_predictions
 
 MODEL = './SLP_003.pt'
 
@@ -30,9 +31,9 @@ parser.add_option('--fasta', '-f', dest='fasta',
 				   help='path to the input FASTA file')
 
 parser.add_option('--extract', dest='extract',
-                   default='../../programs/esm-0.4.0/extract.py',
-                   help='path to the embeddings extraction script,'+\
-                        'default: ../../programs/esm-0.4.0/extract.py')
+				   default='../../programs/esm-0.4.0/extract.py',
+				   help='path to the embeddings extraction script,'+\
+						'default: ../../programs/esm-0.4.0/extract.py')
 
 parser.add_option('--generate', '-g', dest='generate', default=False,
 				   action='store_true',
@@ -64,14 +65,17 @@ parser.add_option('--npz_keywords', '-k', dest='npz_keywords',
 						'\'x_input y_input\'')
 
 parser.add_option('--output', '-o', dest='output', default='./output',
-                   help='predictions output TSV file, default: ./output')
+				   help='predictions output TSV file, default: ./output')
 
 parser.add_option('--output_fasta', dest='output_fasta', default='',
 				   help='per tok predictions output a FASTA file')
 
+parser.add_option('--output_plot', dest='output_plot', default='',
+				   help='per tok predictions output directory')
+
 parser.add_option('--version', '-v', dest='version', action='store_true',
-                   default=False,
-                   help='prints out the version of the program')
+				   default=False,
+				   help='prints out the version of the program')
 
 (options, args) = parser.parse_args()
 
@@ -111,7 +115,7 @@ if(options.generate):
 		emb_case = 1
 			
 	data = create_testing_data(options.fasta, options.embeddings, emb_case=emb_case,
-                                labelled=False)
+								labelled=False)
 
 	filter_sequences(data, 'test', data['test']['embeddings'], False)
 
@@ -122,7 +126,7 @@ if(options.generate):
 		emb_key = 'representations'
 
 	[Xs_input_tensor, Ys_input_tensor] = get_ESM_embeddings_as_tensor(data,
-                                            ['test'], emb_key=emb_key)
+											['test'], emb_key=emb_key)
 
 	print("Saving tensors to an NPZ file")
 	save_tensors_as_NPZ([Xs_input_tensor, Ys_input_tensor], 
@@ -171,9 +175,22 @@ if(options.output_fasta != ''):
 
 	get_kmers_results_as_FASTA(options.output, "\t", False, options.output_fasta,
 						   indeces,
-                           include_max=True, include_min=True,
-                           include_mean=True, include_median=True,
-                           include_std=True)
+						   include_max=True, include_min=True,
+						   include_mean=True, include_median=True,
+						   include_std=True)
+
+if(options.output_plot != ''):
+	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > seq_keys.tmp'
+	os.system(command)
+	file_handle = open('seq_keys.tmp', 'r')
+	seq_keys = file_handle.readlines()
+	file_handle.close()
+	command = 'rm seq_keys.tmp'
+	os.system(command)
+
+	for seq_key in seq_keys:
+		seq_key = seq_key.strip()
+		plot_predictions(options.output, seq_key, [1, 4], '\t', options.output_plot+'/'+seq_key+'.png')
 
 os.system('echo "thermoclass finished:" `date`')
 
