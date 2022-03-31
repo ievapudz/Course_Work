@@ -349,3 +349,4 @@ def get_values_from_SV(SV_filename, indeces, sep="\t", headerless=True):
     file_handle.close()
 
     return values
+

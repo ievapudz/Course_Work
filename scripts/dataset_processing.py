@@ -361,7 +361,7 @@ def filter_sequences_by_length_before_embeddings(proteomes, directory, threshold
 
 # Checking, whether the dataset successfully fills up with proteomes
 def fill_model_sets(proteomes, filtered_sequences, range_regex, max_seq_in_prot, capacity,
-                    proportions, threshold):
+                    proportions, threshold, virtually=True):
 
     set_names = ['train', 'validate', 'test']
     sets = { 
@@ -406,22 +406,12 @@ def fill_model_sets(proteomes, filtered_sequences, range_regex, max_seq_in_prot,
         if(len(sets[name]) < capacities[i]):
             fill_success = 'failure'
             break
-    """
-    print('training') 
-    for record in sets['train']:
-        print(record.name)
 
-    print('validation')
-    for record in sets['validate']:
-        print(record.name)
+	if(virtually):
+		print(str(max_seq_in_prot)+'\t'+range_regex+'\t'+str(len(sets['train']))+'\t'+\
+			  str(len(sets['validate']))+'\t'+str(len(sets['test']))+'\t'+fill_success+'\t'+\
+			  str(len(prots_in_sets[0]))+'\t'+str(len(prots_in_sets[1]))+'\t'+\
+			  str(len(prots_in_sets[2])))
 
-    print('testing')
-    for record in sets['test']:
-        print(record.name)
-    """
+	return sets
 
-    print(str(max_seq_in_prot)+'\t'+range_regex+'\t'+str(len(sets['train']))+'\t'+\
-          str(len(sets['validate']))+'\t'+str(len(sets['test']))+'\t'+fill_success+'\t'+\
-          str(len(prots_in_sets[0]))+'\t'+str(len(prots_in_sets[1]))+'\t'+\
-          str(len(prots_in_sets[2])))
-	
