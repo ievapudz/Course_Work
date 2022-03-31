@@ -1305,6 +1305,13 @@ cat data/004/FASTA/*.fasta | grep '>' | tr '|' '\t' | awk 'BEGIN{ OFS="\t"}{prin
 
 Therefore, overall 004 dataset contains 160000 sequences from 209 proteomes.
 
+Generation of embeddings:
+```
+sbatch --array=0-15 --output=data/004/slurm/train_%a.out scripts/004/004_embeddings_train.sh
+sbatch --array=0-15 --output=data/004/slurm/validate_%a.out scripts/004/004_embeddings_validate.sh
+sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddings_test.sh
+```
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
@@ -1342,67 +1349,6 @@ A command to see how predictions were distributed:
 ```
 paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $1, $2, $1284, $1285}' | sort -V | less
 ```
-
-```
-(py37_pandas) [ievap@master Protein_Classificator]$ ./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000
-1000    ^[0-9]_.*       5000    0       0       failure
-1000    ^1[0-4]_.*      17500   3750    3750    success
-1000    ^1[5-9]_.*      17500   3750    3750    success
-1000    ^2[0-4]_.*      17500   3750    3750    success
-1000    ^2[5-9]_.*      17500   3750    3750    success
-1000    ^3[0-4]_.*      17500   3750    3750    success
-1000    ^3[5-9]_.*      17500   3750    3750    success
-1000    ^4[0-4]_.*      17500   3750    3750    success
-1000    ^4[5-9]_.*      17500   3750    3750    success
-1000    ^5[0-4]_.*      17500   3750    3750    success
-1000    ^5[5-9]_.*      17500   3750    3750    success
-1000    ^6[0-4]_.*      17500   3750    3750    success
-1000    ^6[5-9]_.*      17500   3750    3750    success
-1000    ^7[0-4]_.*      17500   3750    3750    success
-1000    ^7[5-9]_.*      13276   0       0       failure
-1000    ^8[0-4]_.*      16970   0       0       failure
-1000    ^8[5-9]_.*      14600   0       0       failure
-1000    ^9[0-9]_.*      8925    0       0       failure
-```
-
-## Tasks to do
-
-- [x] Extract UniProt accession numbers from initial FASTA files.
-- [x] Create FASTA files `*_sequences.fasta` which records contain only UniProt accession numbers in the header.
-- [x] Create `*_temperature_annotations.csv` files that contain identifier and temperature labels.
-- [x] Set up `config.yml` file to use the embedding.
-- [x] Try evolutionary scale modeling (generation of embeddings).
-- [x] Visualise generated embeddings for a random sample of training dataset.
-- [x] Visualise generated embeddings for validation dataset.
-- [x] Visualise generated embeddings for testing dataset.
-- [x] Remove variant effect scale from the PCA visualisation.
-- [x] Separate modules in `classificator.ipynb` for an easier usage of its functionalities in the future.
-- [x] Construct a simple neural network (a single layer perceptron).
-- [x] Create mesophilic archaea and thermophilic bacteria embeddings.
-- [x] Visualise mesophilic archaea and thermophilic bacteria embeddings.
-- [ ] Determine the species that are taken into PyMDE for visualisation automatically.
-- [x] Determine the order of species that are taken into PyMDE for visualisation (answer: alphabetical order).
-- [x] Construct a simple neural network (a single layer perceptron) with tools from PyTorch package.
-- [ ] Construct another simple neural network (with a single hidden layer 1DCNN, RELU) with a softmax activation function as an output. 
-- [x] Automate model training process and separate modules to make the process adaptive to different architectures.
-- [ ] Include loss functions in the definition of the model.
-- [x] Include ROC curve graphing.
-- [x] Include printing of confusion matrices.
-- [x] Generate a new training and validation sets from the [microorganism dataset](https://zenodo.org/record/1175609#.YbtlfC8RpQJ) with growth temperature annotations.
-- [x] Train and validate SLP with a new generated training and validation set.
-- [x] Improve script in `scripts/data_download` to take input dataset file and input directory as command line arguments.
-- [x] Visualise 002 dataset embeddings.
-- [x] Download HTML format results with reference genome UniParc identifiers.
-- [x] Grep UniParc identifiers from HTML results with `ggrep "/proteomes/UP........."`
-- [x] Save only TaxID and UniParc ID in the list of 003 proteome IDs.
-- [x] Download non-redundant proteome UP IDs (run modified (appended `redundant:no`) `get_UniProt_results_HTML.sh`).
-- [x] Save temperature labels in the list with Tax IDs and UniParc IDs.
-- [ ] Count how many proteins are found in NCBI database (from organisms in the given `temperature_data.tsv` database).
-- [x] Download proteomes to HPC.
-- [x] Make rainbow-coloured ROC curves.
-- [x] Generate 003 embeddings (mean) for 10-30 proportions of the training set (remaining, currently running 10-16).
-- [x] Generate 003 embeddings (mean) for 3-7 proportions of the validation set (remaining, currently running 3-4).
-- [x] Generate 003 embeddings (mean) for 1-8 proportions of the testing set.
 
 ## References
 
