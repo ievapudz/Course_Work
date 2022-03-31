@@ -1225,7 +1225,7 @@ of non-repretitive taxonomy idenitifers among the model's datasets.
 
 A command that was run to construct tables of possible datasets:
 ```
-./scripts/004/004_construct_datasets.py data/003/FASTA/ 25000 > data/004/filling_model_25000.tsv
+./scripts/004/004_construct_datasets_virtually.py data/003/FASTA/ 25000 > data/004/filling_model_25000.tsv
 sort -n -k1 data/004/filling_model_25000.tsv > data/004/filling_model_25000_sorted.tsv
 
 rm filling_model_25000.tsv
