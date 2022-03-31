@@ -91,8 +91,8 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, smooth
 	for line in lines:
 		line_arr = line.split('\t')
 		if(line_arr[0] == seq_key):
-			x_values.append(line_arr[indeces[0]])
-			y_values.append(line_arr[indeces[1]])
+			x_values.append(int(line_arr[indeces[0]]))
+			y_values.append(float(line_arr[indeces[1]]))
 
-	plt.plot(x_values, y_values)
+	plt.scatter(x_values, y_values)
 	plt.savefig(output_png)
