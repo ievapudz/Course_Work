@@ -1,6 +1,7 @@
 import sys
 import statistics
 import math
+import matplotlib.pyplot as plt
 
 # Preparing kmers results to be printed in FASTA format.
 def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_name, indeces,
@@ -79,3 +80,19 @@ def get_kmers_predictions_mean(seq_dict, seq_key):
 	mean = predictions_sum / len(seq_dict[seq_key]['label_seq'])
 
 	return mean
+
+# Plotting predictions.
+def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, smoothened=False):
+	x_values = []
+	y_values = []
+	file_handle = open(predictions_file, 'r')
+	lines = file_handle.readlines()
+	file_handle.close()
+	for line in lines:
+		line_arr = line.split('\t')
+		if(line_arr[0] == seq_key):
+			x_values.append(line_arr[indeces[0]])
+			y_values.append(line_arr[indeces[1]])
+
+	plt.plot(x_values, y_values)
+	plt.savefig(output_png)

@@ -46,4 +46,4 @@ results/SLP/window_prediction_plots_sorted_by_max_min_difference.pdf
 data/004/*.numbers
 data/004/FASTA/
 
-thermoclass/predictions/
+thermoclass/predictions/*.tsv
