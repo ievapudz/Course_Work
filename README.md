@@ -1233,6 +1233,78 @@ rm filling_model_25000.tsv
 
 Analogous commands were run for `seqs_in_set` arguments: 5000, 10000, 15000, and 20000.
 
+It was decided to take 10000 sequences from each temperature interval when taking a maximum of 800 
+sequences from each proteome. For FASTA file creation another script was developed:
+`./scripts/004/004_construct_datasets.py`. This script outputs FASTA files for each temperature interval.
+Afterwards training files from each temeprature interval will be concatenated; validation and testing
+files respectively. These merged files will be provided to train, validate, and test the neural network model.
+
+```
+./scripts/004/004_construct_datasets.py data/003/FASTA/ data/004/FASTA/
+```
+
+The output (virtual filling of the datasets) of the script is the table:
+```
+800     ^([0-9]_.*|(1[0-4])_.*)_.*$     7000    1500    1500    success 9       2       2
+800     ^1[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^2[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^2[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^3[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^3[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^4[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^4[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^5[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^5[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^6[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^6[5-9]_.*      7000    1500    1500    success 9       2       2
+800     ^7[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^7[5-9]_.*      7000    1500    1500    success 9       3       2
+800     ^8[0-4]_.*      7000    1500    1500    success 9       2       2
+800     ^(8[5-9]_.*|(9[0-9])_.*|100_.*)_.*$     7000    1500    1500    success 9       2       2
+```
+The header of the table is (meanings of each column):
+0. max_seq_in_prot
+1. temperature_range (regex used to filter proteomes)
+2. training_sequences
+3. validation_sequences
+4. testing_sequences
+5. is_filled flag
+6. training_proteomes
+7. validation_proteomes
+8. testing_proteomes
+
+The output of the script was 48 FASTA files: 3 files (training, validation, testing) for each temperature 
+range.
+
+Since 0-9 and 90-100 ctemperature ranges had less sequences, these temperature ranges were merged with 10-14
+and 85-89 ranges respectively.
+
+Temperature ranges (classes):
+
+0. 0-14
+1. 15-19
+2. 20-24
+3. 25-29
+4. 30-34
+5. 35-39
+6. 40-44
+7. 45-49
+8. 50-54
+9. 55-59
+10. 60-64
+11. 65-69
+12. 70-74
+13. 75-79
+14. 80-84
+15. 85-100
+
+Validation that different proteomes are apparent in different sets:
+```
+cat data/004/FASTA/*.fasta | grep '>' | tr '|' '\t' | awk 'BEGIN{ OFS="\t"}{print $1, $3}' | sort -u | wc -l
+```
+
+Therefore, overall 004 dataset contains 160000 sequences from 209 proteomes.
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
