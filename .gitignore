@@ -42,5 +42,8 @@ scripts/r_analysis.Rmd
 data/temp_range_data.numbers
 results/SLP/window_prediction_plots_sorted_by_max_min_difference-2.pdf
 results/SLP/window_prediction_plots_sorted_by_max_min_difference.pdf
-data/004/*.numbers
 
+data/004/*.numbers
+data/004/FASTA/
+
+thermoclass/predictions/*.tsv

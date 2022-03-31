@@ -20,12 +20,20 @@ from inference import unlabelled_test_epoch
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 from models import SLP_with_sigmoid
+from results import get_kmers_results_as_FASTA
+from results import plot_predictions
 
 MODEL = './SLP_003.pt'
 
 parser = OptionParser()
+
 parser.add_option('--fasta', '-f', dest='fasta',
 				   help='path to the input FASTA file')
+
+parser.add_option('--extract', dest='extract',
+				   default='../../programs/esm-0.4.0/extract.py',
+				   help='path to the embeddings extraction script,'+\
+						'default: ../../programs/esm-0.4.0/extract.py')
 
 parser.add_option('--generate', '-g', dest='generate', default=False,
 				   action='store_true',
@@ -38,30 +46,36 @@ parser.add_option('--per_tok', '-p', dest='per_tok',
 						'of embeddings and make predictions for each amino acid '+\
 						'by default mean embeddings are only created')
 
-parser.add_option('--extract', dest='extract', 
-				   default='../../programs/esm-0.4.0/extract.py',
-				   help='path to the embeddings extraction script,\n'+\
-						'default: ../../programs/esm-0.4.0/extract.py')
-
-parser.add_option('--version', '-v', dest='version', action='store_true',
-				   default=False,  
-				   help='prints out the version of the program')
-
 parser.add_option('--embeddings', '-e', dest='embeddings', default='./emb/',
 				   help='path to the embeddings directory to save PT files, '+\
-						'\ndefault: ./emb/')
+						'default: ./emb/')
 
-parser.add_option('--output', '-o', dest='output', default='./output',
-				   help='predictions output TSV file,\ndefault: ./output')
+parser.add_option('--embeddings_tsv', '-t', dest='emb_tsv', default='',
+				   help='path to the embeddings TSV files, default matches an NPZ '+\
+						'file name')
 
-parser.add_option('--embeddings_npz', '-n', dest='emb_npz', default='./emb/esm_emb_1b.npz',
-				   help='path to the embeddings NPZ files (if -g option is set, '+\
-						'TSV file will get the same name),\ndefault: ./emb/esm_1b.npz')
+parser.add_option('--embeddings_npz', '-n', dest='emb_npz', default='',
+				   help='path to the embeddings NPZ files (if -n and -g options are set '+\
+						'and -t is not, TSV file will get the same name),default: '+\
+						'./emb/esm_1b.npz')
 
 parser.add_option('--npz_keywords', '-k', dest='npz_keywords', 
 				   default='x_input y_input', 
-				   help='NPZ file keywords with which the data was saved,\ndefault: '+\
+				   help='NPZ file keywords with which the data was saved, default: '+\
 						'\'x_input y_input\'')
+
+parser.add_option('--output', '-o', dest='output', default='./output',
+				   help='predictions output TSV file, default: ./output')
+
+parser.add_option('--output_fasta', dest='output_fasta', default='',
+				   help='per tok predictions output a FASTA file')
+
+parser.add_option('--output_plot', dest='output_plot', default='',
+				   help='per tok predictions output directory')
+
+parser.add_option('--version', '-v', dest='version', action='store_true',
+				   default=False,
+				   help='prints out the version of the program')
 
 (options, args) = parser.parse_args()
 
@@ -70,7 +84,12 @@ if(options.version):
 	exit
 
 if(options.emb_npz == ''):
-	options.emb_npz = options.fasta.split('.fasta')[0]
+	options.emb_npz = options.fasta.split('.fasta')[0]+'.npz'
+
+if(options.emb_tsv == ''):
+	options.emb_tsv = options.emb_npz.split('.npz')[0]+'.tsv'
+
+options.output = options.output.split('.tsv')[0]+'.tsv'
 
 x_npz_keyword = options.npz_keywords.split(' ')[0]
 y_npz_keyword = options.npz_keywords.split(' ')[1]
@@ -80,9 +99,11 @@ if(options.generate):
 	print('Calculating embeddings')
 	esm_extract_command = 'python3 '+options.extract+' esm1b_t33_650M_UR50S '+\
 			  options.fasta+' '+options.embeddings+' --repr_layers 33 '+\
-			  '--include mean'
+			  '--include '
 	if(options.per_tok):
-		esm_extract_command += ' per_tok'
+		esm_extract_command += 'per_tok'
+	else:
+		esm_extract_command += 'mean'
 	
 	os.system(esm_extract_command)
 	print('Embeddings calculated')
@@ -94,7 +115,7 @@ if(options.generate):
 		emb_case = 1
 			
 	data = create_testing_data(options.fasta, options.embeddings, emb_case=emb_case,
-                                labelled=False)
+								labelled=False)
 
 	filter_sequences(data, 'test', data['test']['embeddings'], False)
 
@@ -105,7 +126,7 @@ if(options.generate):
 		emb_key = 'representations'
 
 	[Xs_input_tensor, Ys_input_tensor] = get_ESM_embeddings_as_tensor(data,
-                                            ['test'], emb_key=emb_key)
+											['test'], emb_key=emb_key)
 
 	print("Saving tensors to an NPZ file")
 	save_tensors_as_NPZ([Xs_input_tensor, Ys_input_tensor], 
@@ -116,8 +137,7 @@ if(options.generate):
 
 	print("Saving tensors to a TSV file")
 	print_tensors_as_SV_to_file(data, input_tensor, 'test', [x_npz_keyword, y_npz_keyword],
-							out_file_name=options.emb_npz.split('.npz')[0]+'.tsv', 
-							sep="\t", labelled=False)
+							out_file_name=options.emb_tsv, sep="\t", labelled=False)
 
 dataset = load_tensor_from_NPZ(options.emb_npz, [x_npz_keyword, y_npz_keyword])
 
@@ -132,10 +152,45 @@ model.eval()
 print('Inference process begins')
 
 unlabelled_test_epoch(model, input_loader, 0.5, 
-					  file_for_predictions=options.output.split('.tsv')[0]+'.tsv',
+					  file_for_predictions=options.output,
 					  binary_predictions_only=False)
 
 print('Inference process has finished')
+
+print('Processing results')
+
+command = 'echo -e seq_id\tkmer\tseq\tbinary_prediction\traw_prediction > '+\
+		  options.output+'.tmp'
+os.system(command)
+
+command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
+		  'print $1, $2, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
+os.system(command)
+
+command = 'mv '+options.output+'.tmp '+options.output
+os.system(command)
+
+if(options.output_fasta != ''):
+	indeces = [3, 4]
+
+	get_kmers_results_as_FASTA(options.output, "\t", False, options.output_fasta,
+						   indeces,
+						   include_max=True, include_min=True,
+						   include_mean=True, include_median=True,
+						   include_std=True)
+
+if(options.output_plot != ''):
+	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > seq_keys.tmp'
+	os.system(command)
+	file_handle = open('seq_keys.tmp', 'r')
+	seq_keys = file_handle.readlines()
+	file_handle.close()
+	command = 'rm seq_keys.tmp'
+	os.system(command)
+
+	for seq_key in seq_keys:
+		seq_key = seq_key.strip()
+		plot_predictions(options.output, seq_key, [1, 4], '\t', options.output_plot+'/'+seq_key+'.png')
 
 os.system('echo "thermoclass finished:" `date`')
 
