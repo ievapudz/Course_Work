@@ -95,13 +95,16 @@
 
 	\section{Theory}
 
-	The main objective of the work is to create a classifier that could 
-	determine to which thermostability class the protein sequence belongs.
+	The main objective of the work is to apply emebddings from protein language 
+	models to create a classifier that could determine to which thermostability 
+	class the protein sequence belongs.
 
 	Thermostability classes were created by setting the threshold of 
 	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
 	than the given threshold should be assigned to class '0' and the 
 	remaining ones compose the class '1'. 
+
+	\subsection{Protein language models}
 
 	\subsection{ESM-1b embeddings}
 
@@ -383,7 +386,7 @@
 
 	\newpage
 
-	\subsection{Testing of the model}
+	\section{Results}
 
 	The model was tested with the testing subset of '003' dataset that was
 	not exposed to the model before the testing stage. 
