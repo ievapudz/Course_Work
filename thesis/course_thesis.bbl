@@ -31,4 +31,18 @@ M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
   standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
   {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
 
+\bibitem{vaswani2017attention}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
+  {\L}.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' {\em Advances
+  in neural information processing systems}, vol.~30, 2017.
+
+\bibitem{vig2019analyzing}
+J.~Vig and Y.~Belinkov, ``Analyzing the structure of attention in a transformer
+  language model,'' {\em arXiv preprint arXiv:1906.04284}, 2019.
+
+\bibitem{vig2020bertology}
+J.~Vig, A.~Madani, L.~R. Varshney, C.~Xiong, R.~Socher, and N.~F. Rajani,
+  ``Bertology meets biology: Interpreting attention in protein language
+  models,'' {\em arXiv preprint arXiv:2006.15222}, 2020.
+
 \end{thebibliography}
