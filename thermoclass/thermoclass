@@ -188,7 +188,7 @@ if(options.output_plot != ''):
 	command = 'rm seq_keys.tmp'
 	os.system(command)
 
-	ks = [ 5, 11, 21, 31 ]
+	ks = [ 5, 11, 21, 31, 41, 51, 61, 71, 81, 91 ]
 
 	for k in ks:
 		for seq_key in seq_keys:
