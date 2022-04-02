@@ -1350,6 +1350,10 @@ A command to see how predictions were distributed:
 paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $1, $2, $1284, $1285}' | sort -V | less
 ```
 
+There is an option to set the `output_png` in order to plot per token predictions of proteins. The resulting plots have got 
+raw predictions curve coloured in light gray, and smoothened curve using moving average principle. Window size (k) was kept equal
+to 21.
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
