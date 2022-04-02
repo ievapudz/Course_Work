@@ -103,19 +103,22 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, k=0):
 			x_values.append(int(line_arr[indeces[0]]))
 			y_values.append(float(line_arr[indeces[1]]))
 
-	plt.plot(x_values, y_values, linewidth=1, color='grey')
+	plt.plot(x_values, y_values, linewidth=1, color='lightgrey')
 	if(k != 0):
 		x_smoothened_values = []
 		y_smoothened_values = []
 		for i in x_values:
-			if(i-int(k/2) >= 0 and i-int(k/2)+(k-1) < len(x_values)):
-				window = []
-				for j in range(k):
+			window = []
+			for j in range(k):
+				if(i-int(k/2) >= 0 and i-int(k/2)+(k-1) < len(x_values)):
 					window.append(y_values[i-int(k/2)+j])
-				x_smoothened_values.append(x_values[i])
-				y_smoothened_values.append(statistics.mean(window))
+				elif(i-int(k/2) < 0):
+					window.append(y_values[i+j])
+				elif(i-int(k/2)+(k-1) >= 0):
+					window.append(y_values[i-j])
+			y_smoothened_values.append(statistics.mean(window))
 
-	plt.plot(x_smoothened_values, y_smoothened_values, linewidth=1, color='red')
+	plt.plot(x_values, y_smoothened_values, linewidth=1, color='red')
 	plt.savefig(output_png)
 	plt.clf()
 
