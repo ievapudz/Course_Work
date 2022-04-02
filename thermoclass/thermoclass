@@ -190,7 +190,9 @@ if(options.output_plot != ''):
 
 	for seq_key in seq_keys:
 		seq_key = seq_key.strip()
-		plot_predictions(options.output, seq_key, [1, 4], '\t', options.output_plot+'/'+seq_key+'.png')
+		plot_predictions(options.output, seq_key, [1, 4], '\t', 
+						 options.output_plot+'/'+seq_key+'.png', 
+						 k=5)
 
 os.system('echo "thermoclass finished:" `date`')
 

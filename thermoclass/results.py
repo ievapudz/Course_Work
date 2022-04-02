@@ -82,7 +82,16 @@ def get_kmers_predictions_mean(seq_dict, seq_key):
 	return mean
 
 # Plotting predictions.
-def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, smoothened=False):
+def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, k=0):
+	# predictions_file 	- [STRING] path to a TSV file with per token predictions
+	#					  from thermoclass
+	# seq_key 			- [STRING] sequence identifier in the predictions file
+	# indeces 			- [LIST] list with indeces denoting columns for x and y 
+	# 					  values to plot, len(indeces) == 2
+	# sep 				- [STRING] a separator, which waas used to separate
+	#					  values in the predictions file
+	# output_png 		- [STRING] a path to a PNG for the plot
+	# k 				- [INT] size of a window for moving average smoothing
 	x_values = []
 	y_values = []
 	file_handle = open(predictions_file, 'r')
@@ -95,6 +104,18 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, smooth
 			y_values.append(float(line_arr[indeces[1]]))
 
 	plt.plot(x_values, y_values, linewidth=1, color='black')
+	if(k != 0):
+		y_smoothened_values = []
+		for i in x_values:
+			if(i-int(k/2) >= 0 and i-int(k/2)+(k-1) < len(x_values)):
+				window = []
+				for j in range(k):
+					window.append(y_values[i-int(k/2)+j])
+				y_smoothened_values.append(statistics.mean(window))
+			else:
+				y_smoothened_values.append(y_values[i])
+
+	plt.plot(x_values, y_smoothened_values, linewidth=1, color='red')
 	plt.savefig(output_png)
 	plt.clf()
 
