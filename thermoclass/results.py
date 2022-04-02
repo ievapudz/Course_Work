@@ -119,7 +119,7 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, k=0):
 			y_smoothened_values.append(statistics.mean(window))
 
 	plt.plot(x_values, y_smoothened_values, linewidth=1, color='red')
-	plt.title('Per token predictions for'+seq_key)
+	plt.title('Per token predictions for '+seq_key)
 	plt.xlabel('residue index')
 	plt.ylabel('prediction')
 	plt.savefig(output_png)
