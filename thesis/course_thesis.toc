@@ -1,11 +1,12 @@
 \contentsline {section}{Introduction}{3}{section*.2}%
 \contentsline {section}{Theory}{4}{section*.3}%
-\contentsline {subsection}{ESM-1b embeddings}{4}{section*.4}%
-\contentsline {section}{Methods}{5}{section*.5}%
-\contentsline {subsection}{Collecting data}{5}{section*.6}%
-\contentsline {subsection}{Calculating embeddings}{6}{section*.7}%
-\contentsline {subsection}{Processing generated embeddings}{6}{section*.8}%
-\contentsline {subsection}{Visualising embeddings}{7}{section*.9}%
-\contentsline {subsection}{Training and validation of the neural network}{8}{section*.10}%
-\contentsline {subsection}{Testing of the model}{9}{section*.11}%
-\contentsline {section}{Conclusions}{10}{section*.12}%
+\contentsline {subsection}{Protein language models}{4}{section*.4}%
+\contentsline {subsection}{ESM-1b embeddings}{4}{section*.5}%
+\contentsline {section}{Methods}{5}{section*.6}%
+\contentsline {subsection}{Collecting data}{5}{section*.7}%
+\contentsline {subsection}{Calculating embeddings}{6}{section*.8}%
+\contentsline {subsection}{Processing generated embeddings}{6}{section*.9}%
+\contentsline {subsection}{Visualising embeddings}{7}{section*.10}%
+\contentsline {subsection}{Training and validation of the neural network}{9}{section*.11}%
+\contentsline {section}{Results}{10}{section*.12}%
+\contentsline {section}{Conclusions}{11}{section*.13}%

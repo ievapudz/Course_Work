@@ -95,26 +95,47 @@
 
 	\section{Theory}
 
-	The main objective of the work is to create a classifier that could 
-	determine to which thermostability class the protein sequence belongs.
+	The main objective of the work is to apply embeddings from protein language 
+	models to create a classifier that could determine to which thermostability 
+	class the protein sequence belongs.
 
 	Thermostability classes were created by setting the threshold of 
 	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
 	than the given threshold should be assigned to class '0' and the 
 	remaining ones compose the class '1'. 
 
+	\subsection{Protein language models}
+
+	Protein language models are Transformer models trained on protein sequences.
+	The Transformer is a model, which is made of encoder-decoder architecture 
+	that relies entirely on self-attention (Vaswani et al. 2017). 
+	The encoder part provides continuous representations of the input composed 
+	of sequences of symbols, meanwhile the decoder part generates output for each 
+	symbol in the input sequence. For this principle of architecture, Transformers
+	can be trained in an unsupervised fashion and be applies to natural language
+	processing (NLP) tasks at which they produce state-of-the-art 
+	results (Vig et al. 2019).
+
+	Since amino acid sequences can be considered as a particular language, 
+	Transformer architectures were applied to solve tasks related to protein 
+	biology or molecule modeling \textit{in silico}. Attention mechanisms in 
+	models of Transformer architecture, taking BERT model as a example 
+	(Vig et al. 2020), are capable to capture the folding structure, 
+	binding sites, and complex biophysical properties of proteins.
+
 	\subsection{ESM-1b embeddings}
 
 	Due to the novelty of embeddings, a considerably good performance of
 	protein language models, and a recently emerged availability of embeddings,
 	it was decided to develop a neural network model that would take protein
-	embeddings from ESM-1b model as input and give the thermostability class
+	embeddings as input and give the thermostability class
 	label as output.
 
 	ESM-1b is one of evolutionary scale models trained by Facebook Research 
 	(Rives et al. 2021). The model has 33 layers and 650 million parameters. 
 	The model was trained in an 
-	unsupervised fashion on UniRef50 dataset (accessed March 28, 2018). In order to ensure
+	unsupervised fashion on UniRef50 data set (accessed March 28, 2018). In order 
+	to ensure
 	determinism in the validation set, authors removed protein sequences that
 	were longer than 1024 amino acids. 
 
@@ -126,16 +147,16 @@
 	generated.
 	
 	The fact that sequences longer than 1024 amino acids were removed from the 
-	validation dataset for ESM-1b model's training implies to the limitation of 
+	validation data set for ESM-1b model's training implies to the limitation of 
 	model's embeddings, which cannot be generated for sequences longer than 
-	1024 amino acids. For this reason, various methods to get the most accurate 
-	prediction for longer sequences were tried.
+	1024 amino acids.
 
 	\newpage
 
 	\section{Methods}
 
-	Generally, the workflow consisted of the following steps:
+	Generally, the development of a tool for protein thermostability predictions
+	consisted of the following steps:
 
 	\begin{enumerate}
 		\item Collecting sets of sequences
@@ -152,18 +173,18 @@
 	\subsection{Collecting data}
 
 	Initially, the steps prior to the neural network model construction 
-	were done using a small dataset that was composed of proteomes of two 
+	were done using a small data set that was composed of proteomes of two 
 	organisms: a mesophilic bacteria \textit{Escherichia coli} 
 	(\href{https://www.uniprot.org/proteomes/UP000000625}{UP000000625}) and a 
 	thermophilic archaeon \textit{Sulfolobus solfataricus} 
 	(\href{https://www.uniprot.org/proteomes/UP000001974}{UP000001974}). The 
 	growth temperature of \textit{E. coli} is $37\ ^\circ$C (Jang et al. 2017) 
 	and $80\ ^\circ$C for \textit{S. solfataricus} (Zaparty et al. 2010). This 
-	dataset was named '001' and used only for embeddings visualisation.
+	data set was named '001' and used only for embeddings visualisation.
 
 	The visualisation of '001' stimulated to check whether embeddings are 
 	distinguished by the thermostability property or the life domain has a
-	significant impact to the data clusterisation. Subsequently, '002' dataset 
+	significant impact to the data clusterisation. Subsequently, '002' data set 
 	was a collection of 2 mesophilic archaea and 2 thermophilic bacteria
 	proteomes.
 
@@ -187,25 +208,26 @@
 		(\href{https://www.uniprot.org/proteomes/UP000008183}{UP000008183})
 	\end{itemize}
 
-	After receiving the results of the first neural network model, it was decided
-	to train and test the model on the first real dataset. '003' dataset was a subset
-	of the dataset of 21458 annotated organisms (Engqvist 2018). 
+	After receiving the results of the first neural network model trained on 
+	'002' data set, it was decided to train and test the model on the first 
+	real data set. '003' data set was a subset of the data set of 21458 
+	annotated organisms (Engqvist 2018). 
 	
-	Requirements for '003' dataset were: the dataset needed to be balanced and a
+	Requirements for '003' data set were: the data set needed to be balanced and a
 	single taxonomy identifier could be apparent only in either training, validation,
-	or testing dataset. 
+	or testing data set. 
 	
-	To make the dataset balanced, 216595 sequences from 51 proteomes taken 
+	To make the data set balanced, 216595 sequences from 51 proteomes taken 
 	for the class '0' and 212729 sequences from 111 proteomes of the class '1' 
 	(Table \ref{table:proteomes003}, Table \ref{table:sequences003}).
 
 	Proportions that were chosen to divide classes of '003'
-	dataset were 70\%, 15\%, and 15\% for training, validation, and testing
+	data set were 70\%, 15\%, and 15\% for training, validation, and testing
 	sets respectively.
 
 	\begin{table}[h!]
 		\caption{Numbers of different proteomes that compose training, 
-		validation, and testing datasets}
+		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
 		\begin{tabular}{ | c | c | c | }
@@ -224,7 +246,7 @@
 
 	\begin{table}[h!]
 		\caption{Numbers of amino acid sequences that compose training, 
-		validation, and testing datasets}
+		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
 		\begin{tabular}{ | c | c | c | }
@@ -250,16 +272,16 @@
 
 	\subsection{Processing generated embeddings}
 
-	As it was mentioned in previous sections, ESM-1b embeddings can be 
+	As it was mentioned in the previous section, ESM-1b embeddings can be 
 	calculated only for sequences that are not longer than 1024 amino acids.
 	Therefore, after the generation of embeddings, sequences without embeddings 
-	were filtered out from the initial dataset. The final dataset consisted
+	were filtered out from the initial data set. The final data set consisted
 	of 423127 embeddings (212144 of class '0' and 210983 of class '1') (Table 
 	\ref{table:embeddings003}).
 
 	\begin{table}[h!]
 		\caption{Numbers of embeddings that compose training, 
-		validation, and testing datasets}
+		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
 		\begin{tabular}{ | c | c | c | }
@@ -276,10 +298,11 @@
 		\label{table:embeddings003}
 	\end{table}
 
-	These embeddings were saved to NPZ and TSV files. NPZ files are binary files
-	that are used to load sequence representations to the model. TSV files with embedding vectors
-	were created for a human-readable record and analysis with other tools. The TSV files
-	were made headerless with columns representing the following information:
+	These embeddings were saved to NPZ and TSV files. NPZ files are binary 
+	files that are used to load sequence representations to the model. TSV 
+	files with embedding vectors were created for a human-readable record 
+	and analysis with other tools. The TSV files were made headerless with 
+	columns representing the following information:
 
 	\begin{itemize}
 		\item \#0 - Taxonomy ID of the organism, to which the sequence belongs
@@ -291,8 +314,11 @@
 
 	\subsection{Visualising embeddings}
 
-	Calculated embeddings were visualised using principal component analysis (PCA)
-	from \textit{Scikit-Learn Python} library (version 0.24.2) (Figure \ref{figure:ScikitPCAembeddings003}). 
+	Calculated embeddings were visualised using principal component 
+	analysis (PCA) from \textit{Scikit-Learn Python} library (version 0.24.2)
+	(Figure \ref{figure:ScikitPCAembeddings003}). The plots demonstrated that
+	embeddings form clusters that might be divided to distinct classes, which
+	promised the high performance of the trained neural network.
 
 	\begin{figure}[h!]
 		\centering
@@ -301,15 +327,16 @@
 
 		\includegraphics[scale=0.3]{003_test_v2_PCA.png}
 
-		\caption{PCA visualisations of '003' model datasets' embeddings: training set
+		\caption{PCA visualisations of '003' model data sets' embeddings: training set
 				in the upper left, validation set in the upper right, and 
 				testing set in the lower center}
 		\label{figure:ScikitPCAembeddings003}
 	\end{figure}
 	
 	Additionally, \textit{Python} minimum-distortion embedding (\textit{PyMDE}) 
-	library (version 0.1.5) was used to visualise datasets of embeddings 
-	(Figure \ref{figure:PyMDEPCAembeddings003}).
+	library (version 0.1.5) was used to visualise data sets of embeddings 
+	(Figure \ref{figure:PyMDEPCAembeddings003}), which showed the 3D image
+	of data clusters.
 
 	\begin{figure}[h!]
 		\centering
@@ -318,7 +345,7 @@
 
 		\includegraphics[scale=0.3]{003_test_v2_MDE_PCA.png}
 
-		\caption{\textit{PyMDE} PCA visualisations of '003' model datasets' embeddings: training set
+		\caption{\textit{PyMDE} PCA visualisations of '003' model data sets' embeddings: training set
 				in the upper left, validation set in the upper right, and 
 				testing set in the lower center}
 		\label{figure:PyMDEPCAembeddings003}
@@ -332,11 +359,14 @@
 	the most simple architecture - a single layer perceptron (SLP). The input of the 
 	layer is 1280-dimensional - it takes the input of protein embeddings - and the 
 	output is a binary label that represents the thermostability class. The 
-	activation function was chosen to be sigmoid and loss function binary cross
-	entropy. Adam optimizer with learning rate of 0.0001 was chosen.
+	activation and loss functions were sigmoid and binary cross
+	entropy respectively. Adam optimizer with learning rate of 0.0001 was chosen.
 
 	The model was trained and validated in 5 epochs taking mini-batch size of 24
-	embeddings.
+	embeddings. The ROC curves (Figure \ref{figure:SLP003validation4}) did not 
+	indicate a significant progress of the training process - the area under 
+	the curve was considerably large since the
+	first epoch of the training.
 
 	\begin{figure}[h!]
 		\centering
@@ -346,6 +376,14 @@
 		one denotes the curve of the fifth epoch}
 		\label{figure:SLP003validation4}
 	\end{figure}
+
+	Confusion matrices presented in this work are composed of values in the
+	following order reading from left to right: the first row consists of true 
+	negative (TN) and false positive (FP) values, the second row consists of 
+	false negative (FN) and true positive (TP) values.
+	Therefore, the values of the confusion matrix after the fifth training epoch
+	showed that most of the mistakes were made by assigning false positive 
+	labels to sequences.
 
 	\begin{table}[h!]
 		\caption{Confusion matrix after the fifth validation epoch}
@@ -362,6 +400,24 @@
 		\end{tabular}
 		\label{table:SLP003confusionMatrixValidation4}
 	\end{table}
+
+	Values in confusion matrix allow to calculate metrics: accuracy, precision,
+	and recall. Formulas for calculation of these metrics are given below 
+	(Eq. \ref{accuracy}-\ref{recall}).
+	The AUC is calculated by integrating the ROC curve. 
+
+	\begin{equation}
+		Accuracy = \frac{TP+TN}{TP+FP+TN+FN} 
+		\label{accuracy}
+	\end{equation}
+	\begin{equation}
+		Precision = \frac{TP}{TP+FP} 
+		\label{precision}
+	\end{equation}
+	\begin{equation}
+		Recall = \frac{TP}{TP+FN} 
+		\label{recall}
+	\end{equation}
 
 	\begin{table}[h!]
 		\caption{Model performance metrics after the fifth validation epoch}
@@ -381,12 +437,33 @@
 		\label{table:SLP003metricsValidation4}
 	\end{table}
 
-	\newpage
+	\section{Results}
 
-	\subsection{Testing of the model}
-
-	The model was tested with the testing subset of '003' dataset that was
+	The model was tested with the testing subset of '003' data set that was
 	not exposed to the model before the testing stage. 
+
+	The ROC curve (Figure \ref{figure:SLP003testing}) was steep enough to show
+	a good performance of the model. The confusion matrix 
+	(Table \ref{table:SLP003confusionMatrixTesting}) of the testing stage 
+	showed balanced number of mistakes (FP and FN values were approximately 
+	equal). Area under testing ROC curve was 0.924, 
+	accuracy and precision metrics exceeded those after the fifth training 
+	epoch (Table \ref{table:SLP003metricsTesting}). In addition to the metrics
+	given for the fifth training epoch, Matthew's correlation coefficient (MCC)
+	(\ref{MCC}) was calculated as well.
+
+	\begin{equation}
+		\label{MCC}
+		MCC = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}} 
+	\end{equation}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.7]{testing_0_3068.png}
+
+		\caption{ ROC curve after the testing stage}
+		\label{figure:SLP003testing}
+	\end{figure}
 
 	\begin{table}[h!]
 		\caption{Confusion matrix in the testing phase}
@@ -424,20 +501,24 @@
 		\label{table:SLP003metricsTesting}
 	\end{table}
 
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[scale=0.7]{testing_0_3068.png}
-
-		\caption{ ROC curve after the testing stage}
-		\label{figure:SLP003testing}
-	\end{figure}
-
 	\newpage
 
 	\section{Conclusions}
 
-	\dots
+	In summary, the objective to develop a tool that predicts the thermostability
+	class of the input protein was achieved. Nevertheless, the workflow pointed
+	several areas to consider for improvement and future development:
 
+	\begin{itemize}
+		\item Overcoming the limitation of sequence length of 1024 amino acids
+		\item Experimentation with more sophisticated model architectures
+		\item Testing the trained model with per token embeddings and getting 
+			  thermostability predictions for each amino acid in the sequence
+		\item Picking a different subset of the annotated growth temperatures 
+			  data set  
+		\item Taking a different kind of embeddings as input
+	\end{itemize}
+	
 	\nocite{*}
 	
 	\normalsize
