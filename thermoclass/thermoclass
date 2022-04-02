@@ -188,11 +188,14 @@ if(options.output_plot != ''):
 	command = 'rm seq_keys.tmp'
 	os.system(command)
 
-	for seq_key in seq_keys:
-		seq_key = seq_key.strip()
-		plot_predictions(options.output, seq_key, [1, 4], '\t', 
-						 options.output_plot+'/'+seq_key+'.png', 
-						 k=5)
+	ks = [ 5, 11, 21, 31 ]
+
+	for k in ks:
+		for seq_key in seq_keys:
+			seq_key = seq_key.strip()
+			plot_predictions(options.output, seq_key, [1, 4], '\t', 
+							 options.output_plot+'/'+seq_key+'_'+str(k)+'.png',
+							 k=k)
 
 os.system('echo "thermoclass finished:" `date`')
 
