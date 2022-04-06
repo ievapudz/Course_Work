@@ -49,6 +49,6 @@ results/SLP/window_prediction_plots_sorted_by_max_min_difference-2.pdf
 results/SLP/window_prediction_plots_sorted_by_max_min_difference.pdf
 
 thermoclass/emb/
-thermoclass/predictions/*.tsv
+thermoclass/predictions/TSV/
 thermoclass/*.fasta
 thermoclass/FASTA/*.fasta
