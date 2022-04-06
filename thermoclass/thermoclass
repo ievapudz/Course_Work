@@ -100,6 +100,7 @@ options.output = options.output.split('.tsv')[0]+'.tsv'
 x_npz_keyword = options.npz_keywords.split(' ')[0]
 y_npz_keyword = options.npz_keywords.split(' ')[1]
 
+print('Filtering input FASTA')
 filtered_fasta = filter_FASTA(options.fasta, 1022)
 
 # To create testing data with mean or per_tok representations 

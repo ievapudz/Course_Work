@@ -21,7 +21,8 @@ def filter_FASTA(input_FASTA, length_threshold):
 					 '_filtered_by_'+str(length_threshold)+'.fasta'
 	file_handle = open(filtered_FASTA, 'w')
 	for record in filtered_records:
-		file_handle.write('>'+str(record.id)+'\n'+str(record.seq)+'\n')
+		modified_id = str(record.id).replace('-', '_')
+		file_handle.write('>'+modified_id+'\n'+str(record.seq)+'\n')
 	file_handle.close()
 	return filtered_FASTA
 
