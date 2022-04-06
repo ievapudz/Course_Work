@@ -16,7 +16,7 @@ def filter_FASTA(input_FASTA, length_threshold):
 	for record in SeqIO.parse(input_FASTA, "fasta"):
 		if(len(record.seq) <= length_threshold):
 			filtered_records.append(record)
-
+	
 	filtered_FASTA = './'+os.path.basename(os.path.splitext(input_FASTA)[0])+\
 					 '_filtered_by_'+str(length_threshold)+'.fasta'
 	file_handle = open(filtered_FASTA, 'w')
@@ -79,7 +79,7 @@ def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, label
 
 # Filtering sequences that do not have their embeddings generated
 def filter_sequences(data, key, path_to_embeddings, labelled=True):
-	embeddings_list = "embeddings_files.tmp"
+	embeddings_list = data[key]['FASTA']+"embeddings_files.tmp"
 	command = "ls -1 "+path_to_embeddings+" | sort > "+embeddings_list
 	os.system(command)
 
@@ -102,7 +102,7 @@ def filter_sequences(data, key, path_to_embeddings, labelled=True):
 			else:
 				data[key]['Y_filtered'].append(0)
 
-	command = "rm *.tmp"
+	command = "rm "+embeddings_list
 	os.system(command)
 
 # Gathering ESM embeddings to a list representation

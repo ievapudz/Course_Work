@@ -133,6 +133,11 @@ if(options.collect):
 
 	filter_sequences(data, 'test', data['test']['embeddings'], False)
 
+	if(len(data['test']['X_filtered']) == 0):
+		print(sys.argv[0]+': empty input (no appropriate sequences to process).', 
+			  file=sys.stderr)
+		quit()
+
 	# Save embeddings to NPZ and TSV files
 	emb_key = 'mean_representations'
 	
@@ -194,12 +199,12 @@ if(options.output_fasta != ''):
 						   include_std=True)
 
 if(options.output_plot != ''):
-	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > seq_keys.tmp'
+	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > '+options.output+'seq_keys.tmp'
 	os.system(command)
-	file_handle = open('seq_keys.tmp', 'r')
+	file_handle = open(options.output+'seq_keys.tmp', 'r')
 	seq_keys = file_handle.readlines()
 	file_handle.close()
-	command = 'rm seq_keys.tmp'
+	command = 'rm '+options.output+'seq_keys.tmp'
 	os.system(command)
 
 	ks = [ 21 ]
