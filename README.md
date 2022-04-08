@@ -1312,6 +1312,62 @@ sbatch --array=0-15 --output=data/004/slurm/validate_%a.out scripts/004/004_embe
 sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddings_test.sh
 ```
 
+## Multi-class classifier
+
+004 data set was used to train multi-class classifier. The first architecture for multi-class 
+classification is composed of a single linear layer and a softmax activation function. Loss function
+that was applied to evaluate the model was [cross entropy loss (CEL)](https://en.wikipedia.org/wiki/Cross_entropy). 
+
+Cross entropy loss function was used to evaluate the performance of the model. Since there are 16 
+classes in this multi-class classification case, the success rate of a random classifier is 0.00625,
+which means that the maximum value of cross entropy loss function is 2.77 (failure probability equal
+to 100 - 0.00625 = 99.99375). Accuracy will be calculated in the following way:
+
+$accuracy = \frac{( CEL\ *\ 99.99375 )}{2.77}$
+
+Since it is not clear what hyperparameters should be used to train the model, 
+these had to be determined using the principle of trial-and-error.
+
+Experiments that were run:
+
+| Learning rate | Batch size | Number of epochs |
+|---------------|------------|------------------|
+| 1e-3          | 24         | 5                |
+| 1e-3          | 48         | 5                |
+| 1e-3          | 96         | 5                |
+| 1e-4          | 24         | 5                |
+| 1e-4          | 48         | 5                |
+| 1e-4          | 96         | 5                |
+| 1e-5          | 24         | 5                |
+| 1e-5          | 48         | 5                |
+| 1e-5          | 96         | 5                |
+| 1e-3          | 24         | 50               |
+| 1e-3          | 48         | 50               |
+| 1e-3          | 96         | 50               |
+| 1e-4          | 24         | 50               |
+| 1e-4          | 48         | 50               |
+| 1e-4          | 96         | 50               |
+| 1e-5          | 24         | 50               |
+| 1e-5          | 48         | 50               |
+| 1e-5          | 96         | 50               |
+| 1e-3          | 24         | 100              |
+| 1e-3          | 48         | 100              |
+| 1e-3          | 96         | 100              |
+| 1e-4          | 24         | 100              |
+| 1e-4          | 48         | 100              |
+| 1e-4          | 96         | 100              |
+| 1e-5          | 24         | 100              |
+| 1e-5          | 48         | 100              |
+| 1e-5          | 96         | 100              |
+
+A command to run training of one model:
+```
+./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/Mul
+tiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
+```
+
+A script to run training for a batch of models `./scripts/004/004_run_classfiers.sh`.
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
