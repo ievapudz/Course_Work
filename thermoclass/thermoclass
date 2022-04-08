@@ -178,12 +178,21 @@ print('Inference process has finished')
 
 print('Processing results')
 
-command = 'echo -e seq_id\tkmer\tseq\tbinary_prediction\traw_prediction > '+\
-		  options.output+'.tmp'
-os.system(command)
+if(options.per_tok):
+	command = 'echo -e seq_id\tkmer\tbinary_prediction\traw_prediction > '+\
+				options.output+'.tmp'
+	os.system(command)
 
-command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
+	command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
 		  'print $1, $2, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
+else:
+	command = 'echo -e seq_id\tbinary_prediction\traw_prediction > '+\
+				options.output+'.tmp'
+	os.system(command)
+
+	command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} { '+\
+		  'print $1, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
+
 os.system(command)
 
 command = 'mv '+options.output+'.tmp '+options.output
