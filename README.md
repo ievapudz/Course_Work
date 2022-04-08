@@ -1213,8 +1213,8 @@ cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hi
 cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_100.fasta
 ```
 
-| File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
-|---------------------------------|---------------|------------------------|------------------------|
+| File                                  | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
+|---------------------------------------|---------------|------------------------|------------------------|
 | data/cd_hit/FASTA/cd_hit_c_90.fasta   |      391795   |                     51 |                    111 |
 | data/cd_hit/FASTA/cd_hit_c_100.fasta  |      418958   |                    TBU |                    TBU |
 
@@ -1353,6 +1353,17 @@ paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $
 There is an option to set the `output_png` in order to plot per token predictions of proteins. The resulting plots have got 
 raw predictions curve coloured in light gray, and smoothened curve using moving average principle. Window size (k) was kept equal
 to 21.
+
+To make inferences for a bigger set of sequences (690 to be exact), a FASTA splitter was needed:
+
+```
+../../programs/fasta-splitter.pl --n-parts 69 --out-dir ./FASTA/ --nopad ./FASTA/C2EP.fasta
+```
+
+To run inference making for per token representations:
+```
+sbatch --array=1-69 --output=C2EP_%a_%A.out sbatch_thermoclass.sh
+```
 
 ## References
 
