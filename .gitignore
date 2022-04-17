@@ -5,6 +5,10 @@ data/003/CSV/
 data/003/TSV/
 data/003/slurm/
 data/003/TXT/
+data/004/EMB_ESM1b/
+data/004/slurm/
+data/004/*.numbers
+data/004/FASTA/
 
 data/CRISPR/FASTA/C2EP_kmers_1022/C2EP_kmers.part-*
 data/CRISPR/FASTA/C2EP_kmers_600/*
@@ -44,7 +48,7 @@ data/temp_range_data.numbers
 results/SLP/window_prediction_plots_sorted_by_max_min_difference-2.pdf
 results/SLP/window_prediction_plots_sorted_by_max_min_difference.pdf
 
-data/004/*.numbers
-data/004/FASTA/
-
-thermoclass/predictions/*.tsv
+thermoclass/emb/
+thermoclass/predictions/TSV/
+thermoclass/*.fasta
+thermoclass/FASTA/*.fasta
