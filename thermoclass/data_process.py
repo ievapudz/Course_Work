@@ -7,6 +7,8 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from sklearn.utils import shuffle
+from Bio.PDB import *
+from Bio.PDB.Polypeptide import *
 
 # Filtering FASTA records by the length (before generation of embeddings)
 def filter_FASTA(input_FASTA, length_threshold):
@@ -240,3 +242,20 @@ def get_sequence_length_as_SV(data, index, key, subkey='X_filtered',
 	else:
 		return sequence_length + sep
 
+# Parsing PDB structural file
+def parse_PDB_as_FASTA(pdb_id):
+	pdbl = PDBList() 
+	pdbl.retrieve_pdb_file(pdb_id, pdir = './PDB/', file_format = 'pdb')
+	parser = PDBParser(PERMISSIVE = True, QUIET = True) 
+	data = parser.get_structure(pdb_id, './PDB/pdb'+pdb_id+'.ent')
+	model = data.get_models()
+	models = list(model)
+	chains = list(models[0].get_chains())
+	residue = list(chains[0].get_residues())
+
+	aa_seq = ''
+	for res in residue:
+		aa_seq += three_to_one(res.get_resname())
+	
+	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
+	return FASTA_record
