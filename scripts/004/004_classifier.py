@@ -29,6 +29,12 @@ parser.add_option("--batch", "-b", dest="batch_size",
 parser.add_option("--learning_rate", "-l", dest="learning_rate",
 				   default=1e-4, help="learning rate")
 
+parser.add_option("--epochs", "-e", dest="epochs",
+                   default=5, help="number of epochs")
+
+parser.add_option("--model", "-m", dest="model",
+                   default=None, help="model file")
+
 parser.add_option("--ROC_dir", "-r", dest="ROC_dir",
 				   help="directory with ROC curves")
 
@@ -39,8 +45,11 @@ parser.add_option("--output", "-o", dest="output",
 
 PATH = './results/MultiClass1/004/model.pt'
 
+if(options.model != None):
+	PATH = options.model
+
 BATCH_SIZE = int(options.batch_size)
-NUM_OF_EPOCHS = 5
+NUM_OF_EPOCHS = int(options.epochs)
 
 dataset = load_tensor_from_NPZ(options.npz, 
 							   ['x_train', 'y_train', 'x_validate', 'y_validate'])

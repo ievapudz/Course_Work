@@ -1,0 +1,76 @@
+Starting epoch 1
+Training loss and failure rate after mini-batch    96: 2.769, 99.798
+Training loss and failure rate after mini-batch   192: 2.759, 99.453
+Training loss and failure rate after mini-batch   288: 2.750, 99.106
+Training loss and failure rate after mini-batch   384: 2.741, 98.802
+Training loss and failure rate after mini-batch   480: 2.733, 98.512
+Training loss and failure rate after mini-batch   576: 2.728, 98.319
+Training loss and failure rate after mini-batch   672: 2.722, 98.128
+Training loss and failure rate after mini-batch   768: 2.720, 98.041
+Training loss and failure rate after mini-batch   864: 2.715, 97.867
+Training loss and failure rate after mini-batch   960: 2.708, 97.627
+Training loss and failure rate after mini-batch  1056: 2.709, 97.642
+Training loss and failure rate after mini-batch  1152: 2.704, 97.457
+Validation loss and failure rate after mini-batch    96: 2.718 97.957
+Validation loss and failure rate after mini-batch   192: 2.717 97.919
+Starting epoch 2
+Training loss and failure rate after mini-batch    96: 2.700, 97.339
+Training loss and failure rate after mini-batch   192: 2.697, 97.216
+Training loss and failure rate after mini-batch   288: 2.693, 97.066
+Training loss and failure rate after mini-batch   384: 2.691, 96.980
+Training loss and failure rate after mini-batch   480: 2.691, 96.982
+Training loss and failure rate after mini-batch   576: 2.686, 96.800
+Training loss and failure rate after mini-batch   672: 2.685, 96.765
+Training loss and failure rate after mini-batch   768: 2.681, 96.637
+Training loss and failure rate after mini-batch   864: 2.684, 96.739
+Training loss and failure rate after mini-batch   960: 2.681, 96.620
+Training loss and failure rate after mini-batch  1056: 2.680, 96.611
+Training loss and failure rate after mini-batch  1152: 2.673, 96.348
+Validation loss and failure rate after mini-batch    96: 2.701 97.349
+Validation loss and failure rate after mini-batch   192: 2.699 97.274
+Starting epoch 3
+Training loss and failure rate after mini-batch    96: 2.676, 96.451
+Training loss and failure rate after mini-batch   192: 2.673, 96.359
+Training loss and failure rate after mini-batch   288: 2.670, 96.238
+Training loss and failure rate after mini-batch   384: 2.670, 96.255
+Training loss and failure rate after mini-batch   480: 2.668, 96.166
+Training loss and failure rate after mini-batch   576: 2.666, 96.082
+Training loss and failure rate after mini-batch   672: 2.660, 95.895
+Training loss and failure rate after mini-batch   768: 2.668, 96.162
+Training loss and failure rate after mini-batch   864: 2.666, 96.082
+Training loss and failure rate after mini-batch   960: 2.662, 95.939
+Training loss and failure rate after mini-batch  1056: 2.664, 96.013
+Training loss and failure rate after mini-batch  1152: 2.661, 95.932
+Validation loss and failure rate after mini-batch    96: 2.693 97.066
+Validation loss and failure rate after mini-batch   192: 2.697 97.211
+Starting epoch 4
+Training loss and failure rate after mini-batch    96: 2.654, 95.674
+Training loss and failure rate after mini-batch   192: 2.656, 95.740
+Training loss and failure rate after mini-batch   288: 2.657, 95.779
+Training loss and failure rate after mini-batch   384: 2.650, 95.504
+Training loss and failure rate after mini-batch   480: 2.660, 95.878
+Training loss and failure rate after mini-batch   576: 2.655, 95.692
+Training loss and failure rate after mini-batch   672: 2.659, 95.845
+Training loss and failure rate after mini-batch   768: 2.652, 95.605
+Training loss and failure rate after mini-batch   864: 2.651, 95.546
+Training loss and failure rate after mini-batch   960: 2.650, 95.522
+Training loss and failure rate after mini-batch  1056: 2.650, 95.530
+Training loss and failure rate after mini-batch  1152: 2.648, 95.433
+Validation loss and failure rate after mini-batch    96: 2.693 97.054
+Validation loss and failure rate after mini-batch   192: 2.692 97.032
+Starting epoch 5
+Training loss and failure rate after mini-batch    96: 2.644, 95.310
+Training loss and failure rate after mini-batch   192: 2.643, 95.280
+Training loss and failure rate after mini-batch   288: 2.645, 95.352
+Training loss and failure rate after mini-batch   384: 2.644, 95.295
+Training loss and failure rate after mini-batch   480: 2.645, 95.335
+Training loss and failure rate after mini-batch   576: 2.644, 95.313
+Training loss and failure rate after mini-batch   672: 2.642, 95.219
+Training loss and failure rate after mini-batch   768: 2.641, 95.194
+Training loss and failure rate after mini-batch   864: 2.639, 95.132
+Training loss and failure rate after mini-batch   960: 2.641, 95.185
+Training loss and failure rate after mini-batch  1056: 2.643, 95.269
+Training loss and failure rate after mini-batch  1152: 2.636, 95.014
+Validation loss and failure rate after mini-batch    96: 2.690 96.955
+Validation loss and failure rate after mini-batch   192: 2.694 97.094
+Training and validation process has finished.
