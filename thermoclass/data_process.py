@@ -243,19 +243,41 @@ def get_sequence_length_as_SV(data, index, key, subkey='X_filtered',
 		return sequence_length + sep
 
 # Parsing PDB structural file
-def parse_PDB_as_FASTA(pdb_id):
-	pdbl = PDBList() 
+def parse_PDB_model(pdb_id, index=0):
+	# pdb_id 	- [STR] PDB identifier
+	# index 	- [INT] that determines the model
+	pdbl = PDBList()
 	pdbl.retrieve_pdb_file(pdb_id, pdir = './PDB/', file_format = 'pdb')
-	parser = PDBParser(PERMISSIVE = True, QUIET = True) 
+	parser = PDBParser(PERMISSIVE=True, QUIET=True)
 	data = parser.get_structure(pdb_id, './PDB/pdb'+pdb_id+'.ent')
-	model = data.get_models()
-	models = list(model)
-	chains = list(models[0].get_chains())
-	residue = list(chains[0].get_residues())
+	models_obj = data.get_models()
+	models_arr = list(models_obj)
+	return models_arr[index]
 
+# Parsing PDB structural file as FASTA
+def get_FASTA_from_PDB(pdb_id, pdb_model, index=0):
+	# pdb_id 	- [STR] PDB identifier
+	# pdb_model - [Bio.PDB.Model] object
+	# index 	- [INT] that determines the chain
+	chains = list(pdb_model.get_chains())
+	residue = list(chains[index].get_residues())
+	
 	aa_seq = ''
 	for res in residue:
 		aa_seq += three_to_one(res.get_resname())
-	
+
 	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
 	return FASTA_record
+
+# Parsing the collection of atoms 
+def get_atoms(pdb_model, index=0):
+	# pdb_model - [Bio.PDB.Model] object
+	# atoms 	- [LIST] of lists of atoms per residue
+	chains = list(pdb_model.get_chains())
+	residue = list(chains[index].get_residues())
+
+	atoms = list()
+	for res in residue:
+		atoms.append(list(res.get_atoms()))
+
+	return atoms
