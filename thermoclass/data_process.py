@@ -243,24 +243,33 @@ def get_sequence_length_as_SV(data, index, key, subkey='X_filtered',
 		return sequence_length + sep
 
 # Parsing PDB structural file
-def parse_PDB_model(pdb_id, index=0):
+def parse_PDB_structure(pdb_id):
 	# pdb_id 	- [STR] PDB identifier
-	# index 	- [INT] that determines the model
 	pdbl = PDBList()
 	pdbl.retrieve_pdb_file(pdb_id, pdir = './PDB/', file_format = 'pdb')
 	parser = PDBParser(PERMISSIVE=True, QUIET=True)
 	data = parser.get_structure(pdb_id, './PDB/pdb'+pdb_id+'.ent')
-	models_obj = data.get_models()
-	models_arr = list(models_obj)
-	return models_arr[index]
+	#models_obj = data.get_models()
+	#models_arr = list(models_obj)
+	#return models_arr[index]
+	return data
 
 # Parsing PDB structural file as FASTA
-def get_FASTA_from_PDB(pdb_id, pdb_model, index=0):
-	# pdb_id 	- [STR] PDB identifier
-	# pdb_model - [Bio.PDB.Model] object
-	# index 	- [INT] that determines the chain
+def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
+	# pdb_struct 	- [Bio.PDB.Structure] object
+	# model_index 	- [INT] that determines the model
+	# chain_index   - [INT] that determines the chain	
+	pdb_id = pdb_struct.id
+	print(pdb_id)
+
+	models_obj = pdb_struct.get_models()
+
+	models_arr = list(models_obj)
+
+	pdb_model = models_arr[model_index]
+
 	chains = list(pdb_model.get_chains())
-	residue = list(chains[index].get_residues())
+	residue = list(chains[chain_index].get_residues())
 	
 	aa_seq = ''
 	for res in residue:
@@ -270,11 +279,16 @@ def get_FASTA_from_PDB(pdb_id, pdb_model, index=0):
 	return FASTA_record
 
 # Parsing the collection of atoms 
-def get_atoms(pdb_model, index=0):
+def get_atoms(pdb_struct, model_index=0, chain_index=0):
 	# pdb_model - [Bio.PDB.Model] object
 	# atoms 	- [LIST] of lists of atoms per residue
+	models_obj = pdb_struct.get_models()
+	models_arr = list(models_obj)
+
+	pdb_model = models_arr[model_index]
+
 	chains = list(pdb_model.get_chains())
-	residue = list(chains[index].get_residues())
+	residue = list(chains[chain_index].get_residues())
 
 	atoms = list()
 	for res in residue:
