@@ -10,6 +10,8 @@ import sys
 import os
 import torch
 from optparse import OptionParser
+from data_process import parse_PDB_structure
+from data_process import get_FASTA_from_PDB
 from data_process import filter_FASTA
 from data_process import create_testing_data
 from data_process import filter_sequences
@@ -31,6 +33,9 @@ parser = OptionParser()
 parser.add_option('--fasta', '-f', dest='fasta',
 				   help='path to the input FASTA file')
 
+parser.add_option('--pdb', '-p', dest='pdb',
+				   help='path to the input PDB file')
+
 parser.add_option('--extract', dest='extract',
 				   default='../../programs/esm-0.4.0/extract.py',
 				   help='path to the embeddings extraction script,'+\
@@ -46,7 +51,7 @@ parser.add_option('--collect', '-c', dest='collect', default=False,
 				   help='set to collect embeddings in PT files for input '+\
 						'sequences in NPZ and TSV files')
 
-parser.add_option('--per_tok', '-p', dest='per_tok',
+parser.add_option('--per_tok', dest='per_tok',
 				   action='store_true', default=False,				   
 				   help='set to include per_tok representations in the generation '+\
 						'of embeddings and make predictions for each amino acid '+\
@@ -87,7 +92,20 @@ parser.add_option('--version', '-v', dest='version', action='store_true',
 
 if(options.version):
 	print(sys.argv[0]+': version 0.1.0-dev')
-	exit
+	exit()
+
+if(options.pdb):
+	print('Retrieving and parsing structural file '+options.pdb)
+	structure = parse_PDB_structure(options.pdb)
+	fasta_record = get_FASTA_from_PDB(structure)
+
+	pdb_fasta_file = './FASTA/'+options.pdb+'.fasta'
+	file_handle = open(pdb_fasta_file, 'w')
+	
+	file_handle.write(fasta_record)
+	file_handle.close()
+
+	exit()	
 
 if(options.emb_npz == ''):
 	options.emb_npz = options.fasta.split('.fasta')[0]+'.npz'

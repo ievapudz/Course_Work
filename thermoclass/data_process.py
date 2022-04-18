@@ -12,7 +12,7 @@ from Bio.PDB.Polypeptide import *
 
 # Filtering FASTA records by the length (before generation of embeddings)
 def filter_FASTA(input_FASTA, length_threshold):
-	# input_FASTA	- [STRING] a path to the input FASTA file
+	# input_FASTA		- [STRING] a path to the input FASTA file
 	# length_threshold 	- [INT] max length of the protein sequence
 	filtered_records = []
 	for record in SeqIO.parse(input_FASTA, "fasta"):
@@ -30,10 +30,10 @@ def filter_FASTA(input_FASTA, length_threshold):
 
 # Function that returns data object for inference flow
 def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, labelled=True):
-	# dataset_FASTA - FASTA file with sequences for testing dataset
+	# dataset_FASTA 		 - FASTA file with sequences for testing dataset
 	# dataset_embeddings_dir - directory with all generated testing embeddings
-	# labelled - flag to determine whether the data is labelled or not
-	# emb_case - determines which type of embeddings the input has
+	# labelled 				 - flag to determine whether the data is labelled 
+	# emb_case 				 - determines the type of input embeddings 
 	#	0 - mean representations of ESM-1b
 	#	1 - per_tok representations of ESM-1b
 	data = {
@@ -249,9 +249,6 @@ def parse_PDB_structure(pdb_id):
 	pdbl.retrieve_pdb_file(pdb_id, pdir = './PDB/', file_format = 'pdb')
 	parser = PDBParser(PERMISSIVE=True, QUIET=True)
 	data = parser.get_structure(pdb_id, './PDB/pdb'+pdb_id+'.ent')
-	#models_obj = data.get_models()
-	#models_arr = list(models_obj)
-	#return models_arr[index]
 	return data
 
 # Parsing PDB structural file as FASTA
@@ -260,7 +257,6 @@ def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
 	# model_index 	- [INT] that determines the model
 	# chain_index   - [INT] that determines the chain	
 	pdb_id = pdb_struct.id
-	print(pdb_id)
 
 	models_obj = pdb_struct.get_models()
 
@@ -280,8 +276,9 @@ def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
 
 # Parsing the collection of atoms 
 def get_atoms(pdb_struct, model_index=0, chain_index=0):
-	# pdb_model - [Bio.PDB.Model] object
-	# atoms 	- [LIST] of lists of atoms per residue
+	# pdb_struct 	- [Bio.PDB.Structure] object
+	# model_index   - [INT] that determines the model
+	# chain_index   - [INT] that determines the chain
 	models_obj = pdb_struct.get_models()
 	models_arr = list(models_obj)
 
