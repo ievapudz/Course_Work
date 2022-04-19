@@ -7,30 +7,33 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from sklearn.utils import shuffle
+from Bio.PDB import *
+from Bio.PDB.Polypeptide import *
 
 # Filtering FASTA records by the length (before generation of embeddings)
 def filter_FASTA(input_FASTA, length_threshold):
-	# input_FASTA	- [STRING] a path to the input FASTA file
+	# input_FASTA		- [STRING] a path to the input FASTA file
 	# length_threshold 	- [INT] max length of the protein sequence
 	filtered_records = []
 	for record in SeqIO.parse(input_FASTA, "fasta"):
 		if(len(record.seq) <= length_threshold):
 			filtered_records.append(record)
-
+	
 	filtered_FASTA = './'+os.path.basename(os.path.splitext(input_FASTA)[0])+\
 					 '_filtered_by_'+str(length_threshold)+'.fasta'
 	file_handle = open(filtered_FASTA, 'w')
 	for record in filtered_records:
-		file_handle.write('>'+str(record.id)+'\n'+str(record.seq)+'\n')
+		modified_id = str(record.id).replace('-', '_')
+		file_handle.write('>'+modified_id+'\n'+str(record.seq)+'\n')
 	file_handle.close()
 	return filtered_FASTA
 
 # Function that returns data object for inference flow
 def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, labelled=True):
-	# dataset_FASTA - FASTA file with sequences for testing dataset
+	# dataset_FASTA 		 - FASTA file with sequences for testing dataset
 	# dataset_embeddings_dir - directory with all generated testing embeddings
-	# labelled - flag to determine whether the data is labelled or not
-	# emb_case - determines which type of embeddings the input has
+	# labelled 				 - flag to determine whether the data is labelled 
+	# emb_case 				 - determines the type of input embeddings 
 	#	0 - mean representations of ESM-1b
 	#	1 - per_tok representations of ESM-1b
 	data = {
@@ -78,7 +81,7 @@ def create_testing_data(dataset_FASTA, dataset_embeddings_dir, emb_case=0, label
 
 # Filtering sequences that do not have their embeddings generated
 def filter_sequences(data, key, path_to_embeddings, labelled=True):
-	embeddings_list = "embeddings_files.tmp"
+	embeddings_list = data[key]['FASTA']+"embeddings_files.tmp"
 	command = "ls -1 "+path_to_embeddings+" | sort > "+embeddings_list
 	os.system(command)
 
@@ -101,7 +104,7 @@ def filter_sequences(data, key, path_to_embeddings, labelled=True):
 			else:
 				data[key]['Y_filtered'].append(0)
 
-	command = "rm *.tmp"
+	command = "rm "+embeddings_list
 	os.system(command)
 
 # Gathering ESM embeddings to a list representation
@@ -238,4 +241,36 @@ def get_sequence_length_as_SV(data, index, key, subkey='X_filtered',
 		return sequence_length
 	else:
 		return sequence_length + sep
+
+# Parsing PDB structural file
+def parse_PDB_structure(pdb_id):
+	# pdb_id 	- [STR] PDB identifier
+	pdbl = PDBList()
+	pdbl.retrieve_pdb_file(pdb_id, pdir = './PDB/', file_format = 'pdb')
+	parser = PDBParser(PERMISSIVE=True, QUIET=True)
+	data = parser.get_structure(pdb_id, './PDB/pdb'+pdb_id+'.ent')
+	return data
+
+# Parsing PDB structural file as FASTA
+def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
+	# pdb_struct 	- [Bio.PDB.Structure] object
+	# model_index 	- [INT] that determines the model
+	# chain_index   - [INT] that determines the chain	
+	pdb_id = pdb_struct.id
+
+	models_obj = pdb_struct.get_models()
+
+	models_arr = list(models_obj)
+
+	pdb_model = models_arr[model_index]
+
+	chains = list(pdb_model.get_chains())
+	residue = list(chains[chain_index].get_residues())
+	
+	aa_seq = ''
+	for res in residue:
+		aa_seq += three_to_one(res.get_resname())
+
+	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
+	return FASTA_record
 

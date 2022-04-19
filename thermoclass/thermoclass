@@ -10,6 +10,8 @@ import sys
 import os
 import torch
 from optparse import OptionParser
+from data_process import parse_PDB_structure
+from data_process import get_FASTA_from_PDB
 from data_process import filter_FASTA
 from data_process import create_testing_data
 from data_process import filter_sequences
@@ -31,6 +33,9 @@ parser = OptionParser()
 parser.add_option('--fasta', '-f', dest='fasta',
 				   help='path to the input FASTA file')
 
+parser.add_option('--pdb', '-p', dest='pdb',
+				   help='path to the input PDB file')
+
 parser.add_option('--extract', dest='extract',
 				   default='../../programs/esm-0.4.0/extract.py',
 				   help='path to the embeddings extraction script,'+\
@@ -46,7 +51,7 @@ parser.add_option('--collect', '-c', dest='collect', default=False,
 				   help='set to collect embeddings in PT files for input '+\
 						'sequences in NPZ and TSV files')
 
-parser.add_option('--per_tok', '-p', dest='per_tok',
+parser.add_option('--per_tok', dest='per_tok',
 				   action='store_true', default=False,				   
 				   help='set to include per_tok representations in the generation '+\
 						'of embeddings and make predictions for each amino acid '+\
@@ -87,7 +92,20 @@ parser.add_option('--version', '-v', dest='version', action='store_true',
 
 if(options.version):
 	print(sys.argv[0]+': version 0.1.0-dev')
-	exit
+	exit()
+
+if(options.pdb):
+	print('Retrieving and parsing structural file '+options.pdb)
+	structure = parse_PDB_structure(options.pdb)
+	fasta_record = get_FASTA_from_PDB(structure)
+
+	pdb_fasta_file = './FASTA/'+options.pdb+'.fasta'
+	file_handle = open(pdb_fasta_file, 'w')
+	
+	file_handle.write(fasta_record)
+	file_handle.close()
+
+	exit()	
 
 if(options.emb_npz == ''):
 	options.emb_npz = options.fasta.split('.fasta')[0]+'.npz'
@@ -100,6 +118,7 @@ options.output = options.output.split('.tsv')[0]+'.tsv'
 x_npz_keyword = options.npz_keywords.split(' ')[0]
 y_npz_keyword = options.npz_keywords.split(' ')[1]
 
+print('Filtering input FASTA')
 filtered_fasta = filter_FASTA(options.fasta, 1022)
 
 # To create testing data with mean or per_tok representations 
@@ -131,6 +150,11 @@ if(options.collect):
 								labelled=False)
 
 	filter_sequences(data, 'test', data['test']['embeddings'], False)
+
+	if(len(data['test']['X_filtered']) == 0):
+		print(sys.argv[0]+': empty input (no appropriate sequences to process).', 
+			  file=sys.stderr)
+		quit()
 
 	# Save embeddings to NPZ and TSV files
 	emb_key = 'mean_representations'
@@ -172,12 +196,21 @@ print('Inference process has finished')
 
 print('Processing results')
 
-command = 'echo -e seq_id\tkmer\tseq\tbinary_prediction\traw_prediction > '+\
-		  options.output+'.tmp'
-os.system(command)
+if(options.per_tok):
+	command = 'echo -e seq_id\tkmer\tbinary_prediction\traw_prediction > '+\
+				options.output+'.tmp'
+	os.system(command)
 
-command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
+	command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} gsub("-", "\t", $1) { '+\
 		  'print $1, $2, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
+else:
+	command = 'echo -e seq_id\tbinary_prediction\traw_prediction > '+\
+				options.output+'.tmp'
+	os.system(command)
+
+	command = 'paste '+options.emb_tsv+' '+options.output+' | awk \'BEGIN {OFS="\t"} { '+\
+		  'print $1, $1284, $1285 }\' | sort -V >> '+options.output+'.tmp'
+
 os.system(command)
 
 command = 'mv '+options.output+'.tmp '+options.output
@@ -193,12 +226,12 @@ if(options.output_fasta != ''):
 						   include_std=True)
 
 if(options.output_plot != ''):
-	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > seq_keys.tmp'
+	command = 'cat '+options.output+' | tail -n +2 | awk \'{ print $1 }\' | sort -u > '+options.output+'seq_keys.tmp'
 	os.system(command)
-	file_handle = open('seq_keys.tmp', 'r')
+	file_handle = open(options.output+'seq_keys.tmp', 'r')
 	seq_keys = file_handle.readlines()
 	file_handle.close()
-	command = 'rm seq_keys.tmp'
+	command = 'rm '+options.output+'seq_keys.tmp'
 	os.system(command)
 
 	ks = [ 21 ]
