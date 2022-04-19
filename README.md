@@ -1366,7 +1366,12 @@ A command to run training of one model:
 tiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
 ```
 
-A script to run training for a batch of models `./scripts/004/004_run_classfiers.sh`.
+A script to run training for a batch of models `./scripts/004/004_run_classifiers.sh`.
+
+On a cluster (SBATCH):
+```
+sbatch scripts/004/004_run_classifier.sh
+```
 
 # Development of thermoclass
 
@@ -1423,7 +1428,7 @@ sbatch --array=1-69 --output=C2EP_%a_%A.out sbatch_thermoclass.sh
 
 It was decided to add structural parsing and presenting of the results in the new PDB file.
 ```
-./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o 1ceu_per_tok_predictions -e emb/
+./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o predictions/1ceu_per_tok_predictions -e emb/
 ```
 
 ## References
