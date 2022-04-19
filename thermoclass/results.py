@@ -45,9 +45,6 @@ def get_kmers_results_as_FASTA(input_file_name, sep, headerless, output_file_nam
 
 	for seq in sequences.keys():
 
-	   if(seq == 'Cas'):
-		   print(sequences[seq])
-
 	   line_to_write = '>'+seq
 	   if(len(sequences[seq]['predictions']) < 2):
 		   continue 
@@ -125,3 +122,73 @@ def plot_predictions(predictions_file, seq_key, indeces, sep, output_png, k=0):
 	plt.savefig(output_png)
 	plt.clf()
 
+# Results representation in PDB file (predictions in place of B factor)
+def get_results_as_PDB(structure, model_index, chain_index,  input_file_name, sep, headerless, output_file_name, indeces):
+	# input_file_name   - [STRING] a separated-value file with binary and raw predictions
+	# sep			   	- [STRING] a separated-value file separator
+	# headerless		- [BOOLEAN] a flag that determines whether a file has got header
+	# output_file_name  - [STRING] a name of an output PDB file
+	# indeces		   	- [LIST] a collection of indeces for data in order: 
+	#					 [binary_prediction, raw_prediction] 
+
+	file_handle = open(input_file_name, 'r')
+
+	if(not headerless):
+		header = file_handle.readline()
+
+	sequences = {}
+	while True:
+
+		line = file_handle.readline()
+
+		if not line:
+			break
+
+		line = line.rstrip()
+		line_arr = line.split(sep)
+
+		if(line_arr[0] not in sequences.keys()):
+			sequences[line_arr[0]] = {}
+			sequences[line_arr[0]]['label_seq'] = line_arr[indeces[0]]
+			sequences[line_arr[0]]['predictions'] = []
+		else:
+			sequences[line_arr[0]]['label_seq'] += line_arr[indeces[0]]
+
+		sequences[line_arr[0]]['predictions'].append(float(line_arr[indeces[1]]))
+
+	file_handle.close()
+
+	file_handle = open(output_file_name, 'w')
+
+	model = list(structure.get_models())[model_index]
+	chain = list(model.get_chains())[chain_index]
+	residues = list(chain.get_residues())
+
+	print(list(residues[0].get_atoms())[0].get_coord())
+
+	for seq in sequences.keys():
+		for res in residues:
+			for atom in res:
+				line_to_write = f"ATOM  {atom.get_serial_number():>4} "+\
+								f"{atom.get_name():>4}"+\
+								f"{atom.get_altloc()}"+\
+								f"{res.get_resname():>3} {res.get_full_id()[2]}"+\
+								f"{res.get_full_id()[3][1]:>4}"+\
+								f"{res.get_full_id()[3][2]}"+\
+								f"{list(atom.get_coord())[0]:8.3f}"+\
+								f"{list(atom.get_coord())[1]:8.3f}"+\
+								f"{list(atom.get_coord())[2]:8.3f}"+\
+								f"{atom.get_occupancy():6.2f}"+\
+								f"{atom.get_bfactor():6.2f}           "+\
+								f"{atom.element:>2}"
+				if(atom.pqr_charge):
+					line_to_write += f"{atom.pqr_charge:>2}"
+				#line_to_write = 'ATOM '+str(i+1)+' '+atom.get_name()+' '+\
+				#				atom.get_parent().get_resname()+' '+str(atom.get_coord())
+				print(line_to_write)
+		#sequences[seq]['predictions']
+
+		#file_handle.write(line_to_write)
+		line_to_write = ''
+
+	file_handle.close()

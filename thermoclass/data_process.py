@@ -274,21 +274,3 @@ def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
 	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
 	return FASTA_record
 
-# Parsing the collection of atoms 
-def get_atoms(pdb_struct, model_index=0, chain_index=0):
-	# pdb_struct 	- [Bio.PDB.Structure] object
-	# model_index   - [INT] that determines the model
-	# chain_index   - [INT] that determines the chain
-	models_obj = pdb_struct.get_models()
-	models_arr = list(models_obj)
-
-	pdb_model = models_arr[model_index]
-
-	chains = list(pdb_model.get_chains())
-	residue = list(chains[chain_index].get_residues())
-
-	atoms = list()
-	for res in residue:
-		atoms.append(list(res.get_atoms()))
-
-	return atoms
