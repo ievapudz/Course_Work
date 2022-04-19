@@ -1377,7 +1377,7 @@ A command to generate mean embeddings:
 
 A command to generate per_tok embeddings:
 ```
-./thermoclass -f input.fasta -g -p -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
+./thermoclass -f input.fasta -g --per_tok -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
 ```
 
 PT files in both cases will include mean embeddings.
@@ -1419,6 +1419,11 @@ To make inferences for a bigger set of sequences (690 to be exact), a FASTA spli
 To run inference making for per token representations:
 ```
 sbatch --array=1-69 --output=C2EP_%a_%A.out sbatch_thermoclass.sh
+```
+
+It was decided to add structural parsing and presenting of the results in the new PDB file.
+```
+./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o 1ceu_per_tok_predictions -e emb/
 ```
 
 ## References
