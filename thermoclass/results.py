@@ -182,10 +182,8 @@ def get_results_as_PDB(structure, model_index, chain_index,  input_file_name, se
 								f"{atom.element:>2}"
 				if(atom.pqr_charge):
 					line_to_write += f"{atom.pqr_charge:>2}"
-				#print(line_to_write)
 
 				file_handle.write(line_to_write+"\n")
-				line_to_write = ''
 
 	file_handle.write("END\n")
 	file_handle.close()
