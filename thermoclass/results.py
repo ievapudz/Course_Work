@@ -164,31 +164,28 @@ def get_results_as_PDB(structure, model_index, chain_index,  input_file_name, se
 	chain = list(model.get_chains())[chain_index]
 	residues = list(chain.get_residues())
 
-	print(list(residues[0].get_atoms())[0].get_coord())
-
 	for seq in sequences.keys():
-		for res in residues:
+		for i, res in enumerate(residues):
 			for atom in res:
-				line_to_write = f"ATOM  {atom.get_serial_number():>4} "+\
+				res_prediction = sequences[seq]['predictions'][i]
+				line_to_write = f"ATOM  {atom.get_serial_number():>5} "+\
 								f"{atom.get_name():>4}"+\
 								f"{atom.get_altloc()}"+\
 								f"{res.get_resname():>3} {res.get_full_id()[2]}"+\
 								f"{res.get_full_id()[3][1]:>4}"+\
-								f"{res.get_full_id()[3][2]}"+\
+								f"{res.get_full_id()[3][2]:1}   "+\
 								f"{list(atom.get_coord())[0]:8.3f}"+\
 								f"{list(atom.get_coord())[1]:8.3f}"+\
 								f"{list(atom.get_coord())[2]:8.3f}"+\
 								f"{atom.get_occupancy():6.2f}"+\
-								f"{atom.get_bfactor():6.2f}           "+\
+								f"{res_prediction:6.2f}          "+\
 								f"{atom.element:>2}"
 				if(atom.pqr_charge):
 					line_to_write += f"{atom.pqr_charge:>2}"
-				#line_to_write = 'ATOM '+str(i+1)+' '+atom.get_name()+' '+\
-				#				atom.get_parent().get_resname()+' '+str(atom.get_coord())
-				print(line_to_write)
-		#sequences[seq]['predictions']
+				#print(line_to_write)
 
-		#file_handle.write(line_to_write)
-		line_to_write = ''
+				file_handle.write(line_to_write+"\n")
+				line_to_write = ''
 
+	file_handle.write("END\n")
 	file_handle.close()
