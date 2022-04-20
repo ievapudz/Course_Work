@@ -1468,6 +1468,12 @@ Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
 ./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
 ```
 
+Lysozyme
+```
+./thermoclass -p 2lzm -g --per_tok -n emb/2lzm_per_tok.npz -o predictions/2lzm_per_tok_predictions -e emb/
+./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
+```
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
