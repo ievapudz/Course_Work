@@ -1364,8 +1364,7 @@ Experiments that were run:
 
 A command to run training of one model:
 ```
-./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/Mul
-tiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
+./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/MultiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
 ```
 
 A script to run training for a batch of models `./scripts/004/004_run_classifiers.sh`.
@@ -1458,6 +1457,17 @@ It was decided to add structural parsing and presenting of the results in the ne
 ./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o predictions/1ceu_per_tok_predictions -e emb/
 ```
 
+In order to check out the differences in colourings, we decided to run the program with proteins that are known to have  
+similar structures, yet due to certain differences, the thermostability is affected significantly. Some structures were 
+taken from structural genomics studies of the hyperthermophilic bacterium *Thermotoga maritima*, where its proteins were
+compared with mesophilic orthologs / paralogs in terms of contact order values.
+
+Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
+```
+./thermoclass -p 1a5z -g --per_tok -n emb/1a5z_per_tok.npz -o predictions/1a5z_per_tok_predictions -e emb/
+./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
+```
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
@@ -1473,4 +1483,6 @@ It was decided to add structural parsing and presenting of the results in the ne
 6. Engqvist, M. K. 2018. "Correlating enzyme annotations with a large set of microbial growth temperatures reveals metabolic adaptations to growth at diverse temperatures." *BMC microbiology*, 18(1), 1-14. https://doi.org/10.1186/s12866-018-1320-7.
 
 7. Fu, L., Niu, B., Zhu, Z., Wu, S., & Li, W. (2012). CD-HIT: accelerated for clustering the next-generation sequencing data. Bioinformatics, 28(23), 3150-3152. https://academic.oup.com/bioinformatics/article/28/23/3150/192160?login=true
+
+8. Robinson-Rechavi, M., & Godzik, A. (2005). Structural genomics of Thermotoga maritima proteins shows that contact order is a major determinant of protein thermostability. Structure, 13(6), 857-860.
 
