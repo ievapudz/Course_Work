@@ -25,6 +25,7 @@ from torch.utils.data import TensorDataset
 from models import SLP_with_sigmoid
 from results import get_kmers_results_as_FASTA
 from results import plot_predictions
+from results import get_results_as_PDB 
 
 MODEL = './SLP_003.pt'
 
@@ -94,6 +95,8 @@ if(options.version):
 	print(sys.argv[0]+': version 0.1.0-dev')
 	exit()
 
+structure = None
+
 if(options.pdb):
 	print('Retrieving and parsing structural file '+options.pdb)
 	structure = parse_PDB_structure(options.pdb)
@@ -105,7 +108,7 @@ if(options.pdb):
 	file_handle.write(fasta_record)
 	file_handle.close()
 
-	exit()	
+	options.fasta = pdb_fasta_file
 
 if(options.emb_npz == ''):
 	options.emb_npz = options.fasta.split('.fasta')[0]+'.npz'
@@ -234,6 +237,7 @@ if(options.output_plot != ''):
 	command = 'rm '+options.output+'seq_keys.tmp'
 	os.system(command)
 
+	# The window size for average smoothing plots
 	ks = [ 21 ]
 
 	for k in ks:
@@ -242,6 +246,10 @@ if(options.output_plot != ''):
 			plot_predictions(options.output, seq_key, [1, 4], '\t', 
 							 options.output_plot+'/'+seq_key+'_'+str(k)+'.png',
 							 k=k)
+
+if(options.pdb):
+	get_results_as_PDB(structure, 0, 0, options.output, '\t',
+				   False, 'predictions/'+options.pdb+'.pdb', [3, 4])
 
 os.system('echo "thermoclass finished:" `date`')
 
