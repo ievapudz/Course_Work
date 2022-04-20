@@ -167,8 +167,9 @@ def get_results_as_PDB(structure, model_index, chain_index,  input_file_name, se
 	for seq in sequences.keys():
 		for i, res in enumerate(residues):
 			for atom in res:
-				res_prediction = sequences[seq]['predictions'][i]
-				line_to_write = f"ATOM  {atom.get_serial_number():>5} "+\
+				if(i < len(sequences[seq]['predictions'])):
+					res_prediction = sequences[seq]['predictions'][i]
+					line_to_write = f"ATOM  {atom.get_serial_number():>5} "+\
 								f"{atom.get_name():>4}"+\
 								f"{atom.get_altloc()}"+\
 								f"{res.get_resname():>3} {res.get_full_id()[2]}"+\
@@ -180,10 +181,10 @@ def get_results_as_PDB(structure, model_index, chain_index,  input_file_name, se
 								f"{atom.get_occupancy():6.2f}"+\
 								f"{res_prediction:6.2f}          "+\
 								f"{atom.element:>2}"
-				if(atom.pqr_charge):
-					line_to_write += f"{atom.pqr_charge:>2}"
+					if(atom.pqr_charge):
+						line_to_write += f"{atom.pqr_charge:>2}"
 
-				file_handle.write(line_to_write+"\n")
+					file_handle.write(line_to_write+"\n")
 
 	file_handle.write("END\n")
 	file_handle.close()
