@@ -10,13 +10,15 @@ from data_process import run_blastp
 from data_process import parse_blastp_results
 
 fasta = sys.argv[1]
-#result_files = run_blastp(fasta)
 
-result_files = ['XML/trivial_multiple_case-0.xml', 'XML/trivial_multiple_case-1.xml']
+print("Running BLASTP")
+result_files = run_blastp(fasta)
 
+print("Parsing BLASTP results")
 pdb_ids = parse_blastp_results(result_files)
 
 for pdb_id in pdb_ids:
+	print("Running thermoclass for "+pdb_id)
 	cline = "./thermoclass -p {0} -g --per_tok -n ".format(pdb_id)+\
 			"emb/{0}_per_tok.npz -o".format(pdb_id)+\
 			"predictions/{0}_per_tok_predictions -e emb/".format(pdb_id)

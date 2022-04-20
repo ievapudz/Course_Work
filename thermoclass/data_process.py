@@ -272,7 +272,8 @@ def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
 	
 	aa_seq = ''
 	for res in residue:
-		aa_seq += three_to_one(res.get_resname())
+		if(is_aa(res.get_resname())):
+			aa_seq += three_to_one(res.get_resname())
 
 	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
 	return FASTA_record
