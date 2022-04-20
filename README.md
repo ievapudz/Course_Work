@@ -1321,9 +1321,11 @@ that was applied to evaluate the model was [cross entropy loss (CEL)](https://en
 Cross entropy loss function was used to evaluate the performance of the model. Since there are 16 
 classes in this multi-class classification case, the success rate of a random classifier is 0.00625,
 which means that the maximum value of cross entropy loss function is 2.77 (failure probability equal
-to 100 - 0.00625 = 99.99375). Accuracy will be calculated in the following way:
+to 100 - 0.00625 = 99.99375). Failure rate will be calculated in the following way:
 
-$accuracy = \frac{( CEL\ *\ 99.99375 )}{2.77}$
+$failure\_rate = \frac{( CEL\ *\ 99.99375 )}{2.77}$
+
+$accuracy = 100 - failure\_rate$
 
 Since it is not clear what hyperparameters should be used to train the model, 
 these had to be determined using the principle of trial-and-error.
