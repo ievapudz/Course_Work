@@ -8,7 +8,7 @@ class MultiClass1(nn.Module):
 		super().__init__()
 		self.layers = nn.Sequential(
 			nn.Linear(1280, 16),
-			nn.Softmax()
+			nn.Softmax(dim=1)
 		)
 
 	def forward(self, x):
