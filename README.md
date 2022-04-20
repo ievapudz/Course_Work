@@ -1213,8 +1213,8 @@ cd-hit -d 0 -c 0.9 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hi
 cd-hit -d 0 -c 1 -T 0 -M 15000 -i data/cd_hit/FASTA/cd_hit.fasta -o data/cd_hit/FASTA/cd_hit_c_100.fasta
 ```
 
-| File                            | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
-|---------------------------------|---------------|------------------------|------------------------|
+| File                                  | # of clusters | # of class_0 proteomes | # of class_1 proteomes |
+|---------------------------------------|---------------|------------------------|------------------------|
 | data/cd_hit/FASTA/cd_hit_c_90.fasta   |      391795   |                     51 |                    111 |
 | data/cd_hit/FASTA/cd_hit_c_100.fasta  |      418958   |                    TBU |                    TBU |
 
@@ -1312,6 +1312,69 @@ sbatch --array=0-15 --output=data/004/slurm/validate_%a.out scripts/004/004_embe
 sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddings_test.sh
 ```
 
+## Multi-class classifier
+
+004 data set was used to train multi-class classifier. The first architecture for multi-class 
+classification is composed of a single linear layer and a softmax activation function. Loss function
+that was applied to evaluate the model was [cross entropy loss (CEL)](https://en.wikipedia.org/wiki/Cross_entropy). 
+
+Cross entropy loss function was used to evaluate the performance of the model. Since there are 16 
+classes in this multi-class classification case, the success rate of a random classifier is 0.00625,
+which means that the maximum value of cross entropy loss function is 2.77 (failure probability equal
+to 100 - 0.00625 = 99.99375). Failure rate will be calculated in the following way:
+
+$failure\_rate = \frac{( CEL\ *\ 99.99375 )}{2.77}$
+
+$accuracy = 100 - failure\_rate$
+
+Since it is not clear what hyperparameters should be used to train the model, 
+these had to be determined using the principle of trial-and-error.
+
+Experiments that were run:
+
+| Learning rate | Batch size | Number of epochs |
+|---------------|------------|------------------|
+| 1e-3          | 24         | 5                |
+| 1e-3          | 48         | 5                |
+| 1e-3          | 96         | 5                |
+| 1e-4          | 24         | 5                |
+| 1e-4          | 48         | 5                |
+| 1e-4          | 96         | 5                |
+| 1e-5          | 24         | 5                |
+| 1e-5          | 48         | 5                |
+| 1e-5          | 96         | 5                |
+| 1e-3          | 24         | 50               |
+| 1e-3          | 48         | 50               |
+| 1e-3          | 96         | 50               |
+| 1e-4          | 24         | 50               |
+| 1e-4          | 48         | 50               |
+| 1e-4          | 96         | 50               |
+| 1e-5          | 24         | 50               |
+| 1e-5          | 48         | 50               |
+| 1e-5          | 96         | 50               |
+| 1e-3          | 24         | 100              |
+| 1e-3          | 48         | 100              |
+| 1e-3          | 96         | 100              |
+| 1e-4          | 24         | 100              |
+| 1e-4          | 48         | 100              |
+| 1e-4          | 96         | 100              |
+| 1e-5          | 24         | 100              |
+| 1e-5          | 48         | 100              |
+| 1e-5          | 96         | 100              |
+
+A command to run training of one model:
+```
+./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/Mul
+tiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
+```
+
+A script to run training for a batch of models `./scripts/004/004_run_classifiers.sh`.
+
+On a cluster (SBATCH):
+```
+sbatch scripts/004/004_run_classifier.sh
+```
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
@@ -1321,7 +1384,7 @@ A command to generate mean embeddings:
 
 A command to generate per_tok embeddings:
 ```
-./thermoclass -f input.fasta -g -p -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
+./thermoclass -f input.fasta -g --per_tok -n emb/test0327_per_tok.npz -o test0327_per_tok_predictions -e emb/
 ```
 
 PT files in both cases will include mean embeddings.
@@ -1353,6 +1416,22 @@ paste emb/input.fasta.tsv input.fasta_predictions.tsv | awk '{OFS="\t"}{ print $
 There is an option to set the `output_png` in order to plot per token predictions of proteins. The resulting plots have got 
 raw predictions curve coloured in light gray, and smoothened curve using moving average principle. Window size (k) was kept equal
 to 21.
+
+To make inferences for a bigger set of sequences (690 to be exact), a FASTA splitter was needed:
+
+```
+../../programs/fasta-splitter.pl --n-parts 69 --out-dir ./FASTA/ --nopad ./FASTA/C2EP.fasta
+```
+
+To run inference making for per token representations:
+```
+sbatch --array=1-69 --output=C2EP_%a_%A.out sbatch_thermoclass.sh
+```
+
+It was decided to add structural parsing and presenting of the results in the new PDB file.
+```
+./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o predictions/1ceu_per_tok_predictions -e emb/
+```
 
 ## References
 
