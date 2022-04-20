@@ -2,6 +2,7 @@ import os
 import sys
 import torch
 import numpy
+import time
 from os.path import exists
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -9,6 +10,8 @@ from Bio.SeqRecord import SeqRecord
 from sklearn.utils import shuffle
 from Bio.PDB import *
 from Bio.PDB.Polypeptide import *
+from Bio.Blast import NCBIWWW
+from Bio.Blast import NCBIXML
 
 # Filtering FASTA records by the length (before generation of embeddings)
 def filter_FASTA(input_FASTA, length_threshold):
@@ -273,4 +276,54 @@ def get_FASTA_from_PDB(pdb_struct, model_index=0, chain_index=0):
 
 	FASTA_record = '>'+pdb_id+'\n'+aa_seq+'\n'
 	return FASTA_record
+
+# Running BLASTP in PDB database
+def run_blastp(fasta_file):
+	records = []
+	for record in SeqIO.parse(fasta_file, 'fasta'):
+		records.append(record)
+
+	blast_result_files = []
+
+	for i, record in enumerate(records):
+		blast_result_file = 'XML/'+\
+							os.path.splitext(fasta_file)[0].split('/')[-1]+\
+							'-'+str(i)+'.xml'
+		result_handle = NCBIWWW.qblast('blastp', 'pdb', record.seq)
+	
+		blast_result = open(blast_result_file, 'w')
+		blast_result.write(result_handle.read())
+		blast_result.close()
+		result_handle.close()
+
+		if(i != len(records)-1):
+			time.sleep(10)
+
+		blast_result_files.append(blast_result_file)
+
+	return blast_result_files
+
+# Extracting results from BLASTP XML files
+def parse_blastp_results(blast_result_files, e_value_threshold=1e-20):
+	pdb_ids = []
+	break_e_val_check = 0
+
+	for result_file in blast_result_files:
+		for record in NCBIXML.parse(open(result_file)):
+			if record.alignments:
+				for align in record.alignments:
+					for hsp in align.hsps:
+						if hsp.expect < e_value_threshold:
+							pdb_id = align.title.split('|')[1]
+							pdb_ids.append(pdb_id.lower())
+							break_e_val_check = 1
+							break
+					if break_e_val_check:
+						break
+			if break_e_val_check:
+				break
+		break_e_val_check = 0
+
+	return pdb_ids
+
 
