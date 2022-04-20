@@ -1459,7 +1459,7 @@ It was decided to add structural parsing and presenting of the results in the ne
 
 In order to check out the differences in colourings, we decided to run the program with proteins that are known to have  
 similar structures, yet due to certain differences, the thermostability is affected significantly. Some structures were 
-taken from structural genomics studies of the hyperthermophilic bacterium *Thermotoga maritima*, where its proteins were
+taken from structural genomics studies of the hyperthermophilic bacterium *Thermotoga maritima* (Robinson-Rechavi et. al 2005), where its proteins were
 compared with mesophilic orthologs / paralogs in terms of contact order values.
 
 Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
@@ -1468,7 +1468,10 @@ Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
 ./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
 ```
 
-Lysozyme
+Additionally, pair of lysozyme and its mutant (original 2LZM) was taken (252L) (Baase et. al 2010). Delta by -10 
+degrees was observed between the mutant and the original protein.
+
+Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
 ```
 ./thermoclass -p 2lzm -g --per_tok -n emb/2lzm_per_tok.npz -o predictions/2lzm_per_tok_predictions -e emb/
 ./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
@@ -1492,3 +1495,4 @@ Lysozyme
 
 8. Robinson-Rechavi, M., & Godzik, A. (2005). Structural genomics of Thermotoga maritima proteins shows that contact order is a major determinant of protein thermostability. Structure, 13(6), 857-860.
 
+9. Baase, W. A., Liu, L., Tronrud, D. E., & Matthews, B. W. (2010). Lessons from the lysozyme of phage T4. Protein Science, 19(4), 631-641.
