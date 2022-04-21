@@ -1477,6 +1477,11 @@ Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
 ./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
 ```
 
+To automate the visualisation process:
+```
+./scripts/misc/visualise_pymol.py thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb thermoclass/predictions/PYMOL/
+```
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
