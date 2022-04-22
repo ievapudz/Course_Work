@@ -98,6 +98,7 @@ if(options.version):
 structure = None
 
 if(options.pdb):
+	options.pdb = options.pdb.lower()
 	print('Retrieving and parsing structural file '+options.pdb)
 	structure = parse_PDB_structure(options.pdb)
 	fasta_record = get_FASTA_from_PDB(structure)
