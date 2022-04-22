@@ -1468,9 +1468,6 @@ Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
 ./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
 ```
 
-Other structures were tested out as well:
-("1b8z" "1p51" "1b9b" "1tre" "1c3u" "1qn5" "1dd4" "1ctf")
-
 PDB IDs are written in the order of pairing, where 2*i is the protein from a thermophilic bacterium and 
 2*i+1 is the protein from a mesophilic bacteria (where i = {0, 1, ..., N}, N - length of PDB ID array).
 
@@ -1483,20 +1480,26 @@ Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
 ./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
 ```
 
-Lysozyme pairs to compare:
-1l63 with:
-- 189l
-- 104l
-- 1g1v
-
-2lzm with:
-- 209l
-- 210l
-
 To automate the visualisation process:
 ```
 ./scripts/misc/visualise_pymol.py thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb thermoclass/predictions/PYMOL/
 ```
+
+All pairs chosen to test `thermoclassbs` with structure visualisation:
+
+| Article       | Thermophilic protein | Mesophilic protein |
+|---------------|----------------------|--------------------|
+| *T. maritima* | 1A5Z                 | 1LLD               |
+| *T. maritima* | 1B9B                 | 1TRE               |
+| *T. maritima* | 1C3U                 | 1QN5               |
+| *T. maritima* | 1DD4                 | 1CTF               |
+| *T. maritima* | 1DD5                 | 1EK8               |
+| Lysozymes     | 2LZM                 | 252L               |
+| Lysozymes     | 2LZM                 | 209L               |
+| Lysozymes     | 2LZM                 | 210L               |
+| Lysozymes     | 1L63                 | 189L               |
+| Lysozymes     | 1L63                 | 104L               |
+| Lysozymes     | 1L63                 | 1G1V               |
 
 ## References
 
