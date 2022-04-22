@@ -6,14 +6,20 @@
 
 import sys
 import os
+from data_process import run_blastp
+from data_process import parse_blastp_results
 
-pdb_ids = sys.argv[1:]
+fasta = sys.argv[1]
+
+print("Running BLASTP")
+result_files = run_blastp(fasta)
+
+print("Parsing BLASTP results")
+pdb_ids = parse_blastp_results(result_files)
 
 for pdb_id in pdb_ids:
-	pdb_id = pdb_id.lower()
 	print("Running thermoclass for "+pdb_id)
 	cline = "./thermoclass -p {0} -g --per_tok -n ".format(pdb_id)+\
 			"emb/{0}_per_tok.npz -o".format(pdb_id)+\
-			"predictions/TSV/{0}_per_tok -e emb/".format(pdb_id)
+			"predictions/{0}_per_tok_predictions -e emb/".format(pdb_id)
 	os.system(cline)
-
