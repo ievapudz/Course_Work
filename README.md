@@ -1468,6 +1468,12 @@ Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
 ./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
 ```
 
+Other structures were tested out as well:
+("1b8z" "1p51" "1b9b" "1tre" "1c3u" "1qn5" "1dd4" "1ctf")
+
+PDB IDs are written in the order of pairing, where 2*i is the protein from a thermophilic bacterium and 
+2*i+1 is the protein from a mesophilic bacteria (where i = {0, 1, ..., N}, N - length of PDB ID array).
+
 Additionally, pair of lysozyme and its mutant (original 2LZM) was taken (252L) (Baase et. al 2010). Delta by -10 
 degrees was observed between the mutant and the original protein.
 
@@ -1476,6 +1482,16 @@ Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
 ./thermoclass -p 2lzm -g --per_tok -n emb/2lzm_per_tok.npz -o predictions/2lzm_per_tok_predictions -e emb/
 ./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
 ```
+
+Lysozyme pairs to compare:
+1l63 with:
+- 189l
+- 104l
+- 1g1v
+
+2lzm with:
+- 209l
+- 210l
 
 To automate the visualisation process:
 ```
