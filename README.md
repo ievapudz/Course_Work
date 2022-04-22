@@ -1501,6 +1501,22 @@ All pairs chosen to test `thermoclassbs` with structure visualisation:
 | Lysozymes     | 1L63                 | 104L               |
 | Lysozymes     | 1L63                 | 1G1V               |
 
+Predictions made:
+```
+./thermoclassbs 1a5z 1lld 1b9b 1tre 1c3u 1qn5 1dd4 1ctf 1dd5 1ek8
+```
+
+Visualisation process:
+```
+./scripts/misc/visualise_pymol_batch.py 
+        thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb \
+        thermoclass/predictions/1b9b.pdb thermoclass/predictions/1tre.pdb \
+        thermoclass/predictions/1c3u.pdb thermoclass/predictions/1qn5.pdb \
+        thermoclass/predictions/1dd4.pdb thermoclass/predictions/1ctf.pdb \
+        thermoclass/predictions/1dd5.pdb thermoclass/predictions/1ek8.pdb \
+        thermoclass/predictions/PyMOL/
+```
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
