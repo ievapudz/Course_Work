@@ -1506,7 +1506,7 @@ Predictions made:
 ./thermoclassbs 1a5z 1lld 1b9b 1tre 1c3u 1qn5 1dd4 1ctf 1dd5 1ek8
 ```
 
-Visualisation process:
+Visualisation process (*T. maritima*):
 ```
 ./scripts/misc/visualise_pymol_batch.py 
         thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb \
@@ -1514,6 +1514,18 @@ Visualisation process:
         thermoclass/predictions/1c3u.pdb thermoclass/predictions/1qn5.pdb \
         thermoclass/predictions/1dd4.pdb thermoclass/predictions/1ctf.pdb \
         thermoclass/predictions/1dd5.pdb thermoclass/predictions/1ek8.pdb \
+        thermoclass/predictions/PyMOL/
+```
+
+Visualisation process (lysozymes):
+```
+./scripts/misc/visualise_pymol_batch.py 
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/252l.pdb \
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/209l.pdb \
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/210l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/189l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/104l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/1g1v.pdb \
         thermoclass/predictions/PyMOL/
 ```
 
