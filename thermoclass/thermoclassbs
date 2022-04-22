@@ -1,8 +1,7 @@
 #!/usr/bin/env python3.7
 
 # A program that runs thermoclass for a batch of
-# PDB files retrieved from a multiple FASTA
-# file.
+# PDB IDs
 
 import sys
 import os
