@@ -1364,8 +1364,7 @@ Experiments that were run:
 
 A command to run training of one model:
 ```
-./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/Mul
-tiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
+./scripts/004/004_classifier.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -r results/MultiClass1/004/ROC/ -e 5 -m results/MultiClass1/004/l-4_b24_e5.pt > results/MultiClass1/004/l-4_b24_e5.txt
 ```
 
 A script to run training for a batch of models `./scripts/004/004_run_classifiers.sh`.
@@ -1428,9 +1427,59 @@ To run inference making for per token representations:
 sbatch --array=1-69 --output=C2EP_%a_%A.out sbatch_thermoclass.sh
 ```
 
+Since this tool allows easy inference making, it was used to get protein thermostability predictions from mean and
+per-token protein sequence representations. Predictions from mean representations were saved to `predictions/TSV/C2EP_mean.tsv`
+file, predictions from per-token representations were collected from prediction FASTA files:
+
+```
+cat predictions/FASTA/C2EP_per_tok_*.fasta | grep '>' | awk 'BEGIN{OFS="\t"}{ print $1, $4 }' | sed 's/>//g' | sed 's/mean=//g' | sort >> predictions/C2EP_per_tok_averaged.tsv
+```
+
+A small script to collect respective predictions was written:
+```
+./scripts/misc/merge_mean_per_tok.py thermoclass/predictions/TSV/C2EP_mean.tsv 2 thermoclass/predictions/C2EP_per_tok_averaged.tsv 1
+```
+
+By default generated `merged.tsv` file in the working directory contained 690 records of sequences. 674 of them had both 
+mean and per-token averaged predictions. This file was renamed and moved to: `predictions/C2EP_mean_vs_per_token_averaged.tsv`.
+
+Sequences that did not have both values present:
+```
+cat predictions/C2EP_mean_vs_per_token_averaged.tsv | awk '{if($3==""){print $1}}'
+```
+
+To conclude this merging, most of the cases had very similar predictions - deltas between mean and averaged per-token value
+were lower than 0.1 (values were at the 10 power of -2). It indicates that differences between mean and averaged per-token 
+predictions are low, therefore both these methods (representations) can be used interchangeably.
+
 It was decided to add structural parsing and presenting of the results in the new PDB file.
 ```
 ./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o predictions/1ceu_per_tok_predictions -e emb/
+```
+
+In order to check out the differences in colourings, we decided to run the program with proteins that are known to have  
+similar structures, yet due to certain differences, the thermostability is affected significantly. Some structures were 
+taken from structural genomics studies of the hyperthermophilic bacterium *Thermotoga maritima* (Robinson-Rechavi et. al 2005), where its proteins were
+compared with mesophilic orthologs / paralogs in terms of contact order values.
+
+Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
+```
+./thermoclass -p 1a5z -g --per_tok -n emb/1a5z_per_tok.npz -o predictions/1a5z_per_tok_predictions -e emb/
+./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
+```
+
+Additionally, pair of lysozyme and its mutant (original 2LZM) was taken (252L) (Baase et. al 2010). Delta by -10 
+degrees was observed between the mutant and the original protein.
+
+Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
+```
+./thermoclass -p 2lzm -g --per_tok -n emb/2lzm_per_tok.npz -o predictions/2lzm_per_tok_predictions -e emb/
+./thermoclass -p 252l -g --per_tok -n emb/252l_per_tok.npz -o predictions/252l_per_tok_predictions -e emb/
+```
+
+To automate the visualisation process:
+```
+./scripts/misc/visualise_pymol.py thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb thermoclass/predictions/PYMOL/
 ```
 
 ## References
@@ -1449,3 +1498,6 @@ It was decided to add structural parsing and presenting of the results in the ne
 
 7. Fu, L., Niu, B., Zhu, Z., Wu, S., & Li, W. (2012). CD-HIT: accelerated for clustering the next-generation sequencing data. Bioinformatics, 28(23), 3150-3152. https://academic.oup.com/bioinformatics/article/28/23/3150/192160?login=true
 
+8. Robinson-Rechavi, M., & Godzik, A. (2005). Structural genomics of Thermotoga maritima proteins shows that contact order is a major determinant of protein thermostability. Structure, 13(6), 857-860.
+
+9. Baase, W. A., Liu, L., Tronrud, D. E., & Matthews, B. W. (2010). Lessons from the lysozyme of phage T4. Protein Science, 19(4), 631-641.
