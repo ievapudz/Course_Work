@@ -13,7 +13,7 @@ from torch import nn
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
 from model_dataset_processing import convert_labels_to_temperature_class
-from multiclass import MultiClass2
+from multiclass import MultiClass4
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 from model_flow import train_epoch_multiclass
@@ -43,7 +43,7 @@ parser.add_option("--output", "-o", dest="output",
 
 (options, args) = parser.parse_args()
 
-PATH = './results/MultiClass2/004/model.pt'
+PATH = './results/MultiClass4/004/model.pt'
 
 if(options.model != None):
 	PATH = options.model
@@ -69,7 +69,7 @@ validate_loader = DataLoader(validate_dataset, batch_size=BATCH_SIZE, shuffle=Tr
 torch.manual_seed(42)
 
 # Initialize the SLP
-model = MultiClass2()
+model = MultiClass4()
 
 # Define the loss function (with activation function) and optimizer
 loss_function = nn.CrossEntropyLoss()

@@ -18,12 +18,12 @@ do
 	do
 		for((k = "0"; k < "${#EPOCHS[@]}"; k++));
 		do
-			PRED_TXT="${RES_DIR}/l${LEARNING_RATES[$i]}_b${BATCHES[$j]}_e${EPOCHS[$k]}.txt"
+			PRED="${RES_DIR}/l${LEARNING_RATES[$i]}_b${BATCHES[$j]}_e${EPOCHS[$k]}.tsv"
 			MODEL_PT="${RES_DIR}/l${LEARNING_RATES[$i]}_b${BATCHES[$j]}_e${EPOCHS[$k]}.pt"
 			echo "Training ${MODEL_PT}"			
 			srun --ntasks 1 ./${CLASSIFIER} -n data/004/NPZ/training_and_validation_embeddings.npz \
 				-l ${LEARNING_RATES[$i]} -b ${BATCHES[$j]} -r ${RES_DIR}/ROC/ \
-				-e "${EPOCHS[$k]}" -m "${MODEL_PT}" > ${PRED_TXT}  
+				-e "${EPOCHS[$k]}" -m "${MODEL_PT}" > ${PRED}  
 		done
 	done
 done 
