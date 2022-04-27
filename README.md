@@ -1374,6 +1374,25 @@ On a cluster (SBATCH):
 sbatch scripts/004/004_run_classifier.sh
 ```
 
+Script to analyse results of multiclass classifier:
+```
+./scripts/004/004_run_classifier_2.sh scripts/004/004_classifier_2.py results/MultiClass2/004
+./scripts/004/004_run_classifier_2.sh scripts/004/004_classifier_3.py results/MultiClass3/004
+./scripts/004/004_run_classifier_2.sh scripts/004/004_classifier_4.py results/MultiClass4/004
+```
+
+./scripts/004/004_classifier_2.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-3 -b 24 -e 5 \
+        -m results/MultiClass2/004/l1e-3_b24_e5.pt > results/MultiClass2/004/l1e-3_b24_e5.txt
+
+The output of each multiclass classifier is a TSV-formatted output:
+- label, whether it is an output of a training ('T') or a validation process
+- number of epoch (indexed from 0)
+- batch number
+- raw output of cross entropy loss
+- cross entropy loss representation as failure proportion
+- median of differences between true labels and predicted
+- mean of differences between true labels and predicted
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
