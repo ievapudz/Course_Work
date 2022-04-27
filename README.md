@@ -1468,6 +1468,9 @@ Lactate dehydrogenase (PDB pair (thermophilic, mesophilic): 1A5Z and 1LLD).
 ./thermoclass -p 1lld -g --per_tok -n emb/1lld_per_tok.npz -o predictions/1lld_per_tok_predictions -e emb/
 ```
 
+PDB IDs are written in the order of pairing, where 2*i is the protein from a thermophilic bacterium and 
+2*i+1 is the protein from a mesophilic bacteria (where i = {0, 1, ..., N}, N - length of PDB ID array).
+
 Additionally, pair of lysozyme and its mutant (original 2LZM) was taken (252L) (Baase et. al 2010). Delta by -10 
 degrees was observed between the mutant and the original protein.
 
@@ -1480,6 +1483,50 @@ Lysozymes (PDB pair (thermophilic, mesophilic): 2LZM and 252L).
 To automate the visualisation process:
 ```
 ./scripts/misc/visualise_pymol.py thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb thermoclass/predictions/PYMOL/
+```
+
+All pairs chosen to test `thermoclassbs` with structure visualisation:
+
+| Article       | Thermophilic protein | Mesophilic protein |
+|---------------|----------------------|--------------------|
+| *T. maritima* | 1A5Z                 | 1LLD               |
+| *T. maritima* | 1B9B                 | 1TRE               |
+| *T. maritima* | 1C3U                 | 1QN5               |
+| *T. maritima* | 1DD4                 | 1CTF               |
+| *T. maritima* | 1DD5                 | 1EK8               |
+| Lysozymes     | 2LZM                 | 252L               |
+| Lysozymes     | 2LZM                 | 209L               |
+| Lysozymes     | 2LZM                 | 210L               |
+| Lysozymes     | 1L63                 | 189L               |
+| Lysozymes     | 1L63                 | 104L               |
+| Lysozymes     | 1L63                 | 1G1V               |
+
+Predictions made:
+```
+./thermoclassbs 1a5z 1lld 1b9b 1tre 1c3u 1qn5 1dd4 1ctf 1dd5 1ek8
+```
+
+Visualisation process (*T. maritima*):
+```
+./scripts/misc/visualise_pymol_batch.py 
+        thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb \
+        thermoclass/predictions/1b9b.pdb thermoclass/predictions/1tre.pdb \
+        thermoclass/predictions/1c3u.pdb thermoclass/predictions/1qn5.pdb \
+        thermoclass/predictions/1dd4.pdb thermoclass/predictions/1ctf.pdb \
+        thermoclass/predictions/1dd5.pdb thermoclass/predictions/1ek8.pdb \
+        thermoclass/predictions/PyMOL/
+```
+
+Visualisation process (lysozymes):
+```
+./scripts/misc/visualise_pymol_batch.py 
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/252l.pdb \
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/209l.pdb \
+        thermoclass/predictions/2lzm.pdb thermoclass/predictions/210l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/189l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/104l.pdb \
+        thermoclass/predictions/1l63.pdb thermoclass/predictions/1g1v.pdb \
+        thermoclass/predictions/PyMOL/
 ```
 
 ## References
