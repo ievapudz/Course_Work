@@ -51,7 +51,7 @@ def train_epoch(model, trainloader, loss_function, optimizer, batch_size,
 
 # Running training epoch for multiclass classification
 def train_epoch_multiclass(model, trainloader, loss_function, optimizer, batch_size,
-				print_predictions=False, print_loss=True):
+				epoch, print_predictions=False, print_loss=True):
 	# Set current loss value
 	current_loss = 0.0
 	failure_rate = 0.0
@@ -93,8 +93,8 @@ def train_epoch_multiclass(model, trainloader, loss_function, optimizer, batch_s
 		
 		if i % batch_size == (batch_size-1):
 			if(print_loss):
-				print('Training loss and failure rate after mini-batch %5d: %.3f, %.3f' %
-				  (i + 1, current_loss / batch_size, failure_rate / batch_size))
+				print('T\t%d\t%5d\t%.3f\t%.3f' %
+				  (epoch, i + 1, current_loss / batch_size, failure_rate / batch_size))
 			current_loss = 0.0 
 			failure_rate = 0.0
 
@@ -196,8 +196,8 @@ def validation_epoch_multiclass(model, validateloader, loss_function, batch_size
 
 		if i % batch_size == (batch_size-1):
 			if(print_loss):
-				print('Validation loss and failure rate after mini-batch %5d: %.3f %.3f' %
-				  (i + 1, current_loss / batch_size, failure_rate / batch_size))
+				print('V\t%d\t%5d\t%.3f\t%.3f' %
+				  (epoch, i + 1, current_loss / batch_size, failure_rate / batch_size))
 			current_loss = 0.0
 			failure_rate = 0.0
 
