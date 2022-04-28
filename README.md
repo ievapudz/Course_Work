@@ -1528,23 +1528,23 @@ Predictions made:
 Visualisation process (*T. maritima*):
 ```
 ./scripts/misc/visualise_pymol_batch.py 
-        thermoclass/predictions/1a5z.pdb thermoclass/predictions/1lld.pdb \
-        thermoclass/predictions/1b9b.pdb thermoclass/predictions/1tre.pdb \
-        thermoclass/predictions/1c3u.pdb thermoclass/predictions/1qn5.pdb \
-        thermoclass/predictions/1dd4.pdb thermoclass/predictions/1ctf.pdb \
-        thermoclass/predictions/1dd5.pdb thermoclass/predictions/1ek8.pdb \
+        thermoclass/predictions/PDB/1a5z.pdb thermoclass/predictions/PDB/1lld.pdb \
+        thermoclass/predictions/PDB/1b9b.pdb thermoclass/predictions/PDB/1tre.pdb \
+        thermoclass/predictions/PDB/1c3u.pdb thermoclass/predictions/PDB/1qn5.pdb \
+        thermoclass/predictions/PDB/1dd4.pdb thermoclass/predictions/PDB/1ctf.pdb \
+        thermoclass/predictions/PDB/1dd5.pdb thermoclass/predictions/PDB/1ek8.pdb \
         thermoclass/predictions/PyMOL/
 ```
 
 Visualisation process (lysozymes):
 ```
 ./scripts/misc/visualise_pymol_batch.py 
-        thermoclass/predictions/2lzm.pdb thermoclass/predictions/252l.pdb \
-        thermoclass/predictions/2lzm.pdb thermoclass/predictions/209l.pdb \
-        thermoclass/predictions/2lzm.pdb thermoclass/predictions/210l.pdb \
-        thermoclass/predictions/1l63.pdb thermoclass/predictions/189l.pdb \
-        thermoclass/predictions/1l63.pdb thermoclass/predictions/104l.pdb \
-        thermoclass/predictions/1l63.pdb thermoclass/predictions/1g1v.pdb \
+        thermoclass/predictions/PDB/2lzm.pdb thermoclass/predictions/PDB/252l.pdb \
+        thermoclass/predictions/PDB/2lzm.pdb thermoclass/predictions/PDB/209l.pdb \
+        thermoclass/predictions/PDB/2lzm.pdb thermoclass/predictions/PDB/210l.pdb \
+        thermoclass/predictions/PDB/1l63.pdb thermoclass/predictions/PDB/189l.pdb \
+        thermoclass/predictions/PDB/1l63.pdb thermoclass/predictions/PDB/104l.pdb \
+        thermoclass/predictions/PDB/1l63.pdb thermoclass/predictions/PDB/1g1v.pdb \
         thermoclass/predictions/PyMOL/
 ```
 
