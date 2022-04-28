@@ -75,7 +75,7 @@ model = MultiClass2()
 loss_function = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=float(options.learning_rate))
 
-print("process\tepoch\tbatch\traw_loss\tperc_loss")
+#print("process\tepoch\tbatch\traw_loss\tperc_loss")
 
 for epoch in range(0, NUM_OF_EPOCHS):
 	# Print epoch

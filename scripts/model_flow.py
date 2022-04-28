@@ -75,6 +75,33 @@ def train_epoch_multiclass(model, trainloader, loss_function, optimizer, batch_s
 		loss = loss_function(outputs.float(), targets.long())
 
 		outputs = outputs.detach().numpy()
+
+		# Gathering the predicted classes
+		output_labels = numpy.array([])
+		for output_batch in outputs:
+			max_ind = 0
+			max_el = output_batch[max_ind]
+			for j, el in enumerate(output_batch):
+				if el > max_el:
+					max_ind = j
+					max_el = el
+			output_labels = numpy.append(output_labels, int(max_ind))
+
+		# Constructing string that represents differences between classes
+		differences = numpy.array([])
+		for j, output in enumerate(output_labels):
+			diff = output - targets.numpy()[j]
+			differences = numpy.append(differences, int(diff))
+
+		diff_string = numpy.array2string(differences, 
+					  separator='\t').translate({ord('['):None,
+												 ord(']'):None,
+												 ord('.'):None})
+
+		differences = numpy.absolute(differences)
+		diff_mean = numpy.mean(differences)
+		diff_median = numpy.median(differences)
+
 		# Printing prediction values
 		if(print_predictions):
 			for output in outputs:
@@ -93,8 +120,10 @@ def train_epoch_multiclass(model, trainloader, loss_function, optimizer, batch_s
 		
 		if i % batch_size == (batch_size-1):
 			if(print_loss):
-				print('T\t%d\t%5d\t%.3f\t%.3f' %
-				  (epoch, i + 1, current_loss / batch_size, failure_rate / batch_size))
+				print('T\t%d\t%d\t%.3f\t%.3f\t%d\t%.3f\t%s' %
+				  (epoch, i + 1, current_loss / batch_size, 
+				   failure_rate / batch_size, diff_median, diff_mean, 
+				   diff_string))
 			current_loss = 0.0 
 			failure_rate = 0.0
 
@@ -194,10 +223,38 @@ def validation_epoch_multiclass(model, validateloader, loss_function, batch_size
 
 		failure_rate += (loss.item() * (100 - (1/16))) / (-1*(math.log(1/16)))
 
+		# Gathering the predicted classes
+		output_labels = numpy.array([])
+		for output_batch in outputs:
+			max_ind = 0
+			max_el = output_batch[max_ind]
+			for j, el in enumerate(output_batch):
+				if el > max_el:
+					max_ind = j
+					max_el = el
+			output_labels = numpy.append(output_labels, int(max_ind))
+
+		# Constructing string that represents differences between classes
+		differences = numpy.array([])
+		for j, output in enumerate(output_labels):
+			diff = output - targets.numpy()[j]
+			differences = numpy.append(differences, int(diff))
+
+		diff_string = numpy.array2string(differences,
+					  separator='\t').translate({ord('['):None,
+												 ord(']'):None,
+												 ord('.'):None})
+
+		differences = numpy.absolute(differences)
+		diff_mean = numpy.mean(differences)
+		diff_median = numpy.median(differences)
+
 		if i % batch_size == (batch_size-1):
 			if(print_loss):
-				print('V\t%d\t%5d\t%.3f\t%.3f' %
-				  (epoch, i + 1, current_loss / batch_size, failure_rate / batch_size))
+				print('V\t%d\t%5d\t%.3f\t%.3f\t%d\t%.3f\t%s' %
+				  (epoch, i + 1, current_loss / batch_size, 
+				   failure_rate / batch_size, diff_median, 
+				   diff_mean, diff_string))
 			current_loss = 0.0
 			failure_rate = 0.0
 
