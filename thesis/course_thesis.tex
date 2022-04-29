@@ -70,7 +70,7 @@
 	is an important trait for practical applications, for example, PCR.
 
 	Earlier studies show that protein's sequence and structural properties 
-	influence the thermostability of the macromolecule (Modarres et al. 2016). 
+	influence the thermostability of the macromolecule \cite{modarres2016protein}. 
 	Furthermore, one of the most recent achievements in the field of deep 
 	learning are transformer architecture-based language models or, particularly, 
 	protein language models that have not yet been used to classify proteins based on
@@ -80,7 +80,7 @@
 
 	There are transformer architecture-based language models trained in an 
 	unsupervised fashion to predict probabilities of elements in sequences 
-	(Devlin et al. 2018). 
+	\cite{devlin2018bert}. 
 	Simultaneously, the process of training creates sequences' embeddings – the 
 	real numbered vectors that represent semantic connections of language 
 	components. These representations can be transferred as input to specific 
@@ -100,9 +100,9 @@
 
 	This work presents a novel way to predict thermal stability of proteins. 
 	The solution is a feed-forward neural network (FNN). To train the FNN, 
-	the evolutionary scale model 1b (ESM-1b) (Rives et al. 2021) is used to 
+	the evolutionary scale model 1b (ESM-1b)\cite{rives2021biological} is used to 
 	generate embeddings for proteins of organisms with annotated growth 
-	temperatures (Engqvist 2018). The model 
+	temperatures \cite{engqvist_martin_karl_magnus_2018_1175609}. The model 
 	takes the generated embedding to predict the thermostability class of the 
 	input protein.
 
@@ -123,19 +123,19 @@
 
 	Protein language models are Transformer models trained on protein sequences.
 	The Transformer is a model, which is made of encoder-decoder architecture 
-	that relies entirely on self-attention (Vaswani et al. 2017). 
+	that relies entirely on self-attention \cite{vaswani2017attention}. 
 	The encoder part provides continuous representations of the input composed 
 	of sequences of symbols, meanwhile the decoder part generates output for each 
 	symbol in the input sequence. For this principle of architecture, Transformers
 	can be trained in an unsupervised fashion and be applies to natural language
 	processing (NLP) tasks at which they produce state-of-the-art 
-	results (Vig et al. 2019).
+	results \cite{vig2019analyzing}.
 
 	Since amino acid sequences can be considered as a particular language, 
 	Transformer architectures were applied to solve tasks related to protein 
 	biology or molecule modeling \textit{in silico}. Attention mechanisms in 
 	models of Transformer architecture, taking BERT model as a example 
-	(Vig et al. 2020), are capable to capture the folding structure, 
+	\cite{vig2020bertology}, are capable to capture the folding structure, 
 	binding sites, and complex biophysical properties of proteins.
 
 	\subsection{ESM-1b embeddings}
@@ -147,7 +147,7 @@
 	label as output.
 
 	ESM-1b is one of evolutionary scale models trained by Facebook Research 
-	(Rives et al. 2021). The model has 33 layers and 650 million parameters. 
+	\cite{rives2021biological}. The model has 33 layers and 650 million parameters. 
 	The model was trained in an 
 	unsupervised fashion on UniRef50 data set (accessed March 28, 2018). In order 
 	to ensure
@@ -193,8 +193,8 @@
 	(\href{https://www.uniprot.org/proteomes/UP000000625}{UP000000625}) and a 
 	thermophilic archaeon \textit{Sulfolobus solfataricus} 
 	(\href{https://www.uniprot.org/proteomes/UP000001974}{UP000001974}). The 
-	growth temperature of \textit{E. coli} is $37\ ^\circ$C (Jang et al. 2017) 
-	and $80\ ^\circ$C for \textit{S. solfataricus} (Zaparty et al. 2010). This 
+	growth temperature of \textit{E. coli} is $37\ ^\circ$C \cite{jang2017environmental}
+	and $80\ ^\circ$C for \textit{S. solfataricus} \cite{zaparty2010hot}. This 
 	data set was named '001' and used only for embeddings visualisation.
 
 	The visualisation of '001' stimulated to check whether embeddings are 
@@ -226,7 +226,7 @@
 	After receiving the results of the first neural network model trained on 
 	'002' data set, it was decided to train and test the model on the first 
 	real data set. '003' data set was a subset of the data set of 21458 
-	annotated organisms (Engqvist 2018). 
+	annotated organisms \cite{engqvist_martin_karl_magnus_2018_1175609}. 
 	
 	Requirements for '003' data set were: the data set needed to be balanced and a
 	single taxonomy identifier could be apparent only in either training, validation,

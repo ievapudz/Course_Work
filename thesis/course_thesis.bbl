@@ -19,18 +19,6 @@ A.~Rives, J.~Meier, T.~Sercu, S.~Goyal, Z.~Lin, J.~Liu, D.~Guo, M.~Ott, C.~L.
 M.~K.~M. Engqvist, ``Growth temperatures for 21,498 microorganisms,'' Feb.
   2018.
 
-\bibitem{jang2017environmental}
-J.~Jang, H.-G. Hur, M.~J. Sadowsky, M.~Byappanahalli, T.~Yan, and S.~Ishii,
-  ``Environmental escherichia coli: ecology and public health implications—a
-  review,'' {\em Journal of applied microbiology}, vol.~123, no.~3,
-  pp.~570--581, 2017.
-
-\bibitem{zaparty2010hot}
-M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
-  Pham, J.~Reimann, K.~Schreiber, P.~Sierocinski, {\em et~al.}, ``“hot
-  standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
-  {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
-
 \bibitem{vaswani2017attention}
 A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
   {\L}.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' {\em Advances
@@ -44,5 +32,17 @@ J.~Vig and Y.~Belinkov, ``Analyzing the structure of attention in a transformer
 J.~Vig, A.~Madani, L.~R. Varshney, C.~Xiong, R.~Socher, and N.~F. Rajani,
   ``Bertology meets biology: Interpreting attention in protein language
   models,'' {\em arXiv preprint arXiv:2006.15222}, 2020.
+
+\bibitem{jang2017environmental}
+J.~Jang, H.-G. Hur, M.~J. Sadowsky, M.~Byappanahalli, T.~Yan, and S.~Ishii,
+  ``Environmental escherichia coli: ecology and public health implications—a
+  review,'' {\em Journal of applied microbiology}, vol.~123, no.~3,
+  pp.~570--581, 2017.
+
+\bibitem{zaparty2010hot}
+M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
+  Pham, J.~Reimann, K.~Schreiber, P.~Sierocinski, {\em et~al.}, ``“hot
+  standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
+  {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
 
 \end{thebibliography}

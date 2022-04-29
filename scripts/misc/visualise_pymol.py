@@ -13,7 +13,8 @@ pdb_id_1 = os.path.splitext(pdb_file_1)[0].split('/')[-1]
 pdb_id_2 = os.path.splitext(pdb_file_2)[0].split('/')[-1]
 
 cline = f'load {pdb_file_1}, {pdb_id_1}\nload {pdb_file_2}, {pdb_id_2}\n'+\
-        f'spectrum b, selection=all\ncealign {pdb_id_1}, {pdb_id_2}\n'+\
+        f'spectrum b, blue_white_red, all, 0, 1\n'+\
+        f'selection=all\ncealign {pdb_id_1}, {pdb_id_2}\n'+\
         f'center all\nzoom\n'+\
         f'png {png_file_dir}/{pdb_id_1}_{pdb_id_2}.png\n'+\
         f'hide all\n'+\
