@@ -1471,6 +1471,11 @@ To conclude this merging, most of the cases had very similar predictions - delta
 were lower than 0.1 (values were at the 10 power of -2). It indicates that differences between mean and averaged per-token 
 predictions are low, therefore both these methods (representations) can be used interchangeably.
 
+For separated domains additionally table merging step was done:
+```
+paste thermoclass/predictions/TSV/Cas12a_N_mean_vs_per_token_averaged.tsv thermoclass/predictions/TSV/Cas12a_C_mean_vs_per_token_averaged.tsv | awk 'BEGIN{OFS="\t"}{ print $1, $2, $3, $4, $6, $7, $8 }' | column -t > thermoclass/predictions/TSV/Cas12a_mean_vs_per_token_averaged.tsv
+```
+
 It was decided to add structural parsing and presenting of the results in the new PDB file.
 ```
 ./thermoclass -p 1ceu -g --per_tok -n emb/1ceu_per_tok.npz -o predictions/1ceu_per_tok_predictions -e emb/
