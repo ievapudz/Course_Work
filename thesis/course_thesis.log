@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  4 MAY 2022 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  4 MAY 2022 17:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -268,17 +268,17 @@ Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 191.
 File: ../data/003/visualisation_v2//003_train_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 344.
-(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+(pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 <../data/003/visualisation_v2//003_validate_v2_PCA.png, id=145, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_validate_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 345.
-(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+(pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 <../data/003/visualisation_v2//003_test_v2_PCA.png, id=146, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_test_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 347.
-(pdftex.def)             Requested size: 151.76816pt x 130.087pt.
+(pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -287,17 +287,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 362.
-(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+(pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=149, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 363.
-(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+(pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=150, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>
 Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 365.
-(pdftex.def)             Requested size: 164.12643pt x 164.12643pt.
+(pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -311,36 +311,29 @@ Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <../data/003/visualisation_v2//003_train_v2_PCA.png> <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>] [9 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>]
-<../results/SLP/003/ROC//testing_0_3068.png, id=189, 462.528pt x 346.896pt>
+[8 <../data/003/visualisation_v2//003_train_v2_PCA.png> <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>] [9 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>] [10 <../results/SLP/003/ROC//validation_4_2713.png>]
+<../results/SLP/003/ROC//testing_0_3068.png, id=196, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//testing_0_3068.png Graphic file (type png)
 <use ../results/SLP/003/ROC//testing_0_3068.png>
 Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 477.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10 <../results/SLP/003/ROC//validation_4_2713.png>] (./course_thesis.bbl [11 <../results/SLP/003/ROC//testing_0_3068.png>]) [12] (./course_thesis.aux)
+ [11 <../results/SLP/003/ROC//testing_0_3068.png>] (./course_thesis.bbl [12]) [13] (./course_thesis.aux)
 Package rerunfilecheck Info: File `course_thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 6827A768E63C50258D50410594E7524A;1749.
  ) 
 Here is how much of TeX's memory you used:
- 8139 strings out of 480539
- 125457 string characters out of 5902059
- 430935 words of memory out of 5000000
+ 8140 strings out of 480539
+ 125464 string characters out of 5902059
+ 430939 words of memory out of 5000000
  25631 multiletter control sequences out of 15000+600000
  408368 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,8n,66p,405b,443s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,66p,405b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (12 pages, 1215242 bytes).
+Output written on course_thesis.pdf (13 pages, 1215504 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
  142 words of extra memory for PDF output out of 10000 (max. 10000000)
 
