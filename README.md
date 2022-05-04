@@ -1393,6 +1393,89 @@ The output of each multiclass classifier is a TSV-formatted output:
 - median of differences between true labels and predicted
 - mean of differences between true labels and predicted
 
+## Regressor of 004
+
+```
+./scripts/004/004_run_model.sh scripts/004/004_regressor.py results/regressor/004
+```
+
+./scripts/004/004_regressor.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-4 -b 24 -r results/regressor/004/ROC/ -e 5 -m results/regressor/004/l1e-4_b24_e5.pt > results/regressor/004/l1e-4_b24_e5.txt
+
+```
+./scripts/004/004_regressor_testing.py results/regressor/004/l1e-4_b24_e5.pt
+```
+
+```
+./scripts/004/004_plot_correlation.py results/regressor/004/testing_predictions.tsv results/regressor/004
+/testing_predictions.png -0.5 0.9 True
+```
+
+Output of the last command:
+
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.805668
+prediction      0.805668    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.802698
+prediction      0.802698    1.000000
+
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+0.5496252481089685
+
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+0.6132354421241614
+
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+0.6271570869823873
+
+Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)): 
+0.7019775066651827
+
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+0.6898583452855843
+
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+0.6812743141276174
+
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+0.6991996207337096
+
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+0.6794084858913315
+
+Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)): 
+0.686195868156244
+
+Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
+0.6514871085671753
+
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+0.6103115046361444
+
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+0.6049826290083866
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+0.5554196074679635
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+0.4564155766992494
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+0.4138290450252569
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+0.39268507775859823
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+0.3468071682678557
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+0.290082394930224
+
 # Development of thermoclass
 
 A command to generate mean embeddings:
