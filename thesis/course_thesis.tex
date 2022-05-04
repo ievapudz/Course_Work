@@ -4,8 +4,11 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage{setspace}
 
 \graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} {../The_COINS/} }
+
+\setstretch{1.5}
 
 \begin{document}
 	\begin{center}
@@ -378,8 +381,13 @@
 	the most simple architecture - a single layer perceptron (SLP). The input of the 
 	layer is 1280-dimensional - it takes the input of protein embeddings - and the 
 	output is a binary label that represents the thermostability class. The 
-	activation and loss functions were sigmoid and binary cross
-	entropy respectively. Adam optimizer with learning rate of 0.0001 was chosen.
+	activation and loss functions were 
+	\href{https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html}{sigmoid} 
+	and 
+	\href{https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html}{binary cross entropy} 
+	respectively. 
+	\href{https://pytorch.org/docs/stable/generated/torch.optim.Adam.html}{Adam optimizer} 
+	with learning rate of 0.0001 was chosen.
 
 	The model was trained and validated in 5 epochs taking mini-batch size of 24
 	embeddings. The ROC curves (Figure \ref{figure:SLP003validation4}) did not 
@@ -532,6 +540,8 @@
 			  data set  
 		\item Taking a different kind of embeddings as input
 	\end{itemize}
+
+	\newpage
 	
 	\nocite{*}
 	
