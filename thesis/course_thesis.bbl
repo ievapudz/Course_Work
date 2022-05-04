@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{modarres2016protein}
 H.~P. Modarres, M.~Mofrad, and A.~Sanati-Nezhad, ``Protein thermostability
@@ -32,6 +32,12 @@ J.~Vig and Y.~Belinkov, ``Analyzing the structure of attention in a transformer
 J.~Vig, A.~Madani, L.~R. Varshney, C.~Xiong, R.~Socher, and N.~F. Rajani,
   ``Bertology meets biology: Interpreting attention in protein language
   models,'' {\em arXiv preprint arXiv:2006.15222}, 2020.
+
+\bibitem{suzek2015uniref}
+B.~E. Suzek, Y.~Wang, H.~Huang, P.~B. McGarvey, C.~H. Wu, and U.~Consortium,
+  ``Uniref clusters: a comprehensive and scalable alternative for improving
+  sequence similarity searches,'' {\em Bioinformatics}, vol.~31, no.~6,
+  pp.~926--932, 2015.
 
 \bibitem{jang2017environmental}
 J.~Jang, H.-G. Hur, M.~J. Sadowsky, M.~Byappanahalli, T.~Yan, and S.~Ishii,

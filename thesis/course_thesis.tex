@@ -119,20 +119,20 @@
 
 	\subsection{Protein language models}
 
-	Protein language models are Transformer models trained on protein sequences.
-	The Transformer is a model, which is made of encoder-decoder architecture 
+	Protein language models are transformer models trained on protein sequences.
+	The transformer is a model, which is made of encoder-decoder architecture 
 	that relies entirely on self-attention \cite{vaswani2017attention}. 
 	The encoder part provides continuous representations of the input composed 
 	of sequences of symbols, meanwhile the decoder part generates output for each 
-	symbol in the input sequence. For this principle of architecture, Transformers
+	symbol in the input sequence. For this principle of architecture, transformers
 	can be trained in an unsupervised fashion and be applies to natural language
 	processing (NLP) tasks at which they produce state-of-the-art 
 	results \cite{vig2019analyzing}.
 
 	Since amino acid sequences can be considered as a particular language, 
-	Transformer architectures were applied to solve tasks related to protein 
+	transformer architectures were applied to solve tasks related to protein 
 	biology or molecule modeling \textit{in silico}. Attention mechanisms in 
-	models of Transformer architecture, taking BERT model as a example 
+	models of transformer architecture, taking BERT-like model as a example 
 	\cite{vig2020bertology}, are capable to capture the folding structure, 
 	binding sites, and complex biophysical properties of proteins.
 
@@ -147,13 +147,16 @@
 	ESM-1b is one of evolutionary scale models trained by Facebook Research 
 	\cite{rives2021biological}. The model has 33 layers and 650 million parameters. 
 	The model was trained in an 
-	unsupervised fashion on UniRef50 data set (accessed March 28, 2018). In order 
+	unsupervised fashion on 
+	\href{ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50}{UniRef50 data set}
+	(accessed March 28, 2018)\cite{suzek2015uniref}. In order 
 	to ensure
 	determinism in the validation set, authors removed protein sequences that
 	were longer than 1024 amino acids. 
 
 	The authors made a script to extract model's embeddings available in the 
-	repository "Evolutionary Scale Modeling". The script allows to choose 
+	\href{https://github.com/facebookresearch/esm}{repository "Evolutionary Scale Modeling"}.
+	The script allows to choose 
 	from which model and layer embeddings will be taken, what embeddings 
 	(mean, per amino acid, or beginning of the sequence token) to keep. In the
 	result of using the script, a 1280 dimensional vector for each protein is 
@@ -243,14 +246,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline
 			& Class '0' & Class '1' \\
 			\hline
 			Training & 32 & 77 \\ 
-			\hline
 			Validation & 8 & 17 \\
-			\hline
 			Testing & 11 & 17 \\
 			\hline   
 		\end{tabular}
@@ -262,14 +263,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline 
 			& Class '0' & Class '1' \\
 			\hline 
 			Training & 145128 & 143868 \\
-			\hline  
 			Validation & 33204 & 32616 \\
-			\hline 
 			Testing & 38263 & 36245 \\
 			\hline    
 		\end{tabular}
@@ -297,14 +296,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline 
 			& Class '0' & Class '1' \\
 			\hline 
 			Training & 141602 & 142707 \\
-			\hline  
 			Validation & 32793 & 32363 \\
-			\hline 
 			Testing & 37749 & 35913 \\
 			\hline    
 		\end{tabular}
@@ -402,12 +399,11 @@
 		\caption{Confusion matrix after the fifth validation epoch}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c | c c | }
 			\hline 
 			& 0 & 1 \\
 			\hline  
 			0 & 32793 & 3636 \\
-			\hline 
 			1 & 1582 & 30770 \\
 			\hline    
 		\end{tabular}
@@ -439,11 +435,8 @@
 		\begin{tabular}{ | c | c | }
 			\hline 
 			Accuracy & 0.91989 \\
-			\hline  
 			Precision & 0.89432 \\
-			\hline 
-			Recall & 0.9511 \\
-			\hline    
+			Recall & 0.9511 \\  
 			ROC AUC & 0.92 \\
 			\hline 
 		\end{tabular}
@@ -482,12 +475,11 @@
 		\caption{Confusion matrix in the testing phase}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c | c c | }
 			\hline 
 			& 0 & 1 \\
 			\hline  
 			0 & 34933 & 2813 \\
-			\hline 
 			1 & 2788 & 33122 \\
 			\hline    
 		\end{tabular}
@@ -498,16 +490,12 @@
 		\caption{Model performance metrics in the testing phase}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | }
+		\begin{tabular}{ | c c | }
 			\hline 
 			Accuracy & 0.924 \\
-			\hline  
 			Precision & 0.922 \\
-			\hline 
 			Recall & 0.922 \\
-			\hline    
 			ROC AUC & 0.924 \\
-			\hline 
 			MCC & 0.845 \\
 			\hline 
 		\end{tabular}
