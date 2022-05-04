@@ -1,12 +1,18 @@
 #!/bin/sh
 
-# Script that runs a batch of 004 classifier 2 variations (different hyperparameters)
+# Script that runs a batch of 004 model  variations (different hyperparameters)
 
 # Example usage:
-# ./scripts/004/004_run_classifier_2.sh scripts/004/004_classifier_2.py results/MultiClass2/004
+# ./scripts/004/004_run_model.sh scripts/004/004_classifier_2.py results/MultiClass2/004
+# ./scripts/004/004_run_model.sh scripts/004/004_regressor.py results/regressor/004
 
 CLASSIFIER=$1
 RES_DIR=$2
+
+if [ ! -d "${RES_DIR}" ];
+then
+	mkdir "${RES_DIR}"
+fi
 
 LEARNING_RATES=(1e-3 1e-4 1e-5)
 BATCHES=(24 48 96)

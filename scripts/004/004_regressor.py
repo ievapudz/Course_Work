@@ -12,12 +12,12 @@ from optparse import OptionParser
 from torch import nn
 from model_dataset_processing import load_tensor_from_NPZ
 from model_dataset_processing import trim_dataset
-from model_dataset_processing import convert_labels_to_temperature_class
-from multiclass import MultiClass2
+from model_dataset_processing import normalise_labels_as_z_scores
+from regressor import Regressor
 from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
-from model_flow import train_epoch_multiclass
-from model_flow import validation_epoch_multiclass
+from model_flow import train_epoch
+from model_flow import validation_epoch
 
 parser = OptionParser()
 parser.add_option("--npz", "-n", dest="npz",
@@ -41,9 +41,12 @@ parser.add_option("--ROC_dir", "-r", dest="ROC_dir",
 parser.add_option("--output", "-o", dest="output",
 				   help="output TSV file")
 
+parser.add_option("--predictions", "-p", dest="predictions",
+				   default=None, help="TSV file with predictions")
+
 (options, args) = parser.parse_args()
 
-PATH = './results/MultiClass2/004/model.pt'
+PATH = './results/regressor/004/model.pt'
 
 if(options.model != None):
 	PATH = options.model
@@ -57,7 +60,7 @@ dataset = load_tensor_from_NPZ(options.npz,
 trim_dataset(dataset, ['x_train', 'y_train'], BATCH_SIZE)
 trim_dataset(dataset, ['x_validate', 'y_validate'], BATCH_SIZE)
 
-convert_labels_to_temperature_class(dataset, ['y_train', 'y_validate'])
+normalise_labels_as_z_scores(dataset, ['y_train', 'y_validate'], ref_point=65)
 
 train_dataset = TensorDataset(dataset['x_train'], dataset['y_train'])  
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -68,23 +71,30 @@ validate_loader = DataLoader(validate_dataset, batch_size=BATCH_SIZE, shuffle=Tr
 # Set fixed random number seed
 torch.manual_seed(42)
 
-# Initialize the SLP
-model = MultiClass2()
+# Initialize the model
+model = Regressor()
 
 # Define the loss function (with activation function) and optimizer
-loss_function = nn.CrossEntropyLoss()
+loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=float(options.learning_rate))
 
-#print("process\tepoch\tbatch\traw_loss\tperc_loss")
-
 for epoch in range(0, NUM_OF_EPOCHS):
-	# Print epoch
-	train_epoch_multiclass(model, train_loader, loss_function, optimizer, 
-						   BATCH_SIZE, epoch)
-	validation_epoch_multiclass(model, validate_loader, loss_function, BATCH_SIZE,
-				NUM_OF_EPOCHS, epoch, '',
-				'')
+	train_epoch(model, train_loader, loss_function, optimizer, BATCH_SIZE,
+				print_predictions=False, print_loss=True)
 
-print('Training and validation process has finished.', file=sys.stderr)
+	if(options.predictions):
+		validation_epoch(model, validate_loader, loss_function, BATCH_SIZE,
+					 NUM_OF_EPOCHS, epoch,
+					 ROC_curve_plot_file_dir='',
+					 confusion_matrix_file_dir='',
+					 print_predictions=True, print_loss=True)
+	else:
+		validation_epoch(model, validate_loader, loss_function, BATCH_SIZE,
+					 NUM_OF_EPOCHS, epoch,
+					 ROC_curve_plot_file_dir='',
+					 confusion_matrix_file_dir='',
+					 print_predictions=False, print_loss=True)
+
+print('Training and validation process has finished.')
 
 torch.save(model.state_dict(), PATH)
