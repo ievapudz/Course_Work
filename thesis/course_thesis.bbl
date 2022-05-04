@@ -51,4 +51,8 @@ M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
   standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
   {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
 
+\bibitem{kingma2014adam}
+D.~P. Kingma and J.~Ba, ``Adam: A method for stochastic optimization,'' {\em
+  arXiv preprint arXiv:1412.6980}, 2014.
+
 \end{thebibliography}
