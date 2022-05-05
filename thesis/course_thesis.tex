@@ -128,9 +128,57 @@
 
 	\section{Theory}
 
-	The main objective of the work is to apply embeddings from protein language 
-	models to create a classifier that could determine to which thermostability 
-	class the protein sequence belongs.
+	\subsection{Alternative approaches}
+
+	Up until the improvement of deep learning technologies,  
+	approaches that were used to predict protein thermostability were mainly
+	based on potential energy functions and machine learning techniques 
+	\cite{modarres2016protein}. Currently, due to the promising performance 
+	of deep learning methodologies, these are the ones that are mostly used 
+	to get inferences about biological macromolecules' characteristics of 
+	interest.
+
+	In this section a couple of recently developed deep learning methods to 
+	predict protein thermostability will be reviewed. 
+	
+	iThermo software \cite{ahmed2022ithermo} uses seven protein features 
+	and fusion of them as input: 1) amino 
+	acid composition, 2) traditional pseudo amino acid composition, 
+	3) amphiphilic pseudo amino acid composition, 4) the composition of 
+	k-spaced amino acid pairs, 5) dipeptide composition, 6) dipeptide 
+	deviation from the expected mean, and 7) composition, transition, 
+	and distribution value. These features are passed to the multi-layer 
+	perceptron 
+	(MLP) for training. The trained perceptron reaches up to 96.26\% 
+	prediction accuracy.
+
+	Another approach was based on convolutional neural networks 
+	\cite{fang2019convolution}. Convolutional neural networks (CNN)
+	are neural networks mainly used for image, speech, and audio recognition
+	and are mainly constructed of convolutional, pooling, and fully-connected 
+	layers. In the convolutional layer, the filter scans the input and the
+	result of this scan is a feature map, which can be taken as an input
+	to another layer. The pooling layer reduces the 
+	number of parameters in the input when the data is passed to another 
+	layer. The fully-connected layer connects 
+	every node in one layer to each node in another layer.
+	
+	This particular CNN approach \cite{fang2019convolution} encodes protein 
+	in three ways: applies orthogonal coding of protein mutation information, 
+	convolutional calculations to extract amino acid neighbourhood 
+	features, and three-dimensional coding of protein mutation information 
+	consisted of site feature (orthogonal protein mutation coding), molecular 
+	weight, and hydrophobicity. This CNN approach 
+	reached prediction accuracy up to 87\%.
+
+	\subsection{Objective of this work}
+
+	Since none of the reviewed, most recently developed methods included 
+	embeddings from protein language models, it was decided to try to use 
+	protein embeddings for protein thermostability prediction as a 
+	suggestion of a novel method. Therefore, the main objective of the 
+	work is to apply embeddings from protein language models to create a 
+	classifier that could determine the thermostability class of the protein.
 
 	Thermostability classes were created by setting the threshold of 
 	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 

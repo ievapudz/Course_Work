@@ -19,6 +19,18 @@ A.~Rives, J.~Meier, T.~Sercu, S.~Goyal, Z.~Lin, J.~Liu, D.~Guo, M.~Ott, C.~L.
 M.~K.~M. Engqvist, ``Growth temperatures for 21,498 microorganisms,'' Feb.
   2018.
 
+\bibitem{ahmed2022ithermo}
+Z.~Ahmed, H.~Zulfiqar, A.~A. Khan, I.~Gul, F.-Y. Dao, Z.-Y. Zhang, X.-L. Yu,
+  and L.~Tang, ``ithermo: A sequence-based model for identifying thermophilic
+  proteins using a multi-feature fusion strategy.,'' {\em Frontiers in
+  microbiology}, vol.~13, pp.~790063--790063, 2022.
+
+\bibitem{fang2019convolution}
+X.~Fang, J.~Huang, R.~Zhang, F.~Wang, Q.~Zhang, G.~Li, J.~Yan, H.~Zhang,
+  Y.~Yan, and L.~Xu, ``Convolution neural network-based prediction of protein
+  thermostability,'' {\em Journal of Chemical Information and Modeling},
+  vol.~59, no.~11, pp.~4833--4843, 2019.
+
 \bibitem{vaswani2017attention}
 A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
   {\L}.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' {\em Advances
