@@ -516,15 +516,17 @@
 	\end{equation}
 
 	\begin{table}[h!]
-		\caption{Model performance metrics after the fifth validation epoch}
+		\caption{Model performance metrics in the validation stage }
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | }
+		\begin{tabular}{ | c | c c c c c | }
 			\hline 
-			Accuracy & 0.91989 \\
-			Precision & 0.89432 \\
-			Recall & 0.9511 \\  
-			ROC AUC & 0.92 \\
+			& Epoch 1 & Epoch 2 & Epoch 3 & Epoch 4 & Epoch 5 \\
+			\hline 
+			Accuracy & 0.91856 & 0.91805 & 0.92061 & 0.91963 & 0.91989 \\
+			Precision & 0.89851 & 0.89409 & 0.90290 & 0.89484 & 0.89432 \\
+			Recall & 0.94248 & 0.94721 & 0.94139 & 0.9498 & 0.9511 \\  
+			ROC AUC & 0.91871 & 0.91824 & 0.92075 & 0.91983 & 0.92 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsValidation4}
