@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  4 MAY 2022 18:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  5 MAY 2022 07:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -263,7 +263,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 <../The_COINS//scheme.png, id=120, 643.203pt x 600.8046pt>
 File: ../The_COINS//scheme.png Graphic file (type png)
 <use ../The_COINS//scheme.png>
-Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 194.
+Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 200.
 (pdftex.def)             Requested size: 257.27664pt x 240.31757pt.
  [8 <../The_COINS//scheme.png>]
 
@@ -276,17 +276,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../data/003/visualisation_v2//003_train_v2_PCA.png, id=163, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_train_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 347.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 353.
 (pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 <../data/003/visualisation_v2//003_validate_v2_PCA.png, id=164, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_validate_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 348.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 354.
 (pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 <../data/003/visualisation_v2//003_test_v2_PCA.png, id=165, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_test_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 350.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 356.
 (pdftex.def)             Requested size: 227.64839pt x 195.1272pt.
 
 
@@ -295,17 +295,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=167, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 365.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 371.
 (pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=168, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 366.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 372.
 (pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=169, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 368.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 374.
 (pdftex.def)             Requested size: 218.82967pt x 218.82967pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -314,7 +314,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../results/SLP/003/ROC//validation_4_2713.png, id=180, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//validation_4_2713.png Graphic file (type png)
 <use ../results/SLP/003/ROC//validation_4_2713.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 400.
+Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 406.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
@@ -328,7 +328,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../results/SLP/003/ROC//testing_0_3068.png, id=216, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//testing_0_3068.png Graphic file (type png)
 <use ../results/SLP/003/ROC//testing_0_3068.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 485.
+Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 491.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
@@ -350,7 +350,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  60i,8n,66p,405b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (18 pages, 1217609 bytes).
+Output written on course_thesis.pdf (18 pages, 1217903 bytes).
 PDF statistics:
  298 PDF objects out of 1000 (max. 8388607)
  240 compressed objects within 3 object streams

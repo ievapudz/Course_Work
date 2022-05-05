@@ -71,17 +71,23 @@
 	is an important trait for practical applications, for example, PCR.
 
 	Earlier studies show that protein's sequence and structural properties 
-	influence the thermostability of the macromolecule \cite{modarres2016protein}. 
-	Furthermore, one of the most recent achievements in the field of deep 
-	learning are transformer architecture-based language models or, particularly, 
-	protein language models that have not yet been used to classify proteins based on
+	influence the thermostability of the macromolecule 
+	\cite{modarres2016protein}. Furthermore, one of the most recent 
+	achievements in the field of deep learning are transformer 
+	architecture-based language models or, particularly, protein language 
+	models that have not yet been used to classify proteins based on
 	their thermostability. Therefore, it was decided to apply protein 
 	representations from the protein language model to make inferences about 
 	thermostability of the biological macromolecules.
 
 	There are transformer architecture-based language models trained in an 
 	unsupervised fashion to predict probabilities of elements in sequences 
-	\cite{devlin2018bert}. 
+	\cite{devlin2018bert}. One of the methods to train the model in an 
+	unsupervised way is masked-language modeling (MLM). The method includes 
+	masking
+	some of the tokens from the input setting a goal for the model, which is 
+	being trained, to correctly predict the masked parts of the input with 
+	a reference only to the information in the context.
 	Simultaneously, the process of training creates sequences' embeddings – the 
 	real numbered vectors that represent semantic connections of language 
 	components. These representations can be transferred as input to specific 
