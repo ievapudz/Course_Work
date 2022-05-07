@@ -497,9 +497,9 @@
 		\label{table:SLP003confusionMatrixValidation4}
 	\end{table}
 
-	Values in confusion matrix allow to calculate metrics: accuracy, precision,
-	and recall. Formulas for calculation of these metrics are given below 
-	(Eq. \ref{accuracy}-\ref{recall}).
+	Values in confusion matrix allow to calculate metrics: accuracy, precision, 
+	recall, and Matthew's correlation coefficient. Formulas for calculation of these metrics are given below 
+	(Eq. \ref{accuracy}-\ref{MCC}).
 	The AUC is calculated by integrating the ROC curve. 
 
 	\begin{equation}
@@ -514,6 +514,10 @@
 		Recall = \frac{TP}{TP+FN} 
 		\label{recall}
 	\end{equation}
+	\begin{equation}
+		\label{MCC}
+		MCC = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}} 
+	\end{equation}
 
 	\begin{table}[h!]
 		\caption{Model performance metrics in the validation stage }
@@ -527,10 +531,13 @@
 			Precision & 0.89851 & 0.89409 & 0.90290 & 0.89484 & 0.89432 \\
 			Recall & 0.94248 & 0.94721 & 0.94139 & 0.9498 & 0.9511 \\  
 			ROC AUC & 0.91871 & 0.91824 & 0.92075 & 0.91983 & 0.92 \\
+			MCC & 0.83851 & 0.83763 & 0.84068 & 0.84039 & 0.84279 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsValidation4}
 	\end{table}
+
+	\pagebreak
 
 	\section{Results}
 
@@ -542,15 +549,8 @@
 	(Table \ref{table:SLP003confusionMatrixTesting}) of the testing stage 
 	showed balanced number of mistakes (FP and FN values were approximately 
 	equal). Area under testing ROC curve was 0.924, 
-	accuracy and precision metrics exceeded those after the fifth training 
-	epoch (Table \ref{table:SLP003metricsTesting}). In addition to the metrics
-	given for the fifth training epoch, Matthew's correlation coefficient (MCC)
-	(\ref{MCC}) was calculated as well.
-
-	\begin{equation}
-		\label{MCC}
-		MCC = \frac{TP \cdot TN - FP \cdot FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}} 
-	\end{equation}
+	accuracy, precision, and MCC metrics exceeded those after the fifth training 
+	and validation epoch (Table \ref{table:SLP003metricsTesting}). 
 
 	\begin{figure}[h!]
 		\centering
@@ -589,7 +589,7 @@
 			Precision & 0.89432 & 0.922 \\
 			Recall & 0.9511 & 0.922 \\
 			ROC AUC & 0.92 & 0.924 \\
-			MCC & - & 0.845 \\
+			MCC & 0.84279 & 0.845 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsTesting}
