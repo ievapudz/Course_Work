@@ -21,11 +21,12 @@ from model_flow import validation_epoch
 
 BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
+#NUM_OF_EPOCHS = int(sys.argv[1])
 NUM_OF_EPOCHS = 5
 
 dataset = load_tensor_from_NPZ(
-    'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
-    ['x_train', 'y_train', 'x_validate', 'y_validate'])
+	'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
+	['x_train', 'y_train', 'x_validate', 'y_validate'])
 
 trim_dataset(dataset, ['x_train', 'y_train'], BATCH_SIZE)
 trim_dataset(dataset, ['x_validate', 'y_validate'], BATCH_SIZE)
@@ -36,7 +37,7 @@ trainloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 validate_dataset = TensorDataset(dataset['x_validate'], dataset['y_validate'])  
 validateloader = DataLoader(validate_dataset, batch_size=BATCH_SIZE, 
-                 shuffle=True)
+				 shuffle=True)
 
 # Set fixed random number seed
 torch.manual_seed(42)
@@ -49,14 +50,15 @@ loss_function = nn.BCELoss()
 optimizer = torch.optim.Adam(slp.parameters(), lr=1e-4)
 
 for epoch in range(0, NUM_OF_EPOCHS):
-    # Print epoch
-    print(f'Starting epoch {epoch+1}')
-    
-    train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, 
-                EPOCH_BATCH_SIZE, epoch)
-    validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, 
-                EPOCH_BATCH_SIZE, NUM_OF_EPOCHS, epoch, './results/SLP/003/ROC/',
-                './results/SLP/003/confusion_matrices/')
+	# Print epoch
+	print(f'Starting epoch {epoch+1}')
+
+	train_epoch(slp, trainloader, loss_function, optimizer, BATCH_SIZE, 
+				print_predictions=False, print_loss=False)
+	validation_epoch(slp, validateloader, loss_function, BATCH_SIZE, 
+				NUM_OF_EPOCHS, epoch, './results/SLP/003/ROC/',
+				'./results/SLP/003/confusion_matrices/', print_predictions=True,
+				print_loss=False)
   
 print('Training and validation process has finished.')
 

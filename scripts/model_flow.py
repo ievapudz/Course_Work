@@ -148,9 +148,9 @@ def validation_epoch(model, validateloader, loss_function, batch_size,
 		outputs = model(inputs)
 		
 		# Printing prediction values
-		if(print_predictions):
+		if(print_predictions and epoch == number_of_epochs-1):
 			for index, output in enumerate(outputs):
-				print(targets[index].item(), output.item())
+				print(targets[index].item(), '\t', output.item())
 
 		# Print statistics
 		loss = loss_function(outputs, targets)
