@@ -5,45 +5,45 @@ The style file: ieeetr.bst
 Database file #1: references.bib
 Warning--entry type for "engqvist_martin_karl_magnus_2018_1175609" isn't style-file defined
 --line 29 of file references.bib
-You've used 9 entries,
+You've used 13 entries,
             1876 wiz_defined-function locations,
-            534 strings with 5610 characters,
-and the built_in function-call counts, 2468 in all, are:
-= -- 202
-> -- 173
+            562 strings with 6638 characters,
+and the built_in function-call counts, 3996 in all, are:
+= -- 347
+> -- 259
 < -- 0
-+ -- 61
-- -- 52
-* -- 209
-:= -- 399
-add.period$ -- 9
-call.type$ -- 9
-change.case$ -- 9
++ -- 91
+- -- 78
+* -- 332
+:= -- 620
+add.period$ -- 13
+call.type$ -- 13
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 106
-empty$ -- 203
-format.name$ -- 52
-if$ -- 559
+cite$ -- 13
+duplicate$ -- 174
+empty$ -- 322
+format.name$ -- 78
+if$ -- 918
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 8
-newline$ -- 30
-num.names$ -- 9
-pop$ -- 27
+int.to.str$ -- 13
+missing$ -- 12
+newline$ -- 42
+num.names$ -- 13
+pop$ -- 35
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 61
+skip$ -- 116
 stack$ -- 0
-substring$ -- 120
-swap$ -- 38
+substring$ -- 248
+swap$ -- 74
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 18
-width$ -- 10
-write$ -- 85
+while$ -- 31
+width$ -- 15
+write$ -- 125
 (There was 1 warning)

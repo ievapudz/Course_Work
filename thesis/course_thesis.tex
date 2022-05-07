@@ -1,13 +1,14 @@
-\documentclass[12pt]{report}
+\documentclass[12pt]{article}
 
 \usepackage{indentfirst}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage{setspace}
 
-\graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} }
+\graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} {../The_COINS/} }
 
-\setcounter{secnumdepth}{0}
+\setstretch{1.5}
 
 \begin{document}
 	\begin{center}
@@ -67,20 +68,37 @@
 	Just as the latter set is divided into domains, there are different 
 	attempts to classify proteins into distinct subsets. One way is to 
 	consider the heat-resistance property of biological macromolecules, which 
-	is an important trait for practical applications, for example, PCR.
+	is an important trait for practical applications in biotechnology. It is 
+	often required to find proteins that not only perform the required
+	function, yet also are thermostable - their structure does not denature 
+	at the higher temperature.
+
+	Determination of protein's of intereset thermostability can be made 
+	experimentally in the wet lab; by searching for its sequence in the 
+	proteome of the known thermophilic organism; by developing methods to 
+	predict thermostability from the protein's sequence or structural 
+	model. The third choice overcomes downsides of the first two methods: 
+	high expenses and slow progress, and limitation of knowledge about 
+	organisms recorded in databases.
 
 	Earlier studies show that protein's sequence and structural properties 
-	influence the thermostability of the macromolecule \cite{modarres2016protein}. 
-	Furthermore, one of the most recent achievements in the field of deep 
-	learning are transformer architecture-based language models or, particularly, 
-	protein language models that have not yet been used to classify proteins based on
+	influence the thermostability of the macromolecule 
+	\cite{modarres2016protein}. Furthermore, one of the most recent 
+	achievements in the field of deep learning are transformer 
+	architecture-based language models or, particularly, protein language 
+	models that have not yet been used to classify proteins based on
 	their thermostability. Therefore, it was decided to apply protein 
 	representations from the protein language model to make inferences about 
 	thermostability of the biological macromolecules.
 
 	There are transformer architecture-based language models trained in an 
 	unsupervised fashion to predict probabilities of elements in sequences 
-	\cite{devlin2018bert}. 
+	\cite{devlin2018bert}. One of the methods to train the model in an 
+	unsupervised way is masked-language modeling (MLM). The method includes 
+	masking
+	some of the tokens from the input setting a goal for the model, which is 
+	being trained, to correctly predict the masked parts of the input with 
+	a reference only to the information in the context.
 	Simultaneously, the process of training creates sequences' embeddings – the 
 	real numbered vectors that represent semantic connections of language 
 	components. These representations can be transferred as input to specific 
@@ -110,9 +128,57 @@
 
 	\section{Theory}
 
-	The main objective of the work is to apply embeddings from protein language 
-	models to create a classifier that could determine to which thermostability 
-	class the protein sequence belongs.
+	\subsection{Alternative approaches}
+
+	Up until the improvement of deep learning technologies,  
+	approaches that were used to predict protein thermostability were mainly
+	based on potential energy functions and machine learning techniques 
+	\cite{modarres2016protein}. Currently, due to the promising performance 
+	of deep learning methodologies, these are the ones that are mostly used 
+	to get inferences about biological macromolecules' characteristics of 
+	interest.
+
+	In this section a couple of recently developed deep learning methods to 
+	predict protein thermostability will be reviewed. 
+	
+	iThermo software \cite{ahmed2022ithermo} uses seven protein features 
+	and fusion of them as input: 1) amino 
+	acid composition, 2) traditional pseudo amino acid composition, 
+	3) amphiphilic pseudo amino acid composition, 4) the composition of 
+	k-spaced amino acid pairs, 5) dipeptide composition, 6) dipeptide 
+	deviation from the expected mean, and 7) composition, transition, 
+	and distribution value. These features are passed to the multi-layer 
+	perceptron 
+	(MLP) for training. The trained perceptron reaches up to 96.26\% 
+	prediction accuracy.
+
+	Another approach was based on convolutional neural networks 
+	\cite{fang2019convolution}. Convolutional neural networks (CNN)
+	are neural networks mainly used for image, speech, and audio recognition
+	and are mainly constructed of convolutional, pooling, and fully-connected 
+	layers. In the convolutional layer, the filter scans the input and the
+	result of this scan is a feature map, which can be taken as an input
+	to another layer. The pooling layer reduces the 
+	number of parameters in the input when the data is passed to another 
+	layer. The fully-connected layer connects 
+	every node in one layer to each node in another layer.
+	
+	This particular CNN approach \cite{fang2019convolution} encodes protein 
+	in three ways: applies orthogonal coding of protein mutation information, 
+	convolutional calculations to extract amino acid neighbourhood 
+	features, and three-dimensional coding of protein mutation information 
+	consisted of site feature (orthogonal protein mutation coding), molecular 
+	weight, and hydrophobicity. This CNN approach 
+	reached prediction accuracy up to 87\%.
+
+	\subsection{Objective of this work}
+
+	Since none of the reviewed, most recently developed methods included 
+	embeddings from protein language models, it was decided to try to use 
+	protein embeddings for protein thermostability prediction as a 
+	suggestion of a novel method. Therefore, the main objective of the 
+	work is to apply embeddings from protein language models to create a 
+	classifier that could determine the thermostability class of the protein.
 
 	Thermostability classes were created by setting the threshold of 
 	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
@@ -121,20 +187,25 @@
 
 	\subsection{Protein language models}
 
-	Protein language models are Transformer models trained on protein sequences.
-	The Transformer is a model, which is made of encoder-decoder architecture 
+	Protein language models are transformer models trained on protein sequences.
+	The transformer is a model, which is made of encoder-decoder architecture 
 	that relies entirely on self-attention \cite{vaswani2017attention}. 
+	Attention in deep learning is a mechanism that finds the most influential
+	factors in the data and focuses on them when it processes the input. 
+	Particularly, self-attention is a component of the network's architecture
+	that quantifies dependences between the input elements.
+
 	The encoder part provides continuous representations of the input composed 
 	of sequences of symbols, meanwhile the decoder part generates output for each 
-	symbol in the input sequence. For this principle of architecture, Transformers
+	symbol in the input sequence. For this principle of architecture, transformers
 	can be trained in an unsupervised fashion and be applies to natural language
 	processing (NLP) tasks at which they produce state-of-the-art 
 	results \cite{vig2019analyzing}.
 
 	Since amino acid sequences can be considered as a particular language, 
-	Transformer architectures were applied to solve tasks related to protein 
+	transformer architectures were applied to solve tasks related to protein 
 	biology or molecule modeling \textit{in silico}. Attention mechanisms in 
-	models of Transformer architecture, taking BERT model as a example 
+	models of transformer architecture, taking BERT-like model as a example 
 	\cite{vig2020bertology}, are capable to capture the folding structure, 
 	binding sites, and complex biophysical properties of proteins.
 
@@ -149,13 +220,16 @@
 	ESM-1b is one of evolutionary scale models trained by Facebook Research 
 	\cite{rives2021biological}. The model has 33 layers and 650 million parameters. 
 	The model was trained in an 
-	unsupervised fashion on UniRef50 data set (accessed March 28, 2018). In order 
+	unsupervised fashion on 
+	\href{ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50}{UniRef50 data set}
+	(accessed March 28, 2018)\cite{suzek2015uniref}. In order 
 	to ensure
 	determinism in the validation set, authors removed protein sequences that
 	were longer than 1024 amino acids. 
 
 	The authors made a script to extract model's embeddings available in the 
-	repository "Evolutionary Scale Modeling". The script allows to choose 
+	\href{https://github.com/facebookresearch/esm}{repository "Evolutionary Scale Modeling"}.
+	The script allows to choose 
 	from which model and layer embeddings will be taken, what embeddings 
 	(mean, per amino acid, or beginning of the sequence token) to keep. In the
 	result of using the script, a 1280 dimensional vector for each protein is 
@@ -184,6 +258,15 @@
 	\end{enumerate}
 
 	The workflow will be reviewed in terms of these points.
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{scheme.png}
+
+		\caption{The scheme of embeddings from protein language model usage in the 
+		application neural network model}
+		\label{figure:EmbeddingsUsageScheme}
+	\end{figure}
 
 	\subsection{Collecting data}
 
@@ -245,14 +328,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline
 			& Class '0' & Class '1' \\
 			\hline
 			Training & 32 & 77 \\ 
-			\hline
 			Validation & 8 & 17 \\
-			\hline
 			Testing & 11 & 17 \\
 			\hline   
 		\end{tabular}
@@ -264,14 +345,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline 
 			& Class '0' & Class '1' \\
 			\hline 
 			Training & 145128 & 143868 \\
-			\hline  
 			Validation & 33204 & 32616 \\
-			\hline 
 			Testing & 38263 & 36245 \\
 			\hline    
 		\end{tabular}
@@ -299,14 +378,12 @@
 		validation, and testing data sets}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline 
 			& Class '0' & Class '1' \\
 			\hline 
 			Training & 141602 & 142707 \\
-			\hline  
 			Validation & 32793 & 32363 \\
-			\hline 
 			Testing & 37749 & 35913 \\
 			\hline    
 		\end{tabular}
@@ -337,10 +414,10 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.3]{003_train_v2_PCA.png}
-		\includegraphics[scale=0.3]{003_validate_v2_PCA.png}
+		\includegraphics[scale=0.45]{003_train_v2_PCA.png}
+		\includegraphics[scale=0.45]{003_validate_v2_PCA.png}
 
-		\includegraphics[scale=0.3]{003_test_v2_PCA.png}
+		\includegraphics[scale=0.45]{003_test_v2_PCA.png}
 
 		\caption{PCA visualisations of '003' model data sets' embeddings: training set
 				in the upper left, validation set in the upper right, and 
@@ -355,10 +432,10 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.3]{003_train_v2_MDE_PCA.png}
-		\includegraphics[scale=0.3]{003_validate_v2_MDE_PCA.png}
+		\includegraphics[scale=0.4]{003_train_v2_MDE_PCA.png}
+		\includegraphics[scale=0.4]{003_validate_v2_MDE_PCA.png}
 
-		\includegraphics[scale=0.3]{003_test_v2_MDE_PCA.png}
+		\includegraphics[scale=0.4]{003_test_v2_MDE_PCA.png}
 
 		\caption{\textit{PyMDE} PCA visualisations of '003' model data sets' embeddings: training set
 				in the upper left, validation set in the upper right, and 
@@ -374,8 +451,13 @@
 	the most simple architecture - a single layer perceptron (SLP). The input of the 
 	layer is 1280-dimensional - it takes the input of protein embeddings - and the 
 	output is a binary label that represents the thermostability class. The 
-	activation and loss functions were sigmoid and binary cross
-	entropy respectively. Adam optimizer with learning rate of 0.0001 was chosen.
+	activation and loss functions were 
+	\href{https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html}{sigmoid} 
+	and 
+	\href{https://pytorch.org/docs/stable/generated/torch.nn.BCELoss.html}{binary cross entropy} 
+	respectively. 
+	Adam optimizer \cite{kingma2014adam} 
+	with learning rate of 0.0001 was chosen.
 
 	The model was trained and validated in 5 epochs taking mini-batch size of 24
 	embeddings. The ROC curves (Figure \ref{figure:SLP003validation4}) did not 
@@ -404,12 +486,11 @@
 		\caption{Confusion matrix after the fifth validation epoch}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c | c c | }
 			\hline 
 			& 0 & 1 \\
 			\hline  
 			0 & 32793 & 3636 \\
-			\hline 
 			1 & 1582 & 30770 \\
 			\hline    
 		\end{tabular}
@@ -435,18 +516,17 @@
 	\end{equation}
 
 	\begin{table}[h!]
-		\caption{Model performance metrics after the fifth validation epoch}
+		\caption{Model performance metrics in the validation stage }
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | }
+		\begin{tabular}{ | c | c c c c c | }
 			\hline 
-			Accuracy & 0.91989 \\
-			\hline  
-			Precision & 0.89432 \\
+			& Epoch 1 & Epoch 2 & Epoch 3 & Epoch 4 & Epoch 5 \\
 			\hline 
-			Recall & 0.9511 \\
-			\hline    
-			ROC AUC & 0.92 \\
+			Accuracy & 0.91856 & 0.91805 & 0.92061 & 0.91963 & 0.91989 \\
+			Precision & 0.89851 & 0.89409 & 0.90290 & 0.89484 & 0.89432 \\
+			Recall & 0.94248 & 0.94721 & 0.94139 & 0.9498 & 0.9511 \\  
+			ROC AUC & 0.91871 & 0.91824 & 0.92075 & 0.91983 & 0.92 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsValidation4}
@@ -484,12 +564,11 @@
 		\caption{Confusion matrix in the testing phase}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | c | }
+		\begin{tabular}{ | c | c c | }
 			\hline 
 			& 0 & 1 \\
 			\hline  
 			0 & 34933 & 2813 \\
-			\hline 
 			1 & 2788 & 33122 \\
 			\hline    
 		\end{tabular}
@@ -497,20 +576,20 @@
 	\end{table}
 
 	\begin{table}[h!]
-		\caption{Model performance metrics in the testing phase}
+		\caption{Comparison of model performance metrics between 
+		results of the fifth epoch of the validation stage and 
+		testing phase}
 		\vspace{0.2cm}
 		\centering
-		\begin{tabular}{ | c | c | }
+		\begin{tabular}{ | c c c | }
 			\hline 
-			Accuracy & 0.924 \\
-			\hline  
-			Precision & 0.922 \\
-			\hline 
-			Recall & 0.922 \\
-			\hline    
-			ROC AUC & 0.924 \\
-			\hline 
-			MCC & 0.845 \\
+			& Validation 5th & Testing \\
+			\hline
+			Accuracy & 0.91989 & 0.924 \\
+			Precision & 0.89432 & 0.922 \\
+			Recall & 0.9511 & 0.922 \\
+			ROC AUC & 0.92 & 0.924 \\
+			MCC & - & 0.845 \\
 			\hline 
 		\end{tabular}
 		\label{table:SLP003metricsTesting}
@@ -533,6 +612,8 @@
 			  data set  
 		\item Taking a different kind of embeddings as input
 	\end{itemize}
+
+	\newpage
 	
 	\nocite{*}
 	

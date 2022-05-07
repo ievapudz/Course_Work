@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{modarres2016protein}
 H.~P. Modarres, M.~Mofrad, and A.~Sanati-Nezhad, ``Protein thermostability
@@ -19,6 +19,18 @@ A.~Rives, J.~Meier, T.~Sercu, S.~Goyal, Z.~Lin, J.~Liu, D.~Guo, M.~Ott, C.~L.
 M.~K.~M. Engqvist, ``Growth temperatures for 21,498 microorganisms,'' Feb.
   2018.
 
+\bibitem{ahmed2022ithermo}
+Z.~Ahmed, H.~Zulfiqar, A.~A. Khan, I.~Gul, F.-Y. Dao, Z.-Y. Zhang, X.-L. Yu,
+  and L.~Tang, ``ithermo: A sequence-based model for identifying thermophilic
+  proteins using a multi-feature fusion strategy.,'' {\em Frontiers in
+  microbiology}, vol.~13, pp.~790063--790063, 2022.
+
+\bibitem{fang2019convolution}
+X.~Fang, J.~Huang, R.~Zhang, F.~Wang, Q.~Zhang, G.~Li, J.~Yan, H.~Zhang,
+  Y.~Yan, and L.~Xu, ``Convolution neural network-based prediction of protein
+  thermostability,'' {\em Journal of Chemical Information and Modeling},
+  vol.~59, no.~11, pp.~4833--4843, 2019.
+
 \bibitem{vaswani2017attention}
 A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
   {\L}.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' {\em Advances
@@ -33,6 +45,12 @@ J.~Vig, A.~Madani, L.~R. Varshney, C.~Xiong, R.~Socher, and N.~F. Rajani,
   ``Bertology meets biology: Interpreting attention in protein language
   models,'' {\em arXiv preprint arXiv:2006.15222}, 2020.
 
+\bibitem{suzek2015uniref}
+B.~E. Suzek, Y.~Wang, H.~Huang, P.~B. McGarvey, C.~H. Wu, and U.~Consortium,
+  ``Uniref clusters: a comprehensive and scalable alternative for improving
+  sequence similarity searches,'' {\em Bioinformatics}, vol.~31, no.~6,
+  pp.~926--932, 2015.
+
 \bibitem{jang2017environmental}
 J.~Jang, H.-G. Hur, M.~J. Sadowsky, M.~Byappanahalli, T.~Yan, and S.~Ishii,
   ``Environmental escherichia coli: ecology and public health implications—a
@@ -44,5 +62,9 @@ M.~Zaparty, D.~Esser, S.~Gertig, P.~Haferkamp, T.~Kouril, A.~Manica, T.~K.
   Pham, J.~Reimann, K.~Schreiber, P.~Sierocinski, {\em et~al.}, ``“hot
   standards” for the thermoacidophilic archaeon sulfolobus solfataricus,''
   {\em Extremophiles}, vol.~14, no.~1, pp.~119--142, 2010.
+
+\bibitem{kingma2014adam}
+D.~P. Kingma and J.~Ba, ``Adam: A method for stochastic optimization,'' {\em
+  arXiv preprint arXiv:1412.6980}, 2014.
 
 \end{thebibliography}
