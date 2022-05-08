@@ -40,13 +40,13 @@ file_handle.close()
 # Plot histogram
 
 n, bins, patches = plt.hist(x=temperatures, bins=10, color='#00008b')
-plt.xticks(range(0, 100, 10))
+plt.xticks(range(0, 110, 10))
 plt.yticks(range(0, 40000, 5000))
 plt.xlabel('temperature')
 plt.ylabel('number of proteins')
 
 if(len(sys.argv) >= 5 and sys.argv[4]):
-	plt.title(DATASET_NAME+' sequences distribution histogram')
+	plt.title(sys.argv[4]+' sequences distribution histogram')
 else:
 	plt.title('Sequences distribution histogram')
 
