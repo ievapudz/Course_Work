@@ -41,7 +41,7 @@ file_handle.close()
 
 n, bins, patches = plt.hist(x=temperatures, bins=10, color='#00008b')
 plt.xticks(range(0, 110, 10))
-plt.yticks(range(0, 80000, 5000))
+plt.yticks(range(0, 85000, 5000))
 plt.xlabel('temperature')
 plt.ylabel('number of proteins')
 
