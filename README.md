@@ -420,6 +420,13 @@ FASTA-splitter program was used to divide each of the sets into portions:
     --nopad data/003/FASTA/testing_v2/testing_v2.fasta
 ```
 
+### Plotting distribution histogram 003
+
+A command to plot protein sequence distribution histogram for the testing subset:
+```
+./scripts/003/003_plot_histogram.py data/003/TSV/testing_v2_tensors.tsv 3 data/003/visualisation_v2/testing_v2_histo.png Testing
+```
+
 ### Generating embeddings (testing slurm)
 
 It is required to make sure that directories for embeddings are created.
