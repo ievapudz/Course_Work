@@ -41,5 +41,5 @@ file_handle.close()
 
 n, bins, patches = plt.hist(x=temperatures, bins=10, color='#00008b')
 plt.xticks(range(0, 100, 10))
-plt.yticks(range(0, 35000, 5000))
+plt.yticks(range(0, 40000, 5000))
 plt.savefig(OUT_FILE)
