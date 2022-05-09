@@ -29,7 +29,7 @@ if(len(sys.argv) >= 6 and bool(sys.argv[5]) == True):
 	Z_SCORE_NORM = bool(sys.argv[5])
 	# Loading tensors to get the standard deviation of the dataset
 	data_test = load_tensor_from_NPZ(
-		'data/003/NPZ/testing_embeddings_v2.npz',
+		'data/004/NPZ/testing_embeddings.npz',
 		['x_test', 'y_test'])
 
 	std = standard_deviation(data_test['y_test'], 65)
