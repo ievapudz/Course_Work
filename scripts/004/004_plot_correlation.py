@@ -26,38 +26,18 @@ from results_processing import calculate_MCC
 Z_SCORE_NORM = False
 
 if(len(sys.argv) >= 6 and bool(sys.argv[5]) == True):
-    Z_SCORE_NORM = bool(sys.argv[5])
-    # Loading tensors to get the standard deviation of the dataset
-    data_test = load_tensor_from_NPZ(
-        'data/003/NPZ/testing_embeddings_v2.npz',
-        ['x_test', 'y_test'])
+	Z_SCORE_NORM = bool(sys.argv[5])
+	# Loading tensors to get the standard deviation of the dataset
+	data_test = load_tensor_from_NPZ(
+		'data/003/NPZ/testing_embeddings_v2.npz',
+		['x_test', 'y_test'])
 
-    std = standard_deviation(data_test['y_test'], 65)
+	std = standard_deviation(data_test['y_test'], 65)
 
 df = pd.read_csv(sys.argv[1], sep="\t")
 
 x = df['temperature']
 y = df['prediction']
-
-densities = densCols(x, y, nbin = 128)
-plt.figure(figsize=(8,6))
-plt.title('A plot to show the correlation between temperature and prediction')
-
-maximum = max([max(x), max(y)])
-minimum = min([min(x), min(y)])
-
-plt.ylim(minimum, maximum)
-plt.xlim(minimum, maximum) 
-plt.xlabel('Normalised temperature')
-plt.ylabel('Prediction value')
-sc = plt.scatter(x, y, c=densities, s=15, edgecolors='none', alpha=0.75, cmap=cm.jet)
-plt.colorbar(sc)
-plt.show()
-
-m, b = numpy.polyfit(x, y, 1)
-plt.plot(x, m*x+b, color='lightpink')
-
-plt.savefig(sys.argv[2])
 
 # Printing Pearson's correlation
 print('Pearson\'s correlation: ')
@@ -71,18 +51,43 @@ print()
 
 # Printing Matthew's correlation coefficient
 thresholds = numpy.linspace(float(sys.argv[3]), float(sys.argv[4]),
-                            int((float(sys.argv[4])-float(sys.argv[3]))/0.1), 
-                            False)
+							int((float(sys.argv[4])-float(sys.argv[3]))/0.1), 
+							False)
 
 for threshold in thresholds:
-    converted_threshold = ''
-    if(Z_SCORE_NORM):
-        converted_threshold = convert_z_score_to_label(threshold, 65, std)
-    else:
-        converted_threshold = threshold * 100 
+	converted_threshold = ''
+	if(Z_SCORE_NORM):
+		converted_threshold = convert_z_score_to_label(threshold, 65, std)
+	else:
+		converted_threshold = threshold * 100 
 
-    print('Matthew\'s correlation coefficient (with prediction threshold '+\
-          str(round(threshold, 2))+' (real: '+str(converted_threshold.item())+')): ')
-    print(calculate_MCC(x, y, real_threshold=threshold, 
-          prediction_threshold=threshold))
-    print()
+	print('Matthew\'s correlation coefficient (with prediction threshold '+\
+		  str(round(threshold, 2))+' (real: '+str(converted_threshold.item())+')): ')
+	print(calculate_MCC(x, y, real_threshold=threshold, 
+		  prediction_threshold=threshold))
+	print()
+
+if(Z_SCORE_NORM):
+	for i in range(len(x)):
+		x[i] = convert_z_score_to_label(x[i], 65, std)
+		y[i] = convert_z_score_to_label(y[i], 65, std)
+
+densities = densCols(x, y, nbin = 128)
+plt.figure(figsize=(8,6))
+plt.title('A plot to show the correlation between temperature and prediction')
+
+maximum = max([max(x), max(y)])
+minimum = min([min(x), min(y)])
+
+plt.ylim(minimum, maximum)
+plt.xlim(minimum, maximum)
+plt.xlabel('True temperature')
+plt.ylabel('Predicted temperature')
+sc = plt.scatter(x, y, c=densities, s=15, edgecolors='none', alpha=0.75, cmap=cm.jet)
+plt.colorbar(sc)
+plt.show()
+
+m, b = numpy.polyfit(x, y, 1)
+plt.plot(x, m*x+b, color='lightpink')
+
+plt.savefig(sys.argv[2])
