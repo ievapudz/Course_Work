@@ -1564,58 +1564,58 @@ Spearman's correlation:
 temperature     1.000000    0.802698
 prediction      0.802698    1.000000
 
-Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 38.91468048095703)): 
 0.5496252481089685
 
-Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 41.81304931640625)): 
 0.6132354421241614
 
-Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 44.71141815185547)): 
 0.6271570869823873
 
-**Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)):**
-**0.7019775066651827**
+Matthew's correlation coefficient (with prediction threshold -0.6 (real: 47.60978698730469)): 
+0.7019775066651827
 
-Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 50.508155822753906)): 
 0.6898583452855843
 
-Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 53.406524658203125)): 
 0.6812743141276174
 
-Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 56.304893493652344)): 
 0.6991996207337096
 
-Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.20326232910156)): 
 0.6794084858913315
 
-Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)): 
+Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.10163116455078)): 
 0.686195868156244
 
 Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
 0.6514871085671753
 
-Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.89836883544922)): 
 0.6103115046361444
 
-Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.79673767089844)): 
 0.6049826290083866
 
-Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 73.69510650634766)): 
 0.5554196074679635
 
-Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 76.59347534179688)): 
 0.4564155766992494
 
-Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 79.4918441772461)): 
 0.4138290450252569
 
-Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 82.39021301269531)): 
 0.39268507775859823
 
-Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 85.28858184814453)): 
 0.3468071682678557
 
-Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 88.18695068359375)): 
 0.290082394930224
 
 ## Cross-validation of regressor of 004 on 003
@@ -1626,7 +1626,7 @@ Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225
 
 Evaluation of the regressor:
 ```
-./scripts/004/004_plot_correlation.py results/regressor/004/CV_003_testing_predictions.tsv results/regressor/004/CV_003_testing_predictions.png -0.5 0.9 True
+./scripts/004/004_plot_correlation.py results/regressor/004/CV_003_testing_predictions.tsv results/regressor/004/CV_003_testing_predictions.png -0.9 0.9 True
 ```
 Pearson's correlation: 
              temperature  prediction
@@ -1638,58 +1638,58 @@ Spearman's correlation:
 temperature     1.000000    0.830807
 prediction      0.830807    1.000000
 
-Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 38.91468048095703)): 
 0.6930987981256845
 
-Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 41.81304931640625)): 
 0.7438868600645441
 
-Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 44.71141815185547)): 
 0.7770681193384058
 
-**Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)):**
-**0.7928412929379798**
+Matthew's correlation coefficient (with prediction threshold -0.6 (real: 47.60978698730469)): 
+0.7928412929379798
 
-Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 50.508155822753906)): 
 0.7916240453141942
 
-Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 53.406524658203125)): 
 0.7756291966447112
 
-Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 56.304893493652344)): 
 0.7448126906251268
 
-Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.20326232910156)): 
 0.7042777266752223
 
-Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)): 
+Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.10163116455078)): 
 0.6551030252588316
 
 Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
 0.5982806197750763
 
-Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.89836883544922)): 
 0.5507455502751855
 
-Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.79673767089844)): 
 0.5927926436437564
 
-Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 73.69510650634766)): 
 0.5580738416671605
 
-Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 76.59347534179688)): 
 0.43763073798297136
 
-Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 79.4918441772461)): 
 0.39256471735857584
 
-Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 82.39021301269531)): 
 0.35029863005458795
 
-Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 85.28858184814453)): 
 0.30336625287249946
 
-Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 88.18695068359375)): 
 0.1242123562053057
 
 # Development of thermoclass
