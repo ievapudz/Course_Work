@@ -1084,6 +1084,22 @@ prediction      0.831956    1.000000
 Matthew's correlation coefficient (with prediction threshold 0.5 (real: 50.0)): 
 0.823900675275014
 
+Alternative script in order to save the trained model (with normalised temperature values as z-scores):
+
+```
+./scripts/003/003_regressor.py -n data/003/NPZ/training_and_validation_embeddings_v2.npz -l 1e-4 -b 24 -r results/regressor/003/ROC/ -e 5 -m results/regressor/003/l1e-4_b24_e5.pt > results/regressor/003/l1e-4_b24_e5.txt
+```
+
+```
+./scripts/003/003_regressor_testing.py results/regressor/003/l1e-4_b24_e5.pt  data/003/NPZ/testing_embeddings_v2.npz results/regressor/003/testing_predictions.tsv
+```
+
+#### Cross-validation on 004
+
+```
+./scripts/003/003_regressor_testing.py results/regressor/003/l1e-4_b24_e5.pt  data/004/NPZ/testing_embeddings.npz results/regressor/003/CV_004_testing_predictions.tsv
+```
+
 ### Checking results if input is aminoacid frequencies
 
 For each sequence there were 20-dimensional vectors generated, which represented aminoacids relative frequency in
@@ -1409,7 +1425,7 @@ The output of each multiclass classifier is a TSV-formatted output:
 ./scripts/004/004_regressor.py -n data/004/NPZ/training_and_validation_embeddings.npz -l 1e-4 -b 24 -r results/regressor/004/ROC/ -e 5 -m results/regressor/004/l1e-4_b24_e5.pt > results/regressor/004/l1e-4_b24_e5.txt
 
 ```
-./scripts/004/004_regressor_testing.py results/regressor/004/l1e-4_b24_e5.pt
+./scripts/004/004_regressor_testing.py results/regressor/004/l1e-4_b24_e5.pt  data/004/NPZ/testing_embeddings.npz results/regressor/004/testing_predictions.tsv
 ```
 
 ```
@@ -1438,8 +1454,8 @@ Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.2477
 Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
 0.6271570869823873
 
-Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)): 
-0.7019775066651827
+**Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)):**
+**0.7019775066651827**
 
 Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
 0.6898583452855843
@@ -1482,6 +1498,80 @@ Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.15822
 
 Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
 0.290082394930224
+
+## Cross-validation of regressor of 004 on 003
+
+```
+./scripts/004/004_regressor_testing.py results/regressor/004/l1e-4_b24_e5.pt  data/003/NPZ/testing_embeddings_v2.npz results/regressor/004/CV_003_testing_predictions.tsv
+```
+
+Evaluation of the regressor:
+```
+./scripts/004/004_plot_correlation.py results/regressor/004/CV_003_testing_predictions.tsv results/regressor/004/CV_003_testing_predictions.png -0.5 0.9 True
+```
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.838391
+prediction      0.838391    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.830807
+prediction      0.830807    1.000000
+
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+0.6930987981256845
+
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+0.7438868600645441
+
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+0.7770681193384058
+
+**Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)):**
+**0.7928412929379798**
+
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+0.7916240453141942
+
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+0.7756291966447112
+
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+0.7448126906251268
+
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+0.7042777266752223
+
+Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)): 
+0.6551030252588316
+
+Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
+0.5982806197750763
+
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+0.5507455502751855
+
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+0.5927926436437564
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+0.5580738416671605
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+0.43763073798297136
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+0.39256471735857584
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+0.35029863005458795
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+0.30336625287249946
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+0.1242123562053057
 
 # Development of thermoclass
 
@@ -1642,6 +1732,35 @@ Visualisation process (lysozymes):
         thermoclass/predictions/PDB/1l63.pdb thermoclass/predictions/PDB/1g1v.pdb \
         thermoclass/predictions/PyMOL/
 ```
+
+## Overlap effect analysis with thermoclass
+
+- [x] Join sequences from N and C term files.
+
+```
+./scripts/CRISPR/Cas12_join_sequences.py data/CRISPR/FASTA/Cas12b/Cas12b_N.fasta  data/CRISPR/FASTA/Cas12b/Cas12b_C.fasta > data/CRISPR/FASTA/Cas12b/Cas12b.fasta
+```
+
+- [ ] Make overlapping sequences that are 1022 amino acids long.
+
+```
+./scripts/CRISPR/Cas12_split_to_max_length.py data/CRISPR/FASTA/Cas12b/Cas12b.fasta 1022 > data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta
+```
+
+Then make embeddings and predictions for them.
+
+```
+srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta -g -e ./emb/ -t emb/TSV/Cas12a_1022_splits.tsv -n emb/NPZ/Cas12a_1022_splits.npz -o predictions/TSV/Cas12a_1022_splits.tsv
+
+srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta -g -e ./emb/ -t emb/TSV/Cas12b_1022_splits.tsv -n emb/NPZ/Cas12b_1022_splits.npz -o predictions/TSV/Cas12b_1022_splits.tsv
+```
+
+```
+srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta -g --per-tok -e ./emb/ -t emb/TSV/Cas12a_1022_splits_per_tok.tsv -n emb/NPZ/Cas12a_1022_splits_per_tok.npz -o predictions/TSV/Cas12a_1022_splits_per_tok.tsv --output_fasta predictions/FASTA/Cas12a_1022_splits_per_tok.fasta --output_plot predictions/PNG/
+
+srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta -g --per-tok -e ./emb/ -t emb/TSV/Cas12b_1022_splits_per_tok.tsv -n emb/NPZ/Cas12b_1022_splits_per_tok.npz -o predictions/TSV/Cas12b_1022_splits_per_tok.tsv --output_fasta predictions/FASTA/Cas12b_1022_splits_per_tok.fasta --output_plot predictions/PNG/
+```
+
 
 ## References
 
