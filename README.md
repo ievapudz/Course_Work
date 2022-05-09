@@ -1429,8 +1429,7 @@ The output of each multiclass classifier is a TSV-formatted output:
 ```
 
 ```
-./scripts/004/004_plot_correlation.py results/regressor/004/testing_predictions.tsv results/regressor/004
-/testing_predictions.png -0.5 0.9 True
+./scripts/004/004_plot_correlation.py results/regressor/004/testing_predictions.tsv results/regressor/004/testing_predictions.png -0.9 0.9 True
 ```
 
 Output of the last command:
