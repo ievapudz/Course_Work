@@ -1023,7 +1023,12 @@ line was plotted and Pearson's with Spearman's correlation coefficients were cal
 ```
 ./scripts/003/003_plot_correlation.py results/regressor/003/testing_4_real_vs_predictions_z_scores.tsv results/regressor/003/testing_4_real_vs_predictions_z_scores.png -1.0 0.8
 ```
-![testing_4_real_vs_predictions_z_scores](./results/regressor/003/testing_4_real_vs_predictions_z_scores.png) 
+
+The following command draws correlation plot for normalised as z-scored testing predictions.
+```
+./scripts/003/003_plot_correlation.py results/regressor/003/testing_predictions.tsv results/regressor/003/testing_predictions.png -0.9 0.9 True 
+```
+![testing_4_real_vs_predictions_z_scores](./results/regressor/003/testing_predictions.png) 
 
 **Fig. 3.** Correlation plot of the testing_v2 003 dataset for real temperature values versus regressor predictions normalised as z-scores
 with respect of 65
@@ -1032,19 +1037,67 @@ The output of the calculations is given below. The maximum that was reached by M
 
 Pearson's correlation: 
              temperature  prediction
-temperature     1.000000    0.859176
-prediction      0.859176    1.000000
+temperature     1.000000    0.859518
+prediction      0.859518    1.000000
 
 Spearman's correlation: 
              temperature  prediction
-temperature     1.000000    0.830454
-prediction      0.830454    1.000000
+temperature     1.000000    0.831761
+prediction      0.831761    1.000000
 
-Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
-0.8237228311506027
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+0.7078244792083677
+
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+0.7541008244024088
+
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+0.7882317259556073
+
+Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)): 
+0.8121199777964067
+
+**Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)):**
+**0.8221594395061655**
+
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+0.8167473893256199
+
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+0.8025732709170921
+
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+0.7787113902515373
+
+Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)): 
+0.7433438102288983
 
 Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
-0.7080278511067488
+0.7014748881853335
+
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+0.6258867170802592
+
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+0.6273734902616572
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+0.6090800570544909
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+0.4674008411853777
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+0.42518115439297205
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+0.35032540583896654
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+0.29066705397612186
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+0.09915458926461182
 
 The same flow was done with data normalised by division of 100 (max temperature in the data subset).
 
@@ -1094,11 +1147,78 @@ Alternative script in order to save the trained model (with normalised temperatu
 ./scripts/003/003_regressor_testing.py results/regressor/003/l1e-4_b24_e5.pt  data/003/NPZ/testing_embeddings_v2.npz results/regressor/003/testing_predictions.tsv
 ```
 
-#### Cross-validation on 004
+#### Cross-validation on 004 testing data
 
 ```
 ./scripts/003/003_regressor_testing.py results/regressor/003/l1e-4_b24_e5.pt  data/004/NPZ/testing_embeddings.npz results/regressor/003/CV_004_testing_predictions.tsv
 ```
+
+```
+./scripts/003/003_plot_correlation.py results/regressor/003/CV_004_testing_predictions.tsv results/regressor/003/CV_004_testing_predictions.png -0.9 0.9 True
+```
+Pearson's correlation: 
+             temperature  prediction
+temperature     1.000000    0.794543
+prediction      0.794543    1.000000
+
+Spearman's correlation: 
+             temperature  prediction
+temperature     1.000000    0.782637
+prediction      0.782637    1.000000
+
+Matthew's correlation coefficient (with prediction threshold -0.9 (real: 41.653709411621094)): 
+0.5384589154687744
+
+Matthew's correlation coefficient (with prediction threshold -0.8 (real: 44.24774169921875)): 
+0.5942965505386333
+
+Matthew's correlation coefficient (with prediction threshold -0.7 (real: 46.841773986816406)): 
+0.6071662678644542
+
+Matthew's correlation coefficient (with prediction threshold -0.6 (real: 49.43580627441406)): 
+0.6943452175644782
+
+Matthew's correlation coefficient (with prediction threshold -0.5 (real: 52.02983856201172)): 
+0.6939606890352392
+
+Matthew's correlation coefficient (with prediction threshold -0.4 (real: 54.623870849609375)): 
+0.6996934318113255
+
+Matthew's correlation coefficient (with prediction threshold -0.3 (real: 57.21790313720703)): 
+0.7032188913916576
+
+Matthew's correlation coefficient (with prediction threshold -0.2 (real: 59.81193542480469)): 
+0.7003226869641006
+
+**Matthew's correlation coefficient (with prediction threshold -0.1 (real: 62.405967712402344)):**
+**0.7045167216002208**
+
+Matthew's correlation coefficient (with prediction threshold 0.0 (real: 65.0)): 
+0.6862472263833499
+
+Matthew's correlation coefficient (with prediction threshold 0.1 (real: 67.59403228759766)): 
+0.6638354014721621
+
+Matthew's correlation coefficient (with prediction threshold 0.2 (real: 70.18806457519531)): 
+0.6898792433193665
+
+Matthew's correlation coefficient (with prediction threshold 0.3 (real: 72.78209686279297)): 
+0.658511097209829
+
+Matthew's correlation coefficient (with prediction threshold 0.4 (real: 75.37612915039062)): 
+0.5305807732136198
+
+Matthew's correlation coefficient (with prediction threshold 0.5 (real: 77.97016143798828)): 
+0.4864737966638361
+
+Matthew's correlation coefficient (with prediction threshold 0.6 (real: 80.56419372558594)): 
+0.47089254270636455
+
+Matthew's correlation coefficient (with prediction threshold 0.7 (real: 83.1582260131836)): 
+0.43063295641464533
+
+Matthew's correlation coefficient (with prediction threshold 0.8 (real: 85.75225830078125)): 
+0.3705687395071027
 
 ### Checking results if input is aminoacid frequencies
 
