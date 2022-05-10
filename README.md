@@ -1880,6 +1880,28 @@ srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta -g --
 srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta -g --per-tok -e ./emb/ -t emb/TSV/Cas12b_1022_splits_per_tok.tsv -n emb/NPZ/Cas12b_1022_splits_per_tok.npz -o predictions/TSV/Cas12b_1022_splits_per_tok.tsv --output_fasta predictions/FASTA/Cas12b_1022_splits_per_tok.fasta --output_plot predictions/PNG/
 ```
 
+Per token predictions:
+
+```
+../../programs/fasta-splitter.pl --n-parts 8 --out-dir ../data/CRISPR/FASTA/Cas12a/ --no-pad ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta
+../../programs/fasta-splitter.pl --n-parts 3 --out-dir ../data/CRISPR/FASTA/Cas12b/ --no-pad ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta
+```
+
+```
+for VAR in 1 2 3 4 5 6 7 8
+do
+    srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.part-$VAR.fasta -c --per_tok -e emb/ -t emb/TSV/Cas12a_1022_splits.part-$VAR.per_tok.tsv -n emb/NPZ/Cas12a_1022_splits.part-$VAR.per_tok.npz -o predictions/TSV/Cas12a_1022_splits.part-$VAR.per_tok.tsv --output_fasta predictions/FASTA/Cas12a_1022_splits.part-$VAR.per_tok.fasta --output_plot predictions/PNG/
+done
+```
+
+```
+for VAR in 1 2 3 
+do
+    srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.part-$VAR.fasta -c --per_tok -e emb/ -t emb/TSV/Cas12b_1022_splits.part-$VAR.per_tok.tsv -n emb/NPZ/Cas12b_1022_splits.part-$VAR.per_tok.npz -o predictions/TSV/Cas12b_1022_splits.part-$VAR.per_tok.tsv --output_fasta predictions/FASTA/Cas12b_1022_splits.part-$VAR.per_tok.fasta --output_plot predictions/PNG/
+done
+```
+
+
 
 ## References
 
