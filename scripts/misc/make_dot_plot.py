@@ -28,8 +28,8 @@ for y_index in y_indeces:
 	x = []
 	y = []
 
-plt.title('Differences between mean and per-token predictions '+\
-			'for domain and maximum length subsequence')
+plt.title('Differences between predictions '+\
+			'for domain and maximum length splits')
 plt.xlabel('protein')
 plt.ylabel('delta')
 
