@@ -17,7 +17,7 @@ file_handle.close()
 
 x = []
 y = []
-for y_index in y_indeces[0:1]:
+for y_index in y_indeces:
 	for line in lines:
 		#x.append(line.split("\t")[x_index])
 		x = range(len(lines))
