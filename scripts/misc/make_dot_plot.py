@@ -28,6 +28,11 @@ for y_index in y_indeces:
 	x = []
 	y = []
 
+plt.title('Differences between mean and per-token predictions '+\
+			'for domain and maximum length subsequence')
+plt.xlabel('protein')
+plt.ylabel('delta')
+
 pathname, extension = os.path.splitext(data_file)
 plt.savefig(pathname.split('/')[-1]+'.png')
 
