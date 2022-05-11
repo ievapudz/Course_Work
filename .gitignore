@@ -20,6 +20,7 @@ data/CRISPR/slurm/
 data/CRISPR/C2EP_training_v2_matches.res
 data/CRISPR/EMB_ESM1b/
 data/CRISPR/FASTA/C2EP/C2EP_with_stop.fasta
+data/CRISPR/FASTA/Cas12?/
 
 .profile
 scripts/__pycache__/
