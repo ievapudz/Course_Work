@@ -19,8 +19,8 @@ x = []
 y = []
 for y_index in y_indeces[0:1]:
 	for line in lines:
-		x.append(line.split(' ')[x_index])
-		y.append(line.split(' ')[y_index])
+		x.append(line.split("\t")[x_index])
+		y.append(line.split("\t")[y_index])
 
 	plt.scatter(x, y)
 	x = []
