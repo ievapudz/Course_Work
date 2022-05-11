@@ -17,7 +17,7 @@ file_handle.close()
 
 x = []
 y = []
-for y_index in y_indeces:
+for y_index in y_indeces[0:1]:
 	for line in lines:
 		x.append(line.split(' ')[x_index])
 		y.append(line.split(' ')[y_index])
