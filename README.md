@@ -1455,6 +1455,54 @@ sbatch --array=0-15 --output=data/004/slurm/validate_%a.out scripts/004/004_embe
 sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddings_test.sh
 ```
 
+## Constructing unbalanced dataset (005)
+
+Picking proteomes (checking numbers) for training, validation, and testing data sets:
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+3649
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+131
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+66
+```
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+771
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+36
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+17
+```
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+741
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+55
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+28
+```
+
+Collecting proteomes to model's data sets.
+
+```
+./scripts/005/construct_set.sh 'head -n 3846' > data/005/FASTA/training.fasta
+./scripts/005/construct_set.sh 'tail -n 824' > data/005/FASTA/testing.fasta
+```
+
+For validation the script was changed manually ('head -n 4670 | tail -n 824' part was inserted instead of ${LINE} argument).
+```
+./scripts/005/construct_set.sh > data/005/FASTA/validation.fasta
+```
+
+Number of sequences in each set:
+1. Training: 15344704
+2. Validation: 3223401
+3. Testing: 3071982
+
 ## Multi-class classifier
 
 004 data set was used to train multi-class classifier. The first architecture for multi-class 
