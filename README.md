@@ -1503,6 +1503,18 @@ Number of sequences in each set:
 2. Validation: 3223401
 3. Testing: 3071982
 
+Generating embeddings:
+```
+../programs/fasta-splitter.pl --n-parts 150 --out-dir data/005/FASTA/train/ --nopad data/005/FASTA/training.fasta
+```
+```
+sbatch --array=1-30 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=31-60 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=61-90 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=91-120 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=121-150 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+```
+
 ## Multi-class classifier
 
 004 data set was used to train multi-class classifier. The first architecture for multi-class 
