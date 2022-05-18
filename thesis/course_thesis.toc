@@ -1,15 +1,19 @@
+\babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}Theory}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Alternative approaches}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Protein language models}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}ESM-1b embeddings}{6}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Methods}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Objective of this work}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Workflow}{8}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Collecting data}{9}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Calculating embeddings}{10}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Processing generated embeddings}{12}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Visualising embeddings}{13}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Training and validation of the neural network}{16}{subsection.3.7}%
-\contentsline {section}{\numberline {4}Results}{19}{section.4}%
-\contentsline {section}{\numberline {5}Conclusions}{20}{section.5}%
+\contentsline {section}{\numberline {2}Abstract in Lithuanian (Santrauka)}{5}{section.2}%
+\babel@toc {lithuanian}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {3}Theory}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Alternative approaches}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Protein language models}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}ESM-1b embeddings}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Methods}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Objective of this work}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Workflow}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Collecting data}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Calculating embeddings}{11}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Processing generated embeddings}{13}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Visualising embeddings}{14}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Training and validation of the neural network}{17}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Results}{20}{section.5}%
+\contentsline {section}{\numberline {6}Conclusions}{21}{section.6}%

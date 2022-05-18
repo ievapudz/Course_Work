@@ -6,6 +6,10 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 
+\usepackage[L7x,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian,english]{babel}
+
 \graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} {../The_COINS/} }
 
 \setstretch{1.5}
@@ -123,6 +127,37 @@
 	temperatures \cite{engqvist_martin_karl_magnus_2018_1175609}. The model 
 	takes the generated embedding to predict the thermostability class of the 
 	input protein.
+
+	\newpage
+
+	\section{Abstract in Lithuanian (Santrauka)}
+
+	\begin{otherlanguage}{lithuanian}
+		
+	\end{otherlanguage}
+	
+	Biotechnologijoje dažnai ieškoma baltymų, kurie ne tik 
+	galėtų atlikti reikiamą funkciją, bet ir būtų termostabilūs -
+	išlaikytų struktūrą aukštoje temperatūroje. Tinkami baltymai gali
+	būti ieškomi eksperimentiškai, termofiliškų organizmų proteomų 
+	duomenų bazėse arba metodais, kurie geba iš baltymo 
+	sekos ar struktūros nustatyti baltymo termostabilumą. Iš šių trijų 
+	būdų pranašiausias yra trečias, nes yra greitas, pigus ir 
+	nepriklauso nuo ribotų įrašų apie organizmus skaičiaus duomenų bazėse.
+
+	Trečiam metodui galima pritaikyti mašininio mokymosi technologijas. 
+	Naudojant termofilinių ir mezofilinių organizmų proteomų rinkinius, 
+	galima apmokyti neuroninį tinklą baltymo termostabilumo klasės 
+	nusakymui iš baltymo sekos skaitinės reprezentacijos. Tinkamą skaitinę 
+	reprezentaciją galima sugeneruoti su per pastaruosius trejus metus 
+	ištobulintais baltymų kalbos modeliais - giliaisiais neuroniniais 
+	tinklais, apmokytais naudojant šimtus milijonų žinomų baltymų sekų. 
+	
+	Šiuo metu nėra publikuotų metodų, atliekančių baltymų termostabilumo 
+	nusakymą iš baltymų kalbos modelių generuojamų reprezentacijų. 
+	Šis darbas pristato baltymų kalbos modelių sugeneruotų skaitinių 
+	baltymų reprezentacijų taikymą baltymų klasifikavimo pagal 
+	termostabilumą problemos sprendimui.
 
 	\newpage
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  18 MAY 2022 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  18 MAY 2022 18:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -164,32 +164,72 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@dimlist=\toks17
 ) (./setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+ (./l7xenc.def
+File: l7xenc.def 2017/12/06 v2.0 LaTeX-LT file
+Now handling font encoding L7x ...
+... no UTF-8 mapping file for font encoding L7x
+)) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/02/26 3.73 The Babel package
+\babel@savecnt=\count269
+\U@D=\dimen153
+\l@unhyphenated=\language3
+ (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count270
+ (./lithuanian.ldf
+File: lithuani.ldf 2001/07/04 Lithuanian support from the babel system v.3.7
+
+
+Package babel Warning: No hyphenation patterns were preloaded for
+(babel)                the language 'Lithuanian' into the format.
+(babel)                Please, configure your TeX system to add them and
+(babel)                rebuild the format. Now I will use the patterns
+(babel)                preloaded for \language=0 instead on input line 7.
+
+Package babel Info: Hyphen rules for 'lithuanian' set to \l@english
+(babel)             (\language0). Reported on input line 8.
+) (./english.ldf
+Language: english 2001/02/07 v3.3k English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 72.
+)) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count269
+\l__color_backend_stack_int=\count271
 \l__pdf_internal_box=\box50
 ) (./course_thesis.aux)
 \openout1 = `course_thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-Package hyperref Info: Link coloring OFF on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for L7x/lmr/m/n on input line 17.
+LaTeX Font Info:    Trying to load font information for L7x+lmr on input line 17.
+ (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/lm/l7xlmr.fd
+File: l7xlmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    ... okay on input line 17.
+Package hyperref Info: Link coloring OFF on input line 17.
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/Users/ieva/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -197,11 +237,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/Users/ieva/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count270
+\c@section@level=\count272
 )
-LaTeX Info: Redefining \ref on input line 13.
-LaTeX Info: Redefining \pageref on input line 13.
-LaTeX Info: Redefining \nameref on input line 13.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
  (./course_thesis.out) (./course_thesis.out)
 \@outlinefile=\write3
 \openout3 = `course_thesis.out'.
@@ -250,113 +290,118 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 {/Users/ieva/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./course_thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
+(Font)              <12> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 7.
 )
 \tf@toc=\write4
 \openout4 = `course_thesis.toc'.
 
- [2] [3] [4] [5] [6] [7]
-<../The_COINS//scheme.png, id=140, 643.203pt x 600.8046pt>
+ [2] [3] [4]
+Overfull \hbox (20.44812pt too wide) in paragraph at lines 148--155
+[]\T1/cmr/m/n/12 Tre£iam meto-dui gal-ima pri-taikyti ma²ininio moky-mosi tech-nologi-jas. Nau-do-jant termofilini[]
+ []
+
+[5] [6] [7] [8]
+<../The_COINS//scheme.png, id=152, 643.203pt x 600.8046pt>
 File: ../The_COINS//scheme.png Graphic file (type png)
 <use ../The_COINS//scheme.png>
-Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 266.
+Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 301.
 (pdftex.def)             Requested size: 257.27664pt x 240.31757pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8] [9 <../The_COINS//scheme.png>]
-<../data/003/visualisation_v2//training_v2_histo.png, id=175, 462.528pt x 346.896pt>
+[9] [10 <../The_COINS//scheme.png>]
+<../data/003/visualisation_v2//training_v2_histo.png, id=188, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//training_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//training_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//training_v2_histo.png  used on input line 364.
+Package pdftex.def Info: ../data/003/visualisation_v2//training_v2_histo.png  used on input line 399.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//validation_v2_histo.png, id=176, 462.528pt x 346.896pt>
+<../data/003/visualisation_v2//validation_v2_histo.png, id=189, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//validation_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//validation_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//validation_v2_histo.png  used on input line 374.
+Package pdftex.def Info: ../data/003/visualisation_v2//validation_v2_histo.png  used on input line 409.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//testing_v2_histo.png, id=177, 462.528pt x 346.896pt>
+<../data/003/visualisation_v2//testing_v2_histo.png, id=190, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//testing_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//testing_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//testing_v2_histo.png  used on input line 385.
+Package pdftex.def Info: ../data/003/visualisation_v2//testing_v2_histo.png  used on input line 420.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10]
+[11]
 
-LaTeX Warning: Text page 11 contains only floats.
+LaTeX Warning: Text page 12 contains only floats.
 
-[11 <../data/003/visualisation_v2//training_v2_histo.png> <../data/003/visualisation_v2//validation_v2_histo.png>] [12 <../data/003/visualisation_v2//testing_v2_histo.png>]
-<../data/003/visualisation_v2//003_train_v2_PCA.png, id=203, 505.89pt x 433.62pt>
+[12 <../data/003/visualisation_v2//training_v2_histo.png> <../data/003/visualisation_v2//validation_v2_histo.png>] [13 <../data/003/visualisation_v2//testing_v2_histo.png>]
+<../data/003/visualisation_v2//003_train_v2_PCA.png, id=217, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_train_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 452.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 487.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
-<../data/003/visualisation_v2//003_validate_v2_PCA.png, id=204, 505.89pt x 433.62pt>
+<../data/003/visualisation_v2//003_validate_v2_PCA.png, id=218, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_validate_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 461.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 496.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_test_v2_PCA.png, id=205, 505.89pt x 433.62pt>
+<../data/003/visualisation_v2//003_test_v2_PCA.png, id=219, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_test_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 470.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 505.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=209, 547.0839pt x 547.0839pt>
+<../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=223, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 486.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 521.
 (pdftex.def)             Requested size: 273.54128pt x 273.54128pt.
-[13 <../data/003/visualisation_v2//003_train_v2_PCA.png>]
+[14 <../data/003/visualisation_v2//003_train_v2_PCA.png>]
 
-LaTeX Warning: Text page 14 contains only floats.
+LaTeX Warning: Text page 15 contains only floats.
 
 
-Overfull \vbox (2.93593pt too high) has occurred while \output is active []
+Overfull \vbox (2.93483pt too high) has occurred while \output is active []
 
- [14 <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>]
-<../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=225, 547.0839pt x 547.0839pt>
+ [15 <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>]
+<../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=238, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 495.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 530.
 (pdftex.def)             Requested size: 273.54128pt x 273.54128pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=226, 549.252pt x 591.8913pt>
+<../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=239, 549.252pt x 591.8913pt>
 File: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 504.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 539.
 (pdftex.def)             Requested size: 274.62532pt x 295.94492pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>]
-<../results/SLP/003/ROC//validation_4_2713.png, id=239, 462.528pt x 346.896pt>
+[16 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>]
+<../results/SLP/003/ROC//validation_4_2713.png, id=252, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//validation_4_2713.png Graphic file (type png)
 <use ../results/SLP/003/ROC//validation_4_2713.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 535.
+Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 570.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
@@ -365,37 +410,37 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16 <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>]
+[17 <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>]
 
-LaTeX Warning: Text page 17 contains only floats.
+LaTeX Warning: Text page 18 contains only floats.
 
-[17 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png> <../results/SLP/003/ROC//validation_4_2713.png>] [18]
-<../results/SLP/003/ROC//testing_0_3068.png, id=272, 462.528pt x 346.896pt>
+[18 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png> <../results/SLP/003/ROC//validation_4_2713.png>] [19]
+<../results/SLP/003/ROC//testing_0_3068.png, id=286, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//testing_0_3068.png Graphic file (type png)
 <use ../results/SLP/003/ROC//testing_0_3068.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 622.
+Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 657.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[19 <../results/SLP/003/ROC//testing_0_3068.png>] [20] (./course_thesis.bbl [21]) [22] (./course_thesis.aux)
+[20 <../results/SLP/003/ROC//testing_0_3068.png>] [21] (./course_thesis.bbl [22]) [23] (./course_thesis.aux)
 Package rerunfilecheck Info: File `course_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7595D660E0ABC744D13F3CB625C2E094;2195.
+(rerunfilecheck)             Checksum: 445B24D56C461C1C35C92E19B6326AC7;2424.
  ) 
 Here is how much of TeX's memory you used:
- 8237 strings out of 480539
- 127777 string characters out of 5902059
- 432002 words of memory out of 5000000
- 25700 multiletter control sequences out of 15000+600000
- 408368 words of font info for 43 fonts, out of 8000000 for 9000
+ 9578 strings out of 480539
+ 148414 string characters out of 5902059
+ 463835 words of memory out of 5000000
+ 27007 multiletter control sequences out of 15000+600000
+ 411815 words of font info for 44 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,8n,66p,405b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (22 pages, 1296441 bytes).
+ 60i,8n,66p,405b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on course_thesis.pdf (23 pages, 1338445 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 83 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 695 PDF objects out of 1000 (max. 8388607)
+ 315 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 
