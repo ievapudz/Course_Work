@@ -201,7 +201,7 @@ print('Inference process has finished')
 print('Processing results')
 
 if(options.per_tok):
-	command = 'echo -e seq_id\tkmer\tbinary_prediction\traw_prediction > '+\
+	command = 'echo -e seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction > '+\
 				options.output+'.tmp'
 	os.system(command)
 
