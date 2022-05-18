@@ -171,20 +171,6 @@
 	weight, and hydrophobicity. This CNN approach 
 	reached prediction accuracy up to 87\%.
 
-	\subsection{Objective of this work}
-
-	Since none of the reviewed, most recently developed methods included 
-	embeddings from protein language models, it was decided to try to use 
-	protein embeddings for protein thermostability prediction as a 
-	suggestion of a novel method. Therefore, the main objective of the 
-	work is to apply embeddings from protein language models to create a 
-	classifier that could determine the thermostability class of the protein.
-
-	Thermostability classes were created by setting the threshold of 
-	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
-	than the given threshold should be assigned to class '0' and the 
-	remaining ones compose the class '1'. 
-
 	\subsection{Protein language models}
 
 	Protein language models are transformer models trained on protein sequences.
@@ -243,6 +229,22 @@
 	\newpage
 
 	\section{Methods}
+
+	\subsection{Objective of this work}
+
+	Since none of the reviewed, most recently developed methods included 
+	embeddings from protein language models, it was decided to try to use 
+	protein embeddings for protein thermostability prediction as a 
+	suggestion of a novel method. Therefore, the main objective of the 
+	work is to apply embeddings from protein language models to create a 
+	classifier that could determine the thermostability class of the protein.
+
+	Thermostability classes were created by setting the threshold of 
+	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
+	than the given threshold should be assigned to class '0' and the 
+	remaining ones compose the class '1'. 
+
+	\subsection{Workflow}
 
 	Generally, the development of a tool for protein thermostability predictions
 	consisted of the following steps:

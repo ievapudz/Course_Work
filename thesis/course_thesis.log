@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  18 MAY 2022 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2022/dev) (preloaded format=pdflatex 2021.10.24)  18 MAY 2022 16:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -260,113 +260,103 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout4 = `course_thesis.toc'.
 
  [2] [3] [4] [5] [6] [7]
-<../The_COINS//scheme.png, id=136, 643.203pt x 600.8046pt>
+<../The_COINS//scheme.png, id=140, 643.203pt x 600.8046pt>
 File: ../The_COINS//scheme.png Graphic file (type png)
 <use ../The_COINS//scheme.png>
-Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 264.
+Package pdftex.def Info: ../The_COINS//scheme.png  used on input line 266.
 (pdftex.def)             Requested size: 257.27664pt x 240.31757pt.
- [8 <../The_COINS//scheme.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//training_v2_histo.png, id=163, 462.528pt x 346.896pt>
+[8] [9 <../The_COINS//scheme.png>]
+<../data/003/visualisation_v2//training_v2_histo.png, id=175, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//training_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//training_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//training_v2_histo.png  used on input line 362.
+Package pdftex.def Info: ../data/003/visualisation_v2//training_v2_histo.png  used on input line 364.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//validation_v2_histo.png, id=164, 462.528pt x 346.896pt>
+<../data/003/visualisation_v2//validation_v2_histo.png, id=176, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//validation_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//validation_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//validation_v2_histo.png  used on input line 372.
+Package pdftex.def Info: ../data/003/visualisation_v2//validation_v2_histo.png  used on input line 374.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//testing_v2_histo.png, id=165, 462.528pt x 346.896pt>
+<../data/003/visualisation_v2//testing_v2_histo.png, id=177, 462.528pt x 346.896pt>
 File: ../data/003/visualisation_v2//testing_v2_histo.png Graphic file (type png)
 <use ../data/003/visualisation_v2//testing_v2_histo.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//testing_v2_histo.png  used on input line 383.
+Package pdftex.def Info: ../data/003/visualisation_v2//testing_v2_histo.png  used on input line 385.
 (pdftex.def)             Requested size: 346.89514pt x 260.17136pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9] [10 <../data/003/visualisation_v2//training_v2_histo.png>]
+[10]
 
 LaTeX Warning: Text page 11 contains only floats.
 
-[11 <../data/003/visualisation_v2//validation_v2_histo.png> <../data/003/visualisation_v2//testing_v2_histo.png>]
-<../data/003/visualisation_v2//003_train_v2_PCA.png, id=193, 505.89pt x 433.62pt>
+[11 <../data/003/visualisation_v2//training_v2_histo.png> <../data/003/visualisation_v2//validation_v2_histo.png>] [12 <../data/003/visualisation_v2//testing_v2_histo.png>]
+<../data/003/visualisation_v2//003_train_v2_PCA.png, id=203, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_train_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 450.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_PCA.png  used on input line 452.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../data/003/visualisation_v2//003_validate_v2_PCA.png, id=194, 505.89pt x 433.62pt>
+<../data/003/visualisation_v2//003_validate_v2_PCA.png, id=204, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_validate_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 459.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_PCA.png  used on input line 461.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_test_v2_PCA.png, id=195, 505.89pt x 433.62pt>
+<../data/003/visualisation_v2//003_test_v2_PCA.png, id=205, 505.89pt x 433.62pt>
 File: ../data/003/visualisation_v2//003_test_v2_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 468.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_PCA.png  used on input line 470.
 (pdftex.def)             Requested size: 328.82458pt x 281.84966pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=199, 547.0839pt x 547.0839pt>
+<../data/003/visualisation_v2//003_train_v2_MDE_PCA.png, id=209, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 484.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_train_v2_MDE_PCA.png  used on input line 486.
 (pdftex.def)             Requested size: 273.54128pt x 273.54128pt.
-[12]
+[13 <../data/003/visualisation_v2//003_train_v2_PCA.png>]
 
-LaTeX Warning: Text page 13 contains only floats.
+LaTeX Warning: Text page 14 contains only floats.
 
 
 Overfull \vbox (2.93593pt too high) has occurred while \output is active []
 
- [13 <../data/003/visualisation_v2//003_train_v2_PCA.png> <../data/003/visualisation_v2//003_validate_v2_PCA.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=215, 547.0839pt x 547.0839pt>
+ [14 <../data/003/visualisation_v2//003_validate_v2_PCA.png> <../data/003/visualisation_v2//003_test_v2_PCA.png>]
+<../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png, id=225, 547.0839pt x 547.0839pt>
 File: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 493.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png  used on input line 495.
 (pdftex.def)             Requested size: 273.54128pt x 273.54128pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=216, 549.252pt x 591.8913pt>
+<../data/003/visualisation_v2//003_test_v2_MDE_PCA.png, id=226, 549.252pt x 591.8913pt>
 File: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png Graphic file (type png)
 <use ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>
-Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 502.
+Package pdftex.def Info: ../data/003/visualisation_v2//003_test_v2_MDE_PCA.png  used on input line 504.
 (pdftex.def)             Requested size: 274.62532pt x 295.94492pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14 <../data/003/visualisation_v2//003_test_v2_PCA.png>]
-
-LaTeX Warning: Text page 15 contains only floats.
-
-[15 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png> <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>]
-<../results/SLP/003/ROC//validation_4_2713.png, id=235, 462.528pt x 346.896pt>
+[15 <../data/003/visualisation_v2//003_train_v2_MDE_PCA.png>]
+<../results/SLP/003/ROC//validation_4_2713.png, id=239, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//validation_4_2713.png Graphic file (type png)
 <use ../results/SLP/003/ROC//validation_4_2713.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 533.
+Package pdftex.def Info: ../results/SLP/003/ROC//validation_4_2713.png  used on input line 535.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
@@ -375,40 +365,37 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png>]
+[16 <../data/003/visualisation_v2//003_validate_v2_MDE_PCA.png>]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Text page 17 contains only floats.
 
-[17 <../results/SLP/003/ROC//validation_4_2713.png>]
-<../results/SLP/003/ROC//testing_0_3068.png, id=262, 462.528pt x 346.896pt>
+[17 <../data/003/visualisation_v2//003_test_v2_MDE_PCA.png> <../results/SLP/003/ROC//validation_4_2713.png>] [18]
+<../results/SLP/003/ROC//testing_0_3068.png, id=272, 462.528pt x 346.896pt>
 File: ../results/SLP/003/ROC//testing_0_3068.png Graphic file (type png)
 <use ../results/SLP/003/ROC//testing_0_3068.png>
-Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 620.
+Package pdftex.def Info: ../results/SLP/003/ROC//testing_0_3068.png  used on input line 622.
 (pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[18 <../results/SLP/003/ROC//testing_0_3068.png>] [19] (./course_thesis.bbl [20]) [21] (./course_thesis.aux)
+[19 <../results/SLP/003/ROC//testing_0_3068.png>] [20] (./course_thesis.bbl [21]) [22] (./course_thesis.aux)
 Package rerunfilecheck Info: File `course_thesis.out' has not changed.
-(rerunfilecheck)             Checksum: DF9835BB8B5679B8FEF143143ABB97BE;2097.
+(rerunfilecheck)             Checksum: 7595D660E0ABC744D13F3CB625C2E094;2195.
  ) 
 Here is how much of TeX's memory you used:
- 8234 strings out of 480539
- 127740 string characters out of 5902059
- 431002 words of memory out of 5000000
- 25699 multiletter control sequences out of 15000+600000
+ 8237 strings out of 480539
+ 127777 string characters out of 5902059
+ 432002 words of memory out of 5000000
+ 25700 multiletter control sequences out of 15000+600000
  408368 words of font info for 43 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,8n,66p,405b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/ieva/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/ieva/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on course_thesis.pdf (21 pages, 1294828 bytes).
+Output written on course_thesis.pdf (22 pages, 1296441 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 279 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 355 PDF objects out of 1000 (max. 8388607)
+ 287 compressed objects within 3 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
