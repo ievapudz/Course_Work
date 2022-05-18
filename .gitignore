@@ -61,5 +61,4 @@ thermoclass/FASTA/*.fasta
 thermoclass/slurm/*.out
 thermoclass/PDB/
 thermoclass/XML/
-thermoclass/analysis/
 thermoclass/SH/
