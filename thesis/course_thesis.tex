@@ -439,21 +439,37 @@
 
 	Calculated embeddings were visualised using principal component 
 	analysis (PCA) from \textit{Scikit-Learn Python} library (version 0.24.2)
-	(Figure \ref{figure:ScikitPCAembeddings003}). The plots demonstrated that
+	(Figures \ref{figure:trainingScikitPCAembeddings003}, 
+	\ref{figure:validationScikitPCAembeddings003},
+	\ref{figure:testingScikitPCAembeddings003}). The plots demonstrated that
 	embeddings form clusters that might be divided to distinct classes, which
 	promised the high performance of the trained neural network.
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.45]{003_train_v2_PCA.png}
-		\includegraphics[scale=0.45]{003_validate_v2_PCA.png}
+		\includegraphics[scale=0.65]{003_train_v2_PCA.png}
 
-		\includegraphics[scale=0.45]{003_test_v2_PCA.png}
+		\caption{PCA visualisations of '003' model training
+		data set's embeddings}
+		\label{figure:trainingScikitPCAembeddings003}
+	\end{figure}
 
-		\caption{PCA visualisations of '003' model data sets' embeddings: training set
-				in the upper left, validation set in the upper right, and 
-				testing set in the lower center}
-		\label{figure:ScikitPCAembeddings003}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{003_validate_v2_PCA.png}
+
+		\caption{PCA visualisations of '003' model validation
+		data set's embeddings}
+		\label{figure:validationScikitPCAembeddings003}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{003_test_v2_PCA.png}
+
+		\caption{PCA visualisations of '003' model testing
+		data set's embeddings}
+		\label{figure:testingScikitPCAembeddings003}
 	\end{figure}
 	
 	Additionally, \textit{Python} minimum-distortion embedding (\textit{PyMDE}) 
