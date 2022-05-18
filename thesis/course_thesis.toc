@@ -6,9 +6,9 @@
 \contentsline {subsection}{\numberline {2.4}ESM-1b embeddings}{7}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Methods}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Collecting data}{9}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Calculating embeddings}{11}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Processing generated embeddings}{11}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.2}Calculating embeddings}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Processing generated embeddings}{12}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Visualising embeddings}{12}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Training and validation of the neural network}{13}{subsection.3.5}%
-\contentsline {section}{\numberline {4}Results}{16}{section.4}%
-\contentsline {section}{\numberline {5}Conclusions}{17}{section.5}%
+\contentsline {subsection}{\numberline {3.5}Training and validation of the neural network}{14}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Results}{17}{section.4}%
+\contentsline {section}{\numberline {5}Conclusions}{18}{section.5}%
