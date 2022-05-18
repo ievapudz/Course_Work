@@ -9,6 +9,7 @@ files = []
 # indeces list saves indeces of predictions to merge from respective files
 indeces = []
 
+# ADD: options parsing should be smarter (more flexible)
 for i in range(len(sys.argv)):
 	if(i):
 		if(i % 2 == 1):
@@ -31,13 +32,11 @@ for i, file in enumerate(files):
 			merged_data[seq_id].append(line.strip().split('\t')[indeces[i]])
 	file_handle.close()
 
-file_handle = open('merged.tsv', 'w')
-file_handle.write('seq_id\tmean\taveraged_per_tok\tdelta\n')
+# Addition of a header was dedicated to the user of the program
+#file_handle.write('seq_id\tmean\taveraged_per_tok\tdelta\n')
 
 for seq_id in sorted(merged_data.keys()):
 	line = seq_id+'\t'
 	for el in merged_data[seq_id]:
 		line += el+'\t'
-	file_handle.write(line+'\n')
-
-file_handle.close()
+	print(line)

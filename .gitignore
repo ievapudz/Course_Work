@@ -20,6 +20,7 @@ data/CRISPR/slurm/
 data/CRISPR/C2EP_training_v2_matches.res
 data/CRISPR/EMB_ESM1b/
 data/CRISPR/FASTA/C2EP/C2EP_with_stop.fasta
+data/CRISPR/FASTA/Cas12?/
 
 .profile
 scripts/__pycache__/
@@ -52,9 +53,12 @@ results/SLP/window_prediction_plots_sorted_by_max_min_difference.pdf
 EEML/
 
 thermoclass/emb/
-thermoclass/predictions/TSV/
+thermoclass/predictions/
 thermoclass/predictions/PNG/*.png
 thermoclass/*.fasta
 thermoclass/predictions/FASTA/*.fasta
 thermoclass/FASTA/*.fasta
 thermoclass/slurm/*.out
+thermoclass/PDB/
+thermoclass/XML/
+thermoclass/SH/

@@ -40,26 +40,6 @@ df = pd.read_csv(sys.argv[1], sep="\t")
 x = df['temperature']
 y = df['prediction']
 
-densities = densCols(x, y, nbin = 128)
-plt.figure(figsize=(8,6))
-plt.title('A plot to show the correlation between temperature and prediction')
-
-maximum = max([max(x), max(y)])
-minimum = min([min(x), min(y)])
-
-plt.ylim(minimum, maximum)
-plt.xlim(minimum, maximum) 
-plt.xlabel('Normalised temperature')
-plt.ylabel('Prediction value')
-sc = plt.scatter(x, y, c=densities, s=15, edgecolors='none', alpha=0.75, cmap=cm.jet)
-plt.colorbar(sc)
-plt.show()
-
-m, b = numpy.polyfit(x, y, 1)
-plt.plot(x, m*x+b, color='lightpink')
-
-plt.savefig(sys.argv[2])
-
 # Printing Pearson's correlation
 print('Pearson\'s correlation: ')
 print(df.corr())
@@ -87,3 +67,28 @@ for threshold in thresholds:
     print(calculate_MCC(x, y, real_threshold=threshold, 
           prediction_threshold=threshold))
     print()
+
+if(Z_SCORE_NORM):
+    for i in range(len(x)):
+        x[i] = convert_z_score_to_label(x[i], 65, std)
+        y[i] = convert_z_score_to_label(y[i], 65, std)
+
+densities = densCols(x, y, nbin = 128)
+plt.figure(figsize=(8,6))
+plt.title('A plot to show the correlation between temperature and prediction')
+
+maximum = max([max(x), max(y)])
+minimum = min([min(x), min(y)])
+
+plt.ylim(minimum, maximum)
+plt.xlim(minimum, maximum)
+plt.xlabel('True temperature')
+plt.ylabel('Predicted temperature')
+sc = plt.scatter(x, y, c=densities, s=15, edgecolors='none', alpha=0.75, cmap=cm.jet)
+plt.colorbar(sc)
+plt.show()
+
+m, b = numpy.polyfit(x, y, 1)
+plt.plot(x, m*x+b, color='lightpink')
+
+plt.savefig(sys.argv[2])

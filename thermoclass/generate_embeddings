@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+
+# A program that runs the embeddings generation program
+# and saves output to a human-readable file
+
+# Prerequisite:
+# ESM extract.py program
+
+import sys
+import os
+from optparse import OptionParser
+from data_process import parse_PDB_structure
+from data_process import get_FASTA_from_PDB
+from data_process import filter_FASTA
+from data_process import create_testing_data
+from data_process import filter_sequences
+from data_process import get_ESM_embeddings_as_tensor
+from data_process import save_tensors_as_NPZ
+from data_process import print_tensors_as_SV_to_file
+
+parser = OptionParser()
+
+parser.add_option('--fasta', '-f', dest='fasta', default=None,
+				   help='path to the input FASTA file (required)')
+
+parser.add_option('--extract', dest='extract',
+				   default='../../programs/esm-0.4.0/extract.py',
+				   help='path to the embeddings extraction script,'+\
+						'default: ../../programs/esm-0.4.0/extract.py')
+
+parser.add_option('--generate', '-g', dest='generate', default=False,
+				   action='store_true',
+				   help='set to calculate embeddings for input sequences, '+\
+						'by default embeddings are not generated')
+
+parser.add_option('--collect', '-c', dest='collect', default=False,
+				   action='store_true',
+				   help='used to collect embeddings to NPZ and TSV files '+\
+						'from existing PT files of input sequences')
+
+parser.add_option('--per_tok', dest='per_tok',
+				   action='store_true', default=False,				   
+				   help='set to include per_tok representations in the generation '+\
+						'of embeddings and make predictions for each amino acid '+\
+						'by default mean embeddings are only created')
+
+parser.add_option('--embeddings', '-e', dest='embeddings', default='./emb/',
+				   help='path to the embeddings directory to save PT files, '+\
+						'default: ./emb/')
+
+parser.add_option('--embeddings_tsv', '-t', dest='emb_tsv', default='',
+				   help='path to the embeddings TSV files, default matches an NPZ '+\
+						'file name')
+
+parser.add_option('--embeddings_npz', '-n', dest='emb_npz', default='',
+				   help='path to the embeddings NPZ files, '+\
+						'default is the same name as the input FASTA file with '+\
+						'.npz extension')
+
+parser.add_option('--npz_keywords', '-k', dest='npz_keywords', 
+				   default='x_input y_input', 
+				   help='NPZ file keywords with which the data was saved, default: '+\
+						'\'x_input y_input\'')
+
+parser.add_option('--version', '-v', dest='version', action='store_true',
+				   default=False,
+				   help='prints out the version of the program')
+
+(options, args) = parser.parse_args()
+
+if(options.version):
+	print(sys.argv[0]+': taken from the program thermoclass version 0.1.0-dev')
+	exit()
+
+if(options.fasta == ''):
+	print(sys.argv[0]+': required argument -f [input.fasta] is missing',
+			file=sys.stderr)
+	exit()
+
+if(options.emb_npz == ''):
+	options.emb_npz = options.fasta.split('.fasta')[0]+'.npz'
+
+if(options.emb_tsv == ''):
+	options.emb_tsv = options.emb_npz.split('.npz')[0]+'.tsv'
+
+x_npz_keyword = options.npz_keywords.split(' ')[0]
+y_npz_keyword = options.npz_keywords.split(' ')[1]
+
+print('Filtering input FASTA')
+filtered_fasta = filter_FASTA(options.fasta, 1022)
+
+# To create testing data with mean or per_tok representations 
+# (depending on the input)
+emb_case = 0
+
+if(options.per_tok):
+	emb_case = 1
+
+# Generation of input sequence embeddings
+if(options.generate):
+
+	print('Calculating embeddings')
+	esm_extract_command = 'python3 '+options.extract+' esm1b_t33_650M_UR50S '+\
+			  filtered_fasta+' '+options.embeddings+' --repr_layers 33 '+\
+			  '--include '
+	if(options.per_tok):
+		esm_extract_command += 'per_tok'
+	else:
+		esm_extract_command += 'mean'
+	
+	os.system(esm_extract_command)
+	print('Embeddings calculated')
+
+	options.collect = True
+
+if(options.collect):			
+	data = create_testing_data(filtered_fasta, options.embeddings, emb_case=emb_case,
+								labelled=False)
+
+	filter_sequences(data, 'test', data['test']['embeddings'], False)
+
+	if(len(data['test']['X_filtered']) == 0):
+		print(sys.argv[0]+': empty input (no appropriate sequences to process).', 
+			  file=sys.stderr)
+		quit()
+
+	# Save embeddings to NPZ and TSV files
+	emb_key = 'mean_representations'
+	
+	if(options.per_tok):
+		emb_key = 'representations'
+
+	[Xs_input_tensor, Ys_input_tensor] = get_ESM_embeddings_as_tensor(data,
+											['test'], emb_key=emb_key)
+
+	print("Saving tensors to an NPZ file")
+	save_tensors_as_NPZ([Xs_input_tensor, Ys_input_tensor], 
+					[x_npz_keyword, y_npz_keyword], 
+					options.emb_npz)
+
+	input_tensor = { x_npz_keyword: Xs_input_tensor, y_npz_keyword: Ys_input_tensor }
+
+	print("Saving tensors to a TSV file")
+	print_tensors_as_SV_to_file(data, input_tensor, 'test', [x_npz_keyword, y_npz_keyword],
+							out_file_name=options.emb_tsv, sep="\t", labelled=False)
