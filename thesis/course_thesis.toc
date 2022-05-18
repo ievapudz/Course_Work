@@ -9,6 +9,6 @@
 \contentsline {subsection}{\numberline {3.2}Calculating embeddings}{10}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Processing generated embeddings}{12}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Visualising embeddings}{12}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Training and validation of the neural network}{15}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}Training and validation of the neural network}{16}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Results}{18}{section.4}%
 \contentsline {section}{\numberline {5}Conclusions}{19}{section.5}%
