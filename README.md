@@ -2093,6 +2093,57 @@ Command to plot calculated deltas:
 ./scripts/misc/make_dot_plot.py thermoclass/analysis/Cas12a_N_overlap_analysis.tsv 0 3 6 && mv Cas12a_N_overlap_analysis.png thermoclass/analysis/
 ```
 
+Redoing the overlap analysis:
+
+Unifying names and collecting predictions:
+
+Cas12a
+```
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_N_per_tok.tsv
+cat predictions/TSV/Cas12a_N_per_tok_?.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1 "_1", $2, $3, $4, $5}' >> predictions/TSV/Cas12a_N_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_1022_splits_per_tok.tsv
+cat predictions/TSV/Cas12a_1022_splits.part-?.per_tok.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1, $2, $3, $4, $5}' >> predictions/TSV/Cas12a_1022_splits_per_tok.tsv
+
+echo -e "seq_id\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_C_per_tok.tsv.tmp
+cat predictions/TSV/Cas12a_C_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_2", $2, $3, $4, $5}' >> predictions/TSV/Cas12a_C_per_tok.tsv.tmp
+mv predictions/TSV/Cas12a_C_per_tok.tsv.tmp predictions/TSV/Cas12a_C_per_tok.tsv
+```
+
+Cas12b
+```
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_1022_splits_per_tok.tsv
+cat predictions/TSV/Cas12b_1022_splits.part-?.per_tok.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1, $2, $3, $4, $5}' >> predictions/TSV/Cas12b_1022_splits_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_N_per_tok.tsv.tmp
+cat predictions/TSV/Cas12b_N_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_1", $2, $3, $4, $5}' >> predictions/TSV/Cas12b_N_per_tok.tsv.tmp
+mv predictions/TSV/Cas12b_N_per_tok.tsv.tmp predictions/TSV/Cas12b_N_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_C_per_tok.tsv.tmp
+cat predictions/TSV/Cas12b_C_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_2", $2, $3, $4, $5}' >> predictions/TSV/Cas12b_C_per_tok.tsv.tmp
+mv predictions/TSV/Cas12b_C_per_tok.tsv.tmp predictions/TSV/Cas12b_C_per_tok.tsv
+```
+
+Joining predictions:
+
+Cas12a
+```
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12a_N_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12a_1022_splits_per_tok.tsv predictions/TSV/Cas12a_N_per_tok.tsv 4 4 N >> analysis/Cas12a_N_overlap_analysis.tsv
+
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12a_C_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12a_1022_splits_per_tok.tsv predictions/TSV/Cas12a_C_per_tok.tsv 4 4 C >> analysis/Cas12a_C_overlap_analysis.tsv
+```
+
+Cas12b
+```
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12b_N_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12b_1022_splits_per_tok.tsv predictions/TSV/Cas12b_N_per_tok.tsv 4 4 N >> analysis/Cas12b_N_overlap_analysis.tsv
+
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12b_C_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12b_1022_splits_per_tok.tsv predictions/TSV/Cas12b_C_per_tok.tsv 4 4 N >> analysis/Cas12b_C_overlap_analysis.tsv
+```
+
 ## References
 
 1. Dallago, C., Schütze, K., Heinzinger, M., Olenyi, T., Littmann, M., Lu, A. X., Yang, K. K., Min, S., Yoon, S., Morton, J. T., & Rost, B. 2021. "Learned embeddings from deep learning to visualize and predict protein sets." *Current Protocols*, 1, e113. https://doi.org/10.1002/cpz1.113. 
