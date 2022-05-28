@@ -1457,51 +1457,31 @@ sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddin
 
 ## Constructing unbalanced dataset (005)
 
-Picking proteomes (checking numbers) for training, validation, and testing data sets:
-
+Using:
 ```
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
-3649
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
-131
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
-66
+./scripts/005/construct_datasets.py data/003/FASTA/ data/005/FASTA/
 ```
 
-```
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
-771
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
-36
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
-17
-```
+Number of sequences (shorter than 1022) for each class.
+
+| Class | Temperature  | Training | Validation | Testing | Overall  |
+|-------|--------------|----------|------------|---------|----------|
+| 0 | 0-39         | 14326657 | 3069998    | 3063433 | 20466654 |
+| 1 | 40-64        | 449470   | 96315      | 93014   | 642101   |
+| 2 | 65-100       | 147704   | 31650      | 27963   | 211006   |
 
 ```
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
-741
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
-55
-shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
-28
-```
+^([0-9]_.*|([1-3][0-9])_.*)_.*$
+Number of sequences: 20466654
+None    ^([0-9]_.*|([1-3][0-9])_.*)_.*$ 14326657        3069998 3063433 failure 3608    785     765
 
-Collecting proteomes to model's data sets.
-
+^([4-5][0-9]_.*|6[0-4])_.*$
+Number of sequences: 642101
+None    ^([4-5][0-9]_.*|6[0-4])_.*$     449470  96315   93014   failure 153     37      32
+^(6[5-9]_.*|[7-9][0-9]|100_.*)_.*$
+Number of sequences: 211006
+None    ^(6[5-9]_.*|[7-9][0-9]|100_.*)_.*$      147704  31650   27963   failure 79      18      14
 ```
-./scripts/005/construct_set.sh 'head -n 3846' > data/005/FASTA/training.fasta
-./scripts/005/construct_set.sh 'tail -n 824' > data/005/FASTA/testing.fasta
-```
-
-For validation the script was changed manually ('head -n 4670 | tail -n 824' part was inserted instead of ${LINE} argument).
-```
-./scripts/005/construct_set.sh > data/005/FASTA/validation.fasta
-```
-
-Number of sequences in each set:
-1. Training: 15344704
-2. Validation: 3223401
-3. Testing: 3071982
 
 Generating embeddings:
 ```
