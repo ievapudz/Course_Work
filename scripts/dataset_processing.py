@@ -370,36 +370,61 @@ def fill_model_sets(proteomes, filtered_sequences, range_regex, max_seq_in_prot,
 		set_names[2]: []
 	}
 
-	capacities = [proportion*capacity for proportion in proportions]
 	proteomes_track = list(proteomes)
+	
+	capacities = [int(proportion*capacity) for proportion in proportions]
 
-	for i_cap, cap in enumerate(capacities):
-		for proteome in proteomes:	
-			if(proteome in proteomes_track and len(sets[set_names[i_cap]]) < cap):
-				for index, record in enumerate(filtered_sequences[proteome]):
-					if(index < len(filtered_sequences[proteome]) and index < max_seq_in_prot and len(sets[set_names[i_cap]]) < cap):
-						
-						header = proteome.split('_')[1]+'|'+record.id.split('|')[1]+'|'+proteome.split('_')[0]
+	if(max_seq_in_prot):
+		for i_cap, cap in enumerate(capacities):
+			for proteome in proteomes:	
+				if(proteome in proteomes_track and len(sets[set_names[i_cap]]) < cap):
+					for index, record in enumerate(filtered_sequences[proteome]):
+						if(index < len(filtered_sequences[proteome]) and index < max_seq_in_prot and len(sets[set_names[i_cap]]) < cap):
+							
+							header = proteome.split('_')[1]+'|'+record.id.split('|')[1]+'|'+proteome.split('_')[0]
 
-						record.name = proteome.split('.')[0]
-						record.id = header
+							record.name = proteome.split('.')[0]
+							record.id = header
 
-						sets[set_names[i_cap]].append(record)
-					elif(len(sets[set_names[i_cap]]) >= cap):
+							sets[set_names[i_cap]].append(record)
+						elif(len(sets[set_names[i_cap]]) >= cap):
+							if(proteome in proteomes_track):
+								proteomes_track.remove(proteome)
+							break				  
+						elif(index >= max_seq_in_prot):
+							if(proteome in proteomes_track):
+								proteomes_track.remove(proteome)
+							break
+					if(len(filtered_sequences[proteome]) < max_seq_in_prot):
 						if(proteome in proteomes_track):
 							proteomes_track.remove(proteome)
-						break				  
-					elif(index >= max_seq_in_prot):
-						if(proteome in proteomes_track):
-							proteomes_track.remove(proteome)
-						break
-				if(len(filtered_sequences[proteome]) < max_seq_in_prot):
-					if(proteome in proteomes_track):
-						proteomes_track.remove(proteome)
-					continue
-			elif(len(sets[set_names[i_cap]]) == cap):
-				break
-  
+						continue
+				elif(len(sets[set_names[i_cap]]) == cap):
+					break
+	else:
+		for i_cap, cap in enumerate(capacities):
+			for proteome in proteomes:
+				if(proteome in proteomes_track and len(sets[set_names[i_cap]]) < cap):
+					for index, record in enumerate(filtered_sequences[proteome]):
+						if(index < len(filtered_sequences[proteome]) and len(sets[set_names[i_cap]]) < cap):
+
+							header = proteome.split('_')[1]+'|'+record.id.split('|')[1]+'|'+proteome.split('_')[0]
+
+							record.name = proteome.split('.')[0]
+							record.id = header
+
+							sets[set_names[i_cap]].append(record)
+						elif(len(sets[set_names[i_cap]]) >= cap):
+							if(proteome in proteomes_track):
+								proteomes_track.remove(proteome)
+							break
+						if(index == len(filtered_sequences[proteome])-1):
+							if(proteome in proteomes_track):
+								proteomes_track.remove(proteome)
+							break
+				elif(len(sets[set_names[i_cap]]) == cap):
+					break 
+ 
 	prots_in_sets = [ set(), set(), set() ]
 
 	for i, name in enumerate(set_names):
