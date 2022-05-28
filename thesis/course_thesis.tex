@@ -6,6 +6,10 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 
+\usepackage[L7x,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian,english]{babel}
+
 \graphicspath{ {../data/003/visualisation_v2/} {../results/SLP/003/ROC/} {../The_COINS/} }
 
 \setstretch{1.5}
@@ -23,7 +27,7 @@
 
 		Bioinformatics study program
 	    
-        \vspace*{4cm}
+        \vspace*{2cm}
         \Large
 		\textbf{Protein thermostability prediction using 
 		sequence representations from protein 
@@ -73,7 +77,7 @@
 	function, yet also are thermostable - their structure does not denature 
 	at the higher temperature.
 
-	Determination of protein's of intereset thermostability can be made 
+	Determination of protein's of interest thermostability can be made 
 	experimentally in the wet lab; by searching for its sequence in the 
 	proteome of the known thermophilic organism; by developing methods to 
 	predict thermostability from the protein's sequence or structural 
@@ -126,6 +130,37 @@
 
 	\newpage
 
+	\section{Abstract in Lithuanian (Santrauka)}
+
+	\begin{otherlanguage}{lithuanian}
+		
+	\end{otherlanguage}
+	
+	Biotechnologijoje dažnai ieškoma baltymų, kurie ne tik 
+	galėtų atlikti reikiamą funkciją, bet ir būtų termostabilūs -
+	išlaikytų struktūrą aukštoje temperatūroje. Tinkami baltymai gali
+	būti ieškomi eksperimentiškai, termofiliškų organizmų proteomų 
+	duomenų bazėse arba metodais, kurie geba iš baltymo 
+	sekos ar struktūros nustatyti baltymo termostabilumą. Iš šių trijų 
+	būdų pranašiausias yra trečias, nes yra greitas, pigus ir 
+	nepriklauso nuo ribotų įrašų apie organizmus skaičiaus duomenų bazėse.
+
+	Trečiam metodui galima pritaikyti mašininio mokymosi technologijas. 
+	Naudojant termofilinių ir mezofilinių organizmų proteomų rinkinius, 
+	galima apmokyti neuroninį tinklą baltymo termostabilumo klasės 
+	nusakymui iš baltymo sekos skaitinės reprezentacijos. Tinkamą skaitinę 
+	reprezentaciją galima sugeneruoti su per pastaruosius trejus metus 
+	ištobulintais baltymų kalbos modeliais - giliaisiais neuroniniais 
+	tinklais, apmokytais naudojant šimtus milijonų žinomų baltymų sekų. 
+	
+	Šiuo metu nėra publikuotų metodų, atliekančių baltymų termostabilumo 
+	nusakymą iš baltymų kalbos modelių generuojamų reprezentacijų. 
+	Šis darbas pristato baltymų kalbos modelių sugeneruotų skaitinių 
+	baltymų reprezentacijų taikymą baltymų klasifikavimo pagal 
+	termostabilumą problemos sprendimui.
+
+	\newpage
+
 	\section{Theory}
 
 	\subsection{Alternative approaches}
@@ -171,20 +206,6 @@
 	weight, and hydrophobicity. This CNN approach 
 	reached prediction accuracy up to 87\%.
 
-	\subsection{Objective of this work}
-
-	Since none of the reviewed, most recently developed methods included 
-	embeddings from protein language models, it was decided to try to use 
-	protein embeddings for protein thermostability prediction as a 
-	suggestion of a novel method. Therefore, the main objective of the 
-	work is to apply embeddings from protein language models to create a 
-	classifier that could determine the thermostability class of the protein.
-
-	Thermostability classes were created by setting the threshold of 
-	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
-	than the given threshold should be assigned to class '0' and the 
-	remaining ones compose the class '1'. 
-
 	\subsection{Protein language models}
 
 	Protein language models are transformer models trained on protein sequences.
@@ -198,14 +219,14 @@
 	The encoder part provides continuous representations of the input composed 
 	of sequences of symbols, meanwhile the decoder part generates output for each 
 	symbol in the input sequence. For this principle of architecture, transformers
-	can be trained in an unsupervised fashion and be applies to natural language
+	can be trained in an unsupervised fashion and be applied to natural language
 	processing (NLP) tasks at which they produce state-of-the-art 
 	results \cite{vig2019analyzing}.
 
 	Since amino acid sequences can be considered as a particular language, 
 	transformer architectures were applied to solve tasks related to protein 
 	biology or molecule modeling \textit{in silico}. Attention mechanisms in 
-	models of transformer architecture, taking BERT-like model as a example 
+	models of transformer architecture, taking BERT-like model as an example 
 	\cite{vig2020bertology}, are capable to capture the folding structure, 
 	binding sites, and complex biophysical properties of proteins.
 
@@ -243,6 +264,22 @@
 	\newpage
 
 	\section{Methods}
+
+	\subsection{Objective of this work}
+
+	Since none of the reviewed, most recently developed methods included 
+	embeddings from protein language models, it was decided to try to use 
+	protein embeddings for protein thermostability prediction as a 
+	suggestion of a novel method. Therefore, the main objective of the 
+	work is to apply embeddings from protein language models to create a 
+	classifier that could determine the thermostability class of the protein.
+
+	Thermostability classes were created by setting the threshold of 
+	$65\ ^\circ$C - proteins that are stable at temperatures strictly lower 
+	than the given threshold should be assigned to class '0' and the 
+	remaining ones compose the class '1'. 
+
+	\subsection{Workflow}
 
 	Generally, the development of a tool for protein thermostability predictions
 	consisted of the following steps:
@@ -308,7 +345,7 @@
 
 	After receiving the results of the first neural network model trained on 
 	'002' data set, it was decided to train and test the model on the first 
-	real data set. '003' data set was a subset of the data set of 21458 
+	real data set. '003' data set was a subset of the data set of 21498 
 	annotated organisms \cite{engqvist_martin_karl_magnus_2018_1175609}. 
 	
 	Requirements for '003' data set were: the data set needed to be balanced and a
@@ -359,14 +396,33 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.5]{training_v2_histo.png}
-		\includegraphics[scale=0.5]{validation_v2_histo.png}
-		\includegraphics[scale=0.5]{testing_v2_histo.png}
+		\includegraphics[scale=0.75]{training_v2_histo.png}
 
 		\caption{Protein sequences distribution 
 		regarding to organism's growth temperature
-		in data subsets for training, validation, and testing}
-		\label{figure:histograms003}
+		in data subset for training}
+		\label{figure:trainingHist003}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{validation_v2_histo.png}
+
+		\caption{Protein sequences distribution 
+		regarding to organism's growth temperature
+		in data subset for validation}
+		\label{figure:validationHist003}
+	\end{figure}
+
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.75]{testing_v2_histo.png}
+
+		\caption{Protein sequences distribution 
+		regarding to organism's growth temperature
+		in data subset for testing}
+		\label{figure:testingHist003}
 	\end{figure}
 
 	\subsection{Calculating embeddings}
@@ -420,42 +476,74 @@
 
 	Calculated embeddings were visualised using principal component 
 	analysis (PCA) from \textit{Scikit-Learn Python} library (version 0.24.2)
-	(Figure \ref{figure:ScikitPCAembeddings003}). The plots demonstrated that
+	(Figures \ref{figure:trainingScikitPCAembeddings003}, 
+	\ref{figure:validationScikitPCAembeddings003},
+	\ref{figure:testingScikitPCAembeddings003}). The plots demonstrated that
 	embeddings form clusters that might be divided to distinct classes, which
 	promised the high performance of the trained neural network.
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.45]{003_train_v2_PCA.png}
-		\includegraphics[scale=0.45]{003_validate_v2_PCA.png}
+		\includegraphics[scale=0.65]{003_train_v2_PCA.png}
 
-		\includegraphics[scale=0.45]{003_test_v2_PCA.png}
+		\caption{PCA visualisations of '003' model training
+		data set's embeddings}
+		\label{figure:trainingScikitPCAembeddings003}
+	\end{figure}
 
-		\caption{PCA visualisations of '003' model data sets' embeddings: training set
-				in the upper left, validation set in the upper right, and 
-				testing set in the lower center}
-		\label{figure:ScikitPCAembeddings003}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{003_validate_v2_PCA.png}
+
+		\caption{PCA visualisations of '003' model validation
+		data set's embeddings}
+		\label{figure:validationScikitPCAembeddings003}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.65]{003_test_v2_PCA.png}
+
+		\caption{PCA visualisations of '003' model testing
+		data set's embeddings}
+		\label{figure:testingScikitPCAembeddings003}
 	\end{figure}
 	
 	Additionally, \textit{Python} minimum-distortion embedding (\textit{PyMDE}) 
 	library (version 0.1.5) was used to visualise data sets of embeddings 
-	(Figure \ref{figure:PyMDEPCAembeddings003}), which showed the 3D image
+	(Figures \ref{figure:trainingPyMDEPCAembeddings003},
+	\ref{figure:validationPyMDEPCAembeddings003},
+	\ref{figure:testingPyMDEPCAembeddings003}), which showed the 3D image
 	of data clusters.
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[scale=0.4]{003_train_v2_MDE_PCA.png}
-		\includegraphics[scale=0.4]{003_validate_v2_MDE_PCA.png}
+		\includegraphics[scale=0.5]{003_train_v2_MDE_PCA.png}
 
-		\includegraphics[scale=0.4]{003_test_v2_MDE_PCA.png}
-
-		\caption{\textit{PyMDE} PCA visualisations of '003' model data sets' embeddings: training set
-				in the upper left, validation set in the upper right, and 
-				testing set in the lower center}
-		\label{figure:PyMDEPCAembeddings003}
+		\caption{\textit{PyMDE} PCA visualisations of '003' model training 
+		data set's embeddings }
+		\label{figure:trainingPyMDEPCAembeddings003}
 	\end{figure}
 
-	\newpage
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.5]{003_validate_v2_MDE_PCA.png}
+
+		\caption{\textit{PyMDE} PCA visualisations of '003' model 
+		validation data set's embeddings }
+		\label{figure:validationPyMDEPCAembeddings003}
+	\end{figure}
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.5]{003_test_v2_MDE_PCA.png}
+
+		\caption{\textit{PyMDE} PCA visualisations of '003' model 
+		testing data set's embeddings}
+		\label{figure:testingPyMDEPCAembeddings003}
+	\end{figure}
+
+	\pagebreak
 
 	\subsection{Training and validation of the neural network}
 
@@ -560,7 +648,7 @@
 	a good performance of the model. The confusion matrix 
 	(Table \ref{table:SLP003confusionMatrixTesting}) of the testing stage 
 	showed balanced number of mistakes (FP and FN values were approximately 
-	equal). Area under testing ROC curve was 0.924, 
+	equal). Area under the testing ROC curve was 0.924, 
 	accuracy, precision, and MCC metrics exceeded those after the fifth training 
 	and validation epoch (Table \ref{table:SLP003metricsTesting}). 
 

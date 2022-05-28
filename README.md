@@ -1455,6 +1455,66 @@ sbatch --array=0-15 --output=data/004/slurm/validate_%a.out scripts/004/004_embe
 sbatch --array=0-15 --output=data/004/slurm/test_%a.out scripts/004/004_embeddings_test.sh
 ```
 
+## Constructing unbalanced dataset (005)
+
+Picking proteomes (checking numbers) for training, validation, and testing data sets:
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+3649
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+131
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 3846 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+66
+```
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+771
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+36
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | head -n 4670 | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+17
+```
+
+```
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 < 40 ) print $0 }' | wc -l
+741
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 40 && $1 < 65 ) print $0 }' | wc -l
+55
+shuf --random-source=data/005/TSV/005.tsv data/005/TSV/005_2.tsv | tail -n 824 | awk '{ if( $1 >= 65 ) print $0 }' | wc -l
+28
+```
+
+Collecting proteomes to model's data sets.
+
+```
+./scripts/005/construct_set.sh 'head -n 3846' > data/005/FASTA/training.fasta
+./scripts/005/construct_set.sh 'tail -n 824' > data/005/FASTA/testing.fasta
+```
+
+For validation the script was changed manually ('head -n 4670 | tail -n 824' part was inserted instead of ${LINE} argument).
+```
+./scripts/005/construct_set.sh > data/005/FASTA/validation.fasta
+```
+
+Number of sequences in each set:
+1. Training: 15344704
+2. Validation: 3223401
+3. Testing: 3071982
+
+Generating embeddings:
+```
+../programs/fasta-splitter.pl --n-parts 150 --out-dir data/005/FASTA/train/ --nopad data/005/FASTA/training.fasta
+```
+```
+sbatch --array=1-30 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=31-60 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=61-90 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=91-120 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=121-150 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+```
+
 ## Multi-class classifier
 
 004 data set was used to train multi-class classifier. The first architecture for multi-class 
@@ -1860,7 +1920,7 @@ Visualisation process (lysozymes):
 ./scripts/CRISPR/Cas12_join_sequences.py data/CRISPR/FASTA/Cas12b/Cas12b_N.fasta  data/CRISPR/FASTA/Cas12b/Cas12b_C.fasta > data/CRISPR/FASTA/Cas12b/Cas12b.fasta
 ```
 
-- [ ] Make overlapping sequences that are 1022 amino acids long.
+- [x] Make overlapping sequences that are 1022 amino acids long.
 
 ```
 ./scripts/CRISPR/Cas12_split_to_max_length.py data/CRISPR/FASTA/Cas12b/Cas12b.fasta 1022 > data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta
@@ -1880,6 +1940,103 @@ srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta -g --
 srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta -g --per-tok -e ./emb/ -t emb/TSV/Cas12b_1022_splits_per_tok.tsv -n emb/NPZ/Cas12b_1022_splits_per_tok.npz -o predictions/TSV/Cas12b_1022_splits_per_tok.tsv --output_fasta predictions/FASTA/Cas12b_1022_splits_per_tok.fasta --output_plot predictions/PNG/
 ```
 
+Per token predictions:
+
+```
+../../programs/fasta-splitter.pl --n-parts 8 --out-dir ../data/CRISPR/FASTA/Cas12a/ --no-pad ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.fasta
+../../programs/fasta-splitter.pl --n-parts 3 --out-dir ../data/CRISPR/FASTA/Cas12b/ --no-pad ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.fasta
+```
+
+```
+for VAR in 1 2 3 4 5 6 7 8
+do
+    srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12a/Cas12a_1022_splits.part-$VAR.fasta -c --per_tok -e emb/ -t emb/TSV/Cas12a_1022_splits.part-$VAR.per_tok.tsv -n emb/NPZ/Cas12a_1022_splits.part-$VAR.per_tok.npz -o predictions/TSV/Cas12a_1022_splits.part-$VAR.per_tok.tsv --output_fasta predictions/FASTA/Cas12a_1022_splits.part-$VAR.per_tok.fasta --output_plot predictions/PNG/
+done
+```
+
+```
+for VAR in 1 2 3 
+do
+    srun ./thermoclass -f ../data/CRISPR/FASTA/Cas12b/Cas12b_1022_splits.part-$VAR.fasta -c --per_tok -e emb/ -t emb/TSV/Cas12b_1022_splits.part-$VAR.per_tok.tsv -n emb/NPZ/Cas12b_1022_splits.part-$VAR.per_tok.npz -o predictions/TSV/Cas12b_1022_splits.part-$VAR.per_tok.tsv --output_fasta predictions/FASTA/Cas12b_1022_splits.part-$VAR.per_tok.fasta --output_plot predictions/PNG/
+done
+```
+
+Collecting results:
+```
+echo -e "seq_id\tper_tok_averaged" > predictions/Cas12a_1022_splits_per_tok_averaged.tsv
+
+cat predictions/FASTA/Cas12a_1022_splits.part-?.per_tok.fasta | grep '>' | awk 'BEGIN{OFS="\t"}{ print $1, $4 }' | sed 's/>//g' | sed 's/mean=//g' | sort >> predictions/Cas12a_1022_splits_per_tok_averaged.tsv
+
+echo -e "seq_id\tper_tok_averaged" > predictions/Cas12b_1022_splits_per_tok_averaged.tsv
+
+cat predictions/FASTA/Cas12b_1022_splits.part-?.per_tok.fasta | grep '>' | awk 'BEGIN{OFS="\t"}{ print $1, $4 }' | sed 's/>//g' | sed 's/mean=//g' | sort >> predictions/Cas12b_1022_splits_per_tok_averaged.tsv
+```
+
+A small script to collect respective predictions was written:
+```
+echo -e "seq_id\tmean\taveraged_per_tok\tdelta" > thermoclass/predictions/Cas12a_1022_splits_mean_vs_per_token_averaged.tsv
+
+./scripts/misc/merge_mean_per_tok.py thermoclass/predictions/TSV/Cas12a_1022_splits.tsv 2 thermoclass/predictions/Cas12a_1022_splits_per_tok_averaged.tsv 1 >> thermoclass/predictions/Cas12a_1022_splits_mean_vs_per_token_averaged.tsv
+
+echo -e "seq_id\tmean\taveraged_per_tok\tdelta" > thermoclass/predictions/Cas12b_1022_splits_mean_vs_per_token_averaged.tsv
+
+./scripts/misc/merge_mean_per_tok.py thermoclass/predictions/TSV/Cas12b_1022_splits.tsv 2 thermoclass/predictions/Cas12b_1022_splits_per_tok_averaged.tsv 1 >> thermoclass/predictions/Cas12b_1022_splits_mean_vs_per_token_averaged.tsv
+```
+The overlap analysis:
+
+Unifying names and collecting predictions:
+
+Cas12a
+```
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_N_per_tok.tsv
+cat predictions/TSV/Cas12a_N_per_tok_?.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1 "_1", $2, $3, $4, $5}' >> predictions/TSV/Cas12a_N_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_1022_splits_per_tok.tsv
+cat predictions/TSV/Cas12a_1022_splits.part-?.per_tok.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1, $2, $3, $4, $5}' >> predictions/TSV/Cas12a_1022_splits_per_tok.tsv
+
+echo -e "seq_id\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12a_C_per_tok.tsv.tmp
+cat predictions/TSV/Cas12a_C_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_2", $2, $3, $4, $5}' >> predictions/TSV/Cas12a_C_per_tok.tsv.tmp
+mv predictions/TSV/Cas12a_C_per_tok.tsv.tmp predictions/TSV/Cas12a_C_per_tok.tsv
+```
+
+Cas12b
+```
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_1022_splits_per_tok.tsv
+cat predictions/TSV/Cas12b_1022_splits.part-?.per_tok.tsv | sed 's/^seq_id.*//g' | sed '/^$/d' | awk 'BEGIN{OFS="\t"}{print $1, $2, $3, $4, $5}' >> predictions/TSV/Cas12b_1022_splits_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_N_per_tok.tsv.tmp
+cat predictions/TSV/Cas12b_N_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_1", $2, $3, $4, $5}' >> predictions/TSV/Cas12b_N_per_tok.tsv.tmp
+mv predictions/TSV/Cas12b_N_per_tok.tsv.tmp predictions/TSV/Cas12b_N_per_tok.tsv
+
+echo -e "seq_id\tkmer_idx\tkmer\tbinary_prediction\traw_prediction" > predictions/TSV/Cas12b_C_per_tok.tsv.tmp
+cat predictions/TSV/Cas12b_C_per_tok.tsv | awk 'BEGIN{OFS="\t"}{if(NR!=1) print $1 "_2", $2, $3, $4, $5}' >> predictions/TSV/Cas12b_C_per_tok.tsv.tmp
+mv predictions/TSV/Cas12b_C_per_tok.tsv.tmp predictions/TSV/Cas12b_C_per_tok.tsv
+```
+
+Joining predictions:
+
+Cas12a
+```
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12a_N_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12a_1022_splits_per_tok.tsv predictions/TSV/Cas12a_N_per_tok.tsv 4 4 N >> analysis/Cas12a_N_overlap_analysis.tsv
+
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12a_C_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12a_1022_splits_per_tok.tsv predictions/TSV/Cas12a_C_per_tok.tsv 4 4 C >> analysis/Cas12a_C_overlap_analysis.tsv
+```
+
+Cas12b
+```
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12b_N_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12b_1022_splits_per_tok.tsv predictions/TSV/Cas12b_N_per_tok.tsv 4 4 N >> analysis/Cas12b_N_overlap_analysis.tsv
+
+echo -e "seq_id\tper_tok_mean_subseq\tper_tok_mean_domain\tdelta" > analysis/Cas12b_C_overlap_analysis.tsv
+../scripts/misc/overlap_per_tok_means.py predictions/TSV/Cas12b_1022_splits_per_tok.tsv predictions/TSV/Cas12b_C_per_tok.tsv 4 4 N >> analysis/Cas12b_C_overlap_analysis.tsv
+```
+
+Command to plot calculated deltas:
+```
+./scripts/misc/make_dot_plot.py thermoclass/analysis/Cas12a_N_overlap_analysis.tsv 0 3 && mv Cas12a_N_overlap_analysis.png thermoclass/analysis/
+```
 
 ## References
 
