@@ -1484,14 +1484,16 @@ Number of proteomes for each class.
 
 Generating embeddings:
 ```
-../programs/fasta-splitter.pl --n-parts 150 --out-dir data/005/FASTA/train/ --nopad data/005/FASTA/training.fasta
+../programs/fasta-splitter.pl --n-parts 10 --out-dir data/005/FASTA/train/ --nopad --part-num-prefix '_' data/005/FASTA/train.fasta
+
+../programs/fasta-splitter.pl --n-parts 10 --out-dir data/005/FASTA/validate/ --nopad --part-num-prefix '_' data/005/FASTA/validate.fasta
+
+../programs/fasta-splitter.pl --n-parts 10 --out-dir data/005/FASTA/test/ --nopad --part-num-prefix '_' data/005/FASTA/test.fasta
 ```
 ```
-sbatch --array=1-30 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
-sbatch --array=31-60 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
-sbatch --array=61-90 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
-sbatch --array=91-120 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
-sbatch --array=121-150 --output=data/005/slurm/train.part-%a.out scripts/005/embeddings_train.sh
+sbatch --array=1 --output=data/005/slurm/train_%a.out scripts/005/embeddings_train.sh
+sbatch --array=1 --output=data/005/slurm/validate_%a.out scripts/005/embeddings_validate.sh
+sbatch --array=1 --output=data/005/slurm/test_%a.out scripts/005/embeddings_test.sh
 ```
 
 ## Multi-class classifier
