@@ -1478,19 +1478,6 @@ Number of proteomes for each class.
 | 1     | 40-64        | 153      | 37         | 32      | -        |
 | 2     | 65-100       | 79       | 18         | 14      | -        |
 
-```
-^([0-9]_.*|([1-3][0-9])_.*)_.*$
-Number of sequences: 20466654
-None    ^([0-9]_.*|([1-3][0-9])_.*)_.*$ 14326657        3069998 3063433 failure 3608    785     765
-
-^([4-5][0-9]_.*|6[0-4])_.*$
-Number of sequences: 642101
-None    ^([4-5][0-9]_.*|6[0-4])_.*$     449470  96315   93014   failure 153     37      32
-^(6[5-9]_.*|[7-9][0-9]|100_.*)_.*$
-Number of sequences: 211006
-None    ^(6[5-9]_.*|[7-9][0-9]|100_.*)_.*$      147704  31650   27963   failure 79      18      14
-```
-
 Generating embeddings:
 ```
 ../programs/fasta-splitter.pl --n-parts 150 --out-dir data/005/FASTA/train/ --nopad data/005/FASTA/training.fasta
