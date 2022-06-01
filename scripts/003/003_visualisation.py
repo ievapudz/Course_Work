@@ -23,19 +23,19 @@ two_color_cmap = ListedColormap(["navy", "red"])
 
 print("Creating data object")
 data = {
-    '003_train_v2': {
+    'training': {
         'X': [],
         'Y': [],
         'FASTA': 'data/003/FASTA/training_v2/training_v2.fasta',
         'embeddings': 'data/003/EMB_ESM1b/training_v2'
     },
-    '003_validate_v2': {
+    'validation': {
         'X': [],
         'Y': [],
         'FASTA': 'data/003/FASTA/validation_v2/validation_v2.fasta',
         'embeddings': 'data/003/EMB_ESM1b/validation_v2'
     },
-    '003_test_v2': {
+    'testing': {
         'X': [],
         'Y': [],
         'FASTA': 'data/003/FASTA/testing_v2/testing_v2.fasta',
@@ -45,7 +45,7 @@ data = {
 
 visualisation_file_path = 'data/003/visualisation_v2/'
 
-keys = ['003_test_v2']
+keys = ['training', 'validation', 'testing']
 for key in keys:
     print("Parsing dataset: "+key)
     parse_dataset(data, key, 2)
@@ -53,8 +53,8 @@ for key in keys:
     filter_sequences(data, key, data[key]['embeddings'])
     print("Visualising PCA: "+key)
     visualise_multiple_PCA(data, [key], visualisation_file_path+key+"_PCA.png", two_color_cmap, False)
-    visualise_multiple_PCA_fit_transform_separate(data, [key], visualisation_file_path+key+"_PCA_fit_transform.png", two_color_cmap, False)
-    print("Visualising MDE PCA: "+key)
-    visualise_multiple_MDE_PCA(data, [key], visualisation_file_path+key+"_MDE_PCA.png", two_color_cmap, False)
-    print("Visualising MDE: "+key)
-    visualise_multiple_MDE(data, [key], visualisation_file_path+key+"_MDE.png", two_color_cmap, False)
+    #visualise_multiple_PCA_fit_transform_separate(data, [key], visualisation_file_path+key+"_PCA_fit_transform.png", two_color_cmap, False)
+    #print("Visualising MDE PCA: "+key)
+    #visualise_multiple_MDE_PCA(data, [key], visualisation_file_path+key+"_MDE_PCA.png", two_color_cmap, False)
+    #print("Visualising MDE: "+key)
+    #visualise_multiple_MDE(data, [key], visualisation_file_path+key+"_MDE.png", two_color_cmap, False)

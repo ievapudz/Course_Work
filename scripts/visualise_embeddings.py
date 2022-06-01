@@ -38,6 +38,7 @@ def visualise_multiple_PCA(data, keys, plotpath, colormap, is_read_file_name_id=
 	fig_dims = (7, 6)
 	fig, ax = plt.subplots(figsize=fig_dims)
 	sc = ax.scatter(Xs_pca_c[:,0], Xs_pca_c[:,1], c=Ys, marker='.', cmap=colormap)
+	ax.set_title('PCA of '+key+' data set')
 	ax.set_xlabel('PCA first principal component')
 	ax.set_ylabel('PCA second principal component')
 	plt.colorbar(sc, label='Temperature labels', ticks=numpy.linspace(37, 80, 2))
