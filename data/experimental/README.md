@@ -27,3 +27,11 @@ label up to 100, it is interesting to check, whether sequences with
 optimal temperature above 100 will be classified correctly.
 
 None of the sequences was longer than 1022 amino acids.
+
+## Renaming sequence headers 
+
+```
+./scripts/experimental/rename_headers.sh data/experimental/10.1016_j.biortech.2019.01.049/FASTA/
+./scripts/experimental/rename_headers.sh data/experimental/10.1111_j.1742-4658.2007.05954.x/FASTA/
+```
+
