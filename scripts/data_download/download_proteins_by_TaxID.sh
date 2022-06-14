@@ -17,22 +17,16 @@ TEMPERATURES+=($(cat ${DATASET_FILE} | awk '{ print $3 }'| tail -n ${HALF_SAMPLE
 DB='protein'
 BASE='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
 
-#for((i = 0 ; i < "${#ORGANISM_IDS[@]}" ; i++));
 for((i = 0 ; i < "${SAMPLE_SIZE}" ; i++));
 do
-    ESEARCH_PROTEIN_URL=$BASE"esearch.fcgi?db=protein&term=txid${ORGANISM_IDS[$i]}[Organism:noexp]&usehistory=y"
-    PROTEIN_IDS=($(curl -s ${ESEARCH_PROTEIN_URL} | grep '<Id>' | sed -n 's:.*<Id>\(.*\)</Id>.*:\1:p'))
-    if [ "${#PROTEIN_IDS[@]}" != 0 ]
-    then
-        echo "$i/${#ORGANISM_IDS[@]} Downloading: ${PROTEIN_IDS[0]} ${#PROTEIN_IDS[@]}"
-        for((j = 0 ; j < "${#PROTEIN_IDS[@]}" ; j++));
-        do
-            echo "${PROTEIN_IDS[$j]}"
-        done
-        #ORIG_PROT_FILE=${OUT_DIR}${PROTEIN_IDS[0]}.fasta
-        #PROT_FILE=${OUT_DIR}${ORGANISM_IDS[$i]}.fasta
-        #efetch -db protein -id ${PROTEIN_IDS[0]} -format fasta > ${ORIG_PROT_FILE}
-        #cat ${ORIG_PROT_FILE} | sed -E "s/>(.+)/>${ORGANISM_IDS[$i]}|${PROTEIN_IDS[0]}|${TEMPERATURES[$i]}/" > ${PROT_FILE}
-        #rm ${ORIG_PROT_FILE}
-    fi
+	ESEARCH_PROTEIN_URL=$BASE"esearch.fcgi?db=protein&term=txid${ORGANISM_IDS[$i]}[Organism:noexp]&usehistory=y"
+	PROTEIN_IDS=($(curl -s ${ESEARCH_PROTEIN_URL} | grep '<Id>' | sed -n 's:.*<Id>\(.*\)</Id>.*:\1:p'))
+	if [ "${#PROTEIN_IDS[@]}" != 0 ]
+	then
+		echo "$i/${#ORGANISM_IDS[@]} Downloading: ${PROTEIN_IDS[0]} ${#PROTEIN_IDS[@]}"
+		for((j = 0 ; j < "${#PROTEIN_IDS[@]}" ; j++));
+		do
+			echo "${PROTEIN_IDS[$j]}"
+		done
+	fi
 done 
