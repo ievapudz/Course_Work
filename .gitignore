@@ -12,6 +12,11 @@ data/004/FASTA/
 data/004/NPZ/
 data/004/TSV/
 
+data/005/
+data/006/
+scripts/005/
+scripts/ProtTrans/
+
 data/CRISPR/FASTA/C2EP_kmers_1022/C2EP_kmers.part-*
 data/CRISPR/FASTA/C2EP_kmers_600/*
 data/CRISPR/NPZ/
