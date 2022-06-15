@@ -1,6 +1,0 @@
-	0	1
-0	168	0
-1	15	17
-Accuracy:	0.925
-Precision:	1.0
-Recall:	0.53125
