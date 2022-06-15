@@ -21,8 +21,9 @@ from model_flow import validation_epoch
 
 BATCH_SIZE = 24
 EPOCH_BATCH_SIZE = 18
-#NUM_OF_EPOCHS = int(sys.argv[1])
 NUM_OF_EPOCHS = 5
+
+PATH = './results/SLP/003/model.pt'
 
 dataset = load_tensor_from_NPZ(
 	'data/003/NPZ/training_and_validation_embeddings_v2.npz', 
@@ -62,3 +63,4 @@ for epoch in range(0, NUM_OF_EPOCHS):
   
 print('Training and validation process has finished.')
 
+torch.save(slp.state_dict(), PATH)

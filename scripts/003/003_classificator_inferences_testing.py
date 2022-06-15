@@ -20,7 +20,7 @@ PATH = './results/SLP/003/model.pt'
 BATCH_SIZE = 24
 
 dataset = load_tensor_from_NPZ('data/003/NPZ/testing_embeddings_v2.npz', 
-                               ['x_test', 'y_test'])
+							   ['x_test', 'y_test'])
 
 convert_labels_to_binary(dataset, ['y_test'])
 
@@ -38,9 +38,9 @@ model.eval()
 print('Inference process begins')
 
 test_epoch(model, test_loader, BATCH_SIZE, prefix='testing_inference_', 
-           ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
-               confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/',
-               file_for_predictions='results/SLP/003/testing_predictions.tsv', print_true_labels=True)
+		   ROC_curve_plot_file_dir='./results/SLP/003/ROC/',
+			   confusion_matrix_file_dir='./results/SLP/003/confusion_matrices/',
+			   file_for_predictions='results/SLP/003/testing_predictions.tsv', print_true_labels=True)
 
 print('Inference process has finished.')
 
