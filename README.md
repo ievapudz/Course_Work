@@ -143,6 +143,12 @@ sbatch --array=1-8 --output=testing_v2.part-%a.slurm-%A_%a.out \
 | testing     |  73663 (74508)                    | 37749 (38263)             | 35913 (36245)             |
 
 
+## Visualisation of embeddings
+
+```
+./scripts/003/003_visualisation.py
+```
+
 ## Saving embeddings to CSV files
 
 In order to make embeddings data more universal for processing with 
@@ -169,24 +175,7 @@ The files are headerless. The values are listed in order of:
 ## Training, validating, and testing the model
 
 ```
-./scripts/003/003_classificator_testing.py
-```
-
-## Correlation between true temperature labels and predictions
-
-```
-./scripts/003/003_correlation.sh \
-	results/SLP/003/temperature_predictions_correlation.png 
-```
-
-Additionally, there was a table created with added lengths:
-```
-cat data/003/CSV/testing_v2.csv | tr ',' '\t' | awk '{print $3}' \
-	>> data/003/testing_lengths.lst
-
-paste data/003/temperature_predictions_correlation.tsv \
-	data/003/testing_lengths.lst | head -n -6 > \
-	data/003/temperature_predictions_correlation_with_lengths.tsv
+./scripts/003/003_classificator_inferences_testing.py
 ```
 
 ## Matthew's correlation coefficient (MCC) for 003 v2 testing
@@ -199,24 +188,17 @@ and a column of predictions (values from 0 to 1). The function
 was called in script `scripts/003/003_calculate_MCC.py`.
 
 ```
-./scripts/003/003_calculate_MCC.py \
-	data/003/TSV/temperature_predictions_correlation_with_lengths.tsv 
+./scripts/003/003_calculate_MCC.py -p \
+	results/SLP/003/validation_predictions_epoch_5.tsv --true-label-idx 0 \
+	--prediction-idx 1 --threshold 0.65 --header
+
+./scripts/003/003_calculate_MCC.py -p \
+	results/SLP/003/testing_v2_predictions.tsv --true-label-idx 2 \
+	--prediction-idx 3 --threshold 65
 ```
 
+MCC for 003 v2 validation (final epoch) was: 0.84278. 
 MCC for 003 v2 testing was: 0.8478.
-
-Extracting temperatures and predictions to a separate file:
-```
-cat results/SLP/003/testing_v2_predictions.tsv | \
-	awk 'BEGIN{ OFS="\t"; print "temperature\tprediction" }{ print $3, $4 }' \
-	> results/SLP/003/testing_v2_temperature_and_predictions.tsv 
-```
-
-```
-./scripts/003/003_plot_correlation.py \
-	results/SLP/003/testing_v2_temperature_and_predictions_normalised.tsv \
-	results/SLP/003/testing_v2_real_vs_predictions_normalised.png 0.3 0.9
-```
 
 ## Plotting distribution histogram 003
 

@@ -263,7 +263,7 @@ def get_temperature_label_as_CSV(data, embedding_tensor_index, key,
 
 # A function that calculates Matthew's correlation coefficient
 def calculate_MCC(predictions_file_name, true_labels_index, prediction_index, 
-				  separator="\t", has_header=True):
+				  separator="\t", threshold=65, has_header=True):
 	TP = 0
 	TN = 0
 	FP = 0
@@ -273,13 +273,17 @@ def calculate_MCC(predictions_file_name, true_labels_index, prediction_index,
 		predictions_file = csv.reader(file, delimiter=separator)
 		for line in predictions_file:
 			if counter > 0:
-				if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) >= 0.5:
+				if float(line[true_labels_index]) >= threshold and \
+					float(line[prediction_index]) >= 0.5:
 					TP += 1
-				if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) < 0.5:
+				if float(line[true_labels_index]) < threshold and \
+					float(line[prediction_index]) < 0.5:
 					TN += 1
-				if float(line[true_labels_index]) < 0.65 and float(line[prediction_index]) >= 0.5:
+				if float(line[true_labels_index]) < threshold and \
+					float(line[prediction_index]) >= 0.5:
 					FP += 1
-				if float(line[true_labels_index]) >= 0.65 and float(line[prediction_index]) < 0.5:
+				if float(line[true_labels_index]) >= threshold and \
+					float(line[prediction_index]) < 0.5:
 					FN += 1 
 			counter = counter + 1
 	file.close()
