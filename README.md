@@ -78,11 +78,11 @@ Picking 111 proteomes from each class and shuffling the list of proteomes:
 ```
 ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | \
 awk '$1>=65{ print $1"_"$2"_"$3}' | shuf | \ 
-tail -n 111 > data/003/class_1_111_proteomes.lst
+tail -n 111 > data/003/class_1_111_proteomes.txt
 
 ls data/003/FASTA/  | tr '_' '\t' | head -n -6 | sort -n -k1 | \
 awk '$1<65{ print $1"_"$2"_"$3}' | shuf | \ 
-tail -n 111 > data/003/class_0_111_proteomes.lst
+tail -n 111 > data/003/class_0_111_proteomes.txt
 ```
 
 The script `scripts/003_preembeddings_v2.sh` takes the following arguments:
